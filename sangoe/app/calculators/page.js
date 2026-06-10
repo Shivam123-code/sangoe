@@ -55,7 +55,7 @@ export default function CalculatorsPage() {
       </section>
 
       {/* Main Panel */}
-      <section style={{ padding: '20px', maxWidth: '1000px', margin: '0 auto', display: 'grid', gridTemplateColumns: '280px 1fr', gap: '32px' }}>
+      <section className="responsive-grid-calc" style={{ padding: '20px', maxWidth: '1000px', margin: '0 auto', gap: '32px' }}>
         {/* Left tabs list */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
           <button
@@ -276,7 +276,7 @@ export default function CalculatorsPage() {
                 </div>
 
                 {/* Output Grid */}
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px', marginTop: '16px' }}>
+                <div className="responsive-grid-2" style={{ gap: '16px', marginTop: '16px' }}>
                   <div style={{ background: '#f9fafb', border: '1px solid rgba(0,0,0,0.04)', borderRadius: '12px', padding: '16px', textAlign: 'center' }}>
                     <div style={{ fontSize: '0.75rem', color: '#6b7280', fontWeight: 600 }}>Calculated GST Tax</div>
                     <div style={{ fontSize: '1.3rem', fontWeight: 800, color: '#111827', marginTop: '6px' }}>{formatter.format(gstValue)}</div>

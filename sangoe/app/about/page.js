@@ -20,7 +20,7 @@ export default function AboutPage() {
 
       {/* Vision and Mission */}
       <section style={{ padding: '40px 20px', maxWidth: '1000px', margin: '0 auto' }}>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '40px' }}>
+        <div className="responsive-grid-2" style={{ gap: '40px' }}>
           <div style={{ background: '#ffffff', borderRadius: '24px', padding: '40px', border: '1px solid rgba(0,0,0,0.04)', boxShadow: '0 4px 20px rgba(0,0,0,0.008)' }}>
             <span style={{ display: 'inline-flex', color: '#7C3AED', background: '#F5F3FF', padding: '12px', borderRadius: '16px', marginBottom: '16px' }}>
               <Eye size={28} />
@@ -46,7 +46,7 @@ export default function AboutPage() {
       {/* Core values */}
       <section style={{ padding: '60px 20px', maxWidth: '1000px', margin: '0 auto' }}>
         <h3 style={{ fontSize: '1.8rem', fontWeight: 800, color: '#111827', textAlign: 'center', marginBottom: '40px' }}>Our Core Philosophy</h3>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '24px' }}>
+        <div className="responsive-grid-3" style={{ gap: '24px' }}>
           {[
             { title: 'Authority & Trust', desc: 'We maintain absolute legal, regulatory, and financial audit standards in all modules.' },
             { title: 'Simplicity for Teams', desc: 'We build enterprise-grade logic with consumer-grade design simplicity.' },

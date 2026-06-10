@@ -200,3 +200,60 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   0%   { transform: translateX(0); }
   100% { transform: translateX(-50%); }
 }
+
+/* ── Responsive Grids & Layout Utilities ────────────────── */
+.responsive-grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+@media (max-width: 900px) {
+  .responsive-grid-2 {
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+  }
+}
+
+.responsive-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+@media (max-width: 900px) {
+  .responsive-grid-3 {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+  }
+}
+
+.responsive-grid-split {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+}
+@media (max-width: 900px) {
+  .responsive-grid-split {
+    grid-template-columns: 1fr !important;
+    gap: 32px !important;
+  }
+}
+
+.responsive-grid-calc {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+}
+@media (max-width: 900px) {
+  .responsive-grid-calc {
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+  }
+}
+
+.responsive-card-row {
+  display: flex !important;
+  flex-direction: row;
+}
+@media (max-width: 768px) {
+  .responsive-card-row {
+    flex-direction: column !important;
+    padding: 24px !important;
+    gap: 24px !important;
+  }
+}

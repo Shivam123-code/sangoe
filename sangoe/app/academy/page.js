@@ -37,7 +37,7 @@ export default function AcademyPage() {
 
       {/* Courses Catalog */}
       <section style={{ padding: '20px', maxWidth: '1200px', margin: '0 auto' }}>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(340px, 1fr))', gap: '24px' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 340px), 1fr))', gap: '24px' }}>
           {COURSES.map((course, i) => (
             <motion.div
               key={course.title}

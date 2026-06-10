@@ -87,7 +87,7 @@ export default function SolutionsPage() {
 
       {/* Solutions Cards */}
       <section style={{ padding: '40px 20px', maxWidth: '1200px', margin: '0 auto' }}>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(360px, 1fr))', gap: '32px' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 360px), 1fr))', gap: '32px' }}>
           {SOLUTIONS.map((sol, index) => {
             const IconComponent = sol.icon;
             return (

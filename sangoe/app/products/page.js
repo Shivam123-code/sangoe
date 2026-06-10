@@ -109,7 +109,7 @@ export default function ProductsPage() {
 
       {/* Clouds Grid */}
       <section style={{ padding: '40px 20px', maxWidth: '1200px', margin: '0 auto' }}>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(340px, 1fr))', gap: '24px' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 340px), 1fr))', gap: '24px' }}>
           {CLOUDS.map((cloud, idx) => {
             const IconComponent = cloud.icon;
             return (

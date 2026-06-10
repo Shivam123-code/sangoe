@@ -46,7 +46,7 @@ export default function PartnersPage() {
 
       {/* Models Grid */}
       <section style={{ padding: '40px 20px', maxWidth: '1200px', margin: '0 auto' }}>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '32px' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 320px), 1fr))', gap: '32px' }}>
           {MODELS.map(model => (
             <div
               key={model.title}
@@ -88,7 +88,7 @@ export default function PartnersPage() {
           <p style={{ fontSize: '0.85rem', color: '#6b7280', textAlign: 'center', marginBottom: '32px' }}>Submit details to start a partnership conversation with our business development leads.</p>
 
           <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
+            <div className="responsive-grid-2" style={{ gap: '16px' }}>
               <div>
                 <label style={{ fontSize: '0.8rem', fontWeight: 700, display: 'block', marginBottom: '6px' }}>Your Name</label>
                 <input required type="text" value={formData.name} onChange={(e) => setFormData({ ...formData, name: e.target.value })} style={{ width: '100%', padding: '10px 14px', borderRadius: '8px', border: '1px solid #d1d5db', outline: 'none' }} />

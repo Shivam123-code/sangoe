@@ -501,14 +501,17 @@
   }
 }
 
+@media (max-width: 1024px) {
+  .floatIcon {
+    display: none;
+  }
+}
+
 @media(max-width: 768px) {
   .hero {
     min-height: auto;
     padding: 120px 0 60px;
     clip-path: polygon(0 0, 100% 0, 100% 96%, 0 100%);
-  }
-  .floatIcon {
-    display: none;
   }
   .subCtaRow {
     flex-wrap: wrap;

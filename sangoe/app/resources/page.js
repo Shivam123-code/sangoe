@@ -110,7 +110,7 @@ export default function ResourcesPage() {
 
       {/* Templates Grid */}
       <section style={{ padding: '20px', maxWidth: '1200px', margin: '0 auto' }}>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '20px' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 280px), 1fr))', gap: '20px' }}>
           {filtered.map(file => (
             <motion.div
               key={file.title}

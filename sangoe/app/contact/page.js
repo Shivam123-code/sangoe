@@ -1,5 +1,6 @@
 'use client';
 import { useState } from 'react';
+import { Mail, MessageSquare } from 'lucide-react';
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({ name: '', email: '', phone: '', message: '' });
@@ -26,7 +27,7 @@ export default function ContactPage() {
       </section>
 
       {/* Main Grid */}
-      <section style={{ padding: '40px 20px', maxWidth: '1000px', margin: '0 auto', display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: '48px' }}>
+      <section className="responsive-grid-split" style={{ padding: '40px 20px', maxWidth: '1000px', margin: '0 auto', gap: '48px' }}>
         {/* Left: Contact Form */}
         <div style={{ background: '#ffffff', borderRadius: '24px', padding: '40px', border: '1px solid rgba(0,0,0,0.05)', boxShadow: '0 10px 40px rgba(0,0,0,0.03)' }}>
           <h3 style={{ fontSize: '1.35rem', fontWeight: 800, color: '#111827', marginBottom: '24px' }}>Send Us a Message</h3>
@@ -36,7 +37,7 @@ export default function ContactPage() {
               <label style={{ fontSize: '0.8rem', fontWeight: 700, display: 'block', marginBottom: '6px' }}>Full Name</label>
               <input required type="text" value={formData.name} onChange={(e) => setFormData({ ...formData, name: e.target.value })} style={{ width: '100%', padding: '10px 14px', borderRadius: '8px', border: '1px solid #d1d5db', outline: 'none' }} />
             </div>
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
+            <div className="responsive-grid-2" style={{ gap: '16px' }}>
               <div>
                 <label style={{ fontSize: '0.8rem', fontWeight: 700, display: 'block', marginBottom: '6px' }}>Work Email</label>
                 <input required type="email" value={formData.email} onChange={(e) => setFormData({ ...formData, email: e.target.value })} style={{ width: '100%', padding: '10px 14px', borderRadius: '8px', border: '1px solid #d1d5db', outline: 'none' }} />
@@ -62,14 +63,18 @@ export default function ContactPage() {
             <h4 style={{ fontSize: '1.1rem', fontWeight: 750, color: '#111827', marginBottom: '16px' }}>Quick Communications</h4>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                <span style={{ fontSize: '1.4rem' }}>📧</span>
+                <span style={{ color: '#7C3AED', display: 'flex', padding: '8px', background: '#F5F3FF', borderRadius: '8px' }}>
+                  <Mail size={18} />
+                </span>
                 <div>
                   <div style={{ fontSize: '0.75rem', color: '#9ca3af', fontWeight: 700 }}>Sales Desk</div>
                   <a href="mailto:growth@sangoe.in" style={{ fontSize: '0.9rem', color: '#7C3AED', fontWeight: 600 }}>growth@sangoe.in</a>
                 </div>
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                <span style={{ fontSize: '1.4rem' }}>💬</span>
+                <span style={{ color: '#10B981', display: 'flex', padding: '8px', background: '#ECFDF5', borderRadius: '8px' }}>
+                  <MessageSquare size={18} />
+                </span>
                 <div>
                   <div style={{ fontSize: '0.75rem', color: '#9ca3af', fontWeight: 700 }}>WhatsApp Support</div>
                   <a href="https://wa.me/919999999999" target="_blank" rel="noreferrer" style={{ fontSize: '0.9rem', color: '#10B981', fontWeight: 600 }}>+91 99999 99999</a>

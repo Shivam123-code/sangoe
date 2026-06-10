@@ -69,7 +69,7 @@ export default function PricingPage() {
       </section>
 
       {/* Pricing Cards */}
-      <section style={{ padding: '20px', maxWidth: '1100px', margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '32px' }}>
+      <section style={{ padding: '20px', maxWidth: '1100px', margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 320px), 1fr))', gap: '32px' }}>
         {/* Startup Plan */}
         <div style={{ background: '#ffffff', borderRadius: '24px', padding: '40px', border: '1px solid rgba(0,0,0,0.04)', boxShadow: '0 4px 20px rgba(0,0,0,0.008)', display: 'flex', flexDirection: 'column', justifyBetween: 'space-between' }}>
           <div>
@@ -155,7 +155,7 @@ export default function PricingPage() {
       {/* Comparison table capability */}
       <section style={{ padding: '60px 20px', maxWidth: '900px', margin: '40px auto 0' }}>
         <h2 style={{ fontSize: '1.6rem', fontWeight: 800, color: '#111827', textAlign: 'center', marginBottom: '32px' }}>Platform Comparisons</h2>
-        <div style={{ background: '#ffffff', borderRadius: '16px', overflow: 'hidden', border: '1px solid #e5e7eb', boxShadow: '0 4px 12px rgba(0,0,0,0.008)' }}>
+        <div style={{ background: '#ffffff', borderRadius: '16px', overflowX: 'auto', border: '1px solid #e5e7eb', boxShadow: '0 4px 12px rgba(0,0,0,0.008)' }}>
           <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.85rem' }}>
             <thead>
               <tr style={{ background: '#f9fafb', borderBottom: '1px solid #e5e7eb', textAlign: 'left' }}>

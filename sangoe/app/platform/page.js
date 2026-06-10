@@ -117,15 +117,13 @@ export default function PlatformPage() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4 }}
+          className="responsive-grid-2"
           style={{
             background: '#ffffff',
             borderRadius: '24px',
             padding: '40px',
             boxShadow: '0 10px 30px rgba(0,0,0,0.015)',
             border: '1px solid rgba(0,0,0,0.04)',
-            display: 'grid',
-            gridTemplateColumns: '1fr 1fr',
-            gap: '40px',
             alignItems: 'center'
           }}
         >
@@ -167,7 +165,7 @@ export default function PlatformPage() {
                     <span>Action Needed: 22%</span>
                   </div>
                 </div>
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
+                <div className="responsive-grid-2" style={{ gap: '16px' }}>
                   <div style={{ background: '#fff', padding: '16px', borderRadius: '12px', border: '1px solid rgba(0, 0, 0, 0.03)', boxShadow: '0 4px 12px rgba(0,0,0,0.01)', textAlign: 'center' }}>
                     <div style={{ fontSize: '1.5rem', fontWeight: 800, color: '#10b981' }}>98.2%</div>
                     <div style={{ fontSize: '0.7rem', color: '#6b7280' }}>Compliance Rating</div>
@@ -181,7 +179,7 @@ export default function PlatformPage() {
             )}
             
             {currentTab.id === 'businessos' && (
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '12px' }}>
+              <div className="responsive-grid-3" style={{ gap: '12px' }}>
                 {['Sales', 'HR', 'Finance', 'Projects', 'Assets', 'Compliance', 'BI', 'CS', 'SaaS'].map((cloud, i) => (
                   <div key={i} style={{ background: '#fff', padding: '12px', borderRadius: '10px', textAlign: 'center', border: '1px solid rgba(0,0,0,0.03)', boxShadow: '0 2px 6px rgba(0,0,0,0.01)' }}>
                     <Cloud size={16} style={{ color: currentTab.color, marginBottom: '6px' }} />
@@ -196,8 +194,9 @@ export default function PlatformPage() {
                 <div style={{ background: '#fff', padding: '12px 16px', borderRadius: '12px 12px 12px 0', maxWidth: '85%', alignSelf: 'flex-start', border: '1px solid #e5e7eb', fontSize: '0.8rem', color: '#374151' }}>
                   What compliances are due for our manufacturing plant next week?
                 </div>
-                <div style={{ background: '#EFF6FF', padding: '12px 16px', borderRadius: '12px 12px 0 12px', maxWidth: '85%', alignSelf: 'flex-end', fontSize: '0.8rem', color: '#1e40af', border: '1px solid #bfdbfe' }}>
-                  🤖 I found 2 compliance files due: Factory license renewal (June 15) and fire safety audit checklist. Shall I notify the team lead?
+                <div style={{ background: '#EFF6FF', padding: '12px 16px', borderRadius: '12px 12px 0 12px', maxWidth: '85%', alignSelf: 'flex-end', fontSize: '0.8rem', color: '#1e40af', border: '1px solid #bfdbfe', display: 'flex', gap: '8px', alignItems: 'center' }}>
+                  <Cpu size={14} style={{ color: '#3B82F6', flexShrink: 0 }} />
+                  <span>I found 2 compliance files due: Factory license renewal (June 15) and fire safety audit checklist. Shall I notify the team lead?</span>
                 </div>
               </div>
             )}
@@ -207,7 +206,7 @@ export default function PlatformPage() {
 
       {/* Integration & Mobile App banner */}
       <section style={{ background: '#ffffff', padding: '80px 20px', borderTop: '1px solid #e5e7eb' }}>
-        <div style={{ maxWidth: '1000px', margin: '0 auto', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '60px' }}>
+        <div className="responsive-grid-2" style={{ maxWidth: '1000px', margin: '0 auto', gap: '60px' }}>
           <div>
             <div style={{ display: 'inline-flex', padding: '8px', borderRadius: '8px', background: '#EFF6FF', color: '#3B82F6', marginBottom: '12px' }}>
               <FileCode size={20} />
