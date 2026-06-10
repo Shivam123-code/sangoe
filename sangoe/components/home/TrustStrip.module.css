@@ -1,0 +1,36 @@
+.strip {
+  background: #fff;
+  border-bottom: 1px solid #f3f4f6;
+  padding: 28px 0;
+}
+.inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px 36px;
+}
+.item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.check {
+  width: 22px; height: 22px;
+  border-radius: 50%;
+  background: #6d28d9;
+  color: #fff;
+  font-size: .7rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.icon { font-size: 1rem; }
+.text {
+  font-size: .85rem;
+  font-weight: 600;
+  color: #374151;
+  white-space: nowrap;
+}

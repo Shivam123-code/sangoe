@@ -1,0 +1,132 @@
+.section {
+  background: #f9fafb;
+  padding: 120px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.03);
+}
+
+.header {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto 56px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.heading {
+  font-size: clamp(2rem, 3.5vw, 2.8rem);
+  font-weight: 950;
+  line-height: 1.2;
+  color: #111827;
+}
+
+.highlightText {
+  background: linear-gradient(135deg, #7c3aed 0%, #a855f7 50%, #ec4899 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.sub {
+  font-size: 1rem;
+  color: #6b7280;
+  line-height: 1.7;
+}
+
+.tableWrap {
+  overflow-x: auto;
+  border-radius: 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.015);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  background: #ffffff;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.table thead tr {
+  background: #f9fafb;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.table thead th {
+  padding: 18px 24px;
+  text-align: center;
+  font-size: 0.8rem;
+  font-weight: 750;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #374151;
+}
+
+.capCol {
+  text-align: left !important;
+  width: 45%;
+  color: #111827 !important;
+}
+
+.sangoeCol {
+  background: rgba(124, 58, 237, 0.03);
+}
+
+.sangoeHeader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-size: 0.88rem;
+  font-weight: 850;
+  color: #7C3AED !important;
+}
+
+.table tbody tr {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+  transition: background 0.15s;
+}
+
+.table tbody tr:hover {
+  background: #F9F8FF;
+}
+
+.table tbody tr:last-child {
+  border-bottom: none;
+}
+
+.even {
+  background: #fafafb;
+}
+
+.even:hover {
+  background: #F9F8FF !important;
+}
+
+.table tbody td {
+  padding: 18px 24px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.capCell {
+  text-align: left !important;
+  font-weight: 700;
+  color: #111827;
+}
+
+.sangoeCell {
+  background: rgba(124, 58, 237, 0.03);
+}
+
+.limited {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #F59E0B;
+  background: rgba(245, 158, 11, 0.08);
+  padding: 4px 12px;
+  border-radius: 999px;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}

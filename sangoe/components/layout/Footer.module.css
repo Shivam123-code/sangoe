@@ -1,0 +1,221 @@
+.footer {
+  background: #FAF9FF; /* Light theme background matching the reference */
+  color: #4b5563; /* Dark text */
+  padding: 80px 0 32px;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.inner {
+  width: 100%;
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+@media (max-width: 768px) {
+  .inner {
+    padding: 0 20px;
+  }
+}
+
+.top {
+  display: grid;
+  grid-template-columns: 340px 1fr;
+  gap: 64px;
+  margin-bottom: 48px;
+}
+
+/* Brand */
+.brand {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.25rem;
+  font-weight: 950;
+  color: #111827; /* Dark logo text */
+  letter-spacing: 0.08em;
+}
+
+.tagline {
+  font-size: 0.85rem;
+  line-height: 1.7;
+  color: #6b7280;
+  max-width: 300px;
+}
+
+.subscribe {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.emailInput {
+  flex: 1;
+  padding: 12px 16px;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  background: #ffffff;
+  color: #111827;
+  font-size: 0.85rem;
+  outline: none;
+  font-family: inherit;
+  transition: border-color 0.2s;
+}
+
+.emailInput::placeholder { color: #9ca3af; }
+.emailInput:focus { border-color: #7C3AED; }
+
+.subBtn {
+  padding: 12px 20px;
+  font-size: 0.85rem;
+  white-space: nowrap;
+}
+
+/* Link Grid */
+.linkGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+}
+
+.colTitle {
+  font-size: 0.8rem;
+  font-weight: 750;
+  color: #111827; /* Dark headers */
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 18px;
+}
+
+.linkList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.link {
+  font-size: 0.85rem;
+  color: #4b5563;
+  transition: color 0.2s;
+}
+
+.link:hover {
+  color: #7C3AED;
+}
+
+/* Bottom */
+.divider {
+  height: 1px;
+  background: rgba(0, 0, 0, 0.06);
+  margin-bottom: 24px;
+}
+
+.bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.copyright {
+  font-size: 0.82rem;
+  color: #9ca3af;
+}
+
+.legal {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #d1d5db;
+  font-size: 0.82rem;
+}
+
+.legalLink {
+  color: #6b7280;
+  transition: color 0.2s;
+}
+.legalLink:hover { color: #7C3AED; }
+
+/* Download Badges */
+.downloadGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 180px;
+}
+
+.downloadBtn {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #111827;
+  color: #ffffff !important;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  padding: 8px 16px;
+  text-decoration: none !important;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.downloadBtn:hover {
+  background: #1f2937;
+  border-color: rgba(255, 255, 255, 0.15);
+  transform: translateY(-1px);
+}
+
+.downloadIcon {
+  color: #ffffff;
+  flex-shrink: 0;
+}
+
+.downloadText {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  line-height: 1.25;
+}
+
+.downloadSub {
+  font-size: 0.58rem;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: #9ca3af;
+  letter-spacing: 0.04em;
+}
+
+.downloadMain {
+  font-size: 0.8rem;
+  font-weight: 750;
+  color: #ffffff;
+}
+
+@media (max-width: 1024px) {
+  .top {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .linkGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .linkGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+  .bottom {
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
+  }
+  .subscribe {
+    flex-direction: column;
+  }
+}

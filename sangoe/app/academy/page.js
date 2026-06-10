@@ -1,0 +1,101 @@
+'use client';
+import { useState } from 'react';
+import { motion } from 'framer-motion';
+import { 
+  Clock, 
+  BookOpen, 
+  GraduationCap 
+} from 'lucide-react';
+
+const COURSES = [
+  { title: 'Business Systemization Core', category: 'Operations', duration: '6 hrs', level: 'Beginner', desc: 'Learn the fundamentals of mapping processes and creating scalable, non-founder dependent workflows.', lectures: 12 },
+  { title: 'Corporate Compliance & Audits', category: 'Compliance', duration: '8 hrs', level: 'Intermediate', desc: 'Step-by-step guidelines to manage statutory audits, labour compliance regulations, POSH, and risk matrices.', lectures: 16 },
+  { title: 'IPO Readiness & Executive Governance', category: 'Finance', duration: '12 hrs', level: 'Advanced', desc: 'Master governance guidelines, risk registry reporting structures, board resolutions, and investor relations.', lectures: 24 },
+  { title: 'MSME Transformation Blueprint', category: 'Operations', duration: '5 hrs', level: 'Beginner', desc: 'Transition from scattered spreadsheets and manual operational controls to structured business databases.', lectures: 10 },
+  { title: 'Workforce Performance & HR SOPs', category: 'HR', duration: '7 hrs', level: 'Intermediate', desc: 'Build recruitment structures, automated timesheet tracking, payroll controls, and training systems.', lectures: 14 },
+  { title: 'Safety & Near Miss Onsite Management', category: 'Safety', duration: '4 hrs', level: 'Beginner', desc: 'How to deploy safety permits, hazard controls, near-miss reports, and incident management onsite.', lectures: 8 },
+  { title: 'ESG Scoring & SDG Compliance', category: 'Sustainability', duration: '5 hrs', level: 'Intermediate', desc: 'Measure carbon tracks, align with UN SDGs, and establish corporate governance sustainability models.', lectures: 10 }
+];
+
+export default function AcademyPage() {
+  const [selectedCourse, setSelectedCourse] = useState(null);
+
+  return (
+    <div style={{ paddingTop: '100px', minHeight: '100vh', background: '#f9fafb', paddingBottom: '80px' }}>
+      {/* Header */}
+      <section style={{ padding: '80px 20px', textAlign: 'center', background: 'linear-gradient(180deg, #FAF5FF 0%, #EFF6FF 60%, #F9FAFB 100%)' }}>
+        <div style={{ maxWidth: '800px', margin: '0 auto' }}>
+          <span className="tag" style={{ marginBottom: '16px', color: '#7c3aed', background: '#f5f3ff', borderColor: '#c4b5fd' }}>Upskilling hub</span>
+          <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 3.8rem)', fontWeight: 950, color: '#111827', lineHeight: 1.1, marginBottom: '20px' }}>
+            Sangoe Academy™ <br /><span style={{ color: '#7C3AED' }}>Learn. Implement. Scale.</span>
+          </h1>
+          <p style={{ fontSize: '1.15rem', color: '#4b5563', lineHeight: 1.7 }}>
+            Unlock certification courses built specifically for business founders, CEOs, HR directors, and operations leads.
+          </p>
+        </div>
+      </section>
+
+      {/* Courses Catalog */}
+      <section style={{ padding: '20px', maxWidth: '1200px', margin: '0 auto' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(340px, 1fr))', gap: '24px' }}>
+          {COURSES.map((course, i) => (
+            <motion.div
+              key={course.title}
+              whileHover={{ y: -5, boxShadow: '0 12px 30px rgba(124, 58, 237, 0.08)' }}
+              style={{
+                background: '#ffffff',
+                borderRadius: '20px',
+                padding: '32px',
+                border: '1px solid rgba(124, 58, 237, 0.06)',
+                boxShadow: '0 2px 10px rgba(0,0,0,0.008)',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'space-between',
+                transition: 'all 0.25s ease'
+              }}
+            >
+              <div>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
+                  <span style={{ fontSize: '0.65rem', fontWeight: 800, background: '#F5F3FF', color: '#7C3AED', padding: '3px 8px', borderRadius: '4px', textTransform: 'uppercase' }}>{course.category}</span>
+                  <span style={{ fontSize: '0.65rem', fontWeight: 800, background: '#E0F2FE', color: '#0369A1', padding: '3px 8px', borderRadius: '4px' }}>{course.level}</span>
+                </div>
+                <h3 style={{ fontSize: '1.2rem', fontWeight: 800, color: '#111827', lineHeight: 1.3, marginBottom: '12px' }}>
+                  <GraduationCap size={18} style={{ color: '#7C3AED', marginRight: '6px', verticalAlign: 'middle', display: 'inline' }} />
+                  {course.title}
+                </h3>
+                <p style={{ fontSize: '0.85rem', color: '#6b7280', lineHeight: 1.5, marginBottom: '24px' }}>{course.desc}</p>
+              </div>
+
+              <div style={{ borderTop: '1px solid #f3f4f6', paddingTop: '16px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <div style={{ display: 'flex', gap: '12px', fontSize: '0.75rem', color: '#9ca3af', fontWeight: 700 }}>
+                  <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+                    <Clock size={12} /> {course.duration}
+                  </span>
+                  <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+                    <BookOpen size={12} /> {course.lectures} Lectures
+                  </span>
+                </div>
+                <button
+                  onClick={() => {
+                    setSelectedCourse(course);
+                    alert(`Enrolling in: ${course.title}. Live class links have been sent to your profile email.`);
+                  }}
+                  style={{
+                    fontSize: '0.82rem',
+                    fontWeight: 700,
+                    color: '#7C3AED',
+                    cursor: 'pointer',
+                    background: 'none',
+                    border: 'none'
+                  }}
+                >
+                  Enroll Now
+                </button>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+    </div>
+  );
+}

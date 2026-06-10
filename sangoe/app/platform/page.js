@@ -1,0 +1,246 @@
+'use client';
+import { motion } from 'framer-motion';
+import { useState } from 'react';
+import Link from 'next/link';
+import { 
+  LayoutDashboard, 
+  Settings, 
+  Cpu, 
+  Cloud, 
+  MessageSquare,
+  CheckCircle2,
+  FileCode,
+  Smartphone,
+  Check
+} from 'lucide-react';
+
+const TABS = [
+  {
+    id: 'founderos',
+    label: 'FounderOS™',
+    title: 'Your Business Command Center',
+    subtitle: 'Build a business that runs without you. View operations from a single screen.',
+    bullets: [
+      'Real-time cash flow & collections tracking',
+      'Unified risk register & compliance alerts',
+      'Startup to IPO transition dashboard',
+      'Founder workload delegation monitor'
+    ],
+    icon: LayoutDashboard,
+    color: '#7C3AED',
+    bg: '#F5F3FF'
+  },
+  {
+    id: 'businessos',
+    label: 'Business OS™',
+    title: 'Structured Core Operating System',
+    subtitle: '9 Connected clouds replacing scattered files and single-purpose SaaS tools.',
+    bullets: [
+      'Pre-built SOP maps for all departments',
+      'Automated approval matrix & workflows',
+      'Unified data ecosystem with no duplicates',
+      'MSME and enterprise scaling engine'
+    ],
+    icon: Settings,
+    color: '#10B981',
+    bg: '#ECFDF5'
+  },
+  {
+    id: 'copilot',
+    label: 'AI Co-Pilot™',
+    title: 'Ask Your Business Anything',
+    subtitle: 'Instant business intelligence and reasoning powered by secure context analysis.',
+    bullets: [
+      'Ask: "Which projects are delayed and why?"',
+      'Ask: "Predict our cash flow gap for next month"',
+      'Instant contract & policy risk audit',
+      'Voice & WhatsApp control for founders'
+    ],
+    icon: Cpu,
+    color: '#3B82F6',
+    bg: '#EFF6FF'
+  }
+];
+
+export default function PlatformPage() {
+  const [activeTab, setActiveTab] = useState('founderos');
+  const currentTab = TABS.find(t => t.id === activeTab);
+  const CurrentIcon = currentTab.icon;
+
+  return (
+    <div style={{ paddingTop: '100px', minHeight: '100vh', background: '#f9fafb' }}>
+      {/* Hero Header */}
+      <section style={{ padding: '80px 20px', textAlign: 'center', background: 'linear-gradient(180deg, #F3E8FF 0%, #FAF5FF 60%, #F9FAFB 100%)' }}>
+        <div style={{ maxWidth: '800px', margin: '0 auto' }}>
+          <span className="tag" style={{ marginBottom: '16px' }}>The Core Architecture</span>
+          <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 3.8rem)', fontWeight: 950, color: '#111827', lineHeight: 1.1, marginBottom: '20px' }}>
+            One Platform to <span style={{ color: '#7C3AED' }}>Run &amp; Control</span> Your Entire Business
+          </h1>
+          <p style={{ fontSize: '1.15rem', color: '#4b5563', lineHeight: 1.7 }}>
+            Sangoe is not just software. It is a complete Business Growth Operating System that transitions your organization from founder-dependency to scalable governance.
+          </p>
+        </div>
+      </section>
+
+      {/* Interactive Architecture Section */}
+      <section style={{ padding: '60px 20px', maxWidth: '1100px', margin: '0 auto' }}>
+        {/* Tab Buttons */}
+        <div style={{ display: 'flex', justifyContent: 'center', gap: '12px', marginBottom: '40px', flexWrap: 'wrap' }}>
+          {TABS.map(tab => {
+            const isActive = tab.id === activeTab;
+            return (
+              <button
+                key={tab.id}
+                onClick={() => setActiveTab(tab.id)}
+                style={{
+                  padding: '12px 24px',
+                  borderRadius: '99px',
+                  fontSize: '0.95rem',
+                  fontWeight: 700,
+                  backgroundColor: isActive ? tab.color : '#ffffff',
+                  color: isActive ? '#ffffff' : '#4b5563',
+                  boxShadow: isActive ? '0 10px 20px -5px rgba(124, 58, 237, 0.2)' : '0 2px 8px rgba(0,0,0,0.02)',
+                  border: isActive ? `1.5px solid ${tab.color}` : '1.5px solid rgba(0, 0, 0, 0.06)',
+                  transition: 'all 0.25s ease',
+                  cursor: 'pointer'
+                }}
+              >
+                {tab.label}
+              </button>
+            );
+          })}
+        </div>
+
+        {/* Tab Content Card */}
+        <motion.div
+          key={activeTab}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4 }}
+          style={{
+            background: '#ffffff',
+            borderRadius: '24px',
+            padding: '40px',
+            boxShadow: '0 10px 30px rgba(0,0,0,0.015)',
+            border: '1px solid rgba(0,0,0,0.04)',
+            display: 'grid',
+            gridTemplateColumns: '1fr 1fr',
+            gap: '40px',
+            alignItems: 'center'
+          }}
+        >
+          {/* Left Details */}
+          <div>
+            <span style={{ display: 'inline-flex', padding: '14px', borderRadius: '16px', background: currentTab.bg, color: currentTab.color, marginBottom: '16px' }}>
+              <CurrentIcon size={32} />
+            </span>
+            <h2 style={{ fontSize: '2rem', fontWeight: 900, color: '#111827', marginBottom: '12px' }}>{currentTab.title}</h2>
+            <p style={{ color: '#6b7280', fontSize: '1.05rem', lineHeight: 1.6, marginBottom: '24px' }}>{currentTab.subtitle}</p>
+            <ul style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+              {currentTab.bullets.map((b, i) => (
+                <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '0.95rem', color: '#374151', fontWeight: 550 }}>
+                  <CheckCircle2 size={16} style={{ color: currentTab.color }} />
+                  <span>{b}</span>
+                </div>
+              ))}
+            </ul>
+            <div style={{ marginTop: '32px' }}>
+              <Link href="/contact" className="btn btn-purple" style={{ backgroundColor: currentTab.color, boxShadow: 'none' }}>
+                Schedule Live Walkthrough
+              </Link>
+            </div>
+          </div>
+
+          {/* Right Visual Representation (CSS Mockup) */}
+          <div style={{ background: '#f9fafb', border: '1px solid rgba(0, 0, 0, 0.04)', borderRadius: '20px', height: '320px', padding: '24px', display: 'flex', flexDirection: 'column', justifyContent: 'center', position: 'relative', overflow: 'hidden' }}>
+            <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '6px', backgroundColor: currentTab.color }} />
+            
+            {currentTab.id === 'founderos' && (
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+                <div style={{ background: '#fff', padding: '16px', borderRadius: '12px', border: '1px solid rgba(0, 0, 0, 0.03)', boxShadow: '0 4px 12px rgba(0,0,0,0.01)' }}>
+                  <div style={{ fontSize: '0.75rem', color: '#9ca3af', textTransform: 'uppercase', fontWeight: 700 }}>Founder Focus Matrix</div>
+                  <div style={{ height: '8px', background: '#e5e7eb', borderRadius: '4px', marginTop: '10px', overflow: 'hidden' }}>
+                    <div style={{ height: '100%', width: '78%', background: '#7C3AED' }} />
+                  </div>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.7rem', color: '#6b7280', marginTop: '6px' }}>
+                    <span>Delegated Tasks: 78%</span>
+                    <span>Action Needed: 22%</span>
+                  </div>
+                </div>
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
+                  <div style={{ background: '#fff', padding: '16px', borderRadius: '12px', border: '1px solid rgba(0, 0, 0, 0.03)', boxShadow: '0 4px 12px rgba(0,0,0,0.01)', textAlign: 'center' }}>
+                    <div style={{ fontSize: '1.5rem', fontWeight: 800, color: '#10b981' }}>98.2%</div>
+                    <div style={{ fontSize: '0.7rem', color: '#6b7280' }}>Compliance Rating</div>
+                  </div>
+                  <div style={{ background: '#fff', padding: '16px', borderRadius: '12px', border: '1px solid rgba(0, 0, 0, 0.03)', boxShadow: '0 4px 12px rgba(0,0,0,0.01)', textAlign: 'center' }}>
+                    <div style={{ fontSize: '1.5rem', fontWeight: 800, color: '#3b82f6' }}>₹4.2M</div>
+                    <div style={{ fontSize: '0.7rem', color: '#6b7280' }}>Receivables Due</div>
+                  </div>
+                </div>
+              </div>
+            )}
+            
+            {currentTab.id === 'businessos' && (
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '12px' }}>
+                {['Sales', 'HR', 'Finance', 'Projects', 'Assets', 'Compliance', 'BI', 'CS', 'SaaS'].map((cloud, i) => (
+                  <div key={i} style={{ background: '#fff', padding: '12px', borderRadius: '10px', textAlign: 'center', border: '1px solid rgba(0,0,0,0.03)', boxShadow: '0 2px 6px rgba(0,0,0,0.01)' }}>
+                    <Cloud size={16} style={{ color: currentTab.color, marginBottom: '6px' }} />
+                    <div style={{ fontSize: '0.7rem', fontWeight: 700, color: '#111827' }}>{cloud}</div>
+                  </div>
+                ))}
+              </div>
+            )}
+            
+            {currentTab.id === 'copilot' && (
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                <div style={{ background: '#fff', padding: '12px 16px', borderRadius: '12px 12px 12px 0', maxWidth: '85%', alignSelf: 'flex-start', border: '1px solid #e5e7eb', fontSize: '0.8rem', color: '#374151' }}>
+                  What compliances are due for our manufacturing plant next week?
+                </div>
+                <div style={{ background: '#EFF6FF', padding: '12px 16px', borderRadius: '12px 12px 0 12px', maxWidth: '85%', alignSelf: 'flex-end', fontSize: '0.8rem', color: '#1e40af', border: '1px solid #bfdbfe' }}>
+                  🤖 I found 2 compliance files due: Factory license renewal (June 15) and fire safety audit checklist. Shall I notify the team lead?
+                </div>
+              </div>
+            )}
+          </div>
+        </motion.div>
+      </section>
+
+      {/* Integration & Mobile App banner */}
+      <section style={{ background: '#ffffff', padding: '80px 20px', borderTop: '1px solid #e5e7eb' }}>
+        <div style={{ maxWidth: '1000px', margin: '0 auto', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '60px' }}>
+          <div>
+            <div style={{ display: 'inline-flex', padding: '8px', borderRadius: '8px', background: '#EFF6FF', color: '#3B82F6', marginBottom: '12px' }}>
+              <FileCode size={20} />
+            </div>
+            <h3 style={{ fontSize: '1.6rem', fontWeight: 800, color: '#111827', marginBottom: '12px' }}>Seamless API Integrations</h3>
+            <p style={{ color: '#4b5563', lineHeight: 1.6, fontSize: '0.95rem', marginBottom: '18px' }}>
+              Connect with your bank accounts, ERP systems, government compliance sites, and customer platforms out-of-the-box. Keep your existing databases without data duplications.
+            </p>
+            <span style={{ display: 'inline-flex', gap: '8px', flexWrap: 'wrap' }}>
+              {['WhatsApp API', 'Razorpay', 'GST Portal', 'Tally Sync', 'Google Workspace'].map(t => (
+                <span key={t} style={{ fontSize: '0.75rem', padding: '4px 10px', background: '#f3f4f6', borderRadius: '6px', color: '#4b5563', fontWeight: 600 }}>{t}</span>
+              ))}
+            </span>
+          </div>
+          <div>
+            <div style={{ display: 'inline-flex', padding: '8px', borderRadius: '8px', background: '#ECFDF5', color: '#10B981', marginBottom: '12px' }}>
+              <Smartphone size={20} />
+            </div>
+            <h3 style={{ fontSize: '1.6rem', fontWeight: 800, color: '#111827', marginBottom: '12px' }}>Full Mobile Capability</h3>
+            <p style={{ color: '#4b5563', lineHeight: 1.6, fontSize: '0.95rem', marginBottom: '18px' }}>
+              Every feature of FounderOS™ and the 9 Clouds is accessible on your phone. Approve budgets, review client issues, and track employee check-ins while on the move.
+            </p>
+            <div style={{ display: 'flex', gap: '16px' }}>
+              <span style={{ fontSize: '0.85rem', fontWeight: 700, color: '#7C3AED', display: 'flex', alignItems: 'center', gap: '6px' }}>
+                <Check size={16} /> iOS Application
+              </span>
+              <span style={{ fontSize: '0.85rem', fontWeight: 700, color: '#10B981', display: 'flex', alignItems: 'center', gap: '6px' }}>
+                <Check size={16} /> Android Application
+              </span>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}

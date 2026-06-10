@@ -1,0 +1,240 @@
+.section {
+  background: #fdfdfd;
+  padding: 120px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.03);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 72px;
+  align-items: start;
+}
+
+.left {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.h2 {
+  font-size: clamp(2rem, 3.2vw, 2.8rem);
+  font-weight: 900;
+  line-height: 1.15;
+  color: #111827;
+  letter-spacing: -.02em;
+}
+
+.statsBlock {
+  display: flex;
+  gap: 40px;
+  padding: 32px 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.bigStat {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.bigNum {
+  font-size: 3.4rem;
+  font-weight: 950;
+  color: #7C3AED;
+  line-height: 1;
+  letter-spacing: -.03em;
+}
+
+.bigLabel {
+  font-size: 0.72rem;
+  color: #6b7280;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+/* Right */
+.right {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Testimonial */
+.testCard {
+  padding: 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.015);
+  border-radius: 20px;
+  background: #ffffff;
+}
+
+.stars {
+  display: flex;
+  gap: 4px;
+}
+
+.quote {
+  font-size: 0.92rem;
+  color: #374151;
+  line-height: 1.75;
+  font-style: italic;
+}
+
+.testPerson {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  padding-top: 18px;
+}
+
+.testAvatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #7c3aed, #8b5cf6);
+  color: #fff;
+  font-size: 0.82rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.testName {
+  font-size: 0.88rem;
+  font-weight: 750;
+  color: #111827;
+}
+
+.testRole {
+  font-size: 0.75rem;
+  color: #6b7280;
+  margin-top: 2px;
+}
+
+.testNav {
+  margin-left: auto;
+  display: flex;
+  gap: 8px;
+}
+
+.testBtn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid #e5e7eb;
+  background: #fff;
+  color: #374151;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.testBtn:hover {
+  border-color: #7C3AED;
+  color: #7C3AED;
+  box-shadow: 0 4px 12px rgba(124, 58, 237, 0.1);
+}
+
+/* Journey card */
+.journeyCard {
+  overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.015);
+  border-radius: 20px;
+  background: #ffffff;
+}
+
+.journeyHeader {
+  background: linear-gradient(135deg, #7c3aed, #6d28d9);
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.journeyTitle {
+  font-size: 0.88rem;
+  font-weight: 750;
+  color: #fff;
+  display: flex;
+  align-items: center;
+}
+
+.journeyBadge {
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 999px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.steps {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.step {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  position: relative;
+}
+
+.stepDot {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #7c3aed, #8b5cf6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  z-index: 1;
+  border: 2px solid #fff;
+  box-shadow: 0 2px 8px rgba(124, 58, 237, 0.25);
+}
+
+.stepDot span {
+  font-size: 0.7rem;
+  font-weight: 800;
+  color: #fff;
+}
+
+.stepLine {
+  position: absolute;
+  left: 14px;
+  top: 28px;
+  width: 2px;
+  height: 24px;
+  background: linear-gradient(to bottom, #8b5cf6, #e9d5ff);
+}
+
+.stepLabel {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #374151;
+  padding: 4px 0 24px;
+}
+
+@media(max-width:900px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+}
