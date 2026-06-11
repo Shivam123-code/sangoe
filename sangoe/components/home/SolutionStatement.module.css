@@ -1,13 +1,13 @@
 .section {
   background: #ffffff;
-  padding: 120px 0;
+  padding: 72px 0;
   border-bottom: 1px solid rgba(0, 0, 0, 0.03);
 }
 
 .grid {
   display: grid;
   grid-template-columns: 1.1fr 1fr;
-  gap: 80px;
+  gap: 52px;
   align-items: center;
 }
 
@@ -132,24 +132,85 @@
   gap: 8px;
 }
 
+@media(max-width: 1024px) {
+  .grid {
+    gap: 36px;
+  }
+  .gridWrap {
+    gap: 16px;
+  }
+}
+
 @media(max-width: 900px) {
   .grid {
     grid-template-columns: 1fr;
-    gap: 48px;
+    gap: 28px;
+  }
+  .right {
+    align-items: center;
+    text-align: center;
+  }
+  .sub {
+    text-align: center;
+  }
+  .pills {
+    justify-content: center;
+  }
+  .cta {
+    align-self: center;
+  }
+  .gridWrap {
+    max-width: 480px;
+    margin: 0 auto;
+  }
+}
+
+@media(max-width: 768px) {
+  .section {
+    padding: 48px 0;
+  }
+  .cloudTile {
+    padding: 18px 10px;
+  }
+  .cloudIcon {
+    width: 44px;
+    height: 44px;
+  }
+  .cloudName {
+    font-size: 0.72rem;
+  }
+  .h2 {
+    font-size: clamp(1.8rem, 7vw, 2.4rem);
   }
 }
 
 @media(max-width: 480px) {
   .gridWrap {
-    gap: 12px;
+    gap: 10px;
   }
   .cloudTile {
-    padding: 16px 8px;
+    padding: 14px 6px;
+  }
+  .cloudIcon {
+    width: 36px;
+    height: 36px;
   }
   .badgeNum {
     font-size: 1.4rem;
   }
   .badgeLabel {
-    font-size: 0.55rem;
+    font-size: 0.52rem;
+  }
+  .cloudName {
+    font-size: 0.65rem;
+  }
+  .section {
+    padding: 48px 0;
   }
 }
+
+
+
+
+
+

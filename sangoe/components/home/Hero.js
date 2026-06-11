@@ -4,41 +4,31 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import Link from 'next/link';
 import { 
   TrendingUp, 
-  Cpu, 
   ShieldCheck, 
-  DollarSign, 
-  Briefcase, 
-  Rocket, 
-  Leaf, 
   Users,
+  Briefcase,
+  BarChart3,
+  DollarSign,
+  Leaf,
+  Award,
   LayoutDashboard,
   CheckCircle2,
   AlertTriangle,
   BarChart2,
   User
 } from 'lucide-react';
-import { 
-  ChromeLogo, 
-  FigmaLogo, 
-  DriveLogo, 
-  SpotifyLogo, 
-  ShopifyLogo, 
-  MastercardLogo, 
-  SlackLogo, 
-  PaypalLogo 
-} from '../ui/BrandLogos';
 import styles from './Hero.module.css';
 
-// Floating module bubbles orbiting the hero (matching the exact mockup)
+// Floating Sangoe-relevant module bubbles — all related to Sangoe's 9 clouds
 const ICONS = [
-  { icon: ChromeLogo, label: 'Chrome',      top: '12%', left: '8%',   anim: 'floatA', delay: '0s',    size: 64, color: '#3B82F6', bg: '#ffffff' },
-  { icon: FigmaLogo, label: 'Figma',        top: '16%', left: '82%',  anim: 'floatB', delay: '.7s',   size: 58, color: '#EC4899', bg: '#ffffff' },
-  { icon: DriveLogo, label: 'Google Drive', top: '56%', left: '6%',   anim: 'floatC', delay: '1.3s',  size: 60, color: '#8B5CF6', bg: '#ffffff' },
-  { icon: PaypalLogo, label: 'PayPal',      top: '64%', left: '86%',  anim: 'floatA', delay: '.4s',   size: 64, color: '#EF4444', bg: '#ffffff' },
-  { icon: SlackLogo, label: 'Slack',        top: '82%', left: '14%',  anim: 'floatB', delay: '1.9s',  size: 54, color: '#F55F0B', bg: '#ffffff' },
-  { icon: SpotifyLogo, label: 'Spotify',    top: '78%', left: '80%',  anim: 'floatC', delay: '1.1s',  size: 56, color: '#10B981', bg: '#ffffff' },
-  { icon: ShopifyLogo, label: 'Shopify',    top: '36%', left: '4%',   anim: 'floatA', delay: '.2s',   size: 50, color: '#059669', bg: '#ffffff' },
-  { icon: MastercardLogo, label: 'Payments', top: '32%', left: '90%',  anim: 'floatB', delay: '1.6s',  size: 58, color: '#6366F1', bg: '#ffffff' },
+  { icon: TrendingUp,   label: 'Sales Cloud',      top: '12%', left: '5%',   anim: 'floatA', delay: '0s',    size: 64, color: '#3B82F6', bg: '#EFF6FF' },
+  { icon: Users,        label: 'HR Cloud',          top: '16%', left: '82%',  anim: 'floatB', delay: '.7s',   size: 58, color: '#10B981', bg: '#ECFDF5' },
+  { icon: ShieldCheck,  label: 'Compliance',        top: '56%', left: '3%',   anim: 'floatC', delay: '1.3s',  size: 60, color: '#8B5CF6', bg: '#F5F3FF' },
+  { icon: Briefcase,    label: 'Projects',          top: '64%', left: '86%',  anim: 'floatA', delay: '.4s',   size: 64, color: '#F55F0B', bg: '#FFF7ED' },
+  { icon: DollarSign,   label: 'Finance',           top: '82%', left: '10%',  anim: 'floatB', delay: '1.9s',  size: 54, color: '#EF4444', bg: '#FEF2F2' },
+  { icon: BarChart3,    label: 'Analytics',         top: '78%', left: '80%',  anim: 'floatC', delay: '1.1s',  size: 56, color: '#EC4899', bg: '#FDF2F8' },
+  { icon: Leaf,         label: 'ESG',               top: '36%', left: '1%',   anim: 'floatA', delay: '.2s',   size: 50, color: '#059669', bg: '#E6F4EA' },
+  { icon: Award,        label: 'IPO Ready',         top: '32%', left: '90%',  anim: 'floatB', delay: '1.6s',  size: 58, color: '#6366F1', bg: '#EEF2FF' },
 ];
 
 const iconVariant = {
@@ -58,7 +48,7 @@ export default function Hero() {
 
   return (
     <section className={styles.hero} ref={ref} id="hero">
-      {/* Floating Orbiting Badges */}
+      {/* Floating Orbiting Sangoe Module Badges */}
       {ICONS.map((ic, i) => {
         const IconComponent = ic.icon;
         return (
@@ -71,7 +61,7 @@ export default function Hero() {
             initial="hidden"
             animate="show"
           >
-            <div className={styles.iconBubble} style={{ width: ic.size, height: ic.size, color: ic.color, background: ic.bg, borderColor: ic.color + '30', padding: ic.size * 0.22, boxSizing: 'border-box' }}>
+            <div className={styles.iconBubble} style={{ width: ic.size, height: ic.size, color: ic.color, background: ic.bg, borderColor: ic.color + '40', padding: ic.size * 0.22, boxSizing: 'border-box' }}>
               <IconComponent />
             </div>
             <span className={styles.iconLabel}>{ic.label}</span>
@@ -131,7 +121,7 @@ export default function Hero() {
             <Link href="/pricing" className={styles.subCta} id="hero-trial">Start Free Trial</Link>
           </div>
 
-          {/* Dashboard Mockup (Perspective Tilted CSS Mockup) */}
+          {/* FounderOS Dashboard Mockup — WHITE/LIGHT THEME */}
           <div className={styles.mockupWrap}>
             <div className={styles.mockupGlow} />
             <motion.div
@@ -146,7 +136,7 @@ export default function Hero() {
                 <div className={styles.mockupBarInner}>founder-dashboard.sangoe.in</div>
               </div>
               
-              {/* Dashboard Internal Content Coded in CSS */}
+              {/* Dashboard Internal Content — WHITE THEME */}
               <div className={styles.dashboardContainer}>
                 {/* Sidebar */}
                 <div className={styles.sidebar}>
@@ -176,14 +166,14 @@ export default function Hero() {
                   </div>
                 </div>
 
-                {/* Main Dashboard Screen */}
+                {/* Main Dashboard Screen — WHITE THEME */}
                 <div className={styles.mainScreen}>
                   <div className={styles.mainHeader}>
-                    <div className={styles.mainTitle}>Founder Dashboard</div>
+                    <div className={styles.mainTitle}>FounderOS™ Dashboard</div>
                     <div className={styles.profileBox}>
                       <span className={styles.healthScore}>Health Score: 94%</span>
                       <div className={styles.profileAvatar}>
-                        <User size={12} style={{ color: '#ffffff' }} />
+                        <User size={12} style={{ color: '#7C3AED' }} />
                       </div>
                     </div>
                   </div>

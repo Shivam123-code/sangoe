@@ -45,22 +45,51 @@
 
   --max-w: 1200px;
   --ease: cubic-bezier(.4,0,.2,1);
+
+  /* Fluid spacing scale */
+  --space-xs:  clamp(6px,   1vw,  10px);
+  --space-sm:  clamp(10px,  1.5vw, 16px);
+  --space-md:  clamp(16px,  2.5vw, 28px);
+  --space-lg:  clamp(24px,  4vw,  48px);
+  --space-xl:  clamp(40px,  6vw,  72px);
+  --space-2xl: clamp(56px,  7vw,  88px);
 }
 
 /* ── Reset ──────────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 16px;
+  /* NOTE: overflow-x must NOT be set on html — it breaks window scroll */
+}
 body {
   font-family: 'Inter', system-ui, sans-serif;
   background: var(--page-bg);
   color: var(--gray-900);
+  /* overflow-x only on body — safe, won't break scroll */
   overflow-x: hidden;
   line-height: 1.6;
+  min-width: 320px;
+  /* iOS momentum scrolling */
+  -webkit-overflow-scrolling: touch;
 }
 a  { text-decoration: none; color: inherit; }
 ul { list-style: none; }
 img, video { max-width: 100%; display: block; }
 button { font-family: inherit; cursor: pointer; border: none; background: none; }
+
+/* Remove tap highlight color globally for app feel */
+* {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+}
+/* But keep text selectable */
+p, h1, h2, h3, h4, h5, h6, span, a, li {
+  -webkit-user-select: text;
+  user-select: text;
+}
 
 /* ── Layout ─────────────────────────────────────────────── */
 .wrap {
@@ -69,7 +98,10 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   margin: 0 auto;
   padding: 0 40px;
 }
-@media(max-width:768px){ .wrap { padding: 0 20px; } }
+
+@media(max-width: 1024px) { .wrap { padding: 0 32px; } }
+@media(max-width: 768px)  { .wrap { padding: 0 20px; } }
+@media(max-width: 480px)  { .wrap { padding: 0 16px; } }
 
 /* ── Typography helpers ─────────────────────────────────── */
 .gradient-text {
@@ -149,6 +181,14 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 }
 .btn-ghost-white:hover { color: #fff; }
 
+/* Mobile button adjustments */
+@media (max-width: 480px) {
+  .btn {
+    padding: 11px 20px;
+    font-size: .82rem;
+  }
+}
+
 /* ── Cards ──────────────────────────────────────────────── */
 .card {
   background: #fff;
@@ -158,12 +198,20 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 }
 
 /* ── Section ────────────────────────────────────────────── */
-.section { padding: 100px 0; }
-.section-sm { padding: 64px 0; }
+.section    { padding: 72px 0; }
+.section-sm { padding: var(--space-xl) 0; }
 
-@media(max-width:768px) {
-  .section   { padding: 60px 0; }
-  .section-sm{ padding: 40px 0; }
+@media(max-width: 1024px) {
+  .section    { padding: 56px 0; }
+  .section-sm { padding: 40px 0; }
+}
+@media(max-width: 768px) {
+  .section    { padding: 44px 0; }
+  .section-sm { padding: 32px 0; }
+}
+@media(max-width: 480px) {
+  .section    { padding: 36px 0; }
+  .section-sm { padding: 24px 0; }
 }
 
 /* ── Keyframes ──────────────────────────────────────────── */
@@ -200,44 +248,72 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   0%   { transform: translateX(0); }
   100% { transform: translateX(-50%); }
 }
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
 
-/* ── Responsive Grids & Layout Utilities ────────────────── */
+/* ── Responsive Grid Utilities ──────────────────────────── */
+/* 2-col grid → 1-col at 900px */
 .responsive-grid-2 {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  gap: 40px;
 }
 @media (max-width: 900px) {
   .responsive-grid-2 {
-    grid-template-columns: 1fr !important;
-    gap: 24px !important;
-  }
-}
-
-.responsive-grid-3 {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-}
-@media (max-width: 900px) {
-  .responsive-grid-3 {
-    grid-template-columns: 1fr !important;
-    gap: 20px !important;
-  }
-}
-
-.responsive-grid-split {
-  display: grid;
-  grid-template-columns: 1.2fr 1fr;
-}
-@media (max-width: 900px) {
-  .responsive-grid-split {
     grid-template-columns: 1fr !important;
     gap: 32px !important;
   }
 }
 
+/* 3-col grid → 2-col at 900px → 1-col at 600px */
+.responsive-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+@media (max-width: 1024px) {
+  .responsive-grid-3 {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+@media (max-width: 600px) {
+  .responsive-grid-3 {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+}
+
+/* Split grid (1.2fr / 1fr) → single col */
+.responsive-grid-split {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+@media (max-width: 1024px) {
+  .responsive-grid-split {
+    gap: 48px !important;
+  }
+}
+@media (max-width: 900px) {
+  .responsive-grid-split {
+    grid-template-columns: 1fr !important;
+    gap: 40px !important;
+  }
+}
+
+/* Calc grid (280px sidebar / flex) → single col */
 .responsive-grid-calc {
   display: grid;
   grid-template-columns: 280px 1fr;
+  gap: 40px;
+}
+@media (max-width: 1024px) {
+  .responsive-grid-calc {
+    grid-template-columns: 240px 1fr !important;
+  }
 }
 @media (max-width: 900px) {
   .responsive-grid-calc {
@@ -246,14 +322,143 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   }
 }
 
+/* Flex row → col */
 .responsive-card-row {
   display: flex !important;
   flex-direction: row;
+  gap: 24px;
 }
 @media (max-width: 768px) {
   .responsive-card-row {
     flex-direction: column !important;
     padding: 24px !important;
-    gap: 24px !important;
+    gap: 20px !important;
+  }
+}
+
+/* ── Fluid Section Headings ─────────────────────────────── */
+.section-heading {
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+  font-weight: 900;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--gray-900);
+}
+
+.section-sub {
+  font-size: clamp(0.9rem, 1.5vw, 1.05rem);
+  color: var(--gray-500);
+  line-height: 1.75;
+  max-width: 600px;
+}
+
+/* ── Text Alignment Helpers ─────────────────────────────── */
+@media (max-width: 900px) {
+  .center-mobile { text-align: center !important; }
+  .items-center-mobile { align-items: center !important; }
+}
+
+/* ── Hide / Show Utilities ──────────────────────────────── */
+@media (max-width: 768px) {
+  .hide-mobile { display: none !important; }
+}
+@media (min-width: 769px) {
+  .show-mobile-only { display: none !important; }
+}
+
+/* ── Stack on Mobile ────────────────────────────────────── */
+.stack-mobile {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+@media (max-width: 600px) {
+  .stack-mobile {
+    flex-direction: column !important;
+  }
+}
+
+/* ══════════════════════════════════════════════════════════
+   MOBILE APP SHELL EXPERIENCE
+   Applied only on phones (< 769px) to create native-app feel
+══════════════════════════════════════════════════════════ */
+
+/* App-like section separators on mobile */
+@media (max-width: 768px) {
+
+  /* Each section feels like a distinct app screen card */
+  section {
+    position: relative;
+  }
+
+  /* Smooth section transitions — mimic app screen animations */
+  main > section {
+    transition: transform 0.3s ease;
+  }
+
+  /* Make white-bg sections look like elevated app cards */
+  section[style*="background: #fff"],
+  section[style*="background:#fff"],
+  section[style*="background: white"] {
+    box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.04);
+  }
+
+  /* Mobile-first: tighter spacing on all section wraps */
+  .wrap {
+    padding: 0 16px;
+  }
+
+  /* App-like interactive card press effect */
+  .card {
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .card:active {
+    transform: scale(0.985);
+  }
+
+  /* Prevent footer from overlapping bottom nav */
+  footer {
+    margin-bottom: 0;
+  }
+}
+
+/* ── Mobile App Screen Status Bar Space ──────────────── */
+/* Standalone PWA mode — safe area inset for iOS notch */
+@supports (padding-top: env(safe-area-inset-top)) {
+  @media (max-width: 768px) {
+    header {
+      padding-top: env(safe-area-inset-top, 0px);
+    }
+  }
+}
+
+/* ── Mobile Scroll Enhancement ──────────────────────── */
+@media (max-width: 768px) {
+  /* Momentum scrolling for iOS within overflow containers */
+  [class*="scroll"],
+  [class*="Scroll"] {
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+  }
+
+  /* Hide scrollbar for cleaner app look */
+  ::-webkit-scrollbar {
+    display: none;
+    width: 0;
+    height: 0;
+  }
+
+  /* Firefox scrollbar hide — must be inside a selector */
+  html, body {
+    scrollbar-width: none;
+  }
+}
+
+/* ── Mobile Tag / Badge Sizes ──────────────────────────── */
+@media (max-width: 480px) {
+  .tag {
+    font-size: 0.68rem;
+    padding: 4px 12px;
   }
 }

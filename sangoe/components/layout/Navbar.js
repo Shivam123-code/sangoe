@@ -18,11 +18,11 @@ import {
 import styles from './Navbar.module.css';
 
 const MAIN_LINKS = [
-  { label: 'Platform', href: '/platform' },
-  { label: 'Products', href: '/products' },
+  { label: 'Home',      href: '/' },
+  { label: 'Platform',  href: '/platform' },
+  { label: 'Products',  href: '/products' },
   { label: 'Solutions', href: '/solutions' },
-  { label: 'Industries', href: '/industries' },
-  { label: 'Pricing', href: '/pricing' },
+  { label: 'Pricing',   href: '/pricing' },
 ];
 
 const RESOURCE_LINKS = [
@@ -53,11 +53,11 @@ export default function Navbar() {
     setMenuOpen(false);
   }, [pathname]);
 
-  const isHeroTheme = pathname === '/' && !scrolled;
+  const isOnHero = pathname === '/';
 
   return (
     <>
-      <header className={`${styles.header} ${scrolled ? styles.headerScrolled : ''} ${isHeroTheme ? styles.heroTheme : styles.lightTheme}`}>
+      <header className={`${styles.header} ${scrolled ? styles.headerScrolled : ''} ${!isOnHero ? styles.lightTheme : styles.heroTheme}`}>
         <div className={styles.container}>
           {/* Logo */}
           <Link href="/" className={styles.logo}>
@@ -147,7 +147,7 @@ export default function Navbar() {
 
           {/* Right Action Button */}
           <div className={styles.rightActions}>
-            <Link href="/contact" className={`btn btn-purple ${styles.cta}`}>
+            <Link href="/contact" className={styles.cta}>
               Book Live Demo
             </Link>
             <button

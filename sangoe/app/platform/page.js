@@ -1,6 +1,7 @@
 'use client';
 import { motion } from 'framer-motion';
 import { useState } from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 import { 
   LayoutDashboard, 
@@ -76,9 +77,20 @@ export default function PlatformPage() {
           <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 3.8rem)', fontWeight: 950, color: '#111827', lineHeight: 1.1, marginBottom: '20px' }}>
             One Platform to <span style={{ color: '#7C3AED' }}>Run &amp; Control</span> Your Entire Business
           </h1>
-          <p style={{ fontSize: '1.15rem', color: '#4b5563', lineHeight: 1.7 }}>
+          <p style={{ fontSize: '1.15rem', color: '#4b5563', lineHeight: 1.7, marginBottom: '40px' }}>
             Sangoe is not just software. It is a complete Business Growth Operating System that transitions your organization from founder-dependency to scalable governance.
           </p>
+          {/* Platform devices image */}
+          <div style={{ marginTop: '8px', borderRadius: '20px', overflow: 'hidden', boxShadow: '0 30px 80px rgba(109,40,217,0.15)', maxWidth: '820px', margin: '0 auto' }}>
+            <Image
+              src="/images/platform_devices.png"
+              alt="Sangoe platform shown on multiple devices"
+              width={820}
+              height={480}
+              style={{ width: '100%', height: 'auto', display: 'block' }}
+              priority
+            />
+          </div>
         </div>
       </section>
 

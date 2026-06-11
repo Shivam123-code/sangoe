@@ -1,13 +1,13 @@
 .section {
   background: #ffffff;
-  padding: 120px 0;
+  padding: 72px 0;
   border-bottom: 1px solid rgba(0, 0, 0, 0.03);
 }
 
 .grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 80px;
+  gap: 52px;
   align-items: start;
 }
 
@@ -83,12 +83,14 @@
 
 /* Comparison card */
 .compCard {
-  padding: 36px;
-  display: flex;
-  align-items: flex-start;
-  gap: 24px;
+  background: #ffffff;
   border: 1px solid rgba(0, 0, 0, 0.04);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.015);
+  border-radius: 20px;
+  padding: 28px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.015);
 }
 
 .compSide {
@@ -169,13 +171,15 @@
 
 /* Stats row */
 .statsRow {
-  padding: 24px 32px;
   display: flex;
-  align-items: center;
-  justify-content: space-around;
   gap: 16px;
+  padding: 20px 24px;
+  background: #ffffff;
   border: 1px solid rgba(0, 0, 0, 0.04);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.015);
+  border-radius: 16px;
+  margin-top: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.015);
+  flex-wrap: wrap;
 }
 
 .stat {
@@ -244,9 +248,71 @@
   margin-left: 12px;
 }
 
-@media(max-width:900px) {
+@media(max-width: 1024px) {
   .grid {
-    grid-template-columns: 1fr;
-    gap: 48px;
+    gap: 36px;
   }
 }
+
+@media(max-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+  .left {
+    align-items: center;
+    text-align: center;
+  }
+  .cta {
+    align-self: center;
+  }
+  .lead {
+    max-width: 100%;
+  }
+}
+
+@media(max-width: 768px) {
+  .compCard {
+    flex-direction: column;
+    padding: 24px;
+    gap: 20px;
+  }
+  .compArrow {
+    transform: rotate(90deg);
+    margin: 0 auto;
+    margin-top: 0;
+  }
+  .statsRow {
+    padding: 20px;
+    gap: 12px;
+  }
+  .statN {
+    font-size: 1.7rem;
+  }
+}
+
+@media(max-width: 480px) {
+  .afterGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .statsRow {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .stat {
+    min-width: 120px;
+  }
+  .pains {
+    gap: 8px;
+  }
+  .pain {
+    font-size: 0.82rem;
+    padding: 10px 14px;
+  }
+}
+
+
+
+
+
+

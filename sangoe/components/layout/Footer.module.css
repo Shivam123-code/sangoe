@@ -1,7 +1,7 @@
 .footer {
-  background: #FAF9FF; /* Light theme background matching the reference */
-  color: #4b5563; /* Dark text */
-  padding: 80px 0 32px;
+  background: #FAF9FF;
+  color: #4b5563;
+  padding: 56px 0 28px;
   border-top: 1px solid rgba(0, 0, 0, 0.05);
 }
 
@@ -12,16 +12,28 @@
   padding: 0 40px;
 }
 
+@media (max-width: 1024px) {
+  .inner {
+    padding: 0 32px;
+  }
+}
+
 @media (max-width: 768px) {
   .inner {
     padding: 0 20px;
   }
 }
 
+@media (max-width: 480px) {
+  .inner {
+    padding: 0 16px;
+  }
+}
+
 .top {
   display: grid;
   grid-template-columns: 340px 1fr;
-  gap: 64px;
+  gap: 44px;
   margin-bottom: 48px;
 }
 
@@ -205,10 +217,20 @@
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
+  .footer { padding: 44px 0 22px; }
+  .top { gap: 32px; }
+  .tagline { max-width: 100%; }
   .linkGrid {
     grid-template-columns: repeat(2, 1fr);
     gap: 24px;
+  }
+}
+
+@media (max-width: 600px) {
+  .linkGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
   }
   .bottom {
     flex-direction: column;
@@ -218,4 +240,20 @@
   .subscribe {
     flex-direction: column;
   }
+  .subBtn {
+    padding: 12px 20px;
+    text-align: center;
+  }
 }
+
+@media (max-width: 480px) {
+  .footer { padding: 36px 0 20px; }
+  .linkGrid {
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .logo { font-size: 1.1rem; }
+  .downloadGrid { max-width: 100%; }
+  .downloadBtn { padding: 8px 12px; }
+}
+
