@@ -2,7 +2,7 @@ import Hero from '@/components/home/Hero';
 import TrustStrip from '@/components/home/TrustStrip';
 import ProblemSection from '@/components/home/ProblemSection';
 import SolutionStatement from '@/components/home/SolutionStatement';
-import IntegrationsSection from '@/components/home/IntegrationsSection';
+
 import JourneySection from '@/components/home/JourneySection';
 import PlatformClouds from '@/components/home/PlatformClouds';
 import AdvancedSolutions from '@/components/home/AdvancedSolutions';
@@ -20,7 +20,7 @@ export default function HomePage() {
       <TrustStrip />
       <ProblemSection />
       <SolutionStatement />
-      <IntegrationsSection />
+
       <JourneySection />
       <PlatformClouds />
       <AdvancedSolutions />

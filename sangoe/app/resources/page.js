@@ -1,6 +1,8 @@
 'use client';
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import Image from 'next/image';
+import Link from 'next/link';
 import { 
   Download, 
   Search, 
@@ -45,16 +47,46 @@ export default function ResourcesPage() {
 
   return (
     <div style={{ paddingTop: '100px', minHeight: '100vh', background: '#f9fafb', paddingBottom: '80px' }}>
-      {/* Header */}
-      <section style={{ padding: '80px 20px', textAlign: 'center', background: 'linear-gradient(180deg, #F3E8FF 0%, #EFF6FF 60%, #F9FAFB 100%)' }}>
-        <div style={{ maxWidth: '800px', margin: '0 auto' }}>
-          <span className="tag" style={{ marginBottom: '16px', color: '#7C3AED', background: '#F5F3FF', borderColor: '#DDD6FE' }}>Business resources</span>
-          <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 3.8rem)', fontWeight: 950, color: '#111827', lineHeight: 1.1, marginBottom: '20px' }}>
-            1000+ Free Business <br /><span style={{ color: '#7C3AED' }}>Templates, SOPs &amp; Checklists</span>
-          </h1>
-          <p style={{ fontSize: '1.15rem', color: '#4b5563', lineHeight: 1.7 }}>
-            Download verified drafts, calculators, spreadsheets, and audit sheets prepared by leading Indian corporate consultants and CAs.
-          </p>
+      {/* Hero */}
+      <section style={{ position: 'relative', background: 'linear-gradient(135deg, #030d14 0%, #0a1f35 50%, #0d2744 100%)', overflow: 'hidden' }}>
+        <div style={{ position: 'absolute', top: '-130px', right: '-80px', width: '500px', height: '500px', borderRadius: '50%', background: 'radial-gradient(circle, rgba(6,182,212,0.15) 0%, transparent 70%)', pointerEvents: 'none' }} />
+        <div style={{ position: 'absolute', bottom: '-80px', left: '15%', width: '400px', height: '400px', borderRadius: '50%', background: 'radial-gradient(circle, rgba(124,58,237,0.12) 0%, transparent 70%)', pointerEvents: 'none' }} />
+        <div style={{ position: 'absolute', inset: 0, backgroundImage: 'linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px)', backgroundSize: '60px 60px', pointerEvents: 'none' }} />
+        <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '100px 40px 80px', display: 'flex', alignItems: 'center', gap: '80px', position: 'relative', zIndex: 1 }}>
+          <motion.div style={{ flex: '1.1', minWidth: 0 }} initial={{ opacity: 0, x: -50 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}>
+            <motion.span className="tag tag-dark" style={{ marginBottom: '20px', display: 'inline-block' }} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1, duration: 0.5 }}>Business Resources</motion.span>
+            <h1 style={{ fontSize: 'clamp(2.4rem, 4.5vw, 4rem)', fontWeight: 950, color: '#ffffff', lineHeight: 1.05, marginBottom: '24px', letterSpacing: '-0.02em' }}>
+              1000+ Free Business<br />
+              <span style={{ background: 'linear-gradient(135deg, #22d3ee 0%, #67e8f9 50%, #a5f3fc 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>Templates &amp; Checklists</span>
+            </h1>
+            <motion.p style={{ fontSize: '1.05rem', color: 'rgba(255,255,255,0.62)', lineHeight: 1.75, maxWidth: '440px', marginBottom: '36px' }} initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.35, duration: 0.6 }}>
+              Download verified drafts, calculators, spreadsheets, and audit sheets prepared by leading Indian corporate consultants and CAs.
+            </motion.p>
+            <motion.div style={{ display: 'flex', gap: '14px', flexWrap: 'wrap' }} initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5, duration: 0.5 }}>
+              <Link href="#templates" className="btn btn-purple">Browse Templates</Link>
+              <Link href="/contact" className="btn btn-outline-white">Get Custom Templates</Link>
+            </motion.div>
+            <motion.div style={{ display: 'flex', gap: '32px', marginTop: '48px', paddingTop: '32px', borderTop: '1px solid rgba(255,255,255,0.08)' }} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.7, duration: 0.6 }}>
+              {[['1000+', 'Templates'], ['Free', 'Download'], ['8', 'Categories']].map(([num, label]) => (
+                <div key={label}><div style={{ fontSize: '1.6rem', fontWeight: 900, color: '#ffffff' }}>{num}</div><div style={{ fontSize: '0.7rem', color: 'rgba(255,255,255,0.45)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.06em', marginTop: '2px' }}>{label}</div></div>
+              ))}
+            </motion.div>
+          </motion.div>
+          <motion.div style={{ flex: '1', minWidth: 0, position: 'relative', flexShrink: 0, maxWidth: '520px' }} initial={{ opacity: 0, x: 60 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}>
+            <div style={{ position: 'absolute', inset: '-30px', borderRadius: '40px', background: 'radial-gradient(ellipse, rgba(6,182,212,0.28) 0%, transparent 70%)', filter: 'blur(28px)', pointerEvents: 'none' }} />
+            <div style={{ position: 'relative', borderRadius: '24px', overflow: 'hidden', border: '1px solid rgba(255,255,255,0.1)', boxShadow: '0 40px 80px rgba(0,0,0,0.6)', transform: 'perspective(1200px) rotateY(-8deg) rotateX(3deg)' }}>
+              <Image src="/images/hero_resources.png" alt="Sangoe business resources" width={520} height={360} style={{ width: '100%', height: 'auto', display: 'block' }} priority />
+              <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, rgba(3,13,20,0.2) 0%, transparent 60%)' }} />
+            </div>
+            <motion.div animate={{ y: [0, -8, 0] }} transition={{ repeat: Infinity, duration: 3, ease: 'easeInOut' }} style={{ position: 'absolute', top: '-18px', right: '-18px', background: '#ffffff', borderRadius: '14px', padding: '10px 16px', boxShadow: '0 16px 40px rgba(0,0,0,0.35)', zIndex: 10, display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#06b6d4', flexShrink: 0 }} />
+              <span style={{ fontSize: '0.78rem', fontWeight: 700, color: '#111827', whiteSpace: 'nowrap' }}>Free Download</span>
+            </motion.div>
+            <motion.div animate={{ y: [0, 7, 0] }} transition={{ repeat: Infinity, duration: 4, ease: 'easeInOut', delay: 1.2 }} style={{ position: 'absolute', bottom: '-18px', left: '-18px', background: 'linear-gradient(135deg, #0891b2, #0e7490)', borderRadius: '14px', padding: '12px 18px', boxShadow: '0 16px 40px rgba(6,182,212,0.4)', zIndex: 10 }}>
+              <div style={{ fontSize: '1.2rem', fontWeight: 900, color: '#ffffff' }}>1000+</div>
+              <div style={{ fontSize: '0.68rem', color: 'rgba(255,255,255,0.85)', fontWeight: 600 }}>Templates Ready</div>
+            </motion.div>
+          </motion.div>
         </div>
       </section>
 

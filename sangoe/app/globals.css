@@ -462,3 +462,31 @@ p, h1, h2, h3, h4, h5, h6, span, a, li {
     padding: 4px 12px;
   }
 }
+
+/* ── Split Hero Layout (used on all inner pages) ─────────── */
+/* Inline flex heroes collapse to single column on tablet/mobile */
+@media (max-width: 900px) {
+  /* Stack the inner flex containers of hero sections */
+  section > div[style*="display: flex"][style*="align-items: center"] {
+    flex-direction: column !important;
+    gap: 40px !important;
+    min-height: unset !important;
+    padding-top: 56px !important;
+    padding-bottom: 56px !important;
+  }
+
+  /* Image panel takes full width and reasonable max height */
+  section > div[style*="display: flex"] > div[style*="max-width: 520px"],
+  section > div[style*="display: flex"] > div[style*="max-width: 560px"] {
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+}
+
+@media (max-width: 600px) {
+  /* Hide the image on very small phones to keep hero clean */
+  section > div[style*="display: flex"] > div[style*="max-width: 520px"],
+  section > div[style*="display: flex"] > div[style*="max-width: 560px"] {
+    display: none !important;
+  }
+}
