@@ -20,7 +20,7 @@ export default function PricingPage() {
   };
 
   return (
-    <div style={{ paddingTop: '100px', minHeight: '100vh', background: '#f9fafb', paddingBottom: '80px' }}>
+    <div style={{ paddingTop: '0', minHeight: '100vh', background: '#f9fafb', paddingBottom: '80px' }}>
       {/* Hero */}
       <section style={{ position: 'relative', background: 'linear-gradient(135deg, #0a0014 0%, #1a054a 50%, #2a0a6a 100%)', overflow: 'hidden' }}>
         <div style={{ position: 'absolute', top: '-120px', right: '-80px', width: '480px', height: '480px', borderRadius: '50%', background: 'radial-gradient(circle, rgba(124,58,237,0.22) 0%, transparent 70%)', pointerEvents: 'none' }} />

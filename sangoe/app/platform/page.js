@@ -69,7 +69,7 @@ export default function PlatformPage() {
   const CurrentIcon = currentTab.icon;
 
   return (
-    <div style={{ paddingTop: '100px', minHeight: '100vh', background: '#f9fafb' }}>
+    <div style={{ paddingTop: '0', minHeight: '100vh', background: '#f9fafb' }}>
       {/* Hero */}
       <section style={{ position: 'relative', background: 'linear-gradient(135deg, #0a0118 0%, #160544 45%, #1e0a6b 100%)', overflow: 'hidden' }}>
         <div style={{ position: 'absolute', top: '-100px', right: '-80px', width: '500px', height: '500px', borderRadius: '50%', background: 'radial-gradient(circle, rgba(124,58,237,0.25) 0%, transparent 70%)', pointerEvents: 'none' }} />

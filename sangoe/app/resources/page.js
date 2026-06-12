@@ -46,7 +46,7 @@ export default function ResourcesPage() {
   });
 
   return (
-    <div style={{ paddingTop: '100px', minHeight: '100vh', background: '#f9fafb', paddingBottom: '80px' }}>
+    <div style={{ paddingTop: '0', minHeight: '100vh', background: '#f9fafb', paddingBottom: '80px' }}>
       {/* Hero */}
       <section style={{ position: 'relative', background: 'linear-gradient(135deg, #030d14 0%, #0a1f35 50%, #0d2744 100%)', overflow: 'hidden' }}>
         <div style={{ position: 'absolute', top: '-130px', right: '-80px', width: '500px', height: '500px', borderRadius: '50%', background: 'radial-gradient(circle, rgba(6,182,212,0.15) 0%, transparent 70%)', pointerEvents: 'none' }} />

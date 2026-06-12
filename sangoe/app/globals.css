@@ -463,30 +463,110 @@ p, h1, h2, h3, h4, h5, h6, span, a, li {
   }
 }
 
-/* ── Split Hero Layout (used on all inner pages) ─────────── */
-/* Inline flex heroes collapse to single column on tablet/mobile */
-@media (max-width: 900px) {
-  /* Stack the inner flex containers of hero sections */
-  section > div[style*="display: flex"][style*="align-items: center"] {
-    flex-direction: column !important;
-    gap: 40px !important;
-    min-height: unset !important;
-    padding-top: 56px !important;
-    padding-bottom: 56px !important;
-  }
+/* ── Split Hero Layout (all inner pages) ─────────────────── */
 
-  /* Image panel takes full width and reasonable max height */
-  section > div[style*="display: flex"] > div[style*="max-width: 520px"],
-  section > div[style*="display: flex"] > div[style*="max-width: 560px"] {
-    max-width: 100% !important;
-    width: 100% !important;
+/* ---- Tablet: 768px – 1024px ---- */
+@media (max-width: 1024px) {
+  /* Tighten the hero inner container padding */
+  section > div[style*="padding: '100px 40px 80px'"],
+  section > div[style*="padding: 100px 40px 80px"] {
+    padding-left: 28px !important;
+    padding-right: 28px !important;
+    gap: 48px !important;
   }
 }
 
+/* ---- Tablet portrait / large phones: ≤ 900px ---- */
+@media (max-width: 900px) {
+  /* Stack hero inner flex containers to single column */
+  section > div[style*="display: flex"][style*="align-items: center"] {
+    flex-direction: column !important;
+    gap: 36px !important;
+    padding-top: 72px !important;
+    padding-bottom: 60px !important;
+    padding-left: 24px !important;
+    padding-right: 24px !important;
+  }
+
+  /* Text side fills full width */
+  section > div[style*="display: flex"][style*="align-items: center"] > div:first-child {
+    flex: unset !important;
+    width: 100% !important;
+    text-align: center;
+  }
+
+  /* Center the tag pill */
+  section > div[style*="display: flex"][style*="align-items: center"] > div:first-child > span.tag,
+  section > div[style*="display: flex"][style*="align-items: center"] > div:first-child span[class*="tag"] {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* Center CTA buttons row */
+  section > div[style*="display: flex"][style*="align-items: center"] > div:first-child > div[style*="display: flex"][style*="gap: '14px'"],
+  section > div[style*="display: flex"][style*="align-items: center"] > div:first-child > div[style*="gap: 14px"] {
+    justify-content: center !important;
+  }
+
+  /* Center stats row */
+  section > div[style*="display: flex"][style*="align-items: center"] > div:first-child > div[style*="gap: '32px'"],
+  section > div[style*="display: flex"][style*="align-items: center"] > div:first-child > div[style*="gap: 32px"] {
+    justify-content: center !important;
+  }
+
+  /* Image side: full width, remove 3D perspective tilt (causes overflow on mobile) */
+  section > div[style*="display: flex"] > div[style*="max-width: 520px"],
+  section > div[style*="display: flex"] > div[style*="max-width: 560px"] {
+    max-width: min(460px, 100%) !important;
+    width: 100% !important;
+    margin: 0 auto !important;
+  }
+
+  /* Remove perspective transform on image inner div for mobile */
+  section > div[style*="display: flex"] > div[style*="max-width: 520px"] > div[style*="perspective"],
+  section > div[style*="display: flex"] > div[style*="max-width: 560px"] > div[style*="perspective"] {
+    transform: none !important;
+  }
+
+  /* Float badges — move inward so they don't clip */
+  section > div[style*="display: flex"] > div[style*="max-width: 520px"] > div[style*="position: absolute"],
+  section > div[style*="display: flex"] > div[style*="max-width: 560px"] > div[style*="position: absolute"] {
+    top: -10px !important;
+    right: 8px !important;
+    bottom: auto !important;
+    left: auto !important;
+  }
+}
+
+/* ---- Small phones: ≤ 600px ---- */
 @media (max-width: 600px) {
-  /* Hide the image on very small phones to keep hero clean */
+  /* Hero inner container — mobile padding */
+  section > div[style*="display: flex"][style*="align-items: center"] {
+    padding-top: 64px !important;
+    padding-bottom: 48px !important;
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+    gap: 28px !important;
+  }
+
+  /* Hide the image entirely on phones — keeps hero focused and fast */
   section > div[style*="display: flex"] > div[style*="max-width: 520px"],
   section > div[style*="display: flex"] > div[style*="max-width: 560px"] {
     display: none !important;
+  }
+
+  /* Stats row: wrap and reduce gap */
+  section > div[style*="display: flex"][style*="align-items: center"] > div:first-child > div[style*="gap: '32px'"],
+  section > div[style*="display: flex"][style*="align-items: center"] > div:first-child > div[style*="gap: 32px"] {
+    gap: 20px !important;
+    flex-wrap: wrap !important;
+  }
+}
+
+/* ---- Extra small: ≤ 400px ---- */
+@media (max-width: 400px) {
+  section > div[style*="display: flex"][style*="align-items: center"] {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
   }
 }

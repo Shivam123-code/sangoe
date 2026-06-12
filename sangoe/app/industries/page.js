@@ -55,7 +55,7 @@ export default function IndustriesPage() {
     : INDUSTRIES.filter(i => i.cat === activeCat);
 
   return (
-    <div style={{ paddingTop: '100px', minHeight: '100vh', background: '#f9fafb', paddingBottom: '80px' }}>
+    <div style={{ paddingTop: '0', minHeight: '100vh', background: '#f9fafb', paddingBottom: '80px' }}>
       {/* Hero */}
       <section style={{ position: 'relative', background: 'linear-gradient(135deg, #030d0a 0%, #071f12 50%, #0a2918 100%)', overflow: 'hidden' }}>
         <div style={{ position: 'absolute', top: '-130px', right: '-80px', width: '480px', height: '480px', borderRadius: '50%', background: 'radial-gradient(circle, rgba(16,185,129,0.2) 0%, transparent 70%)', pointerEvents: 'none' }} />

@@ -33,7 +33,7 @@ export default function PartnersPage() {
   };
 
   return (
-    <div style={{ paddingTop: '100px', minHeight: '100vh', background: '#f9fafb', paddingBottom: '80px' }}>
+    <div style={{ paddingTop: '0', minHeight: '100vh', background: '#f9fafb', paddingBottom: '80px' }}>
       {/* Hero */}
       <section style={{ position: 'relative', background: 'linear-gradient(135deg, #030c1e 0%, #071a40 50%, #0a2558 100%)', overflow: 'hidden' }}>
         <div style={{ position: 'absolute', top: '-130px', right: '-80px', width: '480px', height: '480px', borderRadius: '50%', background: 'radial-gradient(circle, rgba(59,130,246,0.2) 0%, transparent 70%)', pointerEvents: 'none' }} />

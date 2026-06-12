@@ -94,7 +94,7 @@ export default function ProductsPage() {
   const [selectedIdx, setSelectedIdx] = useState(null);
 
   return (
-    <div style={{ paddingTop: '100px', minHeight: '100vh', background: '#f9fafb', paddingBottom: '80px' }}>
+    <div style={{ paddingTop: '0', minHeight: '100vh', background: '#f9fafb', paddingBottom: '80px' }}>
       {/* Hero */}
       <section style={{ position: 'relative', background: 'linear-gradient(135deg, #060b18 0%, #0f1f45 45%, #1a1060 100%)', overflow: 'hidden' }}>
         <div style={{ position: 'absolute', top: '-150px', right: '-80px', width: '500px', height: '500px', borderRadius: '50%', background: 'radial-gradient(circle, rgba(59,130,246,0.18) 0%, transparent 70%)', pointerEvents: 'none' }} />
