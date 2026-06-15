@@ -722,3 +722,245 @@ p, h1, h2, h3, h4, h5, h6, span, a, li {
   background: rgba(28,28,46,0.9) !important;
   border-color: rgba(255,255,255,0.08) !important;
 }
+
+/* ══════════════════════════════════════════════════════════
+   DARK MODE — EXTENDED COVERAGE
+   CSS Module classes · Light-gradient pages · Buttons
+   Dynamic icon bubbles · All remaining color patterns
+══════════════════════════════════════════════════════════ */
+
+/* ─ #__next and main ─ */
+[data-theme='dark'] #__next,
+[data-theme='dark'] main {
+  background-color: #0e0e1a !important;
+}
+
+/* ─ Light hero sections (academy/assessments/calculators)
+     Use linear-gradient(180deg, #FAF5FF / #EFF6FF / #F3E8FF...)
+     These are LIGHT and need a dark treatment ─ */
+[data-theme='dark'] section[style*="background: 'linear-gradient(180deg"],
+[data-theme='dark'] section[style*="background: linear-gradient(180deg"] {
+  background: linear-gradient(180deg, #0f0a1e 0%, #131028 60%, #0e0e1a 100%) !important;
+}
+
+/* ─ Home component sections using CSS Module backgrounds ─ */
+
+/* IndustriesSection: .section { background: #fff } */
+[data-theme='dark'] [class*="IndustriesSection"] section,
+[data-theme='dark'] [class*="industriesSection"] section {
+  background-color: #0e0e1a !important;
+}
+/* WhySangoe: .section { background: #f9fafb } */
+[data-theme='dark'] [class*="WhySangoe"] section,
+[data-theme='dark'] [class*="whySangoe"] section {
+  background-color: #0e0e1a !important;
+}
+/* ProblemSection: background: #ffffff */
+[data-theme='dark'] [class*="ProblemSection"] section,
+[data-theme='dark'] [class*="problemSection"] section {
+  background-color: #0e0e1a !important;
+}
+/* SolutionStatement: background: #ffffff */
+[data-theme='dark'] [class*="SolutionStatement"] section,
+[data-theme='dark'] [class*="solutionStatement"] section {
+  background-color: #0e0e1a !important;
+}
+/* PlatformClouds: background: #ffffff */
+[data-theme='dark'] [class*="PlatformClouds"] section,
+[data-theme='dark'] [class*="platformClouds"] section {
+  background-color: #0e0e1a !important;
+}
+/* Testimonials: gradient wrapper */
+[data-theme='dark'] [class*="Testimonials"] section,
+[data-theme='dark'] [class*="testimonials"] section {
+  background: #0e0e1a !important;
+}
+/* JourneySection: #fdfdfd */
+[data-theme='dark'] [class*="JourneySection"] section,
+[data-theme='dark'] [class*="journeySection"] section {
+  background-color: #0e0e1a !important;
+}
+/* IntegrationsSection: #ffffff */
+[data-theme='dark'] [class*="IntegrationsSection"] section,
+[data-theme='dark'] [class*="integrationsSection"] section {
+  background-color: #13131f !important;
+}
+/* AdvancedSolutions, AssessmentSection: #f9fafb */
+[data-theme='dark'] [class*="AdvancedSolutions"] section,
+[data-theme='dark'] [class*="AssessmentSection"] section {
+  background-color: #0e0e1a !important;
+}
+
+/* ─ CSS Module white/light cards ─ */
+[data-theme='dark'] [class*="card"],
+[data-theme='dark'] [class*="Card"] {
+  background-color: #1c1c2e !important;
+  border-color: rgba(255,255,255,0.07) !important;
+}
+/* Exception: cards that are already dark gradient (purple CTA cards) */
+[data-theme='dark'] [class*="ctaCard"],
+[data-theme='dark'] [class*="CtaCard"],
+[data-theme='dark'] [class*="cta-card"] {
+  background: inherit !important;
+}
+
+/* ─ TrustStrip ─ */
+[data-theme='dark'] [class*="trustStrip"],
+[data-theme='dark'] [class*="TrustStrip"] {
+  background-color: #13131f !important;
+  border-color: rgba(255,255,255,0.06) !important;
+}
+
+/* ─ MobileBottomNav ─ */
+[data-theme='dark'] [class*="mobileNav"],
+[data-theme='dark'] [class*="MobileNav"],
+[data-theme='dark'] [class*="bottomNav"],
+[data-theme='dark'] [class*="BottomNav"] {
+  background: rgba(14,14,26,0.96) !important;
+  border-top-color: rgba(255,255,255,0.07) !important;
+  backdrop-filter: blur(20px) !important;
+}
+[data-theme='dark'] [class*="mobileNav"] [class*="label"],
+[data-theme='dark'] [class*="bottomNav"] [class*="label"] { color: #7a75a0 !important; }
+[data-theme='dark'] [class*="mobileNav"] [class*="active"] [class*="label"],
+[data-theme='dark'] [class*="bottomNav"] [class*="active"] [class*="label"] { color: #a78bfa !important; }
+
+/* ─ Footer CSS Module (#FAF9FF) ─ */
+[data-theme='dark'] [class*="footer"] {
+  background-color: #0a0a14 !important;
+}
+
+/* ─ CSS Module text: headings, descriptions, labels ─ */
+[data-theme='dark'] [class*="heading"],
+[data-theme='dark'] [class*="Heading"],
+[data-theme='dark'] [class*="sectionTitle"],
+[data-theme='dark'] [class*="SectionTitle"] {
+  color: #edeaf8 !important;
+}
+[data-theme='dark'] [class*="subtitle"],
+[data-theme='dark'] [class*="Subtitle"],
+[data-theme='dark'] [class*="description"],
+[data-theme='dark'] [class*="Description"] {
+  color: #9e99bf !important;
+}
+[data-theme='dark'] [class*="muted"],
+[data-theme='dark'] [class*="Muted"],
+[data-theme='dark'] [class*="meta"],
+[data-theme='dark'] [class*="Meta"] {
+  color: #6b6690 !important;
+}
+
+/* ─ Additional inline background patterns ─ */
+
+/* Dynamic `sol.bg` / `cloud.bg` pastel tints on divs (solutions/products pages) */
+[data-theme='dark'] div[style*="background: #ECFEFF"],
+[data-theme='dark'] div[style*="background: #FFFBEB"],
+[data-theme='dark'] div[style*="background: #E6F4EA"],
+[data-theme='dark'] div[style*="background: #EEF2FF"] {
+  background-color: rgba(255,255,255,0.05) !important;
+  border-color: rgba(255,255,255,0.09) !important;
+}
+
+/* Span pastel tints — extended set */
+[data-theme='dark'] span[style*="background: #ECFEFF"],
+[data-theme='dark'] span[style*="background: '#ECFEFF'"],
+[data-theme='dark'] span[style*="background: #E0F2FE"],
+[data-theme='dark'] span[style*="background: '#E0F2FE'"],
+[data-theme='dark'] span[style*="background: #E6F4EA"],
+[data-theme='dark'] span[style*="background: '#E6F4EA'"],
+[data-theme='dark'] span[style*="background: #EEF2FF"],
+[data-theme='dark'] span[style*="background: '#EEF2FF'"],
+[data-theme='dark'] span[style*="background: #F3E8FF"],
+[data-theme='dark'] span[style*="background: '#F3E8FF'"],
+[data-theme='dark'] span[style*="background: #FFFBEB"],
+[data-theme='dark'] span[style*="background: '#FFFBEB'"] {
+  background-color: rgba(139,92,246,0.1) !important;
+}
+
+/* Calculator output boxes */
+[data-theme='dark'] div[style*="background: '#F3E8FF'"],
+[data-theme='dark'] div[style*="background: #F3E8FF"] {
+  background-color: rgba(124,58,237,0.1) !important;
+  border-color: rgba(124,58,237,0.25) !important;
+}
+[data-theme='dark'] div[style*="border: '1px solid #DBEAFE'"],
+[data-theme='dark'] div[style*="border: '1px solid #bfdbfe'"] {
+  border-color: rgba(59,130,246,0.3) !important;
+}
+[data-theme='dark'] div[style*="border: '1px solid #A7F3D0'"] {
+  border-color: rgba(16,185,129,0.3) !important;
+}
+
+/* ─ Additional text color patterns ─ */
+
+/* h4 / h5 with dark inline color */
+[data-theme='dark'] h4:not([style*="color: #fff"]):not([style*="color: white"]),
+[data-theme='dark'] h5:not([style*="color: #fff"]):not([style*="color: white"]) {
+  color: #edeaf8 !important;
+}
+
+/* Strong tags with semantic accent colors */
+[data-theme='dark'] strong[style*="color: #ef4444"],
+[data-theme='dark'] strong[style*="color: #EF4444"] { color: #fca5a5 !important; }
+[data-theme='dark'] strong[style*="color: #10b981"],
+[data-theme='dark'] strong[style*="color: #10B981"] { color: #6ee7b7 !important; }
+
+/* Muted spans #9ca3af */
+[data-theme='dark'] span[style*="color: #9ca3af"],
+[data-theme='dark'] span[style*="color: '#9ca3af'"],
+[data-theme='dark'] div[style*="color: #9ca3af"],
+[data-theme='dark'] div[style*="color: '#9ca3af'"] { color: #5a5475 !important; }
+
+/* Calculator dark blue/green output amounts */
+[data-theme='dark'] div[style*="color: #1e40af"],
+[data-theme='dark'] div[style*="color: '#1e40af'"],
+[data-theme='dark'] div[style*="color: #1e3a8a"],
+[data-theme='dark'] div[style*="color: '#1e3a8a'"] { color: #93c5fd !important; }
+[data-theme='dark'] div[style*="color: #065f46"],
+[data-theme='dark'] div[style*="color: '#065f46'"],
+[data-theme='dark'] div[style*="color: #064e3b"],
+[data-theme='dark'] div[style*="color: '#064e3b'"] { color: #6ee7b7 !important; }
+
+/* ─ Badges (light pill badges on white sections) ─ */
+[data-theme='dark'] span[style*="background: '#F5F3FF'"][style*="color: '#7C3AED'"],
+[data-theme='dark'] span[style*="background: #F5F3FF"][style*="color: #7C3AED"] {
+  background-color: rgba(124,58,237,0.14) !important;
+}
+[data-theme='dark'] span[style*="background: '#E0F2FE'"][style*="color: '#1E40AF'"],
+[data-theme='dark'] span[style*="background: #E0F2FE"][style*="color: #1E40AF"] {
+  background-color: rgba(59,130,246,0.12) !important;
+  color: #93c5fd !important;
+}
+[data-theme='dark'] span[style*="background: '#F3F4F6'"],
+[data-theme='dark'] span[style*="background: #F3F4F6"] {
+  background-color: #252540 !important;
+  color: #9e99bf !important;
+}
+
+/* ─ Filter/tab buttons on industry/resource/calculator pages ─ */
+[data-theme='dark'] button[style*="border: '1.5px solid #10B981'"],
+[data-theme='dark'] button[style*="border: '1.5px solid #7C3AED'"],
+[data-theme='dark'] button[style*="border: '1.5px solid #3B82F6'"] {
+  /* Active filter buttons — keep their accent color, just soften */
+  opacity: 0.9;
+}
+[data-theme='dark'] button[style*="border: '1.5px solid rgba(0, 0, 0, 0.06)'"],
+[data-theme='dark'] button[style*="border: '1.5px solid rgba(0,0,0,0.06)'"],
+[data-theme='dark'] button[style*="border: '1.5px solid #e5e7eb'"] {
+  background-color: #1c1c2e !important;
+  border-color: rgba(255,255,255,0.1) !important;
+  color: #9e99bf !important;
+}
+
+/* ─ Academy course cards ─ */
+[data-theme='dark'] div[style*="border: '1px solid rgba(124, 58, 237, 0.06)'"],
+[data-theme='dark'] div[style*="border: '1px solid rgba(124,58,237,0.06)'"] {
+  border-color: rgba(124,58,237,0.2) !important;
+}
+
+/* ─ Form inputs with explicit inline border ─ */
+[data-theme='dark'] input[style*="border: '1px solid #d1d5db'"] {
+  border-color: rgba(255,255,255,0.14) !important;
+  background-color: #1c1c2e !important;
+}
+
