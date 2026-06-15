@@ -46,7 +46,7 @@ export function generateViewport() {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
         {/* Blocking script: apply saved theme BEFORE first paint — prevents flash */}
         <script
