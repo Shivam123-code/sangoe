@@ -54,7 +54,7 @@
   --space-xl:  clamp(40px,  6vw,  72px);
   --space-2xl: clamp(56px,  7vw,  88px);
 
-  /* ── Semantic Theme Tokens (Light mode defaults) ── */
+  /* ── Semantic Theme Tokens (Light defaults) ── */
   --theme-bg:          #f1f0f5;
   --theme-bg-secondary:#ffffff;
   --theme-card-bg:     #ffffff;
@@ -69,22 +69,22 @@
   --theme-shadow-card: 0 2px 12px rgba(0,0,0,.06);
 }
 
-/* ── Dark Mode Overrides ─────────────────────────────── */
+/* ── Dark Mode CSS Variable Overrides ───────────────────── */
 [data-theme='dark'] {
-  --theme-bg:           #0d0d14;
+  --theme-bg:           #0e0e1a;
   --theme-bg-secondary: #13131f;
-  --theme-card-bg:      #1a1a2e;
+  --theme-card-bg:      #1c1c2e;
   --theme-card-border:  rgba(255,255,255,0.07);
-  --theme-text-main:    #f1f0f9;
+  --theme-text-main:    #edeaf8;
   --theme-text-sub:     #c4bfd9;
   --theme-text-muted:   #8b85a8;
   --theme-text-faint:   #5f597a;
   --theme-border:       rgba(255,255,255,0.08);
-  --theme-input-bg:     #1f1f35;
+  --theme-input-bg:     #1c1c2e;
   --theme-input-border: rgba(255,255,255,0.12);
-  --theme-shadow-card:  0 2px 20px rgba(0,0,0,0.35);
-  --page-bg:            #0d0d14;
-  --gray-900:           #f1f0f9;
+  --theme-shadow-card:  0 2px 20px rgba(0,0,0,0.4);
+  --page-bg:            #0e0e1a;
+  --gray-900:           #edeaf8;
   --gray-700:           #c4bfd9;
   --gray-500:           #8b85a8;
 }
@@ -96,17 +96,14 @@ html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-size: 16px;
-  /* NOTE: overflow-x must NOT be set on html — it breaks window scroll */
 }
 body {
   font-family: 'Inter', system-ui, sans-serif;
   background: var(--theme-bg);
   color: var(--theme-text-main);
-  /* overflow-x only on body — safe, won't break scroll */
   overflow-x: hidden;
   line-height: 1.6;
   min-width: 320px;
-  /* iOS momentum scrolling */
   -webkit-overflow-scrolling: touch;
   transition: background 0.3s ease, color 0.3s ease;
 }
@@ -115,12 +112,10 @@ ul { list-style: none; }
 img, video { max-width: 100%; display: block; }
 button { font-family: inherit; cursor: pointer; border: none; background: none; }
 
-/* Remove tap highlight color globally for app feel */
 * {
   -webkit-tap-highlight-color: transparent;
   -webkit-touch-callout: none;
 }
-/* But keep text selectable */
 p, h1, h2, h3, h4, h5, h6, span, a, li {
   -webkit-user-select: text;
   user-select: text;
@@ -216,12 +211,8 @@ p, h1, h2, h3, h4, h5, h6, span, a, li {
 }
 .btn-ghost-white:hover { color: #fff; }
 
-/* Mobile button adjustments */
 @media (max-width: 480px) {
-  .btn {
-    padding: 11px 20px;
-    font-size: .82rem;
-  }
+  .btn { padding: 11px 20px; font-size: .82rem; }
 }
 
 /* ── Cards ──────────────────────────────────────────────── */
@@ -277,9 +268,7 @@ p, h1, h2, h3, h4, h5, h6, span, a, li {
   70%  { box-shadow: 0 0 0 20px rgba(109,40,217,0); }
   100% { box-shadow: 0 0 0 0   rgba(109,40,217,0); }
 }
-@keyframes spin {
-  to { transform: rotate(360deg); }
-}
+@keyframes spin { to { transform: rotate(360deg); } }
 @keyframes ticker {
   0%   { transform: translateX(0); }
   100% { transform: translateX(-50%); }
@@ -290,86 +279,26 @@ p, h1, h2, h3, h4, h5, h6, span, a, li {
 }
 
 /* ── Responsive Grid Utilities ──────────────────────────── */
-/* 2-col grid → 1-col at 900px */
-.responsive-grid-2 {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 40px;
-}
+.responsive-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
 @media (max-width: 900px) {
-  .responsive-grid-2 {
-    grid-template-columns: 1fr !important;
-    gap: 32px !important;
-  }
+  .responsive-grid-2 { grid-template-columns: 1fr !important; gap: 32px !important; }
 }
 
-/* 3-col grid → 2-col at 900px → 1-col at 600px */
-.responsive-grid-3 {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-}
-@media (max-width: 1024px) {
-  .responsive-grid-3 {
-    grid-template-columns: repeat(2, 1fr) !important;
-  }
-}
-@media (max-width: 600px) {
-  .responsive-grid-3 {
-    grid-template-columns: 1fr !important;
-    gap: 16px !important;
-  }
-}
+.responsive-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+@media (max-width: 1024px) { .responsive-grid-3 { grid-template-columns: repeat(2, 1fr) !important; } }
+@media (max-width: 600px)  { .responsive-grid-3 { grid-template-columns: 1fr !important; gap: 16px !important; } }
 
-/* Split grid (1.2fr / 1fr) → single col */
-.responsive-grid-split {
-  display: grid;
-  grid-template-columns: 1.2fr 1fr;
-  gap: 64px;
-  align-items: center;
-}
-@media (max-width: 1024px) {
-  .responsive-grid-split {
-    gap: 48px !important;
-  }
-}
-@media (max-width: 900px) {
-  .responsive-grid-split {
-    grid-template-columns: 1fr !important;
-    gap: 40px !important;
-  }
-}
+.responsive-grid-split { display: grid; grid-template-columns: 1.2fr 1fr; gap: 64px; align-items: center; }
+@media (max-width: 1024px) { .responsive-grid-split { gap: 48px !important; } }
+@media (max-width: 900px)  { .responsive-grid-split { grid-template-columns: 1fr !important; gap: 40px !important; } }
 
-/* Calc grid (280px sidebar / flex) → single col */
-.responsive-grid-calc {
-  display: grid;
-  grid-template-columns: 280px 1fr;
-  gap: 40px;
-}
-@media (max-width: 1024px) {
-  .responsive-grid-calc {
-    grid-template-columns: 240px 1fr !important;
-  }
-}
-@media (max-width: 900px) {
-  .responsive-grid-calc {
-    grid-template-columns: 1fr !important;
-    gap: 24px !important;
-  }
-}
+.responsive-grid-calc { display: grid; grid-template-columns: 280px 1fr; gap: 40px; }
+@media (max-width: 1024px) { .responsive-grid-calc { grid-template-columns: 240px 1fr !important; } }
+@media (max-width: 900px)  { .responsive-grid-calc { grid-template-columns: 1fr !important; gap: 24px !important; } }
 
-/* Flex row → col */
-.responsive-card-row {
-  display: flex !important;
-  flex-direction: row;
-  gap: 24px;
-}
+.responsive-card-row { display: flex !important; flex-direction: row; gap: 24px; }
 @media (max-width: 768px) {
-  .responsive-card-row {
-    flex-direction: column !important;
-    padding: 24px !important;
-    gap: 20px !important;
-  }
+  .responsive-card-row { flex-direction: column !important; padding: 24px !important; gap: 20px !important; }
 }
 
 /* ── Fluid Section Headings ─────────────────────────────── */
@@ -380,7 +309,6 @@ p, h1, h2, h3, h4, h5, h6, span, a, li {
   letter-spacing: -0.02em;
   color: var(--gray-900);
 }
-
 .section-sub {
   font-size: clamp(0.9rem, 1.5vw, 1.05rem);
   color: var(--gray-500);
@@ -388,122 +316,53 @@ p, h1, h2, h3, h4, h5, h6, span, a, li {
   max-width: 600px;
 }
 
-/* ── Text Alignment Helpers ─────────────────────────────── */
+/* ── Text Alignment & Visibility Helpers ────────────────── */
 @media (max-width: 900px) {
   .center-mobile { text-align: center !important; }
   .items-center-mobile { align-items: center !important; }
 }
+@media (max-width: 768px)  { .hide-mobile { display: none !important; } }
+@media (min-width: 769px)  { .show-mobile-only { display: none !important; } }
 
-/* ── Hide / Show Utilities ──────────────────────────────── */
-@media (max-width: 768px) {
-  .hide-mobile { display: none !important; }
-}
-@media (min-width: 769px) {
-  .show-mobile-only { display: none !important; }
-}
-
-/* ── Stack on Mobile ────────────────────────────────────── */
-.stack-mobile {
-  display: flex;
-  flex-direction: row;
-  gap: 16px;
-  flex-wrap: wrap;
-}
-@media (max-width: 600px) {
-  .stack-mobile {
-    flex-direction: column !important;
-  }
-}
+.stack-mobile { display: flex; flex-direction: row; gap: 16px; flex-wrap: wrap; }
+@media (max-width: 600px) { .stack-mobile { flex-direction: column !important; } }
 
 /* ══════════════════════════════════════════════════════════
    MOBILE APP SHELL EXPERIENCE
-   Applied only on phones (< 769px) to create native-app feel
 ══════════════════════════════════════════════════════════ */
-
-/* App-like section separators on mobile */
 @media (max-width: 768px) {
-
-  /* Each section feels like a distinct app screen card */
-  section {
-    position: relative;
-  }
-
-  /* Smooth section transitions — mimic app screen animations */
-  main > section {
-    transition: transform 0.3s ease;
-  }
-
-  /* Make white-bg sections look like elevated app cards */
+  section { position: relative; }
+  main > section { transition: transform 0.3s ease; }
   section[style*="background: #fff"],
   section[style*="background:#fff"],
-  section[style*="background: white"] {
-    box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.04);
-  }
-
-  /* Mobile-first: tighter spacing on all section wraps */
-  .wrap {
-    padding: 0 16px;
-  }
-
-  /* App-like interactive card press effect */
-  .card {
-    transition: transform 0.15s ease, box-shadow 0.15s ease;
-  }
-  .card:active {
-    transform: scale(0.985);
-  }
-
-  /* Prevent footer from overlapping bottom nav */
-  footer {
-    margin-bottom: 0;
-  }
+  section[style*="background: white"] { box-shadow: 0 -1px 0 rgba(0,0,0,0.04); }
+  .wrap { padding: 0 16px; }
+  .card { transition: transform 0.15s ease, box-shadow 0.15s ease; }
+  .card:active { transform: scale(0.985); }
+  footer { margin-bottom: 0; }
 }
 
-/* ── Mobile App Screen Status Bar Space ──────────────── */
-/* Standalone PWA mode — safe area inset for iOS notch */
 @supports (padding-top: env(safe-area-inset-top)) {
   @media (max-width: 768px) {
-    header {
-      padding-top: env(safe-area-inset-top, 0px);
-    }
+    header { padding-top: env(safe-area-inset-top, 0px); }
   }
 }
 
-/* ── Mobile Scroll Enhancement ──────────────────────── */
 @media (max-width: 768px) {
-  /* Momentum scrolling for iOS within overflow containers */
-  [class*="scroll"],
-  [class*="Scroll"] {
+  [class*="scroll"], [class*="Scroll"] {
     -webkit-overflow-scrolling: touch;
     scroll-behavior: smooth;
   }
-
-  /* Hide scrollbar for cleaner app look */
-  ::-webkit-scrollbar {
-    display: none;
-    width: 0;
-    height: 0;
-  }
-
-  /* Firefox scrollbar hide — must be inside a selector */
-  html, body {
-    scrollbar-width: none;
-  }
+  ::-webkit-scrollbar { display: none; width: 0; height: 0; }
+  html, body { scrollbar-width: none; }
 }
 
-/* ── Mobile Tag / Badge Sizes ──────────────────────────── */
 @media (max-width: 480px) {
-  .tag {
-    font-size: 0.68rem;
-    padding: 4px 12px;
-  }
+  .tag { font-size: 0.68rem; padding: 4px 12px; }
 }
 
 /* ── Split Hero Layout (all inner pages) ─────────────────── */
-
-/* ---- Tablet: 768px – 1024px ---- */
 @media (max-width: 1024px) {
-  /* Tighten the hero inner container padding */
   section > div[style*="padding: '100px 40px 80px'"],
   section > div[style*="padding: 100px 40px 80px"] {
     padding-left: 28px !important;
@@ -511,10 +370,7 @@ p, h1, h2, h3, h4, h5, h6, span, a, li {
     gap: 48px !important;
   }
 }
-
-/* ---- Tablet portrait / large phones: ≤ 900px ---- */
 @media (max-width: 900px) {
-  /* Stack hero inner flex containers to single column */
   section > div[style*="display: flex"][style*="align-items: center"] {
     flex-direction: column !important;
     gap: 36px !important;
@@ -523,356 +379,346 @@ p, h1, h2, h3, h4, h5, h6, span, a, li {
     padding-left: 24px !important;
     padding-right: 24px !important;
   }
-
-  /* Text side fills full width */
   section > div[style*="display: flex"][style*="align-items: center"] > div:first-child {
-    flex: unset !important;
-    width: 100% !important;
-    text-align: center;
+    flex: unset !important; width: 100% !important; text-align: center;
   }
-
-  /* Center the tag pill */
   section > div[style*="display: flex"][style*="align-items: center"] > div:first-child > span.tag,
   section > div[style*="display: flex"][style*="align-items: center"] > div:first-child span[class*="tag"] {
-    margin-left: auto;
-    margin-right: auto;
+    margin-left: auto; margin-right: auto;
   }
-
-  /* Center CTA buttons row */
-  section > div[style*="display: flex"][style*="align-items: center"] > div:first-child > div[style*="display: flex"][style*="gap: '14px'"],
+  section > div[style*="display: flex"][style*="align-items: center"] > div:first-child > div[style*="gap: '14px'"],
   section > div[style*="display: flex"][style*="align-items: center"] > div:first-child > div[style*="gap: 14px"] {
     justify-content: center !important;
   }
-
-  /* Center stats row */
   section > div[style*="display: flex"][style*="align-items: center"] > div:first-child > div[style*="gap: '32px'"],
   section > div[style*="display: flex"][style*="align-items: center"] > div:first-child > div[style*="gap: 32px"] {
     justify-content: center !important;
   }
-
-  /* Image side: full width, remove 3D perspective tilt (causes overflow on mobile) */
   section > div[style*="display: flex"] > div[style*="max-width: 520px"],
   section > div[style*="display: flex"] > div[style*="max-width: 560px"] {
-    max-width: min(460px, 100%) !important;
-    width: 100% !important;
-    margin: 0 auto !important;
+    max-width: min(460px, 100%) !important; width: 100% !important; margin: 0 auto !important;
   }
-
-  /* Remove perspective transform on image inner div for mobile */
   section > div[style*="display: flex"] > div[style*="max-width: 520px"] > div[style*="perspective"],
   section > div[style*="display: flex"] > div[style*="max-width: 560px"] > div[style*="perspective"] {
     transform: none !important;
   }
-
-  /* Float badges — move inward so they don't clip */
   section > div[style*="display: flex"] > div[style*="max-width: 520px"] > div[style*="position: absolute"],
   section > div[style*="display: flex"] > div[style*="max-width: 560px"] > div[style*="position: absolute"] {
-    top: -10px !important;
-    right: 8px !important;
-    bottom: auto !important;
-    left: auto !important;
+    top: -10px !important; right: 8px !important; bottom: auto !important; left: auto !important;
   }
 }
-
-/* ---- Small phones: ≤ 600px ---- */
 @media (max-width: 600px) {
-  /* Hero inner container — mobile padding */
   section > div[style*="display: flex"][style*="align-items: center"] {
-    padding-top: 64px !important;
-    padding-bottom: 48px !important;
-    padding-left: 20px !important;
-    padding-right: 20px !important;
-    gap: 28px !important;
+    padding-top: 64px !important; padding-bottom: 48px !important;
+    padding-left: 20px !important; padding-right: 20px !important; gap: 28px !important;
   }
-
-  /* Hide the image entirely on phones — keeps hero focused and fast */
   section > div[style*="display: flex"] > div[style*="max-width: 520px"],
-  section > div[style*="display: flex"] > div[style*="max-width: 560px"] {
-    display: none !important;
-  }
-
-  /* Stats row: wrap and reduce gap */
+  section > div[style*="display: flex"] > div[style*="max-width: 560px"] { display: none !important; }
   section > div[style*="display: flex"][style*="align-items: center"] > div:first-child > div[style*="gap: '32px'"],
   section > div[style*="display: flex"][style*="align-items: center"] > div:first-child > div[style*="gap: 32px"] {
-    gap: 20px !important;
-    flex-wrap: wrap !important;
+    gap: 20px !important; flex-wrap: wrap !important;
   }
 }
-
-/* ---- Extra small: ≤ 400px ---- */
 @media (max-width: 400px) {
   section > div[style*="display: flex"][style*="align-items: center"] {
-    padding-left: 16px !important;
-    padding-right: 16px !important;
+    padding-left: 16px !important; padding-right: 16px !important;
   }
 }
 
 /* ══════════════════════════════════════════════════════════
-   DARK MODE — Comprehensive Overrides
-   These !important rules override hardcoded inline styles
-   used throughout the page components.
+   DARK MODE — Surgical Overrides
+   Rules:
+   ① Never touch gradient/purple sections — they are already dark
+   ② Never use "background: revert" — it causes white flash
+   ③ Precisely target only light-colored elements
+   ④ Use :not() selectors to protect white text on dark bg
+   ⑤ Smooth transition on everything via rule #1
 ══════════════════════════════════════════════════════════ */
 
-/* ── Smooth theme transition on everything ── */
+/* ─ Smooth transition for theme switch ─ */
 [data-theme='dark'] *,
 [data-theme='light'] * {
   transition:
     background-color 0.3s ease,
     border-color 0.3s ease,
-    color 0.3s ease;
-}
-/* But DON'T transition things that rely on other transforms */
-[data-theme='dark'] *:hover,
-[data-theme='light'] *:hover {
-  transition:
-    background-color 0.3s ease,
-    border-color 0.3s ease,
     color 0.3s ease,
-    transform 0.2s ease,
-    box-shadow 0.2s ease;
+    box-shadow 0.3s ease;
 }
 
-/* ── Body & page background ── */
+/* ─ Body ─ */
 [data-theme='dark'] body {
-  background: #0d0d14 !important;
-  color: #f1f0f9 !important;
+  background-color: #0e0e1a !important;
+  color: #edeaf8 !important;
 }
 
-/* ── All white/light sections → dark ── */
-[data-theme='dark'] section {
-  background-color: #0d0d14 !important;
-}
-
-/* Sections that have explicit white background inline styles */
-[data-theme='dark'] section[style*="background: #fff"],
-[data-theme='dark'] section[style*="background:#fff"],
-[data-theme='dark'] section[style*="background: white"],
-[data-theme='dark'] section[style*="background: rgb(255"],
-[data-theme='dark'] section[style*="background: #f9fafb"],
-[data-theme='dark'] section[style*="background: #f3f4f6"],
-[data-theme='dark'] section[style*="background: #f1f0f5"],
-[data-theme='dark'] section[style*="background: #f5f3ff"],
-[data-theme='dark'] section[style*="background: var(--gray-50)"],
-[data-theme='dark'] section[style*="background: var(--purple-50)"] {
-  background-color: #13131f !important;
-}
-
-/* Alternate sections (slightly lighter dark) */
-[data-theme='dark'] section:nth-child(even) {
-  background-color: #13131f !important;
-}
-[data-theme='dark'] section:nth-child(odd) {
-  background-color: #0d0d14 !important;
-}
-
-/* ── Keep purple/gradient hero sections unchanged ── */
-[data-theme='dark'] section[style*="background: linear-gradient"],
-[data-theme='dark'] section[style*="background: var(--hero-gradient)"],
-[data-theme='dark'] section[style*="background: var(--cta-gradient)"],
-[data-theme='dark'] section[style*="#1a0140"],
-[data-theme='dark'] section[style*="#2e0b7a"],
-[data-theme='dark'] section[style*="#4a12b8"],
-[data-theme='dark'] section[style*="#4a0e96"],
-[data-theme='dark'] section[style*="#6d28d9"],
-[data-theme='dark'] section[style*="#7c3aed"] {
-  background-color: unset !important;
-  background: revert !important;
-}
-
-/* ── Divs used as section wrappers / containers ── */
-[data-theme='dark'] div[style*="background: #fff"],
-[data-theme='dark'] div[style*="background:#fff"],
-[data-theme='dark'] div[style*="background: white"],
+/* ─ Page wrapper divs (each page: <div style="background:#f9fafb; minHeight:100vh">) ─ */
 [data-theme='dark'] div[style*="background: #f9fafb"],
+[data-theme='dark'] div[style*="background:#f9fafb"],
 [data-theme='dark'] div[style*="background: #f3f4f6"],
 [data-theme='dark'] div[style*="background: #f1f0f5"],
 [data-theme='dark'] div[style*="background: #f5f3ff"],
-[data-theme='dark'] div[style*="background: var(--gray-50)"],
-[data-theme='dark'] div[style*="background: var(--purple-50)"],
-[data-theme='dark'] div[style*="background: var(--white)"] {
-  background-color: #1a1a2e !important;
-  border-color: rgba(255,255,255,0.07) !important;
+[data-theme='dark'] div[style*="background: #fafafa"] {
+  background-color: #0e0e1a !important;
 }
 
-/* ── Keep purple/gradient div backgrounds unchanged ── */
-[data-theme='dark'] div[style*="background: linear-gradient"],
-[data-theme='dark'] div[style*="#4a0e96"],
-[data-theme='dark'] div[style*="#6d28d9"],
-[data-theme='dark'] div[style*="#7c3aed"],
-[data-theme='dark'] div[style*="#1a0140"],
-[data-theme='dark'] div[style*="var(--hero-gradient)"],
-[data-theme='dark'] div[style*="var(--cta-gradient)"],
-[data-theme='dark'] div[style*="rgba(109"] {
-  background-color: unset !important;
-  background: revert !important;
-}
-
-/* ── Headings ── */
-[data-theme='dark'] h1,
-[data-theme='dark'] h2,
-[data-theme='dark'] h3,
-[data-theme='dark'] h4,
-[data-theme='dark'] h5,
-[data-theme='dark'] h6 {
-  color: #f1f0f9 !important;
-}
-
-/* Headings with inline dark color overrides */
-[data-theme='dark'] h1[style*="color: #111"],
-[data-theme='dark'] h2[style*="color: #111"],
-[data-theme='dark'] h3[style*="color: #111"],
-[data-theme='dark'] h1[style*="color: #1a"],
-[data-theme='dark'] h2[style*="color: #1a"],
-[data-theme='dark'] h3[style*="color: #1a"],
-[data-theme='dark'] h1[style*="color: #0"],
-[data-theme='dark'] h2[style*="color: #0"],
-[data-theme='dark'] h3[style*="color: #0"],
-[data-theme='dark'] h1[style*="color: var(--gray-900)"],
-[data-theme='dark'] h2[style*="color: var(--gray-900)"],
-[data-theme='dark'] h3[style*="color: var(--gray-900)"] {
-  color: #f1f0f9 !important;
-}
-
-/* Keep white headings on purple backgrounds unchanged */
-[data-theme='dark'] h1[style*="color: #fff"],
-[data-theme='dark'] h2[style*="color: #fff"],
-[data-theme='dark'] h3[style*="color: #fff"],
-[data-theme='dark'] h1[style*="color: white"],
-[data-theme='dark'] h2[style*="color: white"],
-[data-theme='dark'] h3[style*="color: white"] {
-  color: #ffffff !important;
-}
-
-/* ── Paragraphs & body text ── */
-[data-theme='dark'] p {
-  color: #c4bfd9 !important;
-}
-[data-theme='dark'] p[style*="color: #6b72"],
-[data-theme='dark'] p[style*="color: #374"],
-[data-theme='dark'] p[style*="color: #111"],
-[data-theme='dark'] p[style*="color: var(--gray"] {
-  color: #8b85a8 !important;
-}
-/* Keep white text unchanged */
-[data-theme='dark'] p[style*="color: #fff"],
-[data-theme='dark'] p[style*="color: rgba(255"],
-[data-theme='dark'] p[style*="color: white"] {
-  color: inherit !important;
-}
-
-/* ── Spans used for labels and stats ── */
-[data-theme='dark'] span[style*="color: #111"],
-[data-theme='dark'] span[style*="color: #374"],
-[data-theme='dark'] span[style*="color: #1a"],
-[data-theme='dark'] span[style*="color: var(--gray-900)"],
-[data-theme='dark'] span[style*="color: var(--gray-700)"] {
-  color: #f1f0f9 !important;
-}
-[data-theme='dark'] span[style*="color: #6b72"],
-[data-theme='dark'] span[style*="color: var(--gray-500)"] {
-  color: #8b85a8 !important;
-}
-
-/* ── General div text (stat numbers, labels) ── */
-[data-theme='dark'] div[style*="color: #111"],
-[data-theme='dark'] div[style*="color: #1a"],
-[data-theme='dark'] div[style*="color: #374"],
-[data-theme='dark'] div[style*="color: var(--gray-900)"],
-[data-theme='dark'] div[style*="color: var(--gray-700)"] {
-  color: #f1f0f9 !important;
-}
-[data-theme='dark'] div[style*="color: #6b72"],
-[data-theme='dark'] div[style*="color: var(--gray-500)"],
-[data-theme='dark'] div[style*="color: #9ca3"] {
-  color: #8b85a8 !important;
-}
-
-/* ── Borders ── */
-[data-theme='dark'] div[style*="border: 1px solid #e5"],
-[data-theme='dark'] div[style*="border: 1px solid #d1"],
-[data-theme='dark'] div[style*="border: 1px solid rgba(0,0,0"],
-[data-theme='dark'] div[style*="border-top: 1px solid #e5"],
-[data-theme='dark'] div[style*="border-bottom: 1px solid #e5"],
-[data-theme='dark'] section[style*="border-top: 1px solid"],
-[data-theme='dark'] section[style*="border-bottom: 1px solid"] {
+/* ─ White content cards (pricing cards, about cards, contact form, platform tab card) ─ */
+[data-theme='dark'] div[style*="background: #ffffff"],
+[data-theme='dark'] div[style*="background: '#ffffff'"],
+[data-theme='dark'] div[style*="background: white"] {
+  background-color: #1c1c2e !important;
   border-color: rgba(255,255,255,0.08) !important;
 }
 
-/* ── Cards and inner containers ── */
-[data-theme='dark'] .card,
-[data-theme='dark'] [class*="card"],
-[data-theme='dark'] [class*="Card"] {
-  background: #1a1a2e !important;
-  border-color: rgba(255,255,255,0.07) !important;
-  color: #f1f0f9 !important;
+/*
+  EXCEPTION: Floating hero badges use background:#ffffff with zIndex:10
+  They sit on dark purple heroes — give them a dark-glass look
+*/
+[data-theme='dark'] div[style*="zIndex: 10"][style*="background: #ffffff"],
+[data-theme='dark'] div[style*="z-index: 10"][style*="background: #ffffff"],
+[data-theme='dark'] div[style*="zIndex: 10"][style*="background: '#ffffff'"] {
+  background-color: rgba(28,28,46,0.92) !important;
+  border: 1px solid rgba(255,255,255,0.14) !important;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.6) !important;
+  backdrop-filter: blur(8px) !important;
+}
+/* Text inside those floating badges */
+[data-theme='dark'] div[style*="zIndex: 10"] span[style*="color: #111827"],
+[data-theme='dark'] div[style*="zIndex: 10"] span[style*="color: '#111827'"] {
+  color: #edeaf8 !important;
 }
 
-/* ── Form inputs & selects ── */
-[data-theme='dark'] input,
-[data-theme='dark'] textarea,
-[data-theme='dark'] select {
-  background: #1f1f35 !important;
-  color: #f1f0f9 !important;
-  border-color: rgba(255,255,255,0.12) !important;
-}
-[data-theme='dark'] input::placeholder,
-[data-theme='dark'] textarea::placeholder {
-  color: #5f597a !important;
+/*
+  EXCEPTION: gradient divs — untouched.
+  Any div whose style contains "linear-gradient" is a hero section
+  element or a purple badge. We do NOT override those.
+  (CSS cannot undo inline background via !important for linear-gradient
+   because we only set background-color — the background-image from
+   the inline style still renders on top. So gradient elements are safe.)
+*/
+
+/* ─ Light-grey inner panel (platform page right mockup: background:#f9fafb) ─ */
+[data-theme='dark'] div[style*="background: #f9fafb"] {
+  background-color: #16162a !important;
 }
 
-/* ── Labels ── */
-[data-theme='dark'] label {
+/* ─ Tables (pricing comparison table) ─ */
+[data-theme='dark'] table {
+  background-color: #1c1c2e !important;
+}
+[data-theme='dark'] thead tr,
+[data-theme='dark'] tr[style*="background: #f9fafb"],
+[data-theme='dark'] tr[style*="background: '#f9fafb'"] {
+  background-color: #252540 !important;
+}
+[data-theme='dark'] td,
+[data-theme='dark'] th {
+  border-color: rgba(255,255,255,0.06) !important;
   color: #c4bfd9 !important;
 }
+[data-theme='dark'] th { color: #9e99bf !important; }
+[data-theme='dark'] tr { border-color: rgba(255,255,255,0.06) !important; }
 
-/* ── Tags (purple pill badges on light pages) ── */
-[data-theme='dark'] .tag:not(.tag-dark) {
-  background: rgba(139,92,246,.15) !important;
-  border-color: rgba(139,92,246,.3) !important;
-  color: #a78bfa !important;
+/* ─ Headings: only flip dark-on-light headings ─ */
+/*
+  Hero headings use color:#ffffff — leave them untouched.
+  Content headings use color:#111827 / color:#374151 — flip those.
+*/
+[data-theme='dark'] h1:not([style*="color: #fff"]):not([style*="color: '#fff'"]):not([style*="color: white"]),
+[data-theme='dark'] h2:not([style*="color: #fff"]):not([style*="color: '#fff'"]):not([style*="color: white"]),
+[data-theme='dark'] h3:not([style*="color: #fff"]):not([style*="color: '#fff'"]):not([style*="color: white"]),
+[data-theme='dark'] h4:not([style*="color: #fff"]):not([style*="color: '#fff'"]):not([style*="color: white"]) {
+  color: #edeaf8 !important;
 }
 
-/* ── Horizontal rules / dividers ── */
-[data-theme='dark'] hr,
-[data-theme='dark'] div[style*="height: 1px"],
-[data-theme='dark'] div[style*="height:1px"] {
-  background: rgba(255,255,255,0.08) !important;
-  border-color: rgba(255,255,255,0.08) !important;
+/* ─ Paragraphs: only flip dark-on-light text ─ */
+/*
+  Hero paragraphs use rgba(255,255,255,0.62) — leave them.
+  Content paragraphs use #6b7280 / #4b5563 — flip those.
+*/
+[data-theme='dark'] p:not([style*="color: rgba(255"]):not([style*="color: '#fff'"]):not([style*="color: #fff"]):not([style*="color: white"]) {
+  color: #9e99bf !important;
 }
 
-/* ── Footer ── */
-[data-theme='dark'] footer {
-  background: #0a0a14 !important;
+/* ─ Spans with dark text colors ─ */
+[data-theme='dark'] span[style*="color: #111827"],
+[data-theme='dark'] span[style*="color: '#111827'"],
+[data-theme='dark'] span[style*="color: #374151"],
+[data-theme='dark'] span[style*="color: '#374151'"],
+[data-theme='dark'] span[style*="color: #1a0444"],
+[data-theme='dark'] span[style*="color: '#1a0444'"] {
+  color: #edeaf8 !important;
+}
+[data-theme='dark'] span[style*="color: #6b7280"],
+[data-theme='dark'] span[style*="color: '#6b7280'"],
+[data-theme='dark'] span[style*="color: #4b5563"],
+[data-theme='dark'] span[style*="color: '#4b5563'"],
+[data-theme='dark'] span[style*="color: #9ca3af"],
+[data-theme='dark'] span[style*="color: '#9ca3af'"] {
+  color: #7a75a0 !important;
+}
+
+/* ─ Divs used as text containers (stat numbers, labels, feature rows) ─ */
+[data-theme='dark'] div[style*="color: #111827"],
+[data-theme='dark'] div[style*="color: '#111827'"],
+[data-theme='dark'] div[style*="color: #374151"],
+[data-theme='dark'] div[style*="color: '#374151'"] {
+  color: #edeaf8 !important;
+}
+[data-theme='dark'] div[style*="color: #6b7280"],
+[data-theme='dark'] div[style*="color: '#6b7280'"],
+[data-theme='dark'] div[style*="color: #4b5563"],
+[data-theme='dark'] div[style*="color: '#4b5563'"],
+[data-theme='dark'] div[style*="color: #9ca3af"],
+[data-theme='dark'] div[style*="color: '#9ca3af'"] {
+  color: #7a75a0 !important;
+}
+
+/* ─ Icon tint wrappers (span with pastel bg + accent icon color) ─ */
+/* Keep accent color, just dim the pastel background */
+[data-theme='dark'] span[style*="background: #F5F3FF"],
+[data-theme='dark'] span[style*="background: '#F5F3FF'"] {
+  background-color: rgba(124, 58, 237, 0.14) !important;
+}
+[data-theme='dark'] span[style*="background: #ECFDF5"],
+[data-theme='dark'] span[style*="background: '#ECFDF5'"] {
+  background-color: rgba(16, 185, 129, 0.12) !important;
+}
+[data-theme='dark'] span[style*="background: #EFF6FF"],
+[data-theme='dark'] span[style*="background: '#EFF6FF'"] {
+  background-color: rgba(59, 130, 246, 0.12) !important;
+}
+[data-theme='dark'] span[style*="background: #FFF7ED"],
+[data-theme='dark'] span[style*="background: '#FFF7ED'"],
+[data-theme='dark'] span[style*="background: #FFFBEB"],
+[data-theme='dark'] span[style*="background: '#FFFBEB'"] {
+  background-color: rgba(245, 158, 11, 0.12) !important;
+}
+[data-theme='dark'] span[style*="background: #FEF2F2"],
+[data-theme='dark'] span[style*="background: '#FEF2F2'"] {
+  background-color: rgba(239, 68, 68, 0.12) !important;
+}
+[data-theme='dark'] span[style*="background: #FDF2F8"],
+[data-theme='dark'] span[style*="background: '#FDF2F8'"] {
+  background-color: rgba(236, 72, 153, 0.12) !important;
+}
+[data-theme='dark'] span[style*="background: #E6F4EA"],
+[data-theme='dark'] span[style*="background: '#E6F4EA'"],
+[data-theme='dark'] span[style*="background: #EEF2FF"],
+[data-theme='dark'] span[style*="background: '#EEF2FF'"] {
+  background-color: rgba(99, 102, 241, 0.12) !important;
+}
+
+/* ─ Hero icon bubbles (Hero.js — div with pastel bg + border) ─ */
+[data-theme='dark'] div[style*="background: #EFF6FF"],
+[data-theme='dark'] div[style*="background: #ECFDF5"],
+[data-theme='dark'] div[style*="background: #F5F3FF"],
+[data-theme='dark'] div[style*="background: #FFF7ED"],
+[data-theme='dark'] div[style*="background: #FEF2F2"],
+[data-theme='dark'] div[style*="background: #FDF2F8"],
+[data-theme='dark'] div[style*="background: #E6F4EA"],
+[data-theme='dark'] div[style*="background: #EEF2FF"] {
+  background-color: rgba(255,255,255,0.06) !important;
+  border-color: rgba(255,255,255,0.1) !important;
+}
+
+/* ─ Platform page AI chat bubble (blue tint) ─ */
+[data-theme='dark'] div[style*="background: #bfdbfe"],
+[data-theme='dark'] div[style*="border: 1px solid #bfdbfe"] {
+  background-color: rgba(59,130,246,0.1) !important;
+  border-color: rgba(59,130,246,0.25) !important;
+}
+/* AI chat text (dark blue #1e40af) */
+[data-theme='dark'] div[style*="color: #1e40af"] {
+  color: #93c5fd !important;
+}
+
+/* ─ Integration tag pills (#f3f4f6 bg, #4b5563 text) ─ */
+[data-theme='dark'] div[style*="background: #f3f4f6"],
+[data-theme='dark'] span[style*="background: #f3f4f6"] {
+  background-color: #252540 !important;
+  color: #a09bc0 !important;
+}
+
+/* ─ Borders / dividers ─ */
+[data-theme='dark'] div[style*="border: 1px solid #e5e7eb"],
+[data-theme='dark'] div[style*="border: 1px solid rgba(0,0,0,0.04)"],
+[data-theme='dark'] div[style*="border: 1px solid rgba(0,0,0,.04)"],
+[data-theme='dark'] div[style*="border: 1px solid rgba(0, 0, 0, 0.04)"],
+[data-theme='dark'] div[style*="border: 1px solid rgba(0,0,0,0.05)"],
+[data-theme='dark'] div[style*="border: 1px solid rgba(0, 0, 0, 0.05)"],
+[data-theme='dark'] div[style*="border: 2px solid #7C3AED"] {
+  border-color: rgba(255,255,255,0.1) !important;
+}
+[data-theme='dark'] div[style*="borderTop: '1px solid #f3f4f6'"],
+[data-theme='dark'] div[style*="borderTop: '1px solid #e5e7eb'"] {
   border-top-color: rgba(255,255,255,0.07) !important;
 }
 
-/* ── Section headings and subheadings via global CSS classes ── */
-[data-theme='dark'] .section-heading {
-  color: #f1f0f9 !important;
-}
-[data-theme='dark'] .section-sub {
-  color: #8b85a8 !important;
-}
-
-/* ── List items (pricing features, etc.) ── */
-[data-theme='dark'] li[style*="color: #374"],
-[data-theme='dark'] li[style*="color: #111"],
-[data-theme='dark'] li[style*="color: #6b72"] {
-  color: #c4bfd9 !important;
+/* ─ Startup plan CTA (grey bg on light pages) ─ */
+[data-theme='dark'] a[style*="background: #F3F4F6"],
+[data-theme='dark'] a[style*="background: '#F3F4F6'"] {
+  background-color: #2a2a3e !important;
+  color: #a09bc0 !important;
 }
 
-/* ── Ticker/marquee strips ── */
-[data-theme='dark'] div[style*="background: var(--purple-50)"],
-[data-theme='dark'] div[style*="background: #f5f3ff"],
-[data-theme='dark'] div[style*="background: var(--gray-100)"],
-[data-theme='dark'] div[style*="background: #f3f4f6"] {
-  background: #1a1a2e !important;
+/* ─ Forms ─ */
+[data-theme='dark'] input:not([type="checkbox"]):not([type="radio"]),
+[data-theme='dark'] textarea,
+[data-theme='dark'] select {
+  background-color: #1c1c2e !important;
+  color: #edeaf8 !important;
+  border-color: rgba(255,255,255,0.14) !important;
 }
+[data-theme='dark'] input::placeholder,
+[data-theme='dark'] textarea::placeholder { color: #5a5475 !important; }
+[data-theme='dark'] label { color: #c4bfd9 !important; }
 
-/* ── Number stats (large bold numbers) ── */
-[data-theme='dark'] div[style*="font-size: 2"],
-[data-theme='dark'] div[style*="font-size: 1.8"],
-[data-theme='dark'] div[style*="font-size: 3"] {
-  color: #f1f0f9 !important;
+/* ─ Global utility class overrides ─ */
+[data-theme='dark'] .card {
+  background-color: #1c1c2e !important;
+  border-color: rgba(255,255,255,0.07) !important;
 }
+[data-theme='dark'] .section-heading { color: #edeaf8 !important; }
+[data-theme='dark'] .section-sub     { color: #7a75a0 !important; }
+[data-theme='dark'] .tag:not(.tag-dark) {
+  background: rgba(139,92,246,0.15) !important;
+  border-color: rgba(139,92,246,0.25) !important;
+  color: #a78bfa !important;
+}
+[data-theme='dark'] hr { border-color: rgba(255,255,255,0.07) !important; }
 
+/* ─ Footer (CSS Module driven) ─ */
+[data-theme='dark'] footer {
+  background-color: #0a0a14 !important;
+  border-top-color: rgba(255,255,255,0.06) !important;
+}
+[data-theme='dark'] footer p,
+[data-theme='dark'] footer span:not([class*="logo"]),
+[data-theme='dark'] footer a { color: #6b6690 !important; }
+[data-theme='dark'] footer h3,
+[data-theme='dark'] footer h4,
+[data-theme='dark'] footer [class*="title"] { color: #c4bfd9 !important; }
+[data-theme='dark'] footer a:hover { color: #a78bfa !important; }
+[data-theme='dark'] footer [class*="bottom"],
+[data-theme='dark'] footer [class*="Bottom"] { border-top-color: rgba(255,255,255,0.06) !important; }
+
+/* ─ Navbar: scrolled / lightTheme states in dark mode ─ */
+[data-theme='dark'] [class*="headerScrolled"],
+[data-theme='dark'] [class*="lightTheme"] {
+  background: rgba(14,14,26,0.95) !important;
+  border-bottom-color: rgba(255,255,255,0.07) !important;
+  backdrop-filter: blur(24px) !important;
+}
+[data-theme='dark'] [class*="headerScrolled"] [class*="navLink"],
+[data-theme='dark'] [class*="lightTheme"] [class*="navLink"] { color: #c4bfd9 !important; }
+[data-theme='dark'] [class*="headerScrolled"] [class*="navLink"]:hover,
+[data-theme='dark'] [class*="headerScrolled"] [class*="active"],
+[data-theme='dark'] [class*="lightTheme"] [class*="navLink"]:hover,
+[data-theme='dark'] [class*="lightTheme"] [class*="active"] { color: #a78bfa !important; }
+[data-theme='dark'] [class*="headerScrolled"] [class*="logoText"],
+[data-theme='dark'] [class*="lightTheme"] [class*="logoText"] { color: #edeaf8 !important; }
+[data-theme='dark'] [class*="headerScrolled"] [class*="pillNav"],
+[data-theme='dark'] [class*="lightTheme"] [class*="pillNav"] {
+  background: rgba(28,28,46,0.9) !important;
+  border-color: rgba(255,255,255,0.08) !important;
+}
