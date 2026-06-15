@@ -1,6 +1,6 @@
 'use client';
-import { useRef } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { useRef, useState } from 'react';
+import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 import { 
   TrendingUp, 
@@ -40,11 +40,119 @@ const iconVariant = {
   }),
 };
 
+const MOCK_DATA = {
+  dashboard: {
+    title: 'FounderOS™ Dashboard',
+    metrics: [
+      { label: 'Monthly Revenue', val: '₹42,80,000', trend: '▲ +12.5%', trendColor: '#7c3aed' },
+      { label: 'Compliance Tasks', val: '28 / 28 Done', trend: '✓ 100% Secure', trendColor: '#10b981' },
+      { label: 'Project Deliveries', val: '96.4% On-Time', trend: '▲ +2.1%', trendColor: '#7c3aed' },
+      { label: 'IPO Readiness', val: '87 / 100', trend: '★ Level: Advanced', trendColor: '#6366f1' },
+    ],
+    alerts: [
+      { text: 'Weekly payroll audit completed successfully', icon: CheckCircle2, color: '#10b981' },
+      { text: 'PF & ESIC compliance filing due in 4 days', icon: AlertTriangle, color: '#3b82f6' },
+      { text: 'MSME Transformation checklist is 82% complete', icon: CheckCircle2, color: '#f59e0b' },
+    ],
+    chartTitle: 'Business Growth Forecast (2026)',
+    chartBars: [35, 48, 62, 78, 94],
+    chartLabels: ['Q1', 'Q2', 'Q3', 'Q4', 'Next']
+  },
+  hr: {
+    title: 'Team & HR Operations',
+    metrics: [
+      { label: 'Total Employees', val: '142', trend: '▲ +4 this month', trendColor: '#10b981' },
+      { label: 'Attrition Rate', val: '4.2%', trend: '▼ -1.1%', trendColor: '#10b981' },
+      { label: 'Avg Performance', val: '4.8 / 5', trend: '★ Excellent', trendColor: '#f59e0b' },
+      { label: 'Open Roles', val: '6', trend: 'Actively Hiring', trendColor: '#3b82f6' },
+    ],
+    alerts: [
+      { text: 'Annual appraisals completed for all departments', icon: CheckCircle2, color: '#10b981' },
+      { text: '3 candidates pending final interview rounds', icon: Users, color: '#3b82f6' },
+      { text: 'Employee satisfaction score improved to 92%', icon: TrendingUp, color: '#10b981' },
+    ],
+    chartTitle: 'Hiring vs Attrition (YTD)',
+    chartBars: [20, 35, 25, 45, 60],
+    chartLabels: ['Jan', 'Feb', 'Mar', 'Apr', 'May']
+  },
+  projects: {
+    title: 'Project Management',
+    metrics: [
+      { label: 'Active Projects', val: '24', trend: '4 nearing completion', trendColor: '#3b82f6' },
+      { label: 'Overall Progress', val: '78%', trend: '▲ On Track', trendColor: '#10b981' },
+      { label: 'Billable Hours', val: '1,450', trend: '▲ +120 hrs', trendColor: '#7c3aed' },
+      { label: 'Resource Load', val: '88%', trend: 'Optimal', trendColor: '#10b981' },
+    ],
+    alerts: [
+      { text: 'Project "Alpha" deadline approaching in 2 days', icon: AlertTriangle, color: '#f59e0b' },
+      { text: 'Client milestone signed off for phase 1', icon: CheckCircle2, color: '#10b981' },
+      { text: 'Resource allocation pending for 2 new projects', icon: Users, color: '#3b82f6' },
+    ],
+    chartTitle: 'Project Completion Rate',
+    chartBars: [40, 50, 75, 85, 95],
+    chartLabels: ['W1', 'W2', 'W3', 'W4', 'W5']
+  },
+  compliance: {
+    title: 'Compliance & Legal',
+    metrics: [
+      { label: 'Compliance Score', val: '100%', trend: '✓ Fully Compliant', trendColor: '#10b981' },
+      { label: 'Pending Filings', val: '0', trend: 'All up to date', trendColor: '#10b981' },
+      { label: 'Audit Readiness', val: 'High', trend: 'Next audit in 45 days', trendColor: '#3b82f6' },
+      { label: 'Active Policies', val: '32', trend: '2 updated recently', trendColor: '#7c3aed' },
+    ],
+    alerts: [
+      { text: 'Quarterly tax filings completed successfully', icon: CheckCircle2, color: '#10b981' },
+      { text: 'Update data privacy policy as per new regulations', icon: AlertTriangle, color: '#f59e0b' },
+      { text: 'Internal compliance audit passed with 0 observations', icon: ShieldCheck, color: '#10b981' },
+    ],
+    chartTitle: 'Compliance Task Progress',
+    chartBars: [100, 100, 100, 100, 100],
+    chartLabels: ['Jan', 'Feb', 'Mar', 'Apr', 'May']
+  },
+  finance: {
+    title: 'Finance & Accounts',
+    metrics: [
+      { label: 'Cash Flow', val: '₹1.2Cr', trend: '▲ +15% vs last month', trendColor: '#10b981' },
+      { label: 'Accounts Receivable', val: '₹45L', trend: '▼ -5%', trendColor: '#10b981' },
+      { label: 'Accounts Payable', val: '₹12L', trend: 'Within limits', trendColor: '#3b82f6' },
+      { label: 'Net Profit Margin', val: '24%', trend: '▲ +2.5%', trendColor: '#7c3aed' },
+    ],
+    alerts: [
+      { text: 'Monthly reconciliation completed', icon: CheckCircle2, color: '#10b981' },
+      { text: '3 invoices overdue by more than 15 days', icon: AlertTriangle, color: '#ef4444' },
+      { text: 'Vendor payment run scheduled for tomorrow', icon: DollarSign, color: '#3b82f6' },
+    ],
+    chartTitle: 'Revenue vs Expenses',
+    chartBars: [30, 45, 40, 60, 85],
+    chartLabels: ['M1', 'M2', 'M3', 'M4', 'M5']
+  },
+  esg: {
+    title: 'ESG Scorecard',
+    metrics: [
+      { label: 'Overall ESG Score', val: 'A-', trend: 'Top 15% in industry', trendColor: '#10b981' },
+      { label: 'Carbon Footprint', val: 'Reduced 12%', trend: 'On track to net zero', trendColor: '#10b981' },
+      { label: 'Diversity Ratio', val: '42%', trend: '▲ +5% YoY', trendColor: '#7c3aed' },
+      { label: 'Governance Index', val: '95/100', trend: '★ Excellent', trendColor: '#3b82f6' },
+    ],
+    alerts: [
+      { text: 'Annual sustainability report published', icon: CheckCircle2, color: '#10b981' },
+      { text: '100% board members completed ethics training', icon: ShieldCheck, color: '#10b981' },
+      { text: 'Initiate Q3 community outreach program', icon: Users, color: '#f59e0b' },
+    ],
+    chartTitle: 'ESG Metric Improvements',
+    chartBars: [50, 65, 70, 85, 92],
+    chartLabels: ['2022', '2023', '2024', '2025', '2026']
+  }
+};
+
 export default function Hero() {
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end start'] });
   const y = useTransform(scrollYProgress, [0, 1], ['0%', '20%']);
   const op = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+
+  const [activeTab, setActiveTab] = useState('dashboard');
+  const activeData = MOCK_DATA[activeTab];
 
   return (
     <section className={styles.hero} ref={ref} id="hero">
@@ -145,22 +253,46 @@ export default function Hero() {
                     SANGOE
                   </div>
                   <div className={styles.sideNav}>
-                    <div className={`${styles.sideItem} ${styles.sideActive}`} style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                    <div 
+                      className={`${styles.sideItem} ${activeTab === 'dashboard' ? styles.sideActive : ''}`} 
+                      style={{ display: 'flex', alignItems: 'center', gap: '6px' }}
+                      onClick={() => setActiveTab('dashboard')}
+                    >
                       <BarChart2 size={12} /> Dashboard
                     </div>
-                    <div className={styles.sideItem} style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                    <div 
+                      className={`${styles.sideItem} ${activeTab === 'hr' ? styles.sideActive : ''}`} 
+                      style={{ display: 'flex', alignItems: 'center', gap: '6px' }}
+                      onClick={() => setActiveTab('hr')}
+                    >
                       <Users size={12} /> Team &amp; HR
                     </div>
-                    <div className={styles.sideItem} style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                    <div 
+                      className={`${styles.sideItem} ${activeTab === 'projects' ? styles.sideActive : ''}`} 
+                      style={{ display: 'flex', alignItems: 'center', gap: '6px' }}
+                      onClick={() => setActiveTab('projects')}
+                    >
                       <Briefcase size={12} /> Projects
                     </div>
-                    <div className={styles.sideItem} style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                    <div 
+                      className={`${styles.sideItem} ${activeTab === 'compliance' ? styles.sideActive : ''}`} 
+                      style={{ display: 'flex', alignItems: 'center', gap: '6px' }}
+                      onClick={() => setActiveTab('compliance')}
+                    >
                       <ShieldCheck size={12} /> Compliance
                     </div>
-                    <div className={styles.sideItem} style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                    <div 
+                      className={`${styles.sideItem} ${activeTab === 'finance' ? styles.sideActive : ''}`} 
+                      style={{ display: 'flex', alignItems: 'center', gap: '6px' }}
+                      onClick={() => setActiveTab('finance')}
+                    >
                       <DollarSign size={12} /> Finance
                     </div>
-                    <div className={styles.sideItem} style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                    <div 
+                      className={`${styles.sideItem} ${activeTab === 'esg' ? styles.sideActive : ''}`} 
+                      style={{ display: 'flex', alignItems: 'center', gap: '6px' }}
+                      onClick={() => setActiveTab('esg')}
+                    >
                       <Leaf size={12} /> ESG Score
                     </div>
                   </div>
@@ -169,7 +301,18 @@ export default function Hero() {
                 {/* Main Dashboard Screen — WHITE THEME */}
                 <div className={styles.mainScreen}>
                   <div className={styles.mainHeader}>
-                    <div className={styles.mainTitle}>FounderOS™ Dashboard</div>
+                    <AnimatePresence mode="wait">
+                      <motion.div 
+                        key={activeData.title}
+                        className={styles.mainTitle}
+                        initial={{ opacity: 0, y: -10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: 10 }}
+                        transition={{ duration: 0.2 }}
+                      >
+                        {activeData.title}
+                      </motion.div>
+                    </AnimatePresence>
                     <div className={styles.profileBox}>
                       <span className={styles.healthScore}>Health Score: 94%</span>
                       <div className={styles.profileAvatar}>
@@ -180,58 +323,78 @@ export default function Hero() {
 
                   {/* Metrics Row */}
                   <div className={styles.metricsGrid}>
-                    <div className={styles.metricCard}>
-                      <div className={styles.metricLabel}>Monthly Revenue</div>
-                      <div className={styles.metricVal}>₹42,80,000</div>
-                      <div className={styles.metricTrend}>▲ +12.5%</div>
-                    </div>
-                    <div className={styles.metricCard}>
-                      <div className={styles.metricLabel}>Compliance Tasks</div>
-                      <div className={styles.metricVal}>28 / 28 Done</div>
-                      <div className={styles.metricTrend} style={{ color: '#10b981' }}>✓ 100% Secure</div>
-                    </div>
-                    <div className={styles.metricCard}>
-                      <div className={styles.metricLabel}>Project Deliveries</div>
-                      <div className={styles.metricVal}>96.4% On-Time</div>
-                      <div className={styles.metricTrend}>▲ +2.1%</div>
-                    </div>
-                    <div className={styles.metricCard}>
-                      <div className={styles.metricLabel}>IPO Readiness</div>
-                      <div className={styles.metricVal}>87 / 100</div>
-                      <div className={styles.metricTrend} style={{ color: '#6366f1' }}>★ Level: Advanced</div>
-                    </div>
+                    <AnimatePresence mode="wait">
+                      {activeData.metrics.map((metric, idx) => (
+                        <motion.div 
+                          key={metric.label + idx}
+                          className={styles.metricCard}
+                          initial={{ opacity: 0, scale: 0.95 }}
+                          animate={{ opacity: 1, scale: 1 }}
+                          exit={{ opacity: 0, scale: 0.95 }}
+                          transition={{ duration: 0.2, delay: idx * 0.05 }}
+                        >
+                          <div className={styles.metricLabel}>{metric.label}</div>
+                          <div className={styles.metricVal}>{metric.val}</div>
+                          <div className={styles.metricTrend} style={{ color: metric.trendColor }}>{metric.trend}</div>
+                        </motion.div>
+                      ))}
+                    </AnimatePresence>
                   </div>
 
                   {/* Visual Analysis Area */}
                   <div className={styles.analysisRow}>
                     <div className={styles.chartCol}>
-                      <div className={styles.chartHeader}>Business Growth Forecast (2026)</div>
-                      <div className={styles.chartBody}>
-                        {/* CSS Bars representing growth chart */}
-                        <div className={styles.chartBars}>
-                          <div className={styles.bar} style={{ height: '35%' }}><span className={styles.barTooltip}>Q1</span></div>
-                          <div className={styles.bar} style={{ height: '48%' }}><span className={styles.barTooltip}>Q2</span></div>
-                          <div className={styles.bar} style={{ height: '62%' }}><span className={styles.barTooltip}>Q3</span></div>
-                          <div className={styles.bar} style={{ height: '78%' }}><span className={styles.barTooltip}>Q4</span></div>
-                          <div className={styles.bar} style={{ height: '94%' }}><span className={styles.barTooltip}>Next</span></div>
-                        </div>
-                      </div>
+                      <AnimatePresence mode="wait">
+                        <motion.div
+                          key={"chart-" + activeTab}
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                          exit={{ opacity: 0 }}
+                          transition={{ duration: 0.2 }}
+                        >
+                          <div className={styles.chartHeader}>{activeData.chartTitle}</div>
+                          <div className={styles.chartBody}>
+                            {/* CSS Bars representing growth chart */}
+                            <div className={styles.chartBars}>
+                              {activeData.chartBars.map((height, i) => (
+                                <motion.div 
+                                  key={i}
+                                  className={styles.bar} 
+                                  initial={{ height: 0 }}
+                                  animate={{ height: `${height}%` }}
+                                  transition={{ duration: 0.5, delay: i * 0.1, ease: 'easeOut' }}
+                                >
+                                  <span className={styles.barTooltip}>{activeData.chartLabels[i]}</span>
+                                </motion.div>
+                              ))}
+                            </div>
+                          </div>
+                        </motion.div>
+                      </AnimatePresence>
                     </div>
                     <div className={styles.tasksCol}>
                       <div className={styles.tasksHeader}>Recent Alerts</div>
                       <div className={styles.tasksList}>
-                        <div className={styles.taskItem}>
-                          <CheckCircle2 size={12} style={{ color: '#10b981', marginTop: '2px', flexShrink: 0 }} />
-                          <span>Weekly payroll audit completed successfully</span>
-                        </div>
-                        <div className={styles.taskItem}>
-                          <AlertTriangle size={12} style={{ color: '#3b82f6', marginTop: '2px', flexShrink: 0 }} />
-                          <span>PF &amp; ESIC compliance filing due in 4 days</span>
-                        </div>
-                        <div className={styles.taskItem}>
-                          <CheckCircle2 size={12} style={{ color: '#f59e0b', marginTop: '2px', flexShrink: 0 }} />
-                          <span>MSME Transformation checklist is 82% complete</span>
-                        </div>
+                        <AnimatePresence mode="wait">
+                          <motion.div
+                            key={"alerts-" + activeTab}
+                            initial={{ opacity: 0, x: 20 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            exit={{ opacity: 0, x: -20 }}
+                            transition={{ duration: 0.3 }}
+                            style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}
+                          >
+                            {activeData.alerts.map((alert, idx) => {
+                              const AlertIcon = alert.icon;
+                              return (
+                                <div key={idx} className={styles.taskItem}>
+                                  <AlertIcon size={12} style={{ color: alert.color, marginTop: '2px', flexShrink: 0 }} />
+                                  <span>{alert.text}</span>
+                                </div>
+                              );
+                            })}
+                          </motion.div>
+                        </AnimatePresence>
                       </div>
                     </div>
                   </div>

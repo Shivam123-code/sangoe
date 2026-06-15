@@ -40,7 +40,7 @@ export default function WhySangoe() {
             <thead>
               <tr>
                 <th className={styles.capCol}>Capability</th>
-                <th>CRM</th>
+                <th>Other CRM</th>
                 <th>ERP</th>
                 <th className={styles.sangoeCol}>
                   <span className={styles.sangoeHeader}>

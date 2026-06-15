@@ -6,16 +6,7 @@ import { Star, Award, TrendingUp, Users } from 'lucide-react';
 import { useReveal, fadeUp, slideRight, stagger } from '../ui/motion';
 import styles from './JourneySection.module.css';
 
-const STEPS = [
-  { label: 'Startup',           color: '#7C3AED' },
-  { label: 'Growing Company',   color: '#6366F1' },
-  { label: 'Systemized',        color: '#3B82F6' },
-  { label: 'Process Driven',    color: '#10B981' },
-  { label: 'Compliance Driven', color: '#F59E0B' },
-  { label: 'Governance Driven', color: '#F55F0B' },
-  { label: 'Investor Ready',    color: '#EF4444' },
-  { label: 'IPO Ready ✦',       color: '#8B5CF6' },
-];
+
 
 const STATS = [
   { value: 500, suffix: '+', label: 'Businesses Transformed', icon: TrendingUp, color: '#7C3AED' },
@@ -150,43 +141,7 @@ export default function JourneySection() {
               </div>
             </div>
 
-            {/* Journey roadmap card */}
-            <div className={styles.journeyCard}>
-              <div className={styles.journeyHeader}>
-                <div className={styles.journeyTitle}>
-                  <Award size={15} style={{ color: '#7C3AED' }} />
-                  <span>Startup to IPO Journey™</span>
-                </div>
-                <span className={styles.journeyBadge}>8 Stages</span>
-              </div>
 
-              {/* Steps as a horizontal progress track */}
-              <div className={styles.stepsTrack}>
-                {STEPS.map((s, i) => (
-                  <div key={i} className={styles.stepItem}>
-                    <motion.div
-                      className={styles.stepDot}
-                      style={{ background: s.color, boxShadow: `0 0 0 3px ${s.color}20` }}
-                      initial={{ scale: 0 }}
-                      animate={inView ? { scale: 1 } : { scale: 0 }}
-                      transition={{ delay: 0.4 + i * 0.08, type: 'spring', stiffness: 300 }}
-                    >
-                      <span>{i + 1}</span>
-                    </motion.div>
-                    {i < STEPS.length - 1 && (
-                      <motion.div
-                        className={styles.stepConnector}
-                        initial={{ scaleX: 0 }}
-                        animate={inView ? { scaleX: 1 } : { scaleX: 0 }}
-                        transition={{ delay: 0.45 + i * 0.08, duration: 0.3 }}
-                        style={{ background: `linear-gradient(90deg, ${s.color}, ${STEPS[i+1].color})` }}
-                      />
-                    )}
-                    <span className={styles.stepLabel} style={{ color: s.color }}>{s.label}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
           </motion.div>
 
         </div>

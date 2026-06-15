@@ -6,11 +6,14 @@ import {
   CheckCircle2, 
   ArrowRight,
   TrendingUp, 
+  TrendingDown,
   Shield, 
   Cpu, 
   Activity, 
   UserCheck, 
-  Star 
+  Star,
+  AlertTriangle,
+  DollarSign
 } from 'lucide-react';
 import { useReveal, fadeUp, slideRight, stagger } from '../ui/motion';
 import styles from './ProblemSection.module.css';
@@ -42,61 +45,104 @@ const AVATARS = [
 ];
 
 export default function ProblemSection() {
-  const { ref, inView } = useReveal(0.1);
+  const { ref, inView } = useReveal(0.15);
 
   return (
     <section className={`section ${styles.section}`} ref={ref} id="about">
+      {/* Subtle graphic glows in light theme */}
+      <div className={styles.orbProblem} />
+      <div className={styles.orbSolution} />
+
       <div className="wrap">
         <div className={styles.grid}>
 
-          {/* LEFT */}
+          {/* LEFT - Problem/Gaps */}
           <motion.div
             className={styles.left}
-            variants={stagger(0.1)}
+            variants={stagger(0.08)}
             initial="hidden"
             animate={inView ? 'show' : 'hidden'}
           >
-            <motion.span className="tag" variants={fadeUp}>Get To Know Sangoe</motion.span>
+            <motion.span className={styles.tagDark} variants={fadeUp}>
+              Get To Know Sangoe
+            </motion.span>
 
             <motion.h2 variants={fadeUp} className={styles.h2}>
               Most Businesses Struggle<br />
-              <span className="purple-text">With These Core Gaps</span>
+              <span className={styles.highlightText}>With These Core Gaps</span>
             </motion.h2>
 
             <motion.p variants={fadeUp} className={styles.lead}>
               At Sangoe we believe technology should simplify growth, not complicate it. That is why we created one unified Business Growth Operating System for Indian MSMEs.
             </motion.p>
 
-            <motion.ul variants={stagger(0.12)} className={styles.pains}>
+            {/* Redesigned Pain Points: 2 Column Grid */}
+            <motion.ul variants={stagger(0.06)} className={styles.pains}>
               {PAINS.map((p, i) => (
-                <motion.li key={i} variants={fadeUp} className={styles.pain}>
+                <motion.li 
+                  key={i} 
+                  variants={fadeUp} 
+                  className={styles.pain}
+                  whileHover={{ scale: 1.02, x: 4, backgroundColor: '#ffffff' }}
+                >
                   <XCircle className={styles.xIcon} size={16} />
                   <span>{p}</span>
                 </motion.li>
               ))}
             </motion.ul>
 
-            <motion.div variants={fadeUp} className={styles.result}>
-              <strong style={{ color: '#EF4444' }}>Result →</strong> Growth Stops. Profitability Reduces. Stress Increases.
+            {/* Redesigned Result Card: Highly prominent warning container */}
+            <motion.div 
+              variants={fadeUp} 
+              className={styles.resultCard}
+              whileHover={{ y: -2 }}
+              transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+            >
+              <div className={styles.resultHeader}>
+                <div className={styles.warningGlow}>
+                  <AlertTriangle className={styles.warningIcon} size={16} />
+                </div>
+                <span className={styles.resultLabel}>CRITICAL BUSINESS IMPACT</span>
+              </div>
+              
+              <div className={styles.resultTextContainer}>
+                <span className={styles.resultAccent}>Result → </span>
+                <span className={styles.resultMessage}>Growth Stops. Profitability Reduces. Stress Increases.</span>
+              </div>
+
+              <div className={styles.resultMetrics}>
+                <div className={styles.resultMetricItem}>
+                  <TrendingDown size={14} className={styles.metricItemIcon} />
+                  <span>Zero Scaling</span>
+                </div>
+                <div className={styles.resultMetricItem}>
+                  <DollarSign size={14} className={styles.metricItemIcon} />
+                  <span>Cash Leaks</span>
+                </div>
+                <div className={styles.resultMetricItem}>
+                  <AlertTriangle size={14} className={styles.metricItemIcon} />
+                  <span>High Burnout</span>
+                </div>
+              </div>
             </motion.div>
 
-            <motion.div variants={fadeUp} style={{ marginTop: '28px' }}>
+            <motion.div variants={fadeUp} style={{ marginTop: '20px' }}>
               <Link href="/platform" className={`btn btn-purple ${styles.cta}`} id="problem-connect">
                 Connect Your Business <ArrowRight size={16} />
               </Link>
             </motion.div>
           </motion.div>
 
-          {/* RIGHT */}
+          {/* RIGHT - Comparison & Proof */}
           <motion.div
             className={styles.right}
             variants={slideRight}
             initial="hidden"
             animate={inView ? 'show' : 'hidden'}
-            transition={{ delay: 0.2 }}
+            transition={{ delay: 0.15 }}
           >
             {/* Comparison card */}
-            <div className={`card ${styles.compCard}`}>
+            <div className={`${styles.compCard}`}>
               {/* Before */}
               <div className={styles.compSide}>
                 <span className={styles.compLabel}>Before Sangoe</span>
@@ -113,7 +159,7 @@ export default function ProblemSection() {
               </div>
 
               {/* After */}
-              <div className={styles.compSide}>
+              <div className={`${styles.compSide} ${styles.afterSide}`}>
                 <span className={`${styles.compLabel} ${styles.afterLabel}`}>After Sangoe</span>
                 <div className={styles.afterGrid}>
                   {AFTERS.map((a, i) => {
@@ -122,12 +168,12 @@ export default function ProblemSection() {
                       <motion.div
                         key={i}
                         className={styles.afterPill}
-                        whileHover={{ scale: 1.05, backgroundColor: a.color, color: '#fff' }}
+                        whileHover={{ scale: 1.05, backgroundColor: a.color, color: '#ffffff' }}
                         transition={{ type: 'spring', stiffness: 300, damping: 15 }}
-                        style={{ '--hover-col': a.color }}
+                        style={{ '--hover-col': a.color, borderColor: a.color + '20', background: a.bg }}
                       >
                         <IconComp size={14} className={styles.pillIcon} style={{ color: a.color }} />
-                        <span>{a.label}</span>
+                        <span style={{ color: '#1f2937' }}>{a.label}</span>
                       </motion.div>
                     );
                   })}
@@ -136,7 +182,7 @@ export default function ProblemSection() {
             </div>
 
             {/* Stats row */}
-            <div className={`card ${styles.statsRow}`}>
+            <div className={`${styles.statsRow}`}>
               {[
                 { n: '500+', l: 'Companies Transformed' },
                 { n: '18+',  l: 'Industries Served' },

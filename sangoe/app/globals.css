@@ -723,11 +723,70 @@ p, h1, h2, h3, h4, h5, h6, span, a, li {
   border-color: rgba(255,255,255,0.08) !important;
 }
 
+
+/* ══════════════════════════════════════════════════════════
+   DARK MODE — PAGE BACKGROUND FIX
+   Root cause: React renders style={{ background: '#f9fafb' }}
+   as background:#f9fafb (no space) in the DOM, so attribute
+   selectors with "background: #xxx" (space) never matched.
+   Fix: target body > div directly — the page wrapper is
+   always the only <div> direct child of <body>.
+   (Navbar = <header>, Footer = <footer>, so no ambiguity)
+══════════════════════════════════════════════════════════ */
+
+/* ─ THE main fix: page wrapper background ─ */
+[data-theme='dark'] body > div {
+  background-color: #0e0e1a !important;
+}
+[data-theme='dark'] body > div > div {
+  background-color: #0e0e1a !important;
+}
+
+/* ─ Also fix attribute selectors for both formats React may emit ─ */
+/* React omits the space: background:#f9fafb (not background: #f9fafb) */
+[data-theme='dark'] div[style*="background:#f9fafb"],
+[data-theme='dark'] div[style*="background:#f3f4f6"],
+[data-theme='dark'] div[style*="background:#f1f0f5"],
+[data-theme='dark'] div[style*="background:#f5f3ff"],
+[data-theme='dark'] div[style*="background:#ffffff"],
+[data-theme='dark'] div[style*="background:white"],
+[data-theme='dark'] div[style*="background: #f9fafb"],
+[data-theme='dark'] div[style*="background: #f3f4f6"],
+[data-theme='dark'] div[style*="background: #f1f0f5"],
+[data-theme='dark'] div[style*="background: #f5f3ff"],
+[data-theme='dark'] div[style*="background: #ffffff"],
+[data-theme='dark'] div[style*="background: white"] {
+  background-color: #0e0e1a !important;
+  border-color: rgba(255,255,255,0.07) !important;
+}
+
+/* ─ White content cards (distinguish from page wrappers) ─ */
+/* Cards have border-radius + border + box-shadow typically */
+[data-theme='dark'] div[style*="borderRadius"][style*="background:#ffffff"],
+[data-theme='dark'] div[style*="border-radius"][style*="background:#ffffff"],
+[data-theme='dark'] div[style*="borderRadius"][style*="background: #ffffff"],
+[data-theme='dark'] div[style*="border-radius"][style*="background: #ffffff"] {
+  background-color: #1c1c2e !important;
+}
+
+/* ─ Guard: Do NOT darken gradient/purple elements ─ */
+/* These have "linear-gradient" or "radial-gradient" in their background */
+/* CSS cannot un-set background-color if background-image was set via inline style */
+/* BUT: the background-color !important we set above on div will still show */
+/* under the background-image. So explicitly unset it for gradient elements: */
+[data-theme='dark'] div[style*="linear-gradient"] {
+  background-color: transparent !important;
+}
+[data-theme='dark'] div[style*="radial-gradient"] {
+  background-color: transparent !important;
+}
+
 /* ══════════════════════════════════════════════════════════
    DARK MODE — EXTENDED COVERAGE
    CSS Module classes · Light-gradient pages · Buttons
    Dynamic icon bubbles · All remaining color patterns
 ══════════════════════════════════════════════════════════ */
+
 
 /* ─ #__next and main ─ */
 [data-theme='dark'] #__next,
@@ -792,16 +851,20 @@ p, h1, h2, h3, h4, h5, h6, span, a, li {
 }
 
 /* ─ CSS Module white/light cards ─ */
-[data-theme='dark'] [class*="card"],
-[data-theme='dark'] [class*="Card"] {
+/* Only apply to non-gradient cards */
+[data-theme='dark'] [class*="card"]:not([style*="gradient"]):not([style*="linear"]),
+[data-theme='dark'] [class*="Card"]:not([style*="gradient"]):not([style*="linear"]) {
   background-color: #1c1c2e !important;
   border-color: rgba(255,255,255,0.07) !important;
 }
-/* Exception: cards that are already dark gradient (purple CTA cards) */
+/* Exception: purple/dark gradient CTA cards - restore their gradient */
 [data-theme='dark'] [class*="ctaCard"],
 [data-theme='dark'] [class*="CtaCard"],
-[data-theme='dark'] [class*="cta-card"] {
-  background: inherit !important;
+[data-theme='dark'] [class*="cta-card"],
+[data-theme='dark'] [class*="ctaBox"],
+[data-theme='dark'] [class*="ctaWrap"] {
+  background-color: transparent !important;
+  background: initial;
 }
 
 /* ─ TrustStrip ─ */
