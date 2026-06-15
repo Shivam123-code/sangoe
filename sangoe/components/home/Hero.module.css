@@ -613,6 +613,7 @@
   }
   .mockupCard {
     border-radius: 14px;
+    transform: none !important;
   }
 }
 
