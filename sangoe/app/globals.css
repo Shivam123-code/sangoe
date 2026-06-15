@@ -606,3 +606,273 @@ p, h1, h2, h3, h4, h5, h6, span, a, li {
     padding-right: 16px !important;
   }
 }
+
+/* ══════════════════════════════════════════════════════════
+   DARK MODE — Comprehensive Overrides
+   These !important rules override hardcoded inline styles
+   used throughout the page components.
+══════════════════════════════════════════════════════════ */
+
+/* ── Smooth theme transition on everything ── */
+[data-theme='dark'] *,
+[data-theme='light'] * {
+  transition:
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    color 0.3s ease;
+}
+/* But DON'T transition things that rely on other transforms */
+[data-theme='dark'] *:hover,
+[data-theme='light'] *:hover {
+  transition:
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    color 0.3s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+/* ── Body & page background ── */
+[data-theme='dark'] body {
+  background: #0d0d14 !important;
+  color: #f1f0f9 !important;
+}
+
+/* ── All white/light sections → dark ── */
+[data-theme='dark'] section {
+  background-color: #0d0d14 !important;
+}
+
+/* Sections that have explicit white background inline styles */
+[data-theme='dark'] section[style*="background: #fff"],
+[data-theme='dark'] section[style*="background:#fff"],
+[data-theme='dark'] section[style*="background: white"],
+[data-theme='dark'] section[style*="background: rgb(255"],
+[data-theme='dark'] section[style*="background: #f9fafb"],
+[data-theme='dark'] section[style*="background: #f3f4f6"],
+[data-theme='dark'] section[style*="background: #f1f0f5"],
+[data-theme='dark'] section[style*="background: #f5f3ff"],
+[data-theme='dark'] section[style*="background: var(--gray-50)"],
+[data-theme='dark'] section[style*="background: var(--purple-50)"] {
+  background-color: #13131f !important;
+}
+
+/* Alternate sections (slightly lighter dark) */
+[data-theme='dark'] section:nth-child(even) {
+  background-color: #13131f !important;
+}
+[data-theme='dark'] section:nth-child(odd) {
+  background-color: #0d0d14 !important;
+}
+
+/* ── Keep purple/gradient hero sections unchanged ── */
+[data-theme='dark'] section[style*="background: linear-gradient"],
+[data-theme='dark'] section[style*="background: var(--hero-gradient)"],
+[data-theme='dark'] section[style*="background: var(--cta-gradient)"],
+[data-theme='dark'] section[style*="#1a0140"],
+[data-theme='dark'] section[style*="#2e0b7a"],
+[data-theme='dark'] section[style*="#4a12b8"],
+[data-theme='dark'] section[style*="#4a0e96"],
+[data-theme='dark'] section[style*="#6d28d9"],
+[data-theme='dark'] section[style*="#7c3aed"] {
+  background-color: unset !important;
+  background: revert !important;
+}
+
+/* ── Divs used as section wrappers / containers ── */
+[data-theme='dark'] div[style*="background: #fff"],
+[data-theme='dark'] div[style*="background:#fff"],
+[data-theme='dark'] div[style*="background: white"],
+[data-theme='dark'] div[style*="background: #f9fafb"],
+[data-theme='dark'] div[style*="background: #f3f4f6"],
+[data-theme='dark'] div[style*="background: #f1f0f5"],
+[data-theme='dark'] div[style*="background: #f5f3ff"],
+[data-theme='dark'] div[style*="background: var(--gray-50)"],
+[data-theme='dark'] div[style*="background: var(--purple-50)"],
+[data-theme='dark'] div[style*="background: var(--white)"] {
+  background-color: #1a1a2e !important;
+  border-color: rgba(255,255,255,0.07) !important;
+}
+
+/* ── Keep purple/gradient div backgrounds unchanged ── */
+[data-theme='dark'] div[style*="background: linear-gradient"],
+[data-theme='dark'] div[style*="#4a0e96"],
+[data-theme='dark'] div[style*="#6d28d9"],
+[data-theme='dark'] div[style*="#7c3aed"],
+[data-theme='dark'] div[style*="#1a0140"],
+[data-theme='dark'] div[style*="var(--hero-gradient)"],
+[data-theme='dark'] div[style*="var(--cta-gradient)"],
+[data-theme='dark'] div[style*="rgba(109"] {
+  background-color: unset !important;
+  background: revert !important;
+}
+
+/* ── Headings ── */
+[data-theme='dark'] h1,
+[data-theme='dark'] h2,
+[data-theme='dark'] h3,
+[data-theme='dark'] h4,
+[data-theme='dark'] h5,
+[data-theme='dark'] h6 {
+  color: #f1f0f9 !important;
+}
+
+/* Headings with inline dark color overrides */
+[data-theme='dark'] h1[style*="color: #111"],
+[data-theme='dark'] h2[style*="color: #111"],
+[data-theme='dark'] h3[style*="color: #111"],
+[data-theme='dark'] h1[style*="color: #1a"],
+[data-theme='dark'] h2[style*="color: #1a"],
+[data-theme='dark'] h3[style*="color: #1a"],
+[data-theme='dark'] h1[style*="color: #0"],
+[data-theme='dark'] h2[style*="color: #0"],
+[data-theme='dark'] h3[style*="color: #0"],
+[data-theme='dark'] h1[style*="color: var(--gray-900)"],
+[data-theme='dark'] h2[style*="color: var(--gray-900)"],
+[data-theme='dark'] h3[style*="color: var(--gray-900)"] {
+  color: #f1f0f9 !important;
+}
+
+/* Keep white headings on purple backgrounds unchanged */
+[data-theme='dark'] h1[style*="color: #fff"],
+[data-theme='dark'] h2[style*="color: #fff"],
+[data-theme='dark'] h3[style*="color: #fff"],
+[data-theme='dark'] h1[style*="color: white"],
+[data-theme='dark'] h2[style*="color: white"],
+[data-theme='dark'] h3[style*="color: white"] {
+  color: #ffffff !important;
+}
+
+/* ── Paragraphs & body text ── */
+[data-theme='dark'] p {
+  color: #c4bfd9 !important;
+}
+[data-theme='dark'] p[style*="color: #6b72"],
+[data-theme='dark'] p[style*="color: #374"],
+[data-theme='dark'] p[style*="color: #111"],
+[data-theme='dark'] p[style*="color: var(--gray"] {
+  color: #8b85a8 !important;
+}
+/* Keep white text unchanged */
+[data-theme='dark'] p[style*="color: #fff"],
+[data-theme='dark'] p[style*="color: rgba(255"],
+[data-theme='dark'] p[style*="color: white"] {
+  color: inherit !important;
+}
+
+/* ── Spans used for labels and stats ── */
+[data-theme='dark'] span[style*="color: #111"],
+[data-theme='dark'] span[style*="color: #374"],
+[data-theme='dark'] span[style*="color: #1a"],
+[data-theme='dark'] span[style*="color: var(--gray-900)"],
+[data-theme='dark'] span[style*="color: var(--gray-700)"] {
+  color: #f1f0f9 !important;
+}
+[data-theme='dark'] span[style*="color: #6b72"],
+[data-theme='dark'] span[style*="color: var(--gray-500)"] {
+  color: #8b85a8 !important;
+}
+
+/* ── General div text (stat numbers, labels) ── */
+[data-theme='dark'] div[style*="color: #111"],
+[data-theme='dark'] div[style*="color: #1a"],
+[data-theme='dark'] div[style*="color: #374"],
+[data-theme='dark'] div[style*="color: var(--gray-900)"],
+[data-theme='dark'] div[style*="color: var(--gray-700)"] {
+  color: #f1f0f9 !important;
+}
+[data-theme='dark'] div[style*="color: #6b72"],
+[data-theme='dark'] div[style*="color: var(--gray-500)"],
+[data-theme='dark'] div[style*="color: #9ca3"] {
+  color: #8b85a8 !important;
+}
+
+/* ── Borders ── */
+[data-theme='dark'] div[style*="border: 1px solid #e5"],
+[data-theme='dark'] div[style*="border: 1px solid #d1"],
+[data-theme='dark'] div[style*="border: 1px solid rgba(0,0,0"],
+[data-theme='dark'] div[style*="border-top: 1px solid #e5"],
+[data-theme='dark'] div[style*="border-bottom: 1px solid #e5"],
+[data-theme='dark'] section[style*="border-top: 1px solid"],
+[data-theme='dark'] section[style*="border-bottom: 1px solid"] {
+  border-color: rgba(255,255,255,0.08) !important;
+}
+
+/* ── Cards and inner containers ── */
+[data-theme='dark'] .card,
+[data-theme='dark'] [class*="card"],
+[data-theme='dark'] [class*="Card"] {
+  background: #1a1a2e !important;
+  border-color: rgba(255,255,255,0.07) !important;
+  color: #f1f0f9 !important;
+}
+
+/* ── Form inputs & selects ── */
+[data-theme='dark'] input,
+[data-theme='dark'] textarea,
+[data-theme='dark'] select {
+  background: #1f1f35 !important;
+  color: #f1f0f9 !important;
+  border-color: rgba(255,255,255,0.12) !important;
+}
+[data-theme='dark'] input::placeholder,
+[data-theme='dark'] textarea::placeholder {
+  color: #5f597a !important;
+}
+
+/* ── Labels ── */
+[data-theme='dark'] label {
+  color: #c4bfd9 !important;
+}
+
+/* ── Tags (purple pill badges on light pages) ── */
+[data-theme='dark'] .tag:not(.tag-dark) {
+  background: rgba(139,92,246,.15) !important;
+  border-color: rgba(139,92,246,.3) !important;
+  color: #a78bfa !important;
+}
+
+/* ── Horizontal rules / dividers ── */
+[data-theme='dark'] hr,
+[data-theme='dark'] div[style*="height: 1px"],
+[data-theme='dark'] div[style*="height:1px"] {
+  background: rgba(255,255,255,0.08) !important;
+  border-color: rgba(255,255,255,0.08) !important;
+}
+
+/* ── Footer ── */
+[data-theme='dark'] footer {
+  background: #0a0a14 !important;
+  border-top-color: rgba(255,255,255,0.07) !important;
+}
+
+/* ── Section headings and subheadings via global CSS classes ── */
+[data-theme='dark'] .section-heading {
+  color: #f1f0f9 !important;
+}
+[data-theme='dark'] .section-sub {
+  color: #8b85a8 !important;
+}
+
+/* ── List items (pricing features, etc.) ── */
+[data-theme='dark'] li[style*="color: #374"],
+[data-theme='dark'] li[style*="color: #111"],
+[data-theme='dark'] li[style*="color: #6b72"] {
+  color: #c4bfd9 !important;
+}
+
+/* ── Ticker/marquee strips ── */
+[data-theme='dark'] div[style*="background: var(--purple-50)"],
+[data-theme='dark'] div[style*="background: #f5f3ff"],
+[data-theme='dark'] div[style*="background: var(--gray-100)"],
+[data-theme='dark'] div[style*="background: #f3f4f6"] {
+  background: #1a1a2e !important;
+}
+
+/* ── Number stats (large bold numbers) ── */
+[data-theme='dark'] div[style*="font-size: 2"],
+[data-theme='dark'] div[style*="font-size: 1.8"],
+[data-theme='dark'] div[style*="font-size: 3"] {
+  color: #f1f0f9 !important;
+}
+
