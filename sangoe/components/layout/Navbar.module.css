@@ -212,6 +212,41 @@
   z-index: 1010;
 }
 
+/* Theme toggle button */
+.themeToggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  cursor: pointer;
+  transition: background 0.22s ease, border-color 0.22s ease, transform 0.18s ease, color 0.22s ease;
+  flex-shrink: 0;
+}
+
+.themeToggle:hover {
+  background: rgba(255, 255, 255, 0.22);
+  transform: rotate(15deg) scale(1.08);
+}
+
+/* When navbar is in light/scrolled mode */
+.lightTheme .themeToggle,
+.headerScrolled .themeToggle {
+  background: rgba(124, 58, 237, 0.08);
+  border-color: rgba(124, 58, 237, 0.2);
+  color: #7C3AED;
+}
+
+.lightTheme .themeToggle:hover,
+.headerScrolled .themeToggle:hover {
+  background: rgba(124, 58, 237, 0.15);
+  border-color: rgba(124, 58, 237, 0.35);
+}
+
 /* CTA: solid WHITE pill like reference */
 .cta {
   font-size: 0.84rem;
@@ -460,13 +495,37 @@
 .mobileActions {
   margin-top: auto;
   padding-top: 16px;
-  border-top: 1px solid #e5e7eb;
+  border-top: 1px solid var(--theme-border);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Mobile drawer theme toggle */
+.mobileThemeToggle {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 13px 16px;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--theme-text-main);
+  background: var(--theme-card-bg);
+  border: 1px solid var(--theme-border);
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.mobileThemeToggle:hover {
+  background: var(--theme-bg-secondary);
 }
 
 /* ══════════════════════════════════════════════════════════
    RESPONSIVE BREAKPOINTS
 ══════════════════════════════════════════════════════════ */
-/* Tablet: hide pill nav, show burger */
+/* Tablet: hide pill nav, show burger — keep theme toggle visible */
 @media (max-width: 992px) {
   .pillNav { display: none; }
   .cta     { display: none; }
@@ -484,4 +543,27 @@
   .header { padding: 12px 0; }
   .headerScrolled { padding: 8px 0; }
   .logoText { font-size: 0.95rem; }
+}
+
+/* Dark mode: mobile drawer background */
+[data-theme='dark'] .mobileMenu {
+  background: #13131f;
+}
+
+[data-theme='dark'] .mobileLink {
+  background: #1a1a2e;
+  color: #c4bfd9;
+}
+
+[data-theme='dark'] .mobileActive {
+  background: rgba(124, 58, 237, 0.2);
+  color: #a78bfa;
+}
+
+[data-theme='dark'] .mobileSecTitle {
+  color: #5f597a;
+}
+
+[data-theme='dark'] .mobileDesc {
+  color: #5f597a;
 }

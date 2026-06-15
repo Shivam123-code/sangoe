@@ -4,8 +4,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { 
-  Cloud, 
-  LayoutDashboard, 
   HelpCircle, 
   FileText, 
   Calculator, 
@@ -13,8 +11,11 @@ import {
   Users, 
   Info, 
   Phone, 
-  ChevronDown 
+  ChevronDown,
+  Sun,
+  Moon
 } from 'lucide-react';
+import { useTheme } from './ThemeProvider';
 import styles from './Navbar.module.css';
 
 const MAIN_LINKS = [
@@ -40,6 +41,7 @@ export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [hoveredItem, setHoveredItem] = useState(null);
   const pathname = usePathname();
+  const { theme, toggle } = useTheme();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -145,8 +147,20 @@ export default function Navbar() {
             </div>
           </nav>
 
-          {/* Right Action Button */}
+          {/* Right Action Buttons */}
           <div className={styles.rightActions}>
+            {/* Theme Toggle */}
+            <button
+              className={styles.themeToggle}
+              onClick={toggle}
+              aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+              title={theme === 'dark' ? 'Light mode' : 'Dark mode'}
+            >
+              {theme === 'dark'
+                ? <Sun size={18} strokeWidth={2} />
+                : <Moon size={18} strokeWidth={2} />}
+            </button>
+
             <Link href="/contact" className={styles.cta}>
               Book Live Demo
             </Link>
@@ -211,6 +225,16 @@ export default function Navbar() {
               </div>
 
               <div className={styles.mobileActions}>
+                {/* Theme toggle inside mobile drawer */}
+                <button
+                  onClick={toggle}
+                  className={styles.mobileThemeToggle}
+                  aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+                >
+                  {theme === 'dark'
+                    ? <><Sun size={18} style={{ color: '#f59e0b' }} /> Switch to Light Mode</>
+                    : <><Moon size={18} style={{ color: '#7C3AED' }} /> Switch to Dark Mode</>}
+                </button>
                 <Link href="/contact" className="btn btn-purple" style={{ width: '100%', justifyContent: 'center' }}>
                   Book Live Demo
                 </Link>

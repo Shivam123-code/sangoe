@@ -53,6 +53,40 @@
   --space-lg:  clamp(24px,  4vw,  48px);
   --space-xl:  clamp(40px,  6vw,  72px);
   --space-2xl: clamp(56px,  7vw,  88px);
+
+  /* ── Semantic Theme Tokens (Light mode defaults) ── */
+  --theme-bg:          #f1f0f5;
+  --theme-bg-secondary:#ffffff;
+  --theme-card-bg:     #ffffff;
+  --theme-card-border: rgba(0, 0, 0, 0.06);
+  --theme-text-main:   #111827;
+  --theme-text-sub:    #374151;
+  --theme-text-muted:  #6b7280;
+  --theme-text-faint:  #9ca3af;
+  --theme-border:      #e5e7eb;
+  --theme-input-bg:    #ffffff;
+  --theme-input-border:#d1d5db;
+  --theme-shadow-card: 0 2px 12px rgba(0,0,0,.06);
+}
+
+/* ── Dark Mode Overrides ─────────────────────────────── */
+[data-theme='dark'] {
+  --theme-bg:           #0d0d14;
+  --theme-bg-secondary: #13131f;
+  --theme-card-bg:      #1a1a2e;
+  --theme-card-border:  rgba(255,255,255,0.07);
+  --theme-text-main:    #f1f0f9;
+  --theme-text-sub:     #c4bfd9;
+  --theme-text-muted:   #8b85a8;
+  --theme-text-faint:   #5f597a;
+  --theme-border:       rgba(255,255,255,0.08);
+  --theme-input-bg:     #1f1f35;
+  --theme-input-border: rgba(255,255,255,0.12);
+  --theme-shadow-card:  0 2px 20px rgba(0,0,0,0.35);
+  --page-bg:            #0d0d14;
+  --gray-900:           #f1f0f9;
+  --gray-700:           #c4bfd9;
+  --gray-500:           #8b85a8;
 }
 
 /* ── Reset ──────────────────────────────────────────────── */
@@ -66,14 +100,15 @@ html {
 }
 body {
   font-family: 'Inter', system-ui, sans-serif;
-  background: var(--page-bg);
-  color: var(--gray-900);
+  background: var(--theme-bg);
+  color: var(--theme-text-main);
   /* overflow-x only on body — safe, won't break scroll */
   overflow-x: hidden;
   line-height: 1.6;
   min-width: 320px;
   /* iOS momentum scrolling */
   -webkit-overflow-scrolling: touch;
+  transition: background 0.3s ease, color 0.3s ease;
 }
 a  { text-decoration: none; color: inherit; }
 ul { list-style: none; }
@@ -191,10 +226,11 @@ p, h1, h2, h3, h4, h5, h6, span, a, li {
 
 /* ── Cards ──────────────────────────────────────────────── */
 .card {
-  background: #fff;
+  background: var(--theme-card-bg);
   border-radius: var(--radius-xl);
-  border: 1px solid rgba(0,0,0,.06);
-  box-shadow: var(--shadow-card);
+  border: 1px solid var(--theme-card-border);
+  box-shadow: var(--theme-shadow-card);
+  transition: background 0.3s ease, border-color 0.3s ease;
 }
 
 /* ── Section ────────────────────────────────────────────── */
