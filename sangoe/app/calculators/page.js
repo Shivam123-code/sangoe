@@ -4,7 +4,9 @@ import {
   TrendingUp, 
   Coins, 
   Building,
-  CheckCircle2
+  CheckCircle2,
+  Briefcase,
+  Users
 } from 'lucide-react';
 
 export default function CalculatorsPage() {
@@ -23,6 +25,14 @@ export default function CalculatorsPage() {
   const [profit, setProfit] = useState(1200000);
   const [multiplier, setMultiplier] = useState(5);
 
+  // Project Profitability State
+  const [projectRevenue, setProjectRevenue] = useState(1000000);
+  const [projectCosts, setProjectCosts] = useState(650000);
+
+  // Employee Productivity State
+  const [employeeCost, setEmployeeCost] = useState(600000);
+  const [employeeRevenue, setEmployeeRevenue] = useState(1500000);
+
   // Calculations
   const calculatedSavings = Math.round((revenue * (savingsRate / 100)) * 12);
   
@@ -32,6 +42,11 @@ export default function CalculatorsPage() {
   const gstTotal = gstType === 'add' ? gstAmount + gstValue : gstAmount - gstValue;
 
   const valuation = profit * multiplier;
+
+  const projectProfit = projectRevenue - projectCosts;
+  const projectMargin = projectRevenue > 0 ? Math.round((projectProfit / projectRevenue) * 100) : 0;
+
+  const productivityRatio = employeeCost > 0 ? (employeeRevenue / employeeCost).toFixed(2) : 0;
 
   const formatter = new Intl.NumberFormat('en-IN', {
     style: 'currency',
@@ -123,6 +138,50 @@ export default function CalculatorsPage() {
           >
             <Building size={16} />
             <span>Business Valuation</span>
+          </button>
+          <button
+            onClick={() => setActiveTab('project')}
+            style={{
+              padding: '14px 18px',
+              borderRadius: '12px',
+              textAlign: 'left',
+              fontWeight: 700,
+              fontSize: '0.85rem',
+              backgroundColor: activeTab === 'project' ? '#3B82F6' : '#ffffff',
+              color: activeTab === 'project' ? '#ffffff' : '#4b5563',
+              border: '1px solid rgba(0,0,0,0.05)',
+              boxShadow: '0 2px 6px rgba(0,0,0,0.02)',
+              cursor: 'pointer',
+              transition: 'all 0.2s',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '10px'
+            }}
+          >
+            <Briefcase size={16} />
+            <span>Project Profitability</span>
+          </button>
+          <button
+            onClick={() => setActiveTab('employee')}
+            style={{
+              padding: '14px 18px',
+              borderRadius: '12px',
+              textAlign: 'left',
+              fontWeight: 700,
+              fontSize: '0.85rem',
+              backgroundColor: activeTab === 'employee' ? '#3B82F6' : '#ffffff',
+              color: activeTab === 'employee' ? '#ffffff' : '#4b5563',
+              border: '1px solid rgba(0,0,0,0.05)',
+              boxShadow: '0 2px 6px rgba(0,0,0,0.02)',
+              cursor: 'pointer',
+              transition: 'all 0.2s',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '10px'
+            }}
+          >
+            <Users size={16} />
+            <span>Employee Productivity</span>
           </button>
 
           <div style={{ padding: '20px', background: '#ffffff', border: '1px solid rgba(0,0,0,0.05)', borderRadius: '16px', fontSize: '0.78rem', color: '#6b7280', marginTop: '16px', boxShadow: '0 2px 8px rgba(0,0,0,0.01)' }}>
@@ -335,6 +394,111 @@ export default function CalculatorsPage() {
                   <div style={{ fontSize: '0.82rem', color: '#065f46', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.04em' }}>Estimated Business Enterprise Value</div>
                   <div style={{ fontSize: '2.5rem', fontWeight: 900, color: '#064e3b', margin: '8px 0' }}>{formatter.format(valuation)}</div>
                   <p style={{ fontSize: '0.8rem', color: '#059669', margin: 0 }}>*This is a standard EBITDA-based multiple projection. Real market valuation varies based on sectors.</p>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {activeTab === 'project' && (
+            <div>
+              <h2 style={{ fontSize: '1.6rem', fontWeight: 900, color: '#111827', marginBottom: '8px' }}>Project Profitability Calculator</h2>
+              <p style={{ fontSize: '0.88rem', color: '#6b7280', marginBottom: '32px' }}>Estimate the net profit margin for any given contract or project delivery.</p>
+
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+                {/* Revenue input */}
+                <div>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px', fontSize: '0.9rem', fontWeight: 700 }}>
+                    <span>Total Project Contract Value</span>
+                    <span style={{ color: '#3B82F6' }}>{formatter.format(projectRevenue)}</span>
+                  </div>
+                  <input
+                    type="range"
+                    min="100000"
+                    max="10000000"
+                    step="50000"
+                    value={projectRevenue}
+                    onChange={(e) => setProjectRevenue(Number(e.target.value))}
+                    style={{ width: '100%', accentColor: '#3B82F6' }}
+                  />
+                </div>
+
+                {/* Costs input */}
+                <div>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px', fontSize: '0.9rem', fontWeight: 700 }}>
+                    <span>Estimated Project Costs (Labor, Material, Ops)</span>
+                    <span style={{ color: '#EF4444' }}>{formatter.format(projectCosts)}</span>
+                  </div>
+                  <input
+                    type="range"
+                    min="50000"
+                    max="10000000"
+                    step="50000"
+                    value={projectCosts}
+                    onChange={(e) => setProjectCosts(Number(e.target.value))}
+                    style={{ width: '100%', accentColor: '#EF4444' }}
+                  />
+                </div>
+
+                {/* Output Grid */}
+                <div className="responsive-grid-2" style={{ gap: '16px', marginTop: '16px' }}>
+                  <div style={{ background: '#f9fafb', border: '1px solid rgba(0,0,0,0.04)', borderRadius: '12px', padding: '16px', textAlign: 'center' }}>
+                    <div style={{ fontSize: '0.75rem', color: '#6b7280', fontWeight: 600 }}>Estimated Net Profit</div>
+                    <div style={{ fontSize: '1.3rem', fontWeight: 800, color: projectProfit >= 0 ? '#10b981' : '#ef4444', marginTop: '6px' }}>{formatter.format(projectProfit)}</div>
+                  </div>
+                  <div style={{ background: '#EFF6FF', border: '1px solid #bfdbfe', borderRadius: '12px', padding: '16px', textAlign: 'center' }}>
+                    <div style={{ fontSize: '0.75rem', color: '#1e40af', fontWeight: 600 }}>Project Profit Margin</div>
+                    <div style={{ fontSize: '1.3rem', fontWeight: 800, color: '#1e3a8a', marginTop: '6px' }}>{projectMargin}%</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {activeTab === 'employee' && (
+            <div>
+              <h2 style={{ fontSize: '1.6rem', fontWeight: 900, color: '#111827', marginBottom: '8px' }}>Employee Productivity Calculator</h2>
+              <p style={{ fontSize: '0.88rem', color: '#6b7280', marginBottom: '32px' }}>Measure the return on investment for your workforce by calculating the revenue-to-cost ratio.</p>
+
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+                {/* Employee Revenue input */}
+                <div>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px', fontSize: '0.9rem', fontWeight: 700 }}>
+                    <span>Annual Revenue Generated per Employee (Avg)</span>
+                    <span style={{ color: '#3B82F6' }}>{formatter.format(employeeRevenue)}</span>
+                  </div>
+                  <input
+                    type="range"
+                    min="100000"
+                    max="10000000"
+                    step="100000"
+                    value={employeeRevenue}
+                    onChange={(e) => setEmployeeRevenue(Number(e.target.value))}
+                    style={{ width: '100%', accentColor: '#3B82F6' }}
+                  />
+                </div>
+
+                {/* Employee Cost input */}
+                <div>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px', fontSize: '0.9rem', fontWeight: 700 }}>
+                    <span>Annual Cost per Employee (Salary + Overhead)</span>
+                    <span style={{ color: '#EF4444' }}>{formatter.format(employeeCost)}</span>
+                  </div>
+                  <input
+                    type="range"
+                    min="100000"
+                    max="5000000"
+                    step="50000"
+                    value={employeeCost}
+                    onChange={(e) => setEmployeeCost(Number(e.target.value))}
+                    style={{ width: '100%', accentColor: '#EF4444' }}
+                  />
+                </div>
+
+                {/* Output Display */}
+                <div style={{ background: '#FFFBEB', borderRadius: '16px', padding: '24px', marginTop: '16px', border: '1px solid #FDE68A', textAlign: 'center' }}>
+                  <div style={{ fontSize: '0.82rem', color: '#b45309', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.04em' }}>Revenue-to-Cost Ratio</div>
+                  <div style={{ fontSize: '2.5rem', fontWeight: 900, color: '#92400e', margin: '8px 0' }}>{productivityRatio}x</div>
+                  <p style={{ fontSize: '0.8rem', color: '#d97706', margin: 0 }}>*A healthy business aims for a ratio of 3.0x or higher. If lower, focus on systemizing workflows to improve output.</p>
                 </div>
               </div>
             </div>

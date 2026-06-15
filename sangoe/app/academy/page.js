@@ -14,7 +14,11 @@ const COURSES = [
   { title: 'MSME Transformation Blueprint', category: 'Operations', duration: '5 hrs', level: 'Beginner', desc: 'Transition from scattered spreadsheets and manual operational controls to structured business databases.', lectures: 10 },
   { title: 'Workforce Performance & HR SOPs', category: 'HR', duration: '7 hrs', level: 'Intermediate', desc: 'Build recruitment structures, automated timesheet tracking, payroll controls, and training systems.', lectures: 14 },
   { title: 'Safety & Near Miss Onsite Management', category: 'Safety', duration: '4 hrs', level: 'Beginner', desc: 'How to deploy safety permits, hazard controls, near-miss reports, and incident management onsite.', lectures: 8 },
-  { title: 'ESG Scoring & SDG Compliance', category: 'Sustainability', duration: '5 hrs', level: 'Intermediate', desc: 'Measure carbon tracks, align with UN SDGs, and establish corporate governance sustainability models.', lectures: 10 }
+  { title: 'ESG Scoring & SDG Compliance', category: 'Sustainability', duration: '5 hrs', level: 'Intermediate', desc: 'Measure carbon tracks, align with UN SDGs, and establish corporate governance sustainability models.', lectures: 10 },
+  { title: 'Executive Leadership & Delegation', category: 'Leadership', duration: '10 hrs', level: 'Advanced', desc: 'Transition from being an operator to a visionary. Learn delegation frameworks and executive decision-making.', lectures: 20 },
+  { title: 'Modern Recruitment & Talent Acquisition', category: 'HR', duration: '4 hrs', level: 'Beginner', desc: 'Master the art of attracting, vetting, and hiring top-tier talent using systemized onboarding workflows.', lectures: 8 },
+  { title: 'Corporate Governance & Board Management', category: 'Governance', duration: '8 hrs', level: 'Advanced', desc: 'Establish a robust corporate governance structure, manage board meetings, and maintain investor relations.', lectures: 15 },
+  { title: 'Business Growth & Scaling Strategies', category: 'Growth', duration: '15 hrs', level: 'Intermediate', desc: 'Discover actionable strategies to scale your revenue, optimize pricing models, and expand into new markets seamlessly.', lectures: 28 }
 ];
 
 export default function AcademyPage() {

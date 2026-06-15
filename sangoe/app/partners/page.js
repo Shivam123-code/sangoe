@@ -23,6 +23,20 @@ const MODELS = [
   }
 ];
 
+const ECOSYSTEM_CATEGORIES = [
+  { name: 'CA Firms', desc: 'Add corporate systemization and financial auditing tools to your client services.' },
+  { name: 'CS Firms', desc: 'Manage board meetings, ROC compliance, and ESG governance digitally.' },
+  { name: 'Law Firms', desc: 'Standardize legal contracts and NDA compliance tracking for clients.' },
+  { name: 'HR Consultants', desc: 'Deploy recruitment and payroll SOPs for growing organizations.' },
+  { name: 'Safety Consultants', desc: 'Digitize your client\'s factory audits and near-miss reporting.' },
+  { name: 'Recruiters', desc: 'Provide clients with a full HRMS along with your placement services.' },
+  { name: 'Business Coaches', desc: 'Help founders step back by implementing the Business OS framework.' },
+  { name: 'Training Companies', desc: 'Track employee skills and deliver standard training modules.' },
+  { name: 'Technology Partners', desc: 'Integrate your SaaS or API services into the Sangoe ecosystem.' },
+  { name: 'Implementation Partners', desc: 'Deploy and configure Sangoe clouds for enterprise clients.' },
+  { name: 'White Label Partners', desc: 'Resell the entire Sangoe OS under your own brand name.' }
+];
+
 export default function PartnersPage() {
   const [formData, setFormData] = useState({ name: '', company: '', email: '', phone: '', model: 'Referral' });
 
@@ -109,6 +123,34 @@ export default function PartnersPage() {
                   ))}
                 </div>
               </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Ecosystem Categories Grid */}
+      <section style={{ padding: '40px 20px', maxWidth: '1200px', margin: '0 auto' }}>
+        <div style={{ textAlign: 'center', marginBottom: '40px' }}>
+          <h2 style={{ fontSize: '2rem', fontWeight: 900, color: '#111827' }}>Who Partners With Us?</h2>
+          <p style={{ fontSize: '1.05rem', color: '#6b7280', marginTop: '12px' }}>A diverse ecosystem built for professionals scaling Indian businesses.</p>
+        </div>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '20px' }}>
+          {ECOSYSTEM_CATEGORIES.map(cat => (
+            <div
+              key={cat.name}
+              style={{
+                background: '#ffffff',
+                borderRadius: '16px',
+                padding: '24px',
+                border: '1px solid rgba(0,0,0,0.04)',
+                boxShadow: '0 2px 10px rgba(0,0,0,0.01)',
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '8px'
+              }}
+            >
+              <h3 style={{ fontSize: '1.1rem', fontWeight: 800, color: '#3b82f6' }}>{cat.name}</h3>
+              <p style={{ fontSize: '0.85rem', color: '#4b5563', lineHeight: 1.5 }}>{cat.desc}</p>
             </div>
           ))}
         </div>

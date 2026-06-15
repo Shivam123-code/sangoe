@@ -32,8 +32,8 @@ export default function ContactPage() {
               Have questions about integrations, corporate audits, safety compliance, or custom reselling? Our team responds within 24 hours.
             </motion.p>
             <motion.div style={{ display: 'flex', gap: '14px', flexWrap: 'wrap' }} initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5, duration: 0.5 }}>
-              <a href="mailto:growth@sangoe.in" className="btn btn-purple">Email Our Team</a>
-              <a href="https://wa.me/919999999999" target="_blank" rel="noreferrer" className="btn btn-outline-white">WhatsApp Us</a>
+              <a href="mailto:support@sangoe.in" className="btn btn-purple">Email Our Team</a>
+              <a href="tel:02269620896" className="btn btn-outline-white">Call Us</a>
             </motion.div>
             <motion.div style={{ display: 'flex', gap: '32px', marginTop: '48px', paddingTop: '32px', borderTop: '1px solid rgba(255,255,255,0.08)' }} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.7, duration: 0.6 }}>
               {[['<24h', 'Response Time'], ['100%', 'Reply Rate'], ['Free', 'Consultation']].map(([num, label]) => (
@@ -101,7 +101,7 @@ export default function ContactPage() {
                 </span>
                 <div>
                   <div style={{ fontSize: '0.75rem', color: '#9ca3af', fontWeight: 700 }}>Sales Desk</div>
-                  <a href="mailto:growth@sangoe.in" style={{ fontSize: '0.9rem', color: '#7C3AED', fontWeight: 600 }}>growth@sangoe.in</a>
+                  <a href="mailto:support@sangoe.in" style={{ fontSize: '0.9rem', color: '#7C3AED', fontWeight: 600 }}>support@sangoe.in</a>
                 </div>
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
@@ -109,8 +109,8 @@ export default function ContactPage() {
                   <MessageSquare size={18} />
                 </span>
                 <div>
-                  <div style={{ fontSize: '0.75rem', color: '#9ca3af', fontWeight: 700 }}>WhatsApp Support</div>
-                  <a href="https://wa.me/919999999999" target="_blank" rel="noreferrer" style={{ fontSize: '0.9rem', color: '#10B981', fontWeight: 600 }}>+91 99999 99999</a>
+                  <div style={{ fontSize: '0.75rem', color: '#9ca3af', fontWeight: 700 }}>Phone Support</div>
+                  <a href="tel:02269620896" style={{ fontSize: '0.9rem', color: '#10B981', fontWeight: 600 }}>022 69620896</a>
                 </div>
               </div>
             </div>
@@ -119,9 +119,8 @@ export default function ContactPage() {
           <div style={{ borderTop: '1px solid #e5e7eb', paddingTop: '24px' }}>
             <h4 style={{ fontSize: '1.1rem', fontWeight: 750, color: '#111827', marginBottom: '16px' }}>Office Address</h4>
             <p style={{ fontSize: '0.88rem', color: '#6b7280', lineHeight: 1.6 }}>
-              Sangoe Business Growth Technologies Pvt. Ltd.<br />
-              WeWork Galaxy, 43, Residency Road,<br />
-              Bangalore, Karnataka - 560025, India.
+              TCP, S18, Vashi, Navi Mumbai,<br />
+              Maharashtra-400703
             </p>
           </div>
         </div>

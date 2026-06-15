@@ -9,7 +9,13 @@ import {
   FileText,
   ShieldCheck,
   Activity,
-  Award
+  Award,
+  Leaf,
+  AlertTriangle,
+  Users,
+  Settings,
+  Briefcase,
+  Truck
 } from 'lucide-react';
 
 const ASSESSMENTS = [
@@ -53,6 +59,104 @@ const ASSESSMENTS = [
       { q: 'What is your employee retention rate compared to the industry average?', options: [{ text: 'High turnover (under 1 year)', score: 30 }, { text: 'Average turnover', score: 70 }, { text: 'Excellent retention (over 3 years)', score: 100 }] },
       { q: 'How do you handle customer support tickets and response SLAs?', options: [{ text: 'Manual emails/calls', score: 20 }, { text: 'Shared ticketing system', score: 70 }, { text: 'Automated workflow with SLA alerts', score: 100 }] },
       { q: 'Are your sales agents hitting their monthly revenue quotas consistently?', options: [{ text: 'Under 50% hit rate', score: 30 }, { text: '50% to 80% hit rate', score: 75 }, { text: 'Over 80% hit rate', score: 100 }] }
+    ]
+  },
+  {
+    id: 'comp-score',
+    name: 'Compliance Score™',
+    desc: 'Evaluate your adherence to statutory laws, labor compliances, and internal policies.',
+    icon: ShieldCheck,
+    color: '#8B5CF6',
+    bg: '#F5F3FF',
+    questions: [
+      { q: 'How do you track labor laws, PF, and ESIC compliances?', options: [{ text: 'Manual tracking or outsourced without verification', score: 20 }, { text: 'Spreadsheets reviewed monthly', score: 60 }, { text: 'Automated compliance tracking tool', score: 100 }] },
+      { q: 'Are your vendor and contractor compliances actively verified?', options: [{ text: 'No verification done', score: 10 }, { text: 'Only basic document collection', score: 50 }, { text: 'Strict verification and continuous monitoring', score: 100 }] },
+      { q: 'How often do you conduct internal audits?', options: [{ text: 'Rarely or never', score: 10 }, { text: 'Once a year', score: 50 }, { text: 'Quarterly or monthly', score: 100 }] },
+      { q: 'Do you have a clear approval matrix documented for all key decisions?', options: [{ text: 'No, decisions are ad-hoc', score: 10 }, { text: 'Yes, verbally or via email', score: 40 }, { text: 'Yes, fully documented and automated', score: 100 }] }
+    ]
+  },
+  {
+    id: 'esg-score',
+    name: 'ESG Score™',
+    desc: 'Measure your environmental impact, social responsibility, and governance practices.',
+    icon: Leaf,
+    color: '#10B981',
+    bg: '#ECFDF5',
+    questions: [
+      { q: 'Do you actively track and attempt to reduce your carbon footprint?', options: [{ text: 'No tracking', score: 10 }, { text: 'Some basic initiatives in place', score: 50 }, { text: 'Comprehensive carbon tracking and reduction goals', score: 100 }] },
+      { q: 'Is your company aligned with UN Sustainable Development Goals (SDGs)?', options: [{ text: 'Not aware/Not aligned', score: 10 }, { text: 'Partially aligned in some areas', score: 60 }, { text: 'Fully integrated into business strategy', score: 100 }] },
+      { q: 'How do you report your sustainability efforts?', options: [{ text: 'We do not report', score: 10 }, { text: 'Informal internal reports', score: 40 }, { text: 'Formal annual sustainability reports', score: 100 }] },
+      { q: 'Are social impact and diversity metrics tracked for your workforce?', options: [{ text: 'No', score: 10 }, { text: 'Yes, minimally', score: 50 }, { text: 'Yes, comprehensively', score: 100 }] }
+    ]
+  },
+  {
+    id: 'safety-score',
+    name: 'Safety Score™',
+    desc: 'Audit your worksite safety, incident management, and hazard controls.',
+    icon: AlertTriangle,
+    color: '#EF4444',
+    bg: '#FEF2F2',
+    questions: [
+      { q: 'How are safety audits and inspections conducted?', options: [{ text: 'Rarely, or only when required', score: 20 }, { text: 'Paper-based monthly audits', score: 60 }, { text: 'Digital tracking with real-time reporting', score: 100 }] },
+      { q: 'Is there a formal "Permit To Work" system for high-risk tasks?', options: [{ text: 'No system in place', score: 10 }, { text: 'Yes, but often bypassed', score: 40 }, { text: 'Strictly enforced digital permits', score: 100 }] },
+      { q: 'How are near-misses and incidents reported?', options: [{ text: 'Often go unreported', score: 10 }, { text: 'Reported via paper/email forms', score: 50 }, { text: 'Centralized incident management platform', score: 100 }] },
+      { q: 'Are all contractors verified for safety compliance before starting work?', options: [{ text: 'No', score: 10 }, { text: 'Sometimes', score: 50 }, { text: 'Always, strictly enforced', score: 100 }] }
+    ]
+  },
+  {
+    id: 'hr-maturity',
+    name: 'HR Maturity Score™',
+    desc: 'Assess your employee lifecycle management, training, and performance systems.',
+    icon: Users,
+    color: '#06B6D4',
+    bg: '#ECFEFF',
+    questions: [
+      { q: 'How is employee attendance and leave managed?', options: [{ text: 'Manual registers or spreadsheets', score: 20 }, { text: 'Basic biometric/app', score: 60 }, { text: 'Fully integrated HRMS', score: 100 }] },
+      { q: 'Do you have a structured recruitment and onboarding process?', options: [{ text: 'Ad-hoc hiring, no onboarding plan', score: 20 }, { text: 'Standard interviews, basic orientation', score: 60 }, { text: 'Automated tracking and structured onboarding', score: 100 }] },
+      { q: 'How is employee performance evaluated?', options: [{ text: 'Annual informal reviews', score: 20 }, { text: 'Standard KPI tracking', score: 60 }, { text: 'Continuous feedback with OKR/KPI mapping', score: 100 }] },
+      { q: 'Do you maintain a skills matrix and organize regular training?', options: [{ text: 'No specific training plans', score: 20 }, { text: 'Occasional training sessions', score: 50 }, { text: 'Active skill tracking and regular training', score: 100 }] }
+    ]
+  },
+  {
+    id: 'biz-system',
+    name: 'Business Systemization Score™',
+    desc: 'Determine how well your operational processes are mapped and automated.',
+    icon: Settings,
+    color: '#10B981',
+    bg: '#ECFDF5',
+    questions: [
+      { q: 'Are standard operating procedures (SOPs) documented for all roles?', options: [{ text: 'No, mostly in peoples heads', score: 10 }, { text: 'Some departments have them', score: 50 }, { text: 'Yes, comprehensively documented', score: 100 }] },
+      { q: 'How integrated is your business data?', options: [{ text: 'Scattered across multiple tools and excels', score: 20 }, { text: 'Some integrated tools', score: 60 }, { text: 'One unified platform (Single source of truth)', score: 100 }] },
+      { q: 'Are routine tasks and approvals automated?', options: [{ text: 'Everything is manual', score: 10 }, { text: 'Basic email/workflow automation', score: 50 }, { text: 'Extensive workflow automation', score: 100 }] },
+      { q: 'Do you use department scorecards to track performance?', options: [{ text: 'No', score: 10 }, { text: 'Only for sales/finance', score: 50 }, { text: 'Yes, for all departments', score: 100 }] }
+    ]
+  },
+  {
+    id: 'project-health',
+    name: 'Project Health Score™',
+    desc: 'Evaluate your ability to deliver projects on time and within budget.',
+    icon: Briefcase,
+    color: '#F59E0B',
+    bg: '#FFFBEB',
+    questions: [
+      { q: 'How do you track project progress and deadlines?', options: [{ text: 'Emails and WhatsApp', score: 20 }, { text: 'Spreadsheets or basic task tools', score: 60 }, { text: 'Advanced project management software', score: 100 }] },
+      { q: 'Are timesheets and resource utilization accurately tracked?', options: [{ text: 'No tracking', score: 10 }, { text: 'Manual tracking', score: 50 }, { text: 'Automated tracking integrated with projects', score: 100 }] },
+      { q: 'How do you manage project documents and knowledge?', options: [{ text: 'Stored on local drives or emails', score: 20 }, { text: 'Shared cloud folders (e.g., GDrive)', score: 60 }, { text: 'Centralized knowledge base and doc control', score: 100 }] },
+      { q: 'Do you track an Action Tracker for meetings and deliverables?', options: [{ text: 'No structured tracking', score: 20 }, { text: 'Meeting minutes via email', score: 50 }, { text: 'Centralized digital Action Tracker', score: 100 }] }
+    ]
+  },
+  {
+    id: 'vendor-risk',
+    name: 'Vendor Risk Score™',
+    desc: 'Assess the risk profile of your third-party vendors and contractors.',
+    icon: Truck,
+    color: '#6366F1',
+    bg: '#EEF2FF',
+    questions: [
+      { q: 'How do you select and onboard new vendors?', options: [{ text: 'Ad-hoc selection, minimal checks', score: 20 }, { text: 'Standard vendor form collection', score: 60 }, { text: 'Rigorous vetting and digital onboarding', score: 100 }] },
+      { q: 'Do you monitor vendor performance and compliance regularly?', options: [{ text: 'Only when issues arise', score: 20 }, { text: 'Annual reviews', score: 50 }, { text: 'Continuous monitoring and scoring', score: 100 }] },
+      { q: 'Are vendor contracts and NDAs centrally managed?', options: [{ text: 'Scattered in emails/files', score: 20 }, { text: 'Stored in a shared drive', score: 60 }, { text: 'Centralized contract management system', score: 100 }] },
+      { q: 'How do you track vendor payments and prevent delays?', options: [{ text: 'Manual tracking, frequent delays', score: 20 }, { text: 'Spreadsheet tracking', score: 60 }, { text: 'Automated payment tracking and alerts', score: 100 }] }
     ]
   }
 ];

@@ -4,31 +4,32 @@ import styles from './Footer.module.css';
 
 const FOOTER_COLUMNS = [
   {
-    title: 'Product',
+    title: 'Platform & Products',
     links: [
-      { label: 'Pricing', href: '/pricing' },
-      { label: 'Platform', href: '/platform' },
-      { label: 'Features', href: '/products' },
-      { label: 'Integrations', href: '/#integrations' },
-      { label: 'Changelog', href: '#' }
+      { label: 'The Platform', href: '/platform' },
+      { label: '9 Business Clouds', href: '/products' },
+      { label: 'Advanced Solutions', href: '/solutions' },
+      { label: 'Industries We Serve', href: '/industries' },
+      { label: 'Pricing Plans', href: '/pricing' }
+    ]
+  },
+  {
+    title: 'Resources & Tools',
+    links: [
+      { label: 'Sangoe Academy', href: '/academy' },
+      { label: 'Free Calculators', href: '/calculators' },
+      { label: 'Business Assessments', href: '/assessments' },
+      { label: 'Template Library', href: '/resources' },
+      { label: 'Blog & Case Studies', href: '#' }
     ]
   },
   {
     title: 'Company',
     links: [
-      { label: 'About Us', href: '/about' },
-      { label: 'Our Blog', href: '#' },
-      { label: 'Our Story', href: '/about' },
+      { label: 'About Sangoe', href: '/about' },
+      { label: 'Partner Ecosystem', href: '/partners' },
+      { label: 'Contact Us', href: '/contact' },
       { label: 'Careers', href: '#' }
-    ]
-  },
-  {
-    title: 'Resources',
-    links: [
-      { label: 'On-Boarding', href: '/contact' },
-      { label: 'Help Center', href: '/contact' },
-      { label: 'Templates', href: '/resources' },
-      { label: 'Community', href: '#' }
     ]
   }
 ];
