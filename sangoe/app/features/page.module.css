@@ -51,13 +51,21 @@
 .heroInner {
   position: relative;
   z-index: 2;
-  max-width: 860px;
+  max-width: 920px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 22px;
   padding-bottom: 64px;
+  width: 100%;
+}
+
+.heroMotion {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
 }
 
 .heroH1 {
@@ -77,11 +85,12 @@
 }
 
 .heroSub {
-  font-size: clamp(0.95rem, 1.7vw, 1.1rem);
-  color: rgba(255, 255, 255, 0.62);
-  line-height: 1.75;
-  max-width: 620px;
-  margin: 0;
+  font-size: clamp(1rem, 1.8vw, 1.12rem);
+  color: rgba(255, 255, 255, 0.65);
+  line-height: 1.8;
+  max-width: 720px;
+  margin: 4px 0 0;
+  text-align: center;
 }
 
 .heroActions {
@@ -89,7 +98,7 @@
   gap: 14px;
   flex-wrap: wrap;
   justify-content: center;
-  margin-top: 8px;
+  margin-top: 4px;
 }
 
 /* Stats Strip */
@@ -815,7 +824,159 @@
     display: none;
   }
 
+
   .table {
     font-size: 0.82rem;
   }
+}
+
+/* =============================================
+   DARK MODE — features page
+   Triggered by [data-theme='dark'] on <html>
+   • Hero: already dark — excluded
+   • Images: untouched — filter: none
+   • Text: light via globals + overrides below
+   ============================================= */
+
+:global([data-theme='dark']) .page {
+  background: #0b0b16;
+}
+
+/* Sticky nav */
+:global([data-theme='dark']) .pillarNav {
+  background: rgba(14, 14, 26, 0.97);
+  border-bottom-color: rgba(255, 255, 255, 0.06);
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.4);
+}
+:global([data-theme='dark']) .navTab {
+  color: #6b6b90;
+}
+:global([data-theme='dark']) .navTab:hover {
+  color: #c4bfd9;
+}
+
+/* Pillar sections */
+:global([data-theme='dark']) .pillarSection {
+  background: #0e0e1a !important;
+}
+:global([data-theme='dark']) .pillarName {
+  color: #edeaf8;
+}
+:global([data-theme='dark']) .pillarDesc {
+  color: #8b85a8;
+}
+
+/* Mockup frame */
+:global([data-theme='dark']) .mockupFrame {
+  border-color: rgba(255, 255, 255, 0.07);
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.4);
+}
+
+/* Cloud cards */
+:global([data-theme='dark']) .cloudCard {
+  background: #16162a;
+  border-color: rgba(255, 255, 255, 0.06);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
+}
+:global([data-theme='dark']) .cloudCard:hover {
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.35);
+}
+:global([data-theme='dark']) .cloudName {
+  color: #ddd9f5;
+}
+:global([data-theme='dark']) .modBadge {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border-color: rgba(255, 255, 255, 0.08) !important;
+  color: #9e99bf !important;
+}
+
+/* Module cards */
+:global([data-theme='dark']) .moduleCard {
+  background: #16162a;
+  border-color: rgba(255, 255, 255, 0.06);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
+}
+:global([data-theme='dark']) .moduleCard:hover {
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.35);
+}
+:global([data-theme='dark']) .moduleName {
+  color: #ddd9f5;
+}
+:global([data-theme='dark']) .moduleDesc {
+  color: #7a75a0;
+}
+
+/* Comparison section */
+:global([data-theme='dark']) .comparison {
+  background: #0e0e1a;
+  border-color: rgba(255, 255, 255, 0.04);
+}
+:global([data-theme='dark']) .sectionH2 {
+  color: #edeaf8;
+}
+:global([data-theme='dark']) .sectionSub {
+  color: #7a75a0;
+}
+
+/* Table */
+:global([data-theme='dark']) .tableWrap {
+  border-color: rgba(255, 255, 255, 0.06);
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.3);
+}
+:global([data-theme='dark']) .table {
+  background: #131320;
+}
+:global([data-theme='dark']) .thCap {
+  background: #1a1a2e;
+  color: #c4bfd9;
+  border-bottom-color: rgba(255, 255, 255, 0.07);
+}
+:global([data-theme='dark']) .thOther {
+  background: #16162a;
+  color: #6b6b90;
+  border-bottom-color: rgba(255, 255, 255, 0.07);
+}
+:global([data-theme='dark']) .thSangoe {
+  background: #1a152e;
+  border-bottom-color: rgba(124, 58, 237, 0.15);
+  border-left-color: rgba(124, 58, 237, 0.12);
+}
+:global([data-theme='dark']) .trEven td {
+  background: #141424;
+}
+:global([data-theme='dark']) .tdCap {
+  color: #ddd9f5;
+  border-bottom-color: rgba(255, 255, 255, 0.04);
+}
+:global([data-theme='dark']) .tdOther {
+  border-bottom-color: rgba(255, 255, 255, 0.04);
+}
+:global([data-theme='dark']) .tdSangoe {
+  background: #160f28;
+  border-left-color: rgba(124, 58, 237, 0.1);
+  border-bottom-color: rgba(124, 58, 237, 0.06);
+}
+:global([data-theme='dark']) .cellYes {
+  color: #34d399;
+}
+:global([data-theme='dark']) .cellNo {
+  color: #3a3a58;
+}
+:global([data-theme='dark']) .cellPartial {
+  background: #2a1f0a;
+  border-color: #78350f;
+  color: #fbbf24;
+}
+
+/* CTA section */
+:global([data-theme='dark']) .ctaSec {
+  background: #0b0b16;
+}
+:global([data-theme='dark']) .ctaBox {
+  box-shadow: 0 32px 64px rgba(0, 0, 0, 0.5);
+}
+
+/* Images — explicitly no filter */
+:global([data-theme='dark']) .mockupImg {
+  filter: none !important;
 }

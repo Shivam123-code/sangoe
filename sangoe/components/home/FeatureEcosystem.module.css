@@ -687,3 +687,31 @@
     grid-template-columns: repeat(2, 1fr);
   }
 }
+
+/* -- DARK MODE ------------------------------------------- */
+:global([data-theme='dark']) .ecosystemSection { background: #0e0e1a !important; }
+:global([data-theme='dark']) .pillarCard,
+:global([data-theme='dark']) .moduleCard,
+:global([data-theme='dark']) .featureCard { background: #1c1c2e !important; border-color: rgba(255,255,255,0.07) !important; }
+:global([data-theme='dark']) .pillarTitle,
+:global([data-theme='dark']) .moduleTitle { color: #edeaf8 !important; }
+:global([data-theme='dark']) .pillarDesc,
+:global([data-theme='dark']) .moduleDesc { color: #8b85a8 !important; }
+
+/* -- DARK MODE CORRECTED ---------------------------------- */
+:global([data-theme='dark']) .section { background: #0e0e1a !important; }
+:global([data-theme='dark']) .sidebar { background: #13131f !important; border-color: rgba(255,255,255,0.07) !important; }
+:global([data-theme='dark']) .sideBtn { background: transparent !important; color: #8b85a8 !important; }
+:global([data-theme='dark']) .sideBtnActive { background: #1c1c2e !important; color: #edeaf8 !important; }
+:global([data-theme='dark']) .console { background: #0d0d1a !important; border-color: rgba(255,255,255,0.06) !important; }
+:global([data-theme='dark']) .cloudMiniCard { background: #1c1c2e !important; border-color: rgba(255,255,255,0.07) !important; }
+:global([data-theme='dark']) .cloudMiniActive { background: #252540 !important; border-color: rgba(124,58,237,0.3) !important; }
+:global([data-theme='dark']) .cloudMiniName { color: #c4bfd9 !important; }
+:global([data-theme='dark']) .selectedCloudDetail { background: #131326 !important; border-color: rgba(255,255,255,0.06) !important; }
+:global([data-theme='dark']) .modBadge { background: rgba(255,255,255,0.05) !important; color: #9e99bf !important; border-color: rgba(255,255,255,0.08) !important; }
+:global([data-theme='dark']) .pillarNameHeading { color: #edeaf8 !important; }
+:global([data-theme='dark']) .pillarDesc { color: #8b85a8 !important; }
+:global([data-theme='dark']) .chatOverlayWidget { background: #1c1c2e !important; border-color: rgba(255,255,255,0.07) !important; }
+:global([data-theme='dark']) .chatBody { background: #131326 !important; }
+:global([data-theme='dark']) .chatQBtn { background: #252540 !important; color: #c4bfd9 !important; border-color: rgba(255,255,255,0.08) !important; }
+:global([data-theme='dark']) .chatMsgAi { background: #252540 !important; color: #c4bfd9 !important; }

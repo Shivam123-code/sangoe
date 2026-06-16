@@ -572,3 +572,25 @@
     padding: 24px;
   }
 }
+
+/* -- DARK MODE ------------------------------------------- */
+:global([data-theme='dark']) .roadmapSection { background: #0e0e1a !important; }
+:global([data-theme='dark']) .stageCard,
+:global([data-theme='dark']) .stagePopup { background: #1c1c2e !important; border-color: rgba(255,255,255,0.07) !important; }
+:global([data-theme='dark']) .stageLabel { color: #c4bfd9 !important; }
+:global([data-theme='dark']) .stageTitle { color: #edeaf8 !important; }
+:global([data-theme='dark']) .stageDesc { color: #8b85a8 !important; }
+:global([data-theme='dark']) .connectorLine { background: rgba(255,255,255,0.1) !important; }
+
+/* -- DARK MODE CORRECTED ---------------------------------- */
+:global([data-theme='dark']) .section { background: #0e0e1a !important; }
+:global([data-theme='dark']) .desktopCard { background: #1c1c2e !important; border-color: rgba(255,255,255,0.07) !important; }
+:global([data-theme='dark']) .stageCard { background: #1c1c2e !important; border-color: rgba(255,255,255,0.07) !important; }
+:global([data-theme='dark']) .cardTitle { color: #edeaf8 !important; }
+:global([data-theme='dark']) .cardDesc { color: #8b85a8 !important; }
+:global([data-theme='dark']) .cardFocus { color: #a78bfa !important; }
+:global([data-theme='dark']) .pillarTag { background: rgba(124,58,237,0.12) !important; color: #c4b5fd !important; border-color: rgba(124,58,237,0.2) !important; }
+:global([data-theme='dark']) .stageTitle { color: #edeaf8 !important; }
+:global([data-theme='dark']) .stageDesc { color: #8b85a8 !important; }
+:global([data-theme='dark']) .cardBadge { background: #252540 !important; color: #c4bfd9 !important; }
+:global([data-theme='dark']) .timelineLine { background: rgba(255,255,255,0.1) !important; }

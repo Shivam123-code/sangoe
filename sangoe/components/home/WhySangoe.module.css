@@ -151,3 +151,21 @@
 
 
 
+
+/* -- DARK MODE ------------------------------------------- */
+:global([data-theme='dark']) .section { background: #0e0e1a !important; }
+:global([data-theme='dark']) .whyCard { background: #1c1c2e !important; border-color: rgba(255,255,255,0.07) !important; }
+:global([data-theme='dark']) .whyTitle { color: #edeaf8 !important; }
+:global([data-theme='dark']) .whyDesc { color: #8b85a8 !important; }
+
+/* -- DARK MODE CORRECTED ---------------------------------- */
+:global([data-theme='dark']) .section { background: #0e0e1a !important; }
+:global([data-theme='dark']) .tableWrap { background: #1c1c2e !important; border-color: rgba(255,255,255,0.07) !important; }
+:global([data-theme='dark']) .table { background: #1c1c2e !important; }
+:global([data-theme='dark']) .capCol { background: #252540 !important; color: #c4bfd9 !important; border-color: rgba(255,255,255,0.07) !important; }
+:global([data-theme='dark']) .sangoeCol { background: #1a152e !important; border-color: rgba(124,58,237,0.15) !important; }
+:global([data-theme='dark']) .sangoeHeader { color: #a78bfa !important; }
+:global([data-theme='dark']) .even { background: #16162a !important; }
+:global([data-theme='dark']) .capCell { color: #edeaf8 !important; }
+:global([data-theme='dark']) .sangoeCell { color: #a78bfa !important; }
+:global([data-theme='dark']) .limited { color: #8b85a8 !important; }

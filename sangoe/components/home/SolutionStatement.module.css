@@ -214,3 +214,19 @@
 
 
 
+
+/* -- DARK MODE ------------------------------------------- */
+:global([data-theme='dark']) .section { background: #0e0e1a !important; }
+:global([data-theme='dark']) .solutionCard { background: #1c1c2e !important; border-color: rgba(255,255,255,0.07) !important; }
+:global([data-theme='dark']) .tag { background: #252540 !important; color: #c4bfd9 !important; }
+
+/* -- DARK MODE CORRECTED ---------------------------------- */
+:global([data-theme='dark']) .section { background: #0e0e1a !important; }
+:global([data-theme='dark']) .gridWrap { background: transparent !important; }
+:global([data-theme='dark']) .cloudTile { background: #1c1c2e !important; border-color: rgba(255,255,255,0.07) !important; }
+:global([data-theme='dark']) .cloudName { color: #edeaf8 !important; }
+:global([data-theme='dark']) .centerBadge { background: #1c1c2e !important; border-color: rgba(124,58,237,0.2) !important; }
+:global([data-theme='dark']) .badgeNum { color: #a78bfa !important; }
+:global([data-theme='dark']) .badgeLabel { color: #8b85a8 !important; }
+:global([data-theme='dark']) .pill { background: rgba(255,255,255,0.05) !important; border-color: rgba(255,255,255,0.08) !important; color: #c4bfd9 !important; }
+:global([data-theme='dark']) .h2 { color: #edeaf8 !important; }

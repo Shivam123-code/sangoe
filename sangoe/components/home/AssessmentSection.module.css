@@ -146,3 +146,13 @@
 
 
 
+
+/* -- DARK MODE ------------------------------------------- */
+:global([data-theme='dark']) .section { background: #0e0e1a !important; }
+:global([data-theme='dark']) .assessCard { background: #1c1c2e !important; border-color: rgba(255,255,255,0.07) !important; }
+
+/* -- DARK MODE CORRECTED ---------------------------------- */
+:global([data-theme='dark']) .section { background: #0e0e1a !important; }
+:global([data-theme='dark']) .faq { background: #1c1c2e !important; border-color: rgba(255,255,255,0.07) !important; }
+:global([data-theme='dark']) .faqQ { color: #edeaf8 !important; }
+:global([data-theme='dark']) .faqAText { color: #8b85a8 !important; }

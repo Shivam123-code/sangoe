@@ -174,14 +174,15 @@ export default function FeaturesPage() {
         <div className={styles.heroOrb2} />
         <div className={styles.heroGrid} />
         <div className={styles.heroInner}>
-          <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
+          <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className={styles.heroMotion}>
             <span className="tag tag-dark">Comprehensive Platform Features</span>
             <h1 className={styles.heroH1}>
-              Everything You Need to Build a<br />
-              <span className={styles.grad}>System-Driven Business</span>
+              Everything You Need to<br />
+              Build a <span className={styles.grad}>System-Driven Business</span>
             </h1>
             <p className={styles.heroSub}>
-              Sangoe integrates every critical operational function — Sales, HR, Operations, Compliance, Finance & Intelligence — into one Business Growth Operating System.
+              One platform for Sales, HR, Operations, Compliance, Finance &amp; Intelligence —<br />
+              built to make your business run as a complete, systemised unit.
             </p>
             <div className={styles.heroActions}>
               <Link href="/contact" className="btn btn-purple">Book System Demo</Link>

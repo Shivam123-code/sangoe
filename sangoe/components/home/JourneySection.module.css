@@ -323,3 +323,26 @@
     flex: 0 0 calc(50% - 8px);
   }
 }
+
+/* -- DARK MODE ------------------------------------------- */
+:global([data-theme='dark']) .section { background: #0e0e1a !important; }
+:global([data-theme='dark']) .journeyCard,
+:global([data-theme='dark']) .stepCard { background: #1c1c2e !important; border-color: rgba(255,255,255,0.07) !important; }
+:global([data-theme='dark']) .journeyLabel { background: #252540 !important; color: #c4bfd9 !important; }
+:global([data-theme='dark']) .stepTitle { color: #edeaf8 !important; }
+:global([data-theme='dark']) .stepDesc { color: #8b85a8 !important; }
+
+/* -- DARK MODE CORRECTED ---------------------------------- */
+:global([data-theme='dark']) .section { background: #0e0e1a !important; }
+:global([data-theme='dark']) .statBox { background: #1c1c2e !important; border-color: rgba(255,255,255,0.07) !important; }
+:global([data-theme='dark']) .bigNum { color: #edeaf8 !important; }
+:global([data-theme='dark']) .bigLabel { color: #8b85a8 !important; }
+:global([data-theme='dark']) .quoteCard { background: #1c1c2e !important; border-color: rgba(255,255,255,0.07) !important; }
+:global([data-theme='dark']) .quoteText { color: #c4bfd9 !important; }
+:global([data-theme='dark']) .quoteName { color: #edeaf8 !important; }
+:global([data-theme='dark']) .quoteRole { color: #8b85a8 !important; }
+:global([data-theme='dark']) .journeyCard { background: #1c1c2e !important; border-color: rgba(255,255,255,0.07) !important; }
+:global([data-theme='dark']) .journeyTitle { color: #edeaf8 !important; }
+:global([data-theme='dark']) .journeyBadge { background: #252540 !important; color: #c4bfd9 !important; }
+:global([data-theme='dark']) .stepLabel { color: #8b85a8 !important; }
+:global([data-theme='dark']) .stepConnector { background: rgba(255,255,255,0.1) !important; }

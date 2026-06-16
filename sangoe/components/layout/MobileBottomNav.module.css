@@ -345,3 +345,13 @@
     margin-top: -14px;
   }
 }
+
+/* -- DARK MODE ------------------------------------------- */
+:global([data-theme='dark']) .bottomNav { background: rgba(11,11,22,0.97) !important; border-color: rgba(255,255,255,0.07) !important; }
+:global([data-theme='dark']) .tabLabel { color: #6b6b90 !important; }
+:global([data-theme='dark']) .tabActive .tabLabel { color: #a78bfa !important; }
+:global([data-theme='dark']) .sheet { background: #13131f !important; border-color: rgba(255,255,255,0.08) !important; }
+:global([data-theme='dark']) .sheetSectionTitle { color: #8b85a8 !important; }
+:global([data-theme='dark']) .sheetItem { border-color: rgba(255,255,255,0.05) !important; }
+:global([data-theme='dark']) .sheetItemLabel { color: #edeaf8 !important; }
+:global([data-theme='dark']) .activePill { background: rgba(124,58,237,0.15) !important; }

@@ -165,3 +165,14 @@
 
 
 
+
+/* -- DARK MODE ------------------------------------------- */
+:global([data-theme='dark']) .section { background: #0e0e1a !important; }
+:global([data-theme='dark']) .logoCard { background: #1c1c2e !important; border-color: rgba(255,255,255,0.07) !important; }
+
+/* -- DARK MODE CORRECTED ---------------------------------- */
+:global([data-theme='dark']) .section { background: #0e0e1a !important; }
+:global([data-theme='dark']) .logoCard { background: #1c1c2e !important; border-color: rgba(255,255,255,0.07) !important; }
+:global([data-theme='dark']) .badge { background: #1c1c2e !important; border-color: rgba(124,58,237,0.2) !important; }
+:global([data-theme='dark']) .badgeNum { color: #a78bfa !important; }
+:global([data-theme='dark']) .badgeText { color: #8b85a8 !important; }

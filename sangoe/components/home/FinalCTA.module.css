@@ -134,3 +134,11 @@
 
 
 
+
+/* -- DARK MODE ------------------------------------------- */
+:global([data-theme='dark']) .section { background: #0e0e1a !important; }
+:global([data-theme='dark']) .ctaWrap { background: #0e0e1a !important; }
+
+/* -- DARK MODE CORRECTED ---------------------------------- */
+:global([data-theme='dark']) .section { background: #0e0e1a !important; }
+:global([data-theme='dark']) .card { background: #1c1c2e !important; border-color: rgba(255,255,255,0.07) !important; }

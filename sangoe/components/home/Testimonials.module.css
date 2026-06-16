@@ -367,3 +367,28 @@
     font-size: 0.92rem;
   }
 }
+
+/* -- DARK MODE ------------------------------------------- */
+:global([data-theme='dark']) .testimonialsSection { background: #0e0e1a !important; }
+:global([data-theme='dark']) .testimonialCard,
+:global([data-theme='dark']) .quoteCard { background: #1c1c2e !important; border-color: rgba(255,255,255,0.07) !important; }
+:global([data-theme='dark']) .authorName { color: #edeaf8 !important; }
+:global([data-theme='dark']) .authorRole { color: #8b85a8 !important; }
+:global([data-theme='dark']) .quoteText { color: #c4bfd9 !important; }
+:global([data-theme='dark']) .divider { background: rgba(255,255,255,0.08) !important; }
+
+/* -- DARK MODE CORRECTED ---------------------------------- */
+:global([data-theme='dark']) .section { background: #0e0e1a !important; }
+:global([data-theme='dark']) .statCard { background: #1c1c2e !important; border-color: rgba(255,255,255,0.07) !important; }
+:global([data-theme='dark']) .statValue { color: #edeaf8 !important; }
+:global([data-theme='dark']) .statLabel { color: #8b85a8 !important; }
+:global([data-theme='dark']) .miniCard { background: #1c1c2e !important; border-color: rgba(255,255,255,0.07) !important; }
+:global([data-theme='dark']) .miniQuote { color: #c4bfd9 !important; }
+:global([data-theme='dark']) .miniName { color: #edeaf8 !important; }
+:global([data-theme='dark']) .miniRole { color: #8b85a8 !important; }
+:global([data-theme='dark']) .featuredContent { background: #1c1c2e !important; border-color: rgba(255,255,255,0.07) !important; }
+:global([data-theme='dark']) .featuredQuote { color: #c4bfd9 !important; }
+:global([data-theme='dark']) .featuredName { color: #edeaf8 !important; }
+:global([data-theme='dark']) .featuredRole { color: #8b85a8 !important; }
+:global([data-theme='dark']) .dot { background: rgba(255,255,255,0.2) !important; }
+:global([data-theme='dark']) .dotActive { background: #7C3AED !important; }

@@ -134,3 +134,16 @@
 
 
 
+
+/* -- DARK MODE ------------------------------------------- */
+:global([data-theme='dark']) .section { background: #0e0e1a !important; }
+:global([data-theme='dark']) .card { background: #1c1c2e !important; border-color: rgba(255,255,255,0.07) !important; }
+:global([data-theme='dark']) .cardName,
+:global([data-theme='dark']) .cardTitle { color: #edeaf8 !important; }
+:global([data-theme='dark']) .cardDesc { color: #8b85a8 !important; }
+
+/* -- DARK MODE CORRECTED ---------------------------------- */
+:global([data-theme='dark']) .section { background: #0e0e1a !important; }
+:global([data-theme='dark']) .card { background: #1c1c2e !important; border-color: rgba(255,255,255,0.07) !important; }
+:global([data-theme='dark']) .name { color: #edeaf8 !important; }
+:global([data-theme='dark']) .desc { color: #8b85a8 !important; }

@@ -1,102 +1,218 @@
 /* ── Wrapper to hold wave + strip together ──────────────── */
 .wrapper {
   position: relative;
-  background: transparent; /* sits on top of hero's clip-path */
+  background: transparent;
   margin-top: -2px; /* close any 1px gap from hero */
 }
 
 /* ── SVG wave bridge ────────────────────────────────────── */
 .waveBridge {
   position: relative;
-  /* The hero ends with a diagonal clip-path; we overlay a white wave curve here */
   background: transparent;
   line-height: 0;
-  /* Pull it up so it overlaps the hero bottom */
   margin-bottom: -4px;
-  z-index: 2;
+  z-index: 1; /* Lower z-index so strip content floats on top of the curve */
 }
 
 .waveBridge svg {
   display: block;
   width: 100%;
-  height: 60px;
+  height: 40px; /* Keep it compact */
+  color: var(--theme-bg-secondary, #ffffff);
+  transition: color 0.3s ease;
 }
 
 /* ── Strip itself ────────────────────────────────────────── */
 .strip {
-  background: #ffffff;
-  padding: 28px 0 36px;
+  background: var(--theme-bg-secondary, #ffffff);
+  padding: 12px 0 18px; /* Very compact vertical padding */
   position: relative;
-  z-index: 2;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  z-index: 2; /* Higher z-index to float cards over the wave bridge */
+  border-bottom: 1px solid var(--theme-card-border, rgba(0, 0, 0, 0.05));
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+  /* Removed overflow: hidden to allow hovered cards to expand and float freely */
 }
 
-/* ── Pill grid ──────────────────────────────────────────── */
-.inner {
-  max-width: var(--max-w, 1200px);
-  margin: 0 auto;
-  padding: 0 40px;
+/* ── Marquee Container ──────────────────────────────────── */
+.marqueeContainer {
+  overflow: hidden;
+  width: 100%;
+  display: flex;
+  position: relative;
+  /* Extra vertical padding + negative margin creates vertical headroom for hover expansion/shadows */
+  padding: 8px 0;
+  margin: -8px 0;
+  /* Blur fade effect on left and right edges for premium glass appearance */
+  mask-image: linear-gradient(to right, transparent, white 8%, white 92%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, white 8%, white 92%, transparent);
+}
+
+/* ── Marquee Track ──────────────────────────────────────── */
+.marqueeTrack {
+  display: flex;
+  gap: 16px;
+  width: max-content;
+  animation: scroll linear infinite;
+  animation-duration: 35s; /* Slow, elegant speed */
+  padding: 8px 0; /* Align track padding with container */
+}
+
+.marqueeTrack:hover {
+  animation-play-state: paused; /* Pause scrolling on hover so user can read */
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    /* Loop precisely after 1/3rd of elements scroll (the first set of 6) */
+    transform: translateX(-33.3333%);
+  }
+}
+
+/* ── Individual floating glass card ──────────────────────── */
+.card {
   display: flex;
   align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 12px 16px;
-}
-
-/* ── Individual pill ────────────────────────────────────── */
-.pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 9px;
-  padding: 9px 18px 9px 10px;
-  background: #ffffff;
-  border: 1px solid rgba(0, 0, 0, 0.07);
-  border-radius: 999px;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+  gap: 12px;
+  padding: 10px 16px 10px 12px;
+  width: 240px; /* Fixed width prevents any clipping/squeezing of text */
+  flex-shrink: 0; /* Keep size constant in flex row */
+  background: var(--theme-card-bg, rgba(255, 255, 255, 0.75));
+  border: 1px solid var(--theme-card-border, rgba(0, 0, 0, 0.06));
+  border-radius: 10px;
+  position: relative;
   cursor: default;
-  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease, transform 0.25s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
 }
 
-.pill:hover {
-  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.09);
-  border-color: rgba(124, 58, 237, 0.2);
+.card:hover {
+  transform: translateY(-4px); /* Lift card slightly */
+  z-index: 10; /* Make sure hovered card paints on top of track and shadows */
+  border-color: var(--card-theme-color, rgba(124, 58, 237, 0.4));
+  box-shadow: 0 8px 24px var(--card-glow-color, rgba(124, 58, 237, 0.12));
 }
 
-.iconWrap {
-  width: 30px;
-  height: 30px;
+/* ── Corner status dot ──────────────────────────────────── */
+.statusDot {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  width: 5px;
+  height: 5px;
   border-radius: 50%;
+  display: block;
+  opacity: 0.8;
+  animation: pulse 2s infinite ease-in-out;
+}
+
+@keyframes pulse {
+  0% { transform: scale(0.9); opacity: 0.5; }
+  50% { transform: scale(1.3); opacity: 1; }
+  100% { transform: scale(0.9); opacity: 0.5; }
+}
+
+/* ── Icon Wrap ──────────────────────────────────────────── */
+.iconWrap {
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  transition: transform 0.25s ease;
 }
 
-.text {
-  font-size: 0.84rem;
+/* ── Info & Text ────────────────────────────────────────── */
+.info {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+  min-width: 0;
+}
+
+.title {
+  font-size: 0.8rem;
   font-weight: 700;
-  color: #1f2937;
+  color: var(--theme-text-main, #111827);
   white-space: nowrap;
   letter-spacing: -0.01em;
 }
 
-/* ── Responsive ─────────────────────────────────────────── */
-@media (max-width: 1024px) {
-  .inner { padding: 0 32px; gap: 10px 14px; }
+.tagline {
+  font-size: 0.65rem;
+  font-weight: 500;
+  color: var(--theme-text-muted, #6b7280);
+  white-space: nowrap;
+  margin-top: 1px;
 }
 
+/* ── Dark mode specific overrides ──────────────────────── */
+:global([data-theme='dark']) .card {
+  background: rgba(255, 255, 255, 0.02) !important;
+  border-color: rgba(255, 255, 255, 0.05) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+:global([data-theme='dark']) .card:hover {
+  background: rgba(255, 255, 255, 0.03) !important;
+  border-color: var(--card-theme-color, rgba(124, 58, 237, 0.5)) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2), 0 0 15px var(--card-glow-color, rgba(124, 58, 237, 0.1)) !important;
+}
+
+/* ── Responsive ─────────────────────────────────────────── */
 @media (max-width: 768px) {
-  .inner { padding: 0 20px; gap: 8px 10px; }
-  .pill  { padding: 7px 14px 7px 8px; gap: 7px; }
-  .text  { font-size: 0.78rem; }
-  .iconWrap { width: 26px; height: 26px; }
-  .waveBridge svg { height: 40px; }
+  .card {
+    width: 220px; /* Slightly narrower on mobile */
+    padding: 8px 12px 8px 10px;
+    gap: 10px;
+  }
+  .title {
+    font-size: 0.76rem;
+  }
+  .tagline {
+    font-size: 0.6rem;
+  }
+  .iconWrap {
+    width: 28px;
+    height: 28px;
+  }
+  .waveBridge svg {
+    height: 24px;
+  }
+  .strip {
+    padding: 8px 0 12px;
+  }
+  .marqueeTrack {
+    animation-duration: 25s; /* Scroll slightly faster on mobile to look dynamic */
+  }
 }
 
 @media (max-width: 480px) {
-  .inner { padding: 0 16px; gap: 7px 8px; }
-  .pill  { padding: 6px 12px 6px 7px; gap: 6px; }
-  .text  { font-size: 0.72rem; }
-  .iconWrap { width: 22px; height: 22px; }
-  .waveBridge svg { height: 28px; }
+  .card {
+    width: 190px;
+  }
+  .title {
+    font-size: 0.72rem;
+  }
+  .tagline {
+    display: none; /* Hide tagline on ultra-small mobile to stay compact */
+  }
+  .waveBridge svg {
+    height: 18px;
+  }
 }
+
+/* -- DARK MODE ------------------------------------------- */
+:global([data-theme='dark']) .strip { background: #13131f !important; border-color: rgba(255,255,255,0.06) !important; }
+
+/* -- DARK MODE CORRECTED ---------------------------------- */
+:global([data-theme='dark']) .wrapper { background: #0e0e1a !important; }
+:global([data-theme='dark']) .strip { background: #13131f !important; border-color: rgba(255,255,255,0.06) !important; }
+:global([data-theme='dark']) .card { background: #1c1c2e !important; border-color: rgba(255,255,255,0.07) !important; }
+:global([data-theme='dark']) .title { color: #edeaf8 !important; }
+:global([data-theme='dark']) .tagline { color: #8b85a8 !important; }

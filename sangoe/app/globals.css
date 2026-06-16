@@ -723,6 +723,65 @@ p, h1, h2, h3, h4, h5, h6, span, a, li {
   border-color: rgba(255,255,255,0.08) !important;
 }
 
+/* ═══════════════════════════════════════════════════════
+   DARK MODE — safe section-level rules only.
+   Component-specific card dark styles live in each
+   CSS module file via :global([data-theme='dark']).
+   ═══════════════════════════════════════════════════════ */
+
+/* Every <section> background goes dark */
+[data-theme='dark'] section {
+  background-color: var(--theme-bg) !important;
+}
+
+/* Hero sections: keep transparent so gradient shows through */
+[data-theme='dark'] section[class*="hero"],
+[data-theme='dark'] section[class*="Hero"] {
+  background-color: transparent !important;
+}
+
+/* Page <main> wrapper */
+[data-theme='dark'] main {
+  background-color: var(--theme-bg) !important;
+}
+
+/* Images — never dim or invert */
+[data-theme='dark'] img {
+  filter: none !important;
+}
+
+/* ── Text visibility catch-all ──────────────────────────────
+   These cover non-p/h elements that go invisible in dark mode
+   (div labels, li items, form labels, table captions, etc.)
+   ─────────────────────────────────────────────────────────── */
+[data-theme='dark'] li {
+  color: var(--theme-text-sub) !important;
+}
+[data-theme='dark'] label {
+  color: var(--theme-text-sub) !important;
+}
+[data-theme='dark'] dt {
+  color: var(--theme-text-main) !important;
+}
+[data-theme='dark'] dd {
+  color: var(--theme-text-muted) !important;
+}
+[data-theme='dark'] figcaption {
+  color: var(--theme-text-muted) !important;
+}
+[data-theme='dark'] blockquote {
+  color: var(--theme-text-sub) !important;
+  border-left-color: rgba(124,58,237,0.3) !important;
+}
+[data-theme='dark'] caption {
+  color: var(--theme-text-muted) !important;
+}
+
+/* Section-level color cascade: sets base color on every non-hero section
+   so child divs/spans that only inherit (no own color) become readable */
+[data-theme='dark'] section:not([class*="hero"]):not([class*="Hero"]) {
+  color: var(--theme-text-main);
+}
 
 /* ══════════════════════════════════════════════════════════
    DARK MODE — PAGE BACKGROUND FIX

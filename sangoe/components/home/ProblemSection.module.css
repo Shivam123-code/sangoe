@@ -458,3 +458,31 @@
     padding: 12px 14px;
   }
 }
+
+/* -- DARK MODE ------------------------------------------- */
+:global([data-theme='dark']) .section { background: #0e0e1a !important; }
+:global([data-theme='dark']) .problemCard,
+:global([data-theme='dark']) .statCard,
+:global([data-theme='dark']) .featureCard { background: #1c1c2e !important; border-color: rgba(255,255,255,0.07) !important; }
+:global([data-theme='dark']) .solutionCard { background: #16162a !important; border-color: rgba(255,255,255,0.07) !important; }
+:global([data-theme='dark']) .cardTitle,
+:global([data-theme='dark']) .cardHeading { color: #edeaf8 !important; }
+:global([data-theme='dark']) .cardDesc,
+:global([data-theme='dark']) .cardText { color: #8b85a8 !important; }
+:global([data-theme='dark']) .metricVal { color: #edeaf8 !important; }
+:global([data-theme='dark']) .metricBg { background: #252540 !important; }
+
+/* -- DARK MODE CORRECTED ---------------------------------- */
+:global([data-theme='dark']) .section { background: #0e0e1a !important; }
+:global([data-theme='dark']) .resultCard { background: #1c1c2e !important; border-color: rgba(255,255,255,0.07) !important; }
+:global([data-theme='dark']) .compCard { background: #1c1c2e !important; border-color: rgba(255,255,255,0.07) !important; }
+:global([data-theme='dark']) .compSide { background: #252540 !important; }
+:global([data-theme='dark']) .afterSide { background: #16162a !important; }
+:global([data-theme='dark']) .afterPill { background: rgba(124,58,237,0.12) !important; border-color: rgba(124,58,237,0.2) !important; color: #c4b5fd !important; }
+:global([data-theme='dark']) .stat { background: #1c1c2e !important; border-color: rgba(255,255,255,0.07) !important; }
+:global([data-theme='dark']) .statN { color: #edeaf8 !important; }
+:global([data-theme='dark']) .statL { color: #8b85a8 !important; }
+:global([data-theme='dark']) .socialProof { background: #1c1c2e !important; border-color: rgba(255,255,255,0.07) !important; }
+:global([data-theme='dark']) .proofText { color: #8b85a8 !important; }
+:global([data-theme='dark']) .resultLabel { color: #8b85a8 !important; }
+:global([data-theme='dark']) .resultMessage { color: #c4bfd9 !important; }

@@ -567,3 +567,19 @@
 [data-theme='dark'] .mobileDesc {
   color: #5f597a;
 }
+
+/* -- DARK MODE ------------------------------------------- */
+:global([data-theme='dark']) .header { background: rgba(11,11,22,0.95) !important; border-color: rgba(255,255,255,0.06) !important; }
+:global([data-theme='dark']) .headerScrolled { background: rgba(11,11,22,0.98) !important; box-shadow: 0 2px 20px rgba(0,0,0,0.4) !important; }
+:global([data-theme='dark']) .linkText { color: #c4bfd9 !important; }
+:global([data-theme='dark']) .navLink:hover .linkText { color: #edeaf8 !important; }
+:global([data-theme='dark']) .dropdown { background: #13131f !important; border-color: rgba(255,255,255,0.08) !important; box-shadow: 0 20px 60px rgba(0,0,0,0.5) !important; }
+:global([data-theme='dark']) .dropdownItem { border-color: rgba(255,255,255,0.05) !important; }
+:global([data-theme='dark']) .dropdownItem:hover { background: #1c1c2e !important; }
+:global([data-theme='dark']) .dropdownText { color: #edeaf8 !important; }
+:global([data-theme='dark']) .dropdownDesc { color: #8b85a8 !important; }
+:global([data-theme='dark']) .mobileMenu { background: #0e0e1a !important; }
+:global([data-theme='dark']) .mobileSecTitle { color: #8b85a8 !important; }
+:global([data-theme='dark']) .mobileLink { border-color: rgba(255,255,255,0.05) !important; }
+:global([data-theme='dark']) .mobileLabel { color: #edeaf8 !important; }
+:global([data-theme='dark']) .mobileDesc { color: #8b85a8 !important; }
