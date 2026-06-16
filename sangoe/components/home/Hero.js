@@ -1,5 +1,5 @@
 'use client';
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 import { 
@@ -145,6 +145,9 @@ const MOCK_DATA = {
   }
 };
 
+// Auto-demo tab sequence (hardcoded positions removed — now computed dynamically via DOM refs)
+const TAB_SEQUENCE = ['dashboard', 'hr', 'projects', 'compliance', 'finance', 'esg'];
+
 export default function Hero() {
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end start'] });
@@ -153,6 +156,80 @@ export default function Hero() {
 
   const [activeTab, setActiveTab] = useState('dashboard');
   const activeData = MOCK_DATA[activeTab];
+
+  // ── Auto cursor ─────────────────────────────────────────────
+  // Refs for precise DOM-based positioning (avoids hardcoded pixel guesses)
+  const sideItemRefs = useRef({});
+  const cardRef = useRef(null);
+  const [cursorPos, setCursorPos] = useState({ x: 0, y: 0 });
+  const [clicking, setClicking] = useState(false);
+  const tabIndexRef = useRef(0);
+
+  // Helper: walk the offsetParent chain to get position relative to cardEl
+  const getOffsetRelativeTo = (el, cardEl) => {
+    let cx = 0, cy = 0;
+    let node = el;
+    while (node && node !== cardEl) {
+      cx += node.offsetLeft;
+      cy += node.offsetTop;
+      node = node.offsetParent;
+    }
+    return { cx, cy };
+  };
+
+  // Seed initial cursor position once the card has mounted
+  useEffect(() => {
+    const seedTimer = setTimeout(() => {
+      const firstEl = sideItemRefs.current['dashboard'];
+      const cardEl = cardRef.current;
+      if (firstEl && cardEl) {
+        const { cx, cy } = getOffsetRelativeTo(firstEl, cardEl);
+        setCursorPos({
+          x: cx + firstEl.offsetWidth / 2 - 10,
+          y: cy + firstEl.offsetHeight / 2 - 2,
+        });
+      }
+    }, 300); // small delay so layout is settled
+    return () => clearTimeout(seedTimer);
+  }, []);
+
+  useEffect(() => {
+    const cycle = () => {
+      const nextIndex = (tabIndexRef.current + 1) % TAB_SEQUENCE.length;
+      tabIndexRef.current = nextIndex;
+      const nextTab = TAB_SEQUENCE[nextIndex];
+
+      // 1. Measure exact position of sidebar item relative to the card
+      const tabEl = sideItemRefs.current[nextTab];
+      const cardEl = cardRef.current;
+
+      if (tabEl && cardEl) {
+        const { cx, cy } = getOffsetRelativeTo(tabEl, cardEl);
+        // Place cursor tip at centre of the item
+        // (subtract ~10px so SVG tip point aligns rather than SVG bounding box)
+        setCursorPos({
+          x: cx + tabEl.offsetWidth / 2 - 10,
+          y: cy + tabEl.offsetHeight / 2 - 2,
+        });
+      }
+
+      // 2. After spring settles (~650ms), fire click ripple
+      const clickTimer = setTimeout(() => {
+        setClicking(true);
+        // 3. After ripple peak (~300ms), switch tab content
+        const switchTimer = setTimeout(() => {
+          setActiveTab(nextTab);
+          setClicking(false);
+        }, 300);
+        return () => clearTimeout(switchTimer);
+      }, 650);
+
+      return () => clearTimeout(clickTimer);
+    };
+
+    const interval = setInterval(cycle, 3200);
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <section className={styles.hero} ref={ref} id="hero">
@@ -233,6 +310,7 @@ export default function Hero() {
           <div className={styles.mockupWrap}>
             <div className={styles.mockupGlow} />
             <motion.div
+              ref={cardRef}
               className={styles.mockupCard}
               initial={{ transform: 'perspective(1200px) rotateX(12deg) rotateY(-8deg) rotateZ(3deg)' }}
               whileHover={{ transform: 'perspective(1200px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scale(1.02)' }}
@@ -254,6 +332,7 @@ export default function Hero() {
                   </div>
                   <div className={styles.sideNav}>
                     <div 
+                      ref={(el) => { sideItemRefs.current['dashboard'] = el; }}
                       className={`${styles.sideItem} ${activeTab === 'dashboard' ? styles.sideActive : ''}`} 
                       style={{ display: 'flex', alignItems: 'center', gap: '6px' }}
                       onClick={() => setActiveTab('dashboard')}
@@ -261,6 +340,7 @@ export default function Hero() {
                       <BarChart2 size={12} /> Dashboard
                     </div>
                     <div 
+                      ref={(el) => { sideItemRefs.current['hr'] = el; }}
                       className={`${styles.sideItem} ${activeTab === 'hr' ? styles.sideActive : ''}`} 
                       style={{ display: 'flex', alignItems: 'center', gap: '6px' }}
                       onClick={() => setActiveTab('hr')}
@@ -268,6 +348,7 @@ export default function Hero() {
                       <Users size={12} /> Team &amp; HR
                     </div>
                     <div 
+                      ref={(el) => { sideItemRefs.current['projects'] = el; }}
                       className={`${styles.sideItem} ${activeTab === 'projects' ? styles.sideActive : ''}`} 
                       style={{ display: 'flex', alignItems: 'center', gap: '6px' }}
                       onClick={() => setActiveTab('projects')}
@@ -275,6 +356,7 @@ export default function Hero() {
                       <Briefcase size={12} /> Projects
                     </div>
                     <div 
+                      ref={(el) => { sideItemRefs.current['compliance'] = el; }}
                       className={`${styles.sideItem} ${activeTab === 'compliance' ? styles.sideActive : ''}`} 
                       style={{ display: 'flex', alignItems: 'center', gap: '6px' }}
                       onClick={() => setActiveTab('compliance')}
@@ -282,6 +364,7 @@ export default function Hero() {
                       <ShieldCheck size={12} /> Compliance
                     </div>
                     <div 
+                      ref={(el) => { sideItemRefs.current['finance'] = el; }}
                       className={`${styles.sideItem} ${activeTab === 'finance' ? styles.sideActive : ''}`} 
                       style={{ display: 'flex', alignItems: 'center', gap: '6px' }}
                       onClick={() => setActiveTab('finance')}
@@ -289,6 +372,7 @@ export default function Hero() {
                       <DollarSign size={12} /> Finance
                     </div>
                     <div 
+                      ref={(el) => { sideItemRefs.current['esg'] = el; }}
                       className={`${styles.sideItem} ${activeTab === 'esg' ? styles.sideActive : ''}`} 
                       style={{ display: 'flex', alignItems: 'center', gap: '6px' }}
                       onClick={() => setActiveTab('esg')}
@@ -400,6 +484,25 @@ export default function Hero() {
                   </div>
                 </div>
               </div>
+
+              {/* ── Animated Auto-Click Cursor ── */}
+              <motion.div
+                className={styles.autoCursor}
+                animate={{ x: cursorPos.x, y: cursorPos.y }}
+                transition={{ type: 'spring', stiffness: 52, damping: 13, mass: 0.8 }}
+              >
+                <svg width="20" height="24" viewBox="0 0 20 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M2 2L2 19L6.5 14.5L9.5 21.5L12 20.5L9 14H16L2 2Z"
+                    fill="white"
+                    stroke="#7c3aed"
+                    strokeWidth="1.4"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+                {clicking && <div className={styles.clickRipple} />}
+              </motion.div>
+
             </motion.div>
           </div>
         </div>

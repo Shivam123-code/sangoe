@@ -21,6 +21,7 @@ import styles from './Navbar.module.css';
 const MAIN_LINKS = [
   { label: 'Home',      href: '/' },
   { label: 'Platform',  href: '/platform' },
+  { label: 'Features',  href: '/features' },
   { label: 'Products',  href: '/products' },
   { label: 'Solutions', href: '/solutions' },
   { label: 'Pricing',   href: '/pricing' },

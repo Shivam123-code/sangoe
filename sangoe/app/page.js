@@ -6,6 +6,7 @@ import SolutionStatement from '@/components/home/SolutionStatement';
 import JourneySection from '@/components/home/JourneySection';
 import IPORoadmap from '@/components/home/IPORoadmap';
 import PlatformClouds from '@/components/home/PlatformClouds';
+import FeatureEcosystem from '@/components/home/FeatureEcosystem';
 import AdvancedSolutions from '@/components/home/AdvancedSolutions';
 import IndustriesSection from '@/components/home/IndustriesSection';
 import AISection from '@/components/home/AISection';
@@ -25,6 +26,7 @@ export default function HomePage() {
       <JourneySection />
       <IPORoadmap />
       <PlatformClouds />
+      <FeatureEcosystem />
       <AdvancedSolutions />
       <IndustriesSection />
       <AISection />

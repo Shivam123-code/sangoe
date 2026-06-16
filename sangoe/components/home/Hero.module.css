@@ -219,6 +219,7 @@
 }
 
 .mockupCard {
+  position: relative;
   border-radius: 20px;
   overflow: hidden;
   border: 1px solid rgba(0, 0, 0, 0.08);
@@ -647,5 +648,42 @@
 
 
 
+/* ========================================
+   AUTO CURSOR OVERLAY
+   ======================================== */
+.autoCursor {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  pointer-events: none;
+  /* glow effect around cursor */
+  filter:
+    drop-shadow(0 2px 6px rgba(124, 58, 237, 0.65))
+    drop-shadow(0 0 12px rgba(124, 58, 237, 0.35));
+}
 
+.clickRipple {
+  position: absolute;
+  top: 6px;
+  left: 1px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: rgba(124, 58, 237, 0.22);
+  border: 1.5px solid rgba(124, 58, 237, 0.55);
+  animation: rippleAnim 0.45s ease-out forwards;
+  pointer-events: none;
+}
+
+@keyframes rippleAnim {
+  from {
+    transform: scale(0.2);
+    opacity: 1;
+  }
+  to {
+    transform: scale(3);
+    opacity: 0;
+  }
+}
 

@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Apple, Play } from 'lucide-react';
+import { Apple, Play, ShieldCheck, CreditCard, Smartphone } from 'lucide-react';
 import styles from './Footer.module.css';
 
 const FOOTER_COLUMNS = [
@@ -7,6 +7,7 @@ const FOOTER_COLUMNS = [
     title: 'Platform & Products',
     links: [
       { label: 'The Platform', href: '/platform' },
+      { label: 'Operating Features', href: '/features' },
       { label: '9 Business Clouds', href: '/products' },
       { label: 'Advanced Solutions', href: '/solutions' },
       { label: 'Industries We Serve', href: '/industries' },
@@ -95,6 +96,62 @@ export default function Footer() {
                     <span className={styles.downloadMain}>Google Play</span>
                   </div>
                 </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Trust & Security Banner */}
+        <div className={styles.trustBanner}>
+          <div className={styles.trustGroup}>
+            <span className={styles.trustLabel}>Secure Payments</span>
+            <div className={styles.paymentGrid}>
+              <div className={styles.iconWrapper}>
+                <img src="https://cdn.simpleicons.org/phonepe/4b5563" alt="PhonePe" className={styles.creativeIcon} />
+              </div>
+              <div className={styles.iconWrapper}>
+                <img src="https://cdn.simpleicons.org/googlepay/4b5563" alt="Google Pay" className={styles.creativeIcon} />
+              </div>
+              <div className={styles.iconWrapper}>
+                <img src="https://cdn.simpleicons.org/paypal/4b5563" alt="PayPal" className={styles.creativeIcon} />
+              </div>
+              <div className={styles.iconWrapper}>
+                <img src="https://cdn.simpleicons.org/mastercard/4b5563" alt="Mastercard" className={styles.creativeIcon} />
+              </div>
+              <div className={styles.iconWrapper}>
+                <img src="https://cdn.jsdelivr.net/gh/activemerchant/payment_icons/app/assets/images/payment_icons/payu.svg" alt="PayU" className={styles.creativeIcon} />
+              </div>
+              <div className={styles.iconWrapper}>
+                <img src="https://cdn.simpleicons.org/visa/4b5563" alt="Visa" className={styles.creativeIcon} />
+              </div>
+            </div>
+          </div>
+
+          <div className={styles.trustVerticalDivider} />
+
+          <div className={styles.trustGroup}>
+            <span className={styles.trustLabel}>Global Compliance</span>
+            <div className={styles.certGrid}>
+              <div className={styles.creativeCert}>
+                <div className={styles.certIconWrap}><ShieldCheck size={10} strokeWidth={2.5} /></div>
+                ISO 42001
+              </div>
+              <div className={styles.creativeCert}>
+                <div className={styles.certIconWrap}><ShieldCheck size={10} strokeWidth={2.5} /></div>
+                PCI DSS
+              </div>
+              <div className={styles.creativeCert}>
+                <div className={styles.creativeCertGlow} />
+                <div className={styles.certIconWrap}><ShieldCheck size={10} strokeWidth={2.5} /></div>
+                ISO 27001
+              </div>
+              <div className={styles.creativeCert}>
+                <div className={styles.certIconWrap} style={{ background: '#eff6ff', color: '#3b82f6' }}><ShieldCheck size={10} strokeWidth={2.5} /></div>
+                SDG Aligned
+              </div>
+              <div className={styles.creativeCert}>
+                <div className={styles.certIconWrap} style={{ background: '#f5f3ff', color: '#7c3aed' }}><ShieldCheck size={10} strokeWidth={2.5} /></div>
+                ESG Ready
               </div>
             </div>
           </div>
