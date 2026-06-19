@@ -9,7 +9,7 @@ import styles from './JourneySection.module.css';
 
 
 const STATS = [
-  { value: 500, suffix: '+', label: 'Businesses Transformed', icon: TrendingUp, color: '#7C3AED' },
+  { value: 4.9, suffix: ' ★', label: 'Google Review Rating', icon: Star, color: '#F59E0B' },
   { value: 98,  suffix: '%', label: 'Avg. Compliance Score',  icon: Users,      color: '#10B981' },
 ];
 
@@ -31,8 +31,12 @@ function AnimatedNumber({ target, suffix, color }) {
           let cur = 0;
           const timer = setInterval(() => {
             cur += inc;
-            if (cur >= target) { setVal(target); clearInterval(timer); }
-            else setVal(Math.floor(cur));
+            if (cur >= target) { 
+              setVal(target); 
+              clearInterval(timer); 
+            } else {
+              setVal(target % 1 === 0 ? Math.floor(cur) : Number(cur.toFixed(1)));
+            }
           }, step);
         }
       },

@@ -1,0 +1,542 @@
+/* ─────────────────────────────────────────────────────────────
+   HeroUniverse — Three.js Space Hero
+   ───────────────────────────────────────────────────────────── */
+
+.hero {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+  background: radial-gradient(ellipse 120% 80% at 50% -10%, #0d0520 0%, #020010 60%, #000005 100%);
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Canvas background ─── */
+.canvasWrap {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.canvasPlaceholder {
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(ellipse at 50% 50%, #0d0520 0%, #020010 100%);
+}
+
+/* ── Gradient overlays ─── */
+.bgOverlayBottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 220px;
+  background: linear-gradient(to top, #020010 0%, transparent 100%);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.bgOverlayLeft {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 55%;
+  height: 100%;
+  background: radial-gradient(ellipse 90% 80% at 0% 50%, rgba(2,0,16,0.7) 0%, transparent 70%);
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* ── Inner content grid ─── */
+.inner {
+  position: relative;
+  z-index: 2;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 40px;
+  width: 100%;
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 48px;
+  min-height: calc(100vh - 100px);
+  padding-top: 80px;
+}
+
+/* ── LEFT content ─── */
+.left {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: rgba(124,58,237,0.12);
+  border: 1px solid rgba(124,58,237,0.3);
+  border-radius: 50px;
+  padding: 7px 16px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #c4b5fd;
+  letter-spacing: 0.04em;
+  width: fit-content;
+  backdrop-filter: blur(8px);
+}
+
+.badgeDot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #7c3aed;
+  box-shadow: 0 0 8px #7c3aed;
+  animation: blink 2s ease-in-out infinite;
+  flex-shrink: 0;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+.h1 {
+  font-size: clamp(2.8rem, 5vw, 4.5rem);
+  font-weight: 950;
+  color: #ffffff;
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  margin: 0;
+}
+
+.gradText {
+  background: linear-gradient(135deg, #a78bfa 0%, #818cf8 40%, #c084fc 80%, #f9a8d4 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.sub {
+  font-size: clamp(0.95rem, 1.4vw, 1.08rem);
+  color: rgba(255,255,255,0.62);
+  line-height: 1.78;
+  max-width: 500px;
+  margin: 0;
+}
+
+/* ── CTAs ─── */
+.ctaRow {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.btnPrimary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, #7c3aed 0%, #4f46e5 100%);
+  color: #fff;
+  font-size: 0.92rem;
+  font-weight: 800;
+  padding: 14px 28px;
+  border-radius: 12px;
+  text-decoration: none;
+  box-shadow: 0 8px 32px rgba(124,58,237,0.4);
+  border: 1px solid rgba(255,255,255,0.1);
+  letter-spacing: 0.01em;
+  transition: box-shadow 0.2s;
+}
+
+.btnPrimary:hover {
+  box-shadow: 0 12px 40px rgba(124,58,237,0.6);
+}
+
+.btnGhost {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(255,255,255,0.06);
+  color: rgba(255,255,255,0.85);
+  font-size: 0.92rem;
+  font-weight: 700;
+  padding: 14px 24px;
+  border-radius: 12px;
+  text-decoration: none;
+  border: 1px solid rgba(255,255,255,0.1);
+  backdrop-filter: blur(8px);
+  letter-spacing: 0.01em;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.btnGhost:hover {
+  background: rgba(255,255,255,0.1);
+  border-color: rgba(255,255,255,0.2);
+}
+
+.playRing {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #7c3aed, #4f46e5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* ── Stats ─── */
+.statsRow {
+  display: flex;
+  gap: 28px;
+  flex-wrap: wrap;
+  padding-top: 8px;
+  border-top: 1px solid rgba(255,255,255,0.07);
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.statN {
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: #ffffff;
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+
+.statL {
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.45);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* ── RIGHT — Dashboard ─── */
+.right {
+  position: relative;
+}
+
+.dashboard {
+  background: rgba(255,255,255,0.025);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 20px;
+  overflow: hidden;
+  backdrop-filter: blur(24px);
+  box-shadow:
+    0 0 0 1px rgba(124,58,237,0.15),
+    0 32px 80px rgba(0,0,10,0.6),
+    inset 0 1px 0 rgba(255,255,255,0.08);
+}
+
+/* Dashboard top bar */
+.dashTop {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 18px;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+  background: rgba(255,255,255,0.02);
+}
+
+.dashDots {
+  display: flex;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.dashDots span {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.dashTitle {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: rgba(255,255,255,0.5);
+  flex: 1;
+  letter-spacing: 0.04em;
+}
+
+.dashLive {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.68rem;
+  font-weight: 800;
+  color: #10b981;
+  letter-spacing: 0.06em;
+}
+
+.liveDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #10b981;
+  box-shadow: 0 0 6px #10b981;
+  animation: blink 1.5s ease-in-out infinite;
+}
+
+/* KPI grid */
+.kpiGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: rgba(255,255,255,0.05);
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+}
+
+.kpiCard {
+  background: rgba(5,5,20,0.5);
+  padding: 14px 14px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  transition: background 0.2s;
+}
+
+.kpiCard:hover {
+  background: rgba(124,58,237,0.08);
+}
+
+.kpiTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px;
+}
+
+.kpiLabel {
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: rgba(255,255,255,0.45);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.kpiIcon {
+  width: 20px;
+  height: 20px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.kpiVal {
+  font-size: 1.15rem;
+  font-weight: 900;
+  color: #ffffff;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+.kpiChange {
+  font-size: 0.65rem;
+  font-weight: 700;
+}
+
+/* Mid row — chart + modules */
+.midRow {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: 0;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+}
+
+.chartBox,
+.modulesBox {
+  padding: 14px;
+}
+
+.chartBox {
+  border-right: 1px solid rgba(255,255,255,0.07);
+}
+
+.chartHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: rgba(255,255,255,0.5);
+  margin-bottom: 12px;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.chartBars {
+  display: flex;
+  align-items: flex-end;
+  gap: 5px;
+  height: 72px;
+}
+
+.barWrap {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  height: 100%;
+  justify-content: flex-end;
+}
+
+.bar {
+  width: 100%;
+  border-radius: 4px 4px 0 0;
+  transform-origin: bottom;
+  min-height: 4px;
+}
+
+.barLabel {
+  font-size: 0.55rem;
+  color: rgba(255,255,255,0.3);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* Modules list */
+.modulesList {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.moduleRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.moduleDot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.moduleName {
+  font-size: 0.68rem;
+  color: rgba(255,255,255,0.7);
+  font-weight: 600;
+  flex: 1;
+}
+
+.moduleStatus {
+  font-size: 0.5rem;
+  color: #10b981;
+}
+
+/* Alert row */
+.alertRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  background: rgba(124,58,237,0.04);
+}
+
+.alertDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #a78bfa;
+  flex-shrink: 0;
+  animation: blink 2s ease-in-out infinite;
+}
+
+/* Floating badges */
+.floatBadge {
+  position: absolute;
+  background: rgba(5,5,20,0.9);
+  border: 1px solid rgba(124,58,237,0.25);
+  border-radius: 50px;
+  padding: 7px 14px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: rgba(255,255,255,0.85);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  backdrop-filter: blur(12px);
+  white-space: nowrap;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+}
+
+.floatBadge strong {
+  color: #a78bfa;
+}
+
+/* ── Legend strip ─── */
+.legendStrip {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+  flex-wrap: wrap;
+  padding: 20px 40px 32px;
+  border-top: 1px solid rgba(255,255,255,0.04);
+}
+
+.legendItem {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: rgba(255,255,255,0.45);
+  letter-spacing: 0.04em;
+}
+
+.legendDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* ── Responsive ─── */
+@media (max-width: 1024px) {
+  .inner {
+    grid-template-columns: 1fr;
+    padding-top: 120px;
+    min-height: unset;
+    gap: 40px;
+    padding-bottom: 40px;
+  }
+
+  .right {
+    max-width: 600px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .kpiGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .inner { padding: 100px 20px 40px; }
+  .kpiGrid { grid-template-columns: repeat(2, 1fr); }
+  .midRow { grid-template-columns: 1fr; }
+  .chartBox { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.07); }
+  .legendStrip { gap: 16px; padding: 16px 20px 24px; }
+  .statsRow { gap: 16px; }
+  .floatBadge { display: none; }
+}

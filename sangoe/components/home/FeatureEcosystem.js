@@ -187,7 +187,7 @@ export default function FeatureEcosystem() {
                       style={{ background: pillar.color }}
                     />
                   )}
-                  <span className={styles.btnIcon} style={{ color: pillar.color, background: isActive ? '#fff' : pillar.bg }}>
+                  <span className={styles.btnIcon} style={{ color: pillar.color, background: pillar.bg }}>
                     <Icon size={20} />
                   </span>
                   <div className={styles.btnText}>

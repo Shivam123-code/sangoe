@@ -1,0 +1,429 @@
+/* DashboardShowcase — sequential reveal of 4 platform dashboards */
+
+.section {
+  background: #f8f7ff;
+  padding: 64px 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 48px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* ── Header ── */
+.header {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 40px;
+}
+
+.headerTag {
+  display: inline-block;
+  background: rgba(124,58,237,0.09);
+  border: 1px solid rgba(124,58,237,0.2);
+  border-radius: 50px;
+  padding: 6px 18px;
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: #7c3aed;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.h2 {
+  font-size: clamp(2rem, 3.5vw, 2.9rem);
+  font-weight: 900;
+  color: #0f172a;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+  margin: 0;
+}
+
+.grad {
+  background: linear-gradient(135deg, #7c3aed, #4f46e5, #8b5cf6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.headerSub {
+  font-size: 1rem;
+  color: #64748b;
+  max-width: 520px;
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* ── Showcase row ── */
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: center;
+  padding: 32px 0;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+.row:last-child { border-bottom: none; }
+
+.rowNormal  { direction: ltr; }
+.rowReverse { direction: rtl; }
+.rowReverse > * { direction: ltr; }
+
+/* ── Text side ── */
+.textSide {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.rowTag {
+  display: inline-block;
+  border-radius: 50px;
+  padding: 5px 14px;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  width: fit-content;
+}
+
+.rowH3 {
+  font-size: clamp(1.7rem, 2.8vw, 2.4rem);
+  font-weight: 900;
+  color: #0f172a;
+  letter-spacing: -0.03em;
+  line-height: 1.18;
+  margin: 0;
+}
+
+.rowDesc {
+  font-size: 0.96rem;
+  color: #475569;
+  line-height: 1.75;
+  margin: 0;
+  max-width: 440px;
+}
+
+.featureList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.feature {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #334155;
+}
+
+.rowCta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #fff;
+  font-size: 0.88rem;
+  font-weight: 800;
+  padding: 12px 22px;
+  border-radius: 10px;
+  text-decoration: none;
+  width: fit-content;
+  letter-spacing: 0.01em;
+  transition: opacity 0.2s, transform 0.2s;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+  margin-top: 4px;
+}
+
+.rowCta:hover { opacity: 0.9; transform: translateY(-1px); }
+
+/* ── Card side ── */
+.cardSide {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.cardGlow {
+  position: absolute;
+  inset: -20px;
+  border-radius: 28px;
+  filter: blur(40px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── Dashboard card ── */
+.dashCard {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 520px;
+  background: #ffffff;
+  border: 1px solid rgba(0,0,0,0.07);
+  border-radius: 18px;
+  box-shadow:
+    0 16px 56px rgba(0,0,0,0.1),
+    0 1px 0 rgba(255,255,255,0.9) inset;
+  display: flex;
+  overflow: hidden;
+  transition: box-shadow 0.25s, transform 0.25s;
+}
+
+.dashCard:hover {
+  box-shadow: 0 24px 72px rgba(0,0,0,0.14);
+  transform: translateY(-3px);
+}
+
+/* Sidebar */
+.dSidebar {
+  width: 36px;
+  background: #f8f7ff;
+  border-right: 1px solid rgba(0,0,0,0.05);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 12px 0 10px;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.dSideIcon {
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2px;
+}
+
+.dSideItem {
+  width: 20px;
+  height: 20px;
+  border-radius: 5px;
+  background: rgba(0,0,0,0.04);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.52rem;
+  color: #94a3b8;
+}
+
+/* Main */
+.dMain {
+  flex: 1;
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  min-width: 0;
+}
+
+.dTopBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.dTitleRow {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.dDot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+}
+
+.dTitle {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #475569;
+}
+
+.dIcons {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.dAvatar {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  opacity: 0.8;
+}
+
+.dSubBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.dSubTitle {
+  font-size: 0.85rem;
+  font-weight: 900;
+  color: #0f172a;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.dBadge {
+  font-size: 0.6rem;
+  font-weight: 800;
+  border-radius: 50px;
+  padding: 2px 9px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* KPI grid */
+.dKpiGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+}
+
+.kpiTile {
+  background: #f8f7ff;
+  border: 1px solid rgba(0,0,0,0.055);
+  border-radius: 10px;
+  padding: 8px 8px 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.kpiLbl {
+  font-size: 0.56rem;
+  font-weight: 700;
+  color: #94a3b8;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.kpiVal {
+  font-size: 1.05rem;
+  font-weight: 900;
+  color: #0f172a;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  white-space: nowrap;
+}
+
+.kpiFoot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 3px;
+}
+
+.kpiTrend {
+  font-size: 0.56rem;
+  font-weight: 800;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Bottom chart + alerts row */
+.dBottom {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  padding-top: 4px;
+  border-top: 1px solid rgba(0,0,0,0.05);
+}
+
+/* Mini bar chart */
+.dChart { display: flex; flex-direction: column; gap: 5px; }
+.dChartLabel { font-size: 0.58rem; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.04em; }
+.miniBar {
+  flex: 1;
+  display: flex;
+  align-items: flex-end;
+  gap: 4px;
+  height: 40px;
+}
+
+.bar {
+  flex: 1;
+  border-radius: 3px 3px 0 0;
+  min-height: 4px;
+}
+
+/* Alerts */
+.dAlerts {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.dAlert {
+  display: flex;
+  align-items: flex-start;
+  gap: 5px;
+  font-size: 0.6rem;
+  color: #64748b;
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+/* ── Dark mode ── */
+:global([data-theme='dark']) .section { background: #080812 !important; }
+:global([data-theme='dark']) .h2 { color: #edeaf8 !important; }
+:global([data-theme='dark']) .rowH3 { color: #edeaf8 !important; }
+:global([data-theme='dark']) .rowDesc { color: #8b85a8 !important; }
+:global([data-theme='dark']) .feature { color: #c4c0e0 !important; }
+:global([data-theme='dark']) .row { border-color: rgba(255,255,255,0.06) !important; }
+:global([data-theme='dark']) .dashCard { background: #13131f !important; border-color: rgba(255,255,255,0.07) !important; }
+:global([data-theme='dark']) .dSidebar { background: #0e0e1a !important; }
+:global([data-theme='dark']) .dSubTitle { color: #edeaf8 !important; }
+:global([data-theme='dark']) .kpiTile { background: #1a1a2e !important; border-color: rgba(255,255,255,0.07) !important; }
+:global([data-theme='dark']) .kpiVal { color: #edeaf8 !important; }
+:global([data-theme='dark']) .dAlert { color: #8b85a8 !important; }
+:global([data-theme='dark']) .headerSub { color: #8b85a8 !important; }
+
+/* ── Responsive ── */
+@media (max-width: 1100px) {
+  .inner { padding: 0 32px; }
+  .row { gap: 40px; }
+}
+
+@media (max-width: 900px) {
+  .row { grid-template-columns: 1fr; gap: 32px; }
+  .rowReverse { direction: ltr; }
+  .inner { padding: 0 24px; }
+  .dashCard { max-width: 100%; }
+  .dKpiGrid { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (max-width: 640px) {
+  .section { padding: 64px 0 60px; }
+  .header { margin-bottom: 48px; }
+  .row { padding: 48px 0; }
+  .dBottom { grid-template-columns: 1fr; }
+}

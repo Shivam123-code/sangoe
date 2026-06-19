@@ -3,6 +3,7 @@ import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import MobileBottomNav from '@/components/layout/MobileBottomNav';
 import ThemeProvider from '@/components/layout/ThemeProvider';
+import FloatingCTA from '@/components/layout/FloatingCTA';
 
 export const metadata = {
   title: 'Sangoe — Business Growth Operating System™',
@@ -69,6 +70,7 @@ export default function RootLayout({ children }) {
           {children}
           <Footer />
           <MobileBottomNav />
+          <FloatingCTA />
         </ThemeProvider>
       </body>
     </html>

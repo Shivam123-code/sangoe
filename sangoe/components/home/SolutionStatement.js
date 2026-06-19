@@ -1,15 +1,8 @@
 'use client';
-import { motion } from 'framer-motion';
+import { useState, useRef } from 'react';
+import { motion, AnimatePresence, useInView } from 'framer-motion';
 import Link from 'next/link';
 import { 
-  TrendingUp, 
-  Users, 
-  Briefcase, 
-  DollarSign, 
-  ShieldCheck, 
-  Building, 
-  BarChart3, 
-  Heart, 
   ArrowRight,
   ArrowUpRight,
   Check,
@@ -18,20 +11,8 @@ import {
   Globe,
   Compass
 } from 'lucide-react';
-import { useReveal, fadeUp, stagger, scaleIn } from '../ui/motion';
+import { INDUSTRIES } from './IndustryModules';
 import styles from './SolutionStatement.module.css';
-
-const GRID_ITEMS = [
-  { icon: TrendingUp, name: 'Sales & Revenue', color: '#3B82F6', bg: '#EFF6FF' },
-  { icon: Users, name: 'HR & Workforce', color: '#10B981', bg: '#ECFDF5' },
-  { icon: Briefcase, name: 'Project & Operations', color: '#F55F0B', bg: '#FFFBEB' },
-  { icon: DollarSign, name: 'Procurement & Finance', color: '#EF4444', bg: '#FEF2F2' },
-  { isBadge: true }, // CENTER CELL BADGE
-  { icon: Building, name: 'Assets & Infra', color: '#6366F1', bg: '#EEF2FF' },
-  { icon: ShieldCheck, name: 'Compliance & Govt', color: '#8B5CF6', bg: '#F5F3FF' },
-  { icon: BarChart3, name: 'Business Intel', color: '#EC4899', bg: '#FDF2F8' },
-  { icon: Heart, name: 'Customer Success', color: '#06B6D4', bg: '#ECFEFF' },
-];
 
 const SUB_PILLS = [
   { text: 'Profitability', icon: ArrowUpRight, color: '#10B981' },
@@ -43,95 +24,186 @@ const SUB_PILLS = [
 ];
 
 export default function SolutionStatement() {
-  const { ref, inView } = useReveal(0.15);
+  const [activeIndustryId, setActiveIndustryId] = useState('construction');
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, margin: '-60px' });
+
+  const activeIndustry = INDUSTRIES.find(ind => ind.id === activeIndustryId) || INDUSTRIES[0];
+
+  // The 8 modules for the active industry
+  const modules = activeIndustry.modules;
+
+  // Let's create the 3x3 layout items. Position index 4 is the center badge
+  const gridItems = [
+    modules[0], // Top Left
+    modules[1], // Top Center
+    modules[2], // Top Right
+    modules[3], // Center Left
+    { isBadge: true }, // CENTER BADGE (index 4)
+    modules[4], // Center Right
+    modules[5], // Bottom Left
+    modules[6], // Bottom Center
+    modules[7], // Bottom Right
+  ];
 
   return (
     <section className={`section ${styles.section}`} ref={ref} id="platform">
+      <div className={styles.bgGlow} />
+      
       <div className="wrap">
-        <div className={styles.grid}>
-
-          {/* LEFT — Integration Grid with center badge */}
+        {/* Top Header & Industry Selector Tabs */}
+        <div className={styles.topHeader}>
           <motion.div
-            className={styles.gridWrap}
-            variants={stagger(0.05)}
-            initial="hidden"
-            animate={inView ? 'show' : 'hidden'}
+            className={styles.headerBlock}
+            initial={{ opacity: 0, y: 24 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6 }}
           >
-            {GRID_ITEMS.map((item, i) => {
-              if (item.isBadge) {
-                return (
-                  <motion.div
-                    key="badge"
-                    variants={scaleIn}
-                    className={styles.centerBadge}
-                    animate={{ boxShadow: ['0 0 0 0 rgba(124, 58, 237, 0.4)', '0 0 0 16px rgba(124, 58, 237, 0)'] }}
-                    transition={{ repeat: Infinity, duration: 2.2, ease: 'easeOut' }}
-                  >
-                    <span className={styles.badgeNum}>9+</span>
-                    <span className={styles.badgeLabel}>Clouds</span>
-                  </motion.div>
-                );
-              }
-
-              const IconComponent = item.icon;
-              return (
-                <motion.div
-                  key={i}
-                  variants={scaleIn}
-                  className={`card ${styles.cloudTile}`}
-                  whileHover={{ scale: 1.05, y: -4, borderColor: item.color, boxShadow: `0 12px 30px ${item.color}15` }}
-                  transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-                >
-                  <span className={styles.cloudIcon} style={{ color: item.color, background: item.bg }}>
-                    <IconComponent size={24} />
-                  </span>
-                  <span className={styles.cloudName}>{item.name}</span>
-                </motion.div>
-              );
-            })}
+            <span className={styles.tag}>ONE PLATFORM. TOTAL CONTROL.</span>
+            <h2 className={styles.h2}>
+              One Platform to <span className={styles.highlightText}>Run, Control</span> &amp; Scale Your Business
+            </h2>
+            <p className={styles.sub}>
+              Sangoe brings all core operations into one unified Business Growth Operating System. Replaces scattered files, spreadsheets, and disconnected SaaS subscriptions.
+            </p>
           </motion.div>
 
-          {/* RIGHT — Text Content */}
+          {/* Industry tabs scrollable bar */}
+          <motion.div
+            className={styles.tabsWrap}
+            initial={{ opacity: 0, y: 16 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.15 }}
+          >
+            <div className={styles.tabs}>
+              {INDUSTRIES.map(ind => {
+                const Icon = ind.icon;
+                const isActive = ind.id === activeIndustryId;
+                return (
+                  <button
+                    key={ind.id}
+                    className={`${styles.tab} ${isActive ? styles.tabActive : ''}`}
+                    onClick={() => setActiveIndustryId(ind.id)}
+                    style={isActive ? { '--tab-color': ind.color, borderColor: ind.color, background: ind.bg } : {}}
+                  >
+                    <Icon size={13} style={isActive ? { color: ind.color } : {}} />
+                    <span>{ind.label}</span>
+                  </button>
+                );
+              })}
+            </div>
+          </motion.div>
+        </div>
+
+        {/* 2-Column Grid Layout */}
+        <div className={styles.grid}>
+          
+          {/* LEFT — Dynamic Circular 3x3 Grid */}
+          <div className={styles.gridWrapContainer}>
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activeIndustryId}
+                className={styles.gridWrap}
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.95 }}
+                transition={{ duration: 0.35, ease: 'easeOut' }}
+              >
+                {gridItems.map((item, i) => {
+                  if (item.isBadge) {
+                    const IndustryIcon = activeIndustry.icon;
+                    const shortLabel = activeIndustry.label.split('(')[0].trim().split(' ')[0];
+                    return (
+                      <motion.div
+                        key="badge"
+                        className={styles.centerBadge}
+                        style={{ 
+                          background: `linear-gradient(135deg, ${activeIndustry.color}e0 0%, ${activeIndustry.color}c0 100%)`,
+                          borderColor: activeIndustry.color,
+                          boxShadow: `0 10px 30px ${activeIndustry.color}35`
+                        }}
+                        animate={{ boxShadow: [`0 0 0 0 ${activeIndustry.color}40`, `0 0 0 16px ${activeIndustry.color}00`] }}
+                        transition={{ repeat: Infinity, duration: 2.2, ease: 'easeOut' }}
+                      >
+                        <span className={styles.badgeIcon}>
+                          <IndustryIcon size={24} />
+                        </span>
+                        <span className={styles.badgeLabel} style={{ fontSize: '0.72rem', fontWeight: '850', marginTop: '4px', textTransform: 'uppercase', color: '#ffffff', textAlign: 'center', wordBreak: 'break-word', maxWidth: '80px', lineHeight: '1.1' }}>
+                          {shortLabel}
+                        </span>
+                        <span className={styles.badgeLabel} style={{ fontSize: '0.55rem', fontWeight: '700', opacity: 0.8, color: '#ffffff', marginTop: '1px' }}>
+                          OS
+                        </span>
+                      </motion.div>
+                    );
+                  }
+
+                  const IconComponent = item.icon;
+                  return (
+                    <motion.div
+                      key={i}
+                      className={`card ${styles.cloudTile}`}
+                      whileHover={{ scale: 1.04, y: -4, borderColor: activeIndustry.color, boxShadow: `0 12px 30px ${activeIndustry.color}15` }}
+                      transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+                    >
+                      <span className={styles.cloudIcon} style={{ color: activeIndustry.color, background: activeIndustry.bg }}>
+                        <IconComponent size={18} />
+                      </span>
+                      <span className={styles.cloudName}>{item.name}</span>
+                      <span className={styles.cloudDesc}>{item.desc}</span>
+                    </motion.div>
+                  );
+                })}
+              </motion.div>
+            </AnimatePresence>
+          </div>
+
+          {/* RIGHT — Text Content & Selected Industry Overview */}
           <motion.div
             className={styles.right}
-            variants={stagger(0.08)}
             initial="hidden"
             animate={inView ? 'show' : 'hidden'}
-            transition={{ delay: 0.15 }}
+            variants={{
+              hidden: { opacity: 0, x: 30 },
+              show: { opacity: 1, x: 0 }
+            }}
+            transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <motion.span variants={fadeUp} className="tag">One Platform. Total Control.</motion.span>
-
-            <motion.h2 variants={fadeUp} className={styles.h2}>
-              One Platform to <span className={styles.highlightText}>Run, Control</span> &amp; Scale Your Business
-            </motion.h2>
-
-            <motion.p variants={fadeUp} className={styles.sub}>
-              Sangoe brings all core operations into one unified Business Growth Operating System. Replaces scattered files, spreadsheets, and disconnected SaaS subscriptions.
-            </motion.p>
+            {/* Selected Industry Card */}
+            <div className={styles.industryDetailsCard} style={{ borderColor: `${activeIndustry.color}30`, background: `${activeIndustry.color}06` }}>
+              <div className={styles.industryDetailsHeader}>
+                {(() => { const Icon = activeIndustry.icon; return <Icon size={20} style={{ color: activeIndustry.color }} />; })()}
+                <span className={styles.industryDetailsName} style={{ color: activeIndustry.color }}>
+                  {activeIndustry.label} Cloud
+                </span>
+              </div>
+              <p className={styles.industryDetailsSub}>
+                Pre-configured with workflow automations, compliance frameworks, and key performance dials specific to the {activeIndustry.label} sector.
+              </p>
+            </div>
 
             {/* Sub-Pills */}
-            <motion.div variants={stagger(0.06)} className={styles.pills}>
+            <div className={styles.pills}>
               {SUB_PILLS.map((p, i) => {
                 const IconComponent = p.icon;
                 return (
-                  <motion.span 
+                  <span 
                     key={i} 
-                    variants={fadeUp} 
                     className={styles.pill}
                     style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}
                   >
                     <IconComponent size={12} style={{ color: p.color }} />
                     {p.text}
-                  </motion.span>
+                  </span>
                 );
               })}
-            </motion.div>
+            </div>
 
-            <motion.div variants={fadeUp} style={{ marginTop: '32px' }}>
+            <div style={{ marginTop: '32px' }}>
               <Link href="/products" className={`btn btn-purple ${styles.cta}`} id="explore-platform">
                 Explore All Products <ArrowRight size={16} />
               </Link>
-            </motion.div>
+            </div>
           </motion.div>
 
         </div>

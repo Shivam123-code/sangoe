@@ -1,39 +1,37 @@
 'use client';
-import { motion } from 'framer-motion';
+import { motion, useInView } from 'framer-motion';
+import { useRef } from 'react';
 import Link from 'next/link';
-import { 
-  XCircle, 
-  CheckCircle2, 
-  ArrowRight,
-  TrendingUp, 
-  TrendingDown,
-  Shield, 
-  Cpu, 
-  Activity, 
-  UserCheck, 
-  Star,
-  AlertTriangle,
-  DollarSign
+import {
+  XCircle, CheckCircle2, ArrowRight, TrendingUp, TrendingDown,
+  Shield, Cpu, Activity, UserCheck, Star, AlertTriangle,
+  DollarSign, Zap, BarChart3, Lock, Flame
 } from 'lucide-react';
-import { useReveal, fadeUp, slideRight, stagger } from '../ui/motion';
 import styles from './ProblemSection.module.css';
 
-const PAINS = [
-  'Founder doing everything — no delegation',
-  'No accountability, no SOPs, no systems',
-  'Delayed projects & poor collections',
-  'Compliance penalties & rising risks',
-  'Employee dependency & hidden costs',
-  'Data scattered across multiple tools',
+const BEFORE_ITEMS = [
+  { icon: Flame,         text: 'Founder doing everything — zero delegation',   color: '#ef4444' },
+  { icon: AlertTriangle, text: 'No SOPs, no accountability, constant firefighting', color: '#f97316' },
+  { icon: TrendingDown,  text: 'Delayed projects & poor cash collections',     color: '#ef4444' },
+  { icon: DollarSign,    text: 'Compliance penalties bleeding profits',         color: '#f97316' },
+  { icon: XCircle,       text: 'Employee dependency & hidden operational costs', color: '#ef4444' },
+  { icon: AlertTriangle, text: 'Data scattered across 10+ disconnected tools', color: '#f97316' },
 ];
 
-const AFTERS = [
-  { icon: Activity, label: 'System Driven', color: '#10B981', bg: '#ECFDF5' },
-  { icon: TrendingUp, label: 'Data Driven', color: '#3B82F6', bg: '#EFF6FF' },
-  { icon: Shield, label: 'Compliance Controlled', color: '#8B5CF6', bg: '#F5F3FF' },
-  { icon: Cpu, label: 'Measurable KPIs', color: '#EC4899', bg: '#FDF2F8' },
-  { icon: UserCheck, label: 'Scalable Growth', color: '#F59E0B', bg: '#FFFBEB' },
-  { icon: Star, label: 'Investor Ready', color: '#06B6D4', bg: '#ECFEFF' },
+const AFTER_ITEMS = [
+  { icon: Activity,   text: 'System-driven operations — runs without you', color: '#10b981' },
+  { icon: BarChart3,  text: 'Real-time KPIs & complete business visibility', color: '#3b82f6' },
+  { icon: Shield,     text: 'Zero compliance risk — fully automated filing', color: '#8b5cf6' },
+  { icon: TrendingUp, text: 'Collections on time, cash flow under control',  color: '#10b981' },
+  { icon: UserCheck,  text: 'Team-run business — scalable without chaos',    color: '#06b6d4' },
+  { icon: Star,       text: 'Investor & IPO ready from Day 1',               color: '#f59e0b' },
+];
+
+const IMPACT_STATS = [
+  { value: '3.2×', label: 'Revenue Growth', icon: TrendingUp, color: '#10b981' },
+  { value: '90%',  label: 'Less Compliance Risk', icon: Shield, color: '#8b5cf6' },
+  { value: '5 hrs', label: 'Saved Per Day / Founder', icon: Zap, color: '#f59e0b' },
+  { value: '21+',  label: 'Industries Covered', icon: Lock, color: '#3b82f6' },
 ];
 
 const AVATARS = [
@@ -45,178 +43,169 @@ const AVATARS = [
 ];
 
 export default function ProblemSection() {
-  const { ref, inView } = useReveal(0.15);
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, margin: '-80px' });
 
   return (
-    <section className={`section ${styles.section}`} ref={ref} id="about">
-      {/* Subtle graphic glows in light theme */}
+    <section className={styles.section} ref={ref} id="problem">
       <div className={styles.orbProblem} />
       <div className={styles.orbSolution} />
 
       <div className="wrap">
-        <div className={styles.grid}>
+        {/* ── Section header ── */}
+        <motion.div
+          className={styles.sectionHeader}
+          initial={{ opacity: 0, y: 24 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6 }}
+        >
+          <span className={styles.tagDark}>Get To Know Sangoe</span>
+          <h2 className={styles.h2}>
+            Most Businesses Are Stuck in{' '}
+            <span className={styles.highlightText}>Operational Chaos</span>
+          </h2>
+          <p className={styles.lead}>
+            Without the right systems, growth stalls — no matter how hard you work.
+            Here&apos;s what changes when you run on Sangoe.
+          </p>
+        </motion.div>
 
-          {/* LEFT - Problem/Gaps */}
-          <motion.div
-            className={styles.left}
-            variants={stagger(0.08)}
-            initial="hidden"
-            animate={inView ? 'show' : 'hidden'}
-          >
-            <motion.span className={styles.tagDark} variants={fadeUp}>
-              Get To Know Sangoe
-            </motion.span>
-
-            <motion.h2 variants={fadeUp} className={styles.h2}>
-              Most Businesses Struggle<br />
-              <span className={styles.highlightText}>With These Core Gaps</span>
-            </motion.h2>
-
-            <motion.p variants={fadeUp} className={styles.lead}>
-              At Sangoe we believe technology should simplify growth, not complicate it. That is why we created one unified Business Growth Operating System for Indian MSMEs.
-            </motion.p>
-
-            {/* Redesigned Pain Points: 2 Column Grid */}
-            <motion.ul variants={stagger(0.06)} className={styles.pains}>
-              {PAINS.map((p, i) => (
-                <motion.li 
-                  key={i} 
-                  variants={fadeUp} 
-                  className={styles.pain}
-                  whileHover={{ scale: 1.02, x: 4, backgroundColor: '#ffffff' }}
-                >
-                  <XCircle className={styles.xIcon} size={16} />
-                  <span>{p}</span>
-                </motion.li>
-              ))}
-            </motion.ul>
-
-            {/* Redesigned Result Card: Highly prominent warning container */}
-            <motion.div 
-              variants={fadeUp} 
-              className={styles.resultCard}
-              whileHover={{ y: -2 }}
-              transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-            >
-              <div className={styles.resultHeader}>
-                <div className={styles.warningGlow}>
-                  <AlertTriangle className={styles.warningIcon} size={16} />
-                </div>
-                <span className={styles.resultLabel}>CRITICAL BUSINESS IMPACT</span>
-              </div>
-              
-              <div className={styles.resultTextContainer}>
-                <span className={styles.resultAccent}>Result → </span>
-                <span className={styles.resultMessage}>Growth Stops. Profitability Reduces. Stress Increases.</span>
-              </div>
-
-              <div className={styles.resultMetrics}>
-                <div className={styles.resultMetricItem}>
-                  <TrendingDown size={14} className={styles.metricItemIcon} />
-                  <span>Zero Scaling</span>
-                </div>
-                <div className={styles.resultMetricItem}>
-                  <DollarSign size={14} className={styles.metricItemIcon} />
-                  <span>Cash Leaks</span>
-                </div>
-                <div className={styles.resultMetricItem}>
-                  <AlertTriangle size={14} className={styles.metricItemIcon} />
-                  <span>High Burnout</span>
-                </div>
-              </div>
-            </motion.div>
-
-            <motion.div variants={fadeUp} style={{ marginTop: '20px' }}>
-              <Link href="/platform" className={`btn btn-purple ${styles.cta}`} id="problem-connect">
-                Connect Your Business <ArrowRight size={16} />
-              </Link>
-            </motion.div>
-          </motion.div>
-
-          {/* RIGHT - Comparison & Proof */}
-          <motion.div
-            className={styles.right}
-            variants={slideRight}
-            initial="hidden"
-            animate={inView ? 'show' : 'hidden'}
-            transition={{ delay: 0.15 }}
-          >
-            {/* Comparison card */}
-            <div className={`${styles.compCard}`}>
-              {/* Before */}
-              <div className={styles.compSide}>
-                <span className={styles.compLabel}>Before Sangoe</span>
-                {['Founder Dependent', 'Manual Processes', 'Compliance Gaps', 'No Visibility', 'Operational Chaos'].map(t => (
-                  <div key={t} className={styles.compRow}>
-                    <XCircle className={styles.compX} size={14} />
-                    <span>{t}</span>
-                  </div>
-                ))}
-              </div>
-
-              <div className={styles.compArrow}>
-                <ArrowRight size={16} />
-              </div>
-
-              {/* After */}
-              <div className={`${styles.compSide} ${styles.afterSide}`}>
-                <span className={`${styles.compLabel} ${styles.afterLabel}`}>After Sangoe</span>
-                <div className={styles.afterGrid}>
-                  {AFTERS.map((a, i) => {
-                    const IconComp = a.icon;
-                    return (
-                      <motion.div
-                        key={i}
-                        className={styles.afterPill}
-                        whileHover={{ scale: 1.05, backgroundColor: a.color, color: '#ffffff' }}
-                        transition={{ type: 'spring', stiffness: 300, damping: 15 }}
-                        style={{ '--hover-col': a.color, borderColor: a.color + '20', background: a.bg }}
-                      >
-                        <IconComp size={14} className={styles.pillIcon} style={{ color: a.color }} />
-                        <span style={{ color: '#1f2937' }}>{a.label}</span>
-                      </motion.div>
-                    );
-                  })}
-                </div>
-              </div>
+        {/* ── Dramatic B4/After comparison ── */}
+        <motion.div
+          className={styles.comparisonWrap}
+          initial={{ opacity: 0, y: 32 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.7, delay: 0.2 }}
+        >
+          {/* BEFORE panel */}
+          <div className={styles.beforePanel}>
+            <div className={styles.panelHeader}>
+              <span className={styles.beforeBadge}>
+                <XCircle size={14} /> Before Sangoe
+              </span>
+              <span className={styles.panelSub}>The broken reality</span>
             </div>
-
-            {/* Stats row */}
-            <div className={`${styles.statsRow}`}>
-              {[
-                { n: '500+', l: 'Companies Transformed' },
-                { n: '18+',  l: 'Industries Served' },
-                { n: '98%',  l: 'Satisfaction Rate' },
-              ].map((s, i) => (
-                <div key={i} className={styles.stat}>
-                  <span className={styles.statN}>{s.n}</span>
-                  <span className={styles.statL}>{s.l}</span>
-                </div>
-              ))}
-            </div>
-
-            {/* Social proof tag */}
-            <motion.div
-              className={styles.socialProof}
-              whileHover={{ scale: 1.02 }}
-              transition={{ type: 'spring', stiffness: 250 }}
-            >
-              <div className={styles.avatarStack}>
-                {AVATARS.map((a, i) => (
-                  <span 
-                    key={i} 
-                    className={styles.avatar} 
-                    style={{ zIndex: 5 - i, background: a.bg, color: a.color }}
+            <div className={styles.itemsList}>
+              {BEFORE_ITEMS.map((item, i) => {
+                const Icon = item.icon;
+                return (
+                  <motion.div
+                    key={i}
+                    className={styles.beforeItem}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={inView ? { opacity: 1, x: 0 } : {}}
+                    transition={{ delay: 0.35 + i * 0.07 }}
                   >
-                    {a.text}
-                  </span>
-                ))}
-              </div>
-              <span className={styles.proofText}>Trusted by 500+ Indian businesses</span>
-            </motion.div>
-          </motion.div>
+                    <span className={styles.beforeIcon} style={{ color: item.color }}>
+                      <Icon size={15} />
+                    </span>
+                    <span>{item.text}</span>
+                  </motion.div>
+                );
+              })}
+            </div>
+            <div className={styles.beforeResult}>
+              <AlertTriangle size={14} />
+              <span>Result: Growth stops. Stress increases. Profits erode.</span>
+            </div>
+          </div>
 
-        </div>
+          {/* Arrow divider */}
+          <div className={styles.arrowDivider}>
+            <div className={styles.arrowLine} />
+            <motion.div
+              className={styles.arrowCircle}
+              animate={{ scale: [1, 1.12, 1] }}
+              transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+            >
+              <ArrowRight size={20} color="#fff" />
+            </motion.div>
+            <div className={styles.arrowLabel}>Sangoe</div>
+            <div className={styles.arrowLine} />
+          </div>
+
+          {/* AFTER panel */}
+          <div className={styles.afterPanel}>
+            <div className={styles.panelHeader}>
+              <span className={styles.afterBadge}>
+                <CheckCircle2 size={14} /> After Sangoe
+              </span>
+              <span className={styles.panelSub}>The transformed reality</span>
+            </div>
+            <div className={styles.itemsList}>
+              {AFTER_ITEMS.map((item, i) => {
+                const Icon = item.icon;
+                return (
+                  <motion.div
+                    key={i}
+                    className={styles.afterItem}
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={inView ? { opacity: 1, x: 0 } : {}}
+                    transition={{ delay: 0.35 + i * 0.07 }}
+                  >
+                    <span className={styles.afterIcon} style={{ color: item.color, background: `${item.color}18` }}>
+                      <Icon size={15} />
+                    </span>
+                    <span>{item.text}</span>
+                  </motion.div>
+                );
+              })}
+            </div>
+            <div className={styles.afterResult}>
+              <CheckCircle2 size={14} />
+              <span>Result: Business runs itself. You scale with confidence.</span>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* ── The Real Cost — impact stats (renamed from "Critical Business Impact") ── */}
+        <motion.div
+          className={styles.impactStrip}
+          initial={{ opacity: 0, y: 24 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.5 }}
+        >
+          <div className={styles.impactLabel}>
+            <Cpu size={14} />
+            <span>The Real Difference — Measured</span>
+          </div>
+          <div className={styles.impactGrid}>
+            {IMPACT_STATS.map((s, i) => {
+              const Icon = s.icon;
+              return (
+                <div key={i} className={styles.impactCard} style={{ '--accent': s.color }}>
+                  <span className={styles.impactIcon} style={{ color: s.color, background: `${s.color}15` }}>
+                    <Icon size={16} />
+                  </span>
+                  <span className={styles.impactVal} style={{ color: s.color }}>{s.value}</span>
+                  <span className={styles.impactLbl}>{s.label}</span>
+                </div>
+              );
+            })}
+          </div>
+        </motion.div>
+
+        {/* ── Social proof + CTA ── */}
+        <motion.div
+          className={styles.bottomRow}
+          initial={{ opacity: 0, y: 16 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.5, delay: 0.65 }}
+        >
+          <div className={styles.socialProof}>
+            <div className={styles.avatarStack}>
+              {AVATARS.map((a, i) => (
+                <span key={i} className={styles.avatar} style={{ zIndex: 5 - i, background: a.bg, color: a.color }}>
+                  {a.text}
+                </span>
+              ))}
+            </div>
+            <span className={styles.proofText}>Trusted by 500+ Indian MSMEs &amp; Startups</span>
+          </div>
+          <Link href="/platform" className={`btn btn-purple ${styles.cta}`} id="problem-connect">
+            See How Sangoe Works <ArrowRight size={16} />
+          </Link>
+        </motion.div>
       </div>
     </section>
   );

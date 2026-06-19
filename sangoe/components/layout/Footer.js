@@ -11,7 +11,7 @@ const FOOTER_COLUMNS = [
       { label: '9 Business Clouds', href: '/products' },
       { label: 'Advanced Solutions', href: '/solutions' },
       { label: 'Industries We Serve', href: '/industries' },
-      { label: 'Pricing Plans', href: '/pricing' }
+      { label: 'Pricing Plans', href: '/pricing' },
     ]
   },
   {
@@ -21,7 +21,8 @@ const FOOTER_COLUMNS = [
       { label: 'Free Calculators', href: '/calculators' },
       { label: 'Business Assessments', href: '/assessments' },
       { label: 'Template Library', href: '/resources' },
-      { label: 'Blog & Case Studies', href: '#' }
+      { label: 'Blog & Case Studies', href: '#' },
+      { label: 'API Documentation', href: '#' },
     ]
   },
   {
@@ -30,7 +31,20 @@ const FOOTER_COLUMNS = [
       { label: 'About Sangoe', href: '/about' },
       { label: 'Partner Ecosystem', href: '/partners' },
       { label: 'Contact Us', href: '/contact' },
-      { label: 'Careers', href: '#' }
+      { label: 'Careers', href: '#' },
+      { label: 'Press & Media', href: '#' },
+      { label: 'Affiliate Programme', href: '#' },
+    ]
+  },
+  {
+    title: 'Legal & Compliance',
+    links: [
+      { label: 'Privacy Policy', href: '/privacy' },
+      { label: 'Terms of Service', href: '/terms' },
+      { label: 'Refund Policy', href: '#' },
+      { label: 'Cookie Policy', href: '#' },
+      { label: 'Data Processing Agreement', href: '#' },
+      { label: 'SLA Agreement', href: '#' },
     ]
   }
 ];
@@ -164,9 +178,15 @@ export default function Footer() {
         <div className={styles.bottom}>
           <p className={styles.copyright}>© 2026 Sangoe. All Rights Reserved.</p>
           <div className={styles.legal}>
-            <a href="#" className={styles.legalLink}>Your Privacy</a>
+            <a href="/privacy" className={styles.legalLink}>Privacy Policy</a>
             <span>·</span>
-            <a href="#" className={styles.legalLink}>Terms Of Condition</a>
+            <a href="/terms" className={styles.legalLink}>Terms of Service</a>
+            <span>·</span>
+            <a href="#" className={styles.legalLink}>Refund Policy</a>
+            <span>·</span>
+            <a href="#" className={styles.legalLink}>Cookie Policy</a>
+            <span>·</span>
+            <a href="#" className={styles.legalLink}>SLA</a>
           </div>
         </div>
       </div>

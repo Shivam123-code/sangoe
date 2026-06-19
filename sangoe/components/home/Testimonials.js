@@ -59,10 +59,10 @@ const TESTIMONIALS = [
 ];
 
 const STATS = [
-  { icon: TrendingUp,  value: '500+',  label: 'Businesses Transformed', color: '#7C3AED' },
-  { icon: Users,       value: '12,000+', label: 'Users on Platform',    color: '#10B981' },
-  { icon: ShieldCheck, value: '98.2%', label: 'Compliance Score Avg.',  color: '#3B82F6' },
-  { icon: Award,       value: '4.9/5', label: 'Customer Rating',        color: '#F59E0B' },
+  { icon: TrendingUp,  value: '4.9★',  label: 'Google Rating (120+ Reviews)', color: '#F59E0B' },
+  { icon: Users,       value: '3.2×',  label: 'Avg. Revenue Growth in Year 1', color: '#10B981' },
+  { icon: ShieldCheck, value: '98.2%', label: 'Compliance Score Avg.',          color: '#3B82F6' },
+  { icon: Award,       value: 'NPS 72', label: 'Net Promoter Score (World Class)', color: '#7C3AED' },
 ];
 
 export default function Testimonials() {
