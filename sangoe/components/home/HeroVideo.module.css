@@ -10,6 +10,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  background: #03020c;
+  background-image: radial-gradient(circle at 50% 30%, rgba(124, 58, 237, 0.12) 0%, transparent 60%),
+                    radial-gradient(circle at 10% 70%, rgba(59, 130, 246, 0.08) 0%, transparent 50%),
+                    linear-gradient(135deg, #03030f 0%, #07071c 100%);
 }
 
 /* ── Video ── */

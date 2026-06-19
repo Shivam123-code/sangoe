@@ -8,7 +8,6 @@ import styles from './HeroVideo.module.css';
 export default function HeroVideo() {
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end start'] });
-  const heroY  = useTransform(scrollYProgress, [0, 1], ['0%', '12%']);
   const heroOp = useTransform(scrollYProgress, [0, 0.6], [1, 0]);
   const hintOp = useTransform(scrollYProgress, [0, 0.08], [1, 0]);
 
@@ -18,7 +17,8 @@ export default function HeroVideo() {
       <video
         className={styles.videoBg}
         autoPlay muted loop playsInline
-        poster="/hero/Floating_island_business_ecosystem_202606191917.jpeg"
+        preload="auto"
+        poster="/hero/poster.png"
       >
         <source src="/hero/magnific_animate-without-changing-_mC0rXC0hJQ.mp4" type="video/mp4" />
       </video>
@@ -49,7 +49,7 @@ export default function HeroVideo() {
       ))}
 
       {/* ── Hero content ── */}
-      <motion.div className={styles.contentWrap} style={{ y: heroY, opacity: heroOp }}>
+      <motion.div className={styles.contentWrap} style={{ opacity: heroOp }}>
         <div className={styles.contentInner}>
 
           {/* Tag */}

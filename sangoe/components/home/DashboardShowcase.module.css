@@ -427,3 +427,12 @@
   .row { padding: 48px 0; }
   .dBottom { grid-template-columns: 1fr; }
 }
+
+@media (max-width: 480px) {
+  .inner { padding: 0 16px; }
+  .row { padding: 32px 0; }
+  .dSidebar { display: none; }
+  .dKpiGrid { grid-template-columns: 1fr; gap: 8px; }
+  .kpiTile { padding: 10px 12px 8px; }
+  .rowH3 { font-size: 1.6rem; }
+}

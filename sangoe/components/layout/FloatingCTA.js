@@ -10,7 +10,7 @@ export default function FloatingCTA() {
   const [open, setOpen] = useState(false);
 
   return (
-    <div style={{ position: 'fixed', bottom: '24px', right: '24px', zIndex: 9999, display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: '10px' }}>
+    <div className="floating-cta-container">
       <AnimatePresence>
         {open && (
           <motion.div
@@ -103,6 +103,22 @@ export default function FloatingCTA() {
       </motion.button>
 
       <style>{`
+        .floating-cta-container {
+          position: fixed;
+          bottom: 24px;
+          right: 24px;
+          z-index: 9999;
+          display: flex;
+          flex-direction: column;
+          align-items: flex-end;
+          gap: 10px;
+        }
+        @media (max-width: 768px) {
+          .floating-cta-container {
+            bottom: 84px;
+            right: 16px;
+          }
+        }
         @keyframes floatPulse {
           0%, 100% { transform: scale(1); opacity: 0.7; }
           50% { transform: scale(1.25); opacity: 0; }
