@@ -1,0 +1,2759 @@
+.container {
+  padding-top: 100px;
+  padding-bottom: 80px;
+  background: #fbfbfe;
+  min-height: 100vh;
+  transition: background-color 0.3s;
+}
+
+.topBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.backBtn {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #475569;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: color 0.2s;
+}
+
+.backBtn:hover {
+  color: #7c3aed;
+}
+
+.breadcrumbs {
+  font-size: 0.8rem;
+  color: #94a3b8;
+  font-weight: 600;
+  display: flex;
+  gap: 6px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 40px;
+  gap: 24px;
+}
+
+.titleArea {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.categoryBadge {
+  align-self: flex-start;
+  font-size: 0.68rem;
+  font-weight: 800;
+  padding: 4px 12px;
+  border-radius: 50px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.title {
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  font-weight: 950;
+  color: #0f172a;
+  margin: 0;
+  letter-spacing: -0.03em;
+}
+
+/* ── Dashboard Visual Area Mockup ── */
+.visualArea {
+  margin-bottom: 48px;
+}
+
+.visualWrapper {
+  background: #ffffff;
+  border-radius: 20px;
+  border: 1px solid rgba(15, 23, 42, 0.06);
+  box-shadow: 0 20px 50px rgba(15, 23, 42, 0.04);
+  overflow: hidden;
+}
+
+.mockupHeader {
+  background: #f8fafc;
+  border-bottom: 1px solid rgba(15, 23, 42, 0.06);
+  padding: 10px 18px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.dots {
+  display: flex;
+  gap: 6px;
+}
+
+.dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #e2e8f0;
+}
+
+.dots span:nth-child(1) { background: #ef4444; }
+.dots span:nth-child(2) { background: #f59e0b; }
+.dots span:nth-child(3) { background: #10b981; }
+
+.mockupURL {
+  font-size: 0.72rem;
+  color: #94a3b8;
+  background: #ffffff;
+  border: 1px solid rgba(15, 23, 42, 0.04);
+  border-radius: 8px;
+  padding: 3px 18px;
+  flex: 1;
+  max-width: 440px;
+  text-align: center;
+  font-family: monospace;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.mockupBody {
+  padding: 0;
+  background: #f8fafc;
+  min-height: 480px;
+  display: block;
+}
+
+/* CRM Dashboard Shell Layout */
+.dashboardShell {
+  display: grid;
+  grid-template-columns: 190px 1fr;
+  background: #f8fafc;
+  width: 100%;
+  min-height: 480px;
+  box-sizing: border-box;
+}
+
+.dashboardSidebar {
+  background: #ffffff;
+  border-right: 1px solid rgba(15, 23, 42, 0.05);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.sidebarBrand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 850;
+  font-size: 0.8rem;
+  color: #0f172a;
+  margin-bottom: 24px;
+}
+
+.brandDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.sidebarNav {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+}
+
+.navItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 10px;
+  border-radius: 8px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #64748b;
+  cursor: not-allowed;
+  transition: all 0.2s;
+  text-align: left;
+}
+
+.navItemActive {
+  background: rgba(15, 23, 42, 0.03);
+  color: #0f172a !important;
+}
+
+.sidebarProfile {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-top: 1px solid rgba(15, 23, 42, 0.04);
+  padding-top: 12px;
+  margin-top: auto;
+}
+
+.profileAvatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #ede9fe;
+  color: #7c3aed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.65rem;
+  font-weight: 800;
+}
+
+.profileMeta {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  text-align: left;
+}
+
+.profileName {
+  font-size: 0.7rem;
+  color: #1e293b;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.profileRole {
+  font-size: 0.58rem;
+  color: #94a3b8;
+  font-weight: 600;
+}
+
+.dashboardWorkspace {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  box-sizing: border-box;
+  min-width: 0;
+}
+
+.dashboardTopbar {
+  background: #ffffff;
+  border-bottom: 1px solid rgba(15, 23, 42, 0.05);
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 44px;
+  box-sizing: border-box;
+}
+
+.topbarLeft {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: #f1f5f9;
+  padding: 4px 10px;
+  border-radius: 6px;
+  width: 200px;
+}
+
+.topbarSearch {
+  border: none;
+  background: transparent;
+  font-size: 0.68rem;
+  outline: none;
+  width: 100%;
+  cursor: not-allowed;
+}
+
+.topbarRight {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.topbarNotify {
+  position: relative;
+  color: #64748b;
+  cursor: not-allowed;
+  display: flex;
+  align-items: center;
+}
+
+.notifyBadge {
+  position: absolute;
+  top: -1px;
+  right: -1px;
+  width: 5px;
+  height: 5px;
+  background: #ef4444;
+  border-radius: 50%;
+}
+
+.topbarAvatar {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.58rem;
+  font-weight: 800;
+  color: #475569;
+}
+
+.workspaceBody {
+  display: grid;
+  grid-template-columns: 2.2fr 1fr;
+  gap: 16px;
+  padding: 16px;
+  flex: 1;
+  min-height: 0;
+  box-sizing: border-box;
+}
+
+.workspacePrimary {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 0;
+}
+
+.primaryHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.moduleHeading {
+  font-size: 0.88rem;
+  font-weight: 850;
+  color: #0f172a;
+  margin: 0;
+}
+
+.syncStatus {
+  font-size: 0.65rem;
+  font-weight: 800;
+  padding: 2px 8px;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.pulseGreen {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.primaryContent {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.workspaceFeed {
+  background: #ffffff;
+  border: 1px solid rgba(15, 23, 42, 0.04);
+  border-radius: 12px;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.005);
+  box-sizing: border-box;
+  text-align: left;
+}
+
+.feedHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.72rem;
+  font-weight: 850;
+  color: #1e293b;
+}
+
+.liveTag {
+  background: #ef444415;
+  color: #ef4444;
+  font-size: 0.55rem;
+  padding: 1px 4px;
+  border-radius: 3px;
+  font-weight: 950;
+  letter-spacing: 0.05em;
+}
+
+.feedList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.feedItem {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+  border-bottom: 1px solid rgba(15, 23, 42, 0.02);
+  padding-bottom: 8px;
+}
+
+.feedIconWrap {
+  width: 20px;
+  height: 20px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.feedContent {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+  text-align: left;
+}
+
+.feedText {
+  font-size: 0.68rem;
+  color: #334155;
+  font-weight: 700;
+  line-height: 1.3;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.feedTime {
+  font-size: 0.58rem;
+  color: #94a3b8;
+  font-weight: 600;
+}
+
+/* Mailbox Specific Dashboard Styles */
+.crmMailbox {
+  background: #ffffff;
+  border: 1px solid rgba(15, 23, 42, 0.04);
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.005);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.mailListHeader {
+  padding: 10px 16px;
+  border-bottom: 1px solid rgba(15, 23, 42, 0.05);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mailCount {
+  font-size: 0.74rem;
+  font-weight: 800;
+  color: #475569;
+}
+
+.miniCompose {
+  font-size: 0.65rem;
+  font-weight: 800;
+  color: #ffffff;
+  padding: 4px 10px;
+  border-radius: 6px;
+}
+
+.mailItems {
+  display: flex;
+  flex-direction: column;
+}
+
+.mailItem, .mailItemActive {
+  padding: 12px 16px;
+  border-bottom: 1px solid rgba(15, 23, 42, 0.04);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  text-align: left;
+}
+
+.mailItemActive {
+  background: rgba(15, 23, 42, 0.01);
+}
+
+.mailMeta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.65rem;
+}
+
+.mailSender {
+  color: #0f172a;
+}
+
+.mailTime {
+  color: #94a3b8;
+}
+
+.mailSubj {
+  font-size: 0.74rem;
+  font-weight: 800;
+  color: #1e293b;
+}
+
+.mailBody {
+  font-size: 0.68rem;
+  color: #64748b;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Kanban Specific Dashboard Styles */
+.crmKanban {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  flex: 1;
+}
+
+.kanbanCol {
+  background: rgba(15, 23, 42, 0.02);
+  border-radius: 10px;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.kanbanColHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.7rem;
+  font-weight: 800;
+  color: #475569;
+  padding-bottom: 4px;
+  border-bottom: 1.5px solid rgba(0,0,0,0.03);
+}
+
+.kanbanCount {
+  background: rgba(0,0,0,0.05);
+  padding: 1px 5px;
+  border-radius: 8px;
+  font-size: 0.62rem;
+}
+
+.kanbanCard {
+  background: #ffffff;
+  border-radius: 6px;
+  border: 1px solid rgba(15, 23, 42, 0.04);
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.005);
+  text-align: left;
+}
+
+.kanbanCardTitle {
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: #0f172a;
+}
+
+.kanbanCardVal {
+  font-size: 0.78rem;
+  font-weight: 850;
+}
+
+.kanbanCardTags {
+  display: flex;
+  gap: 4px;
+  margin-top: 2px;
+}
+
+.kanbanTag {
+  font-size: 0.58rem;
+  font-weight: 750;
+  background: rgba(0,0,0,0.04);
+  color: #64748b;
+  padding: 1px 5px;
+  border-radius: 3px;
+}
+
+/* CRM KPI Dashboard Styles */
+.crmDashboard {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex: 1;
+}
+
+.crmKPIs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.crmKPIBox {
+  background: #ffffff;
+  border-radius: 10px;
+  border: 1px solid rgba(15, 23, 42, 0.04);
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  text-align: left;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.005);
+}
+
+.kpiBoxLabel {
+  font-size: 0.62rem;
+  color: #94a3b8;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.kpiBoxVal {
+  font-size: 0.95rem;
+  font-weight: 900;
+  color: #0f172a;
+}
+
+.kpiBoxGrowth {
+  font-size: 0.58rem;
+  color: #64748b;
+  font-weight: 700;
+}
+
+.crmChartContainer {
+  background: #ffffff;
+  border-radius: 10px;
+  border: 1px solid rgba(15, 23, 42, 0.04);
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex: 1;
+  min-height: 120px;
+  text-align: left;
+}
+
+.crmChartHeader {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.72rem;
+  font-weight: 850;
+  color: #1e293b;
+}
+
+.crmChartLegend {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.65rem;
+}
+
+.legendColor {
+  width: 8px;
+  height: 8px;
+  border-radius: 2px;
+}
+
+.crmChartBars {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-around;
+  flex: 1;
+  border-bottom: 1px solid #f1f5f9;
+  padding-bottom: 4px;
+}
+
+.crmChartBarCol {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  flex: 1;
+}
+
+.crmBarFill {
+  width: 24px;
+  border-radius: 4px 4px 0 0;
+  min-height: 10px;
+}
+
+.crmChartLabel {
+  font-size: 0.58rem;
+  color: #94a3b8;
+  font-weight: 700;
+}
+
+/* CRM Calendar Styles */
+.crmCalendar {
+  background: #ffffff;
+  border: 1px solid rgba(15, 23, 42, 0.04);
+  border-radius: 10px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+
+.crmCalHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.74rem;
+}
+
+.crmCalTitle {
+  color: #0f172a;
+}
+
+.crmCalActions {
+  display: flex;
+  gap: 8px;
+  color: #64748b;
+  cursor: not-allowed;
+}
+
+.crmCalGrid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
+  flex: 1;
+}
+
+.crmCalDayHeader {
+  font-size: 0.62rem;
+  font-weight: 800;
+  color: #94a3b8;
+  text-align: center;
+  padding-bottom: 2px;
+}
+
+.crmCalCell {
+  border: 1px solid #f8fafc;
+  background: #fafbfc;
+  min-height: 34px;
+  border-radius: 4px;
+  padding: 2px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.crmCalDayNum {
+  font-size: 0.58rem;
+  color: #cbd5e1;
+  font-weight: 700;
+}
+
+.crmCalEvent {
+  font-size: 0.5rem;
+  font-weight: 800;
+  padding: 1px 2px;
+  border-radius: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  text-align: left;
+}
+
+/* CRM Ledger Styles */
+.crmLedger {
+  background: #ffffff;
+  border: 1px solid rgba(15, 23, 42, 0.04);
+  border-radius: 10px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+
+.crmLedgerHeader {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.72rem;
+  font-weight: 850;
+  color: #0f172a;
+  text-align: left;
+}
+
+.crmLedgerSubtitle {
+  font-size: 0.65rem;
+  color: #94a3b8;
+  font-weight: 700;
+}
+
+.crmLedgerTable {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.crmLedgerTable th {
+  font-size: 0.65rem;
+  font-weight: 850;
+  color: #94a3b8;
+  padding: 6px;
+  border-bottom: 1px solid #f1f5f9;
+  text-transform: uppercase;
+}
+
+.crmLedgerTable td {
+  font-size: 0.68rem;
+  color: #475569;
+  padding: 8px 6px;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.mono {
+  font-family: monospace;
+  font-size: 0.62rem;
+}
+
+.crmStatusBadge {
+  font-size: 0.58rem;
+  font-weight: 800;
+  padding: 1px 4px;
+  border-radius: 3px;
+}
+
+/* CRM Recruitment Styles */
+.crmRecruitment {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  flex: 1;
+}
+
+.recCol {
+  background: rgba(15, 23, 42, 0.02);
+  border-radius: 10px;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.recColHeader {
+  font-size: 0.7rem;
+  font-weight: 850;
+  color: #475569;
+  padding-bottom: 4px;
+  border-bottom: 1.5px solid rgba(0,0,0,0.03);
+  text-align: left;
+}
+
+.recCard {
+  background: #ffffff;
+  border-radius: 6px;
+  border: 1px solid rgba(15, 23, 42, 0.04);
+  padding: 6px;
+}
+
+.recProfile {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  text-align: left;
+}
+
+.recAv {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.6rem;
+  font-weight: 800;
+}
+
+.recName {
+  font-size: 0.7rem;
+  font-weight: 800;
+  color: #0f172a;
+}
+
+.recRole {
+  font-size: 0.58rem;
+  color: #94a3b8;
+}
+
+/* CRM Workflow Styles */
+.crmWorkflow {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 12px 0;
+  flex: 1;
+  justify-content: center;
+}
+
+.flowNode {
+  background: #ffffff;
+  border: 1px solid rgba(15, 23, 42, 0.04);
+  border-left: 3.5px solid #cbd5e1;
+  border-radius: 8px;
+  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 260px;
+  text-align: left;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.005);
+}
+
+.flowNodeBadge {
+  font-size: 0.55rem;
+  font-weight: 850;
+  color: #ffffff;
+  padding: 1.5px 5px;
+  border-radius: 4px;
+  text-transform: uppercase;
+}
+
+.flowNodeText {
+  font-size: 0.68rem;
+  color: #334155;
+}
+
+.flowLine {
+  width: 1.5px;
+  height: 16px;
+}
+
+/* CRM General Styles */
+.crmGeneral {
+  background: #ffffff;
+  border: 1px solid rgba(15, 23, 42, 0.04);
+  border-radius: 10px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
+}
+
+.crmGenHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.72rem;
+  font-weight: 850;
+  color: #0f172a;
+}
+
+.connectionStatus {
+  color: #10b981;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.greenLight {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #10b981;
+  display: inline-block;
+}
+
+.crmGenStats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.genBox {
+  background: #f8fafc;
+  border: 1px solid rgba(15, 23, 42, 0.02);
+  border-radius: 6px;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  text-align: left;
+}
+
+.genNum {
+  font-size: 0.95rem;
+  font-weight: 900;
+  color: #0f172a;
+}
+
+.genLbl {
+  font-size: 0.58rem;
+  color: #94a3b8;
+  font-weight: 700;
+}
+
+.crmGenDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  text-align: left;
+  border-top: 1px solid #f1f5f9;
+  padding-top: 8px;
+}
+
+.genDetailsRow {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.68rem;
+  color: #475569;
+}
+
+.activeTag {
+  color: #10b981;
+  font-weight: 850;
+}
+
+/* ── Detailed Description Text Section ── */
+.textSection {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 56px;
+  margin-bottom: 48px;
+  align-items: start;
+}
+
+.textLeft {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.sectionH2 {
+  font-size: 1.4rem;
+  font-weight: 900;
+  color: #0f172a;
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+.descriptionText {
+  font-size: 0.94rem;
+  color: #475569;
+  line-height: 1.7;
+  margin: 0;
+}
+
+.descriptionSecondary {
+  font-size: 0.88rem;
+  color: #64748b;
+  line-height: 1.65;
+  margin: 0;
+}
+
+.textRight {
+  position: sticky;
+  top: 100px;
+}
+
+.featuresCard {
+  background: #ffffff;
+  border-radius: 16px;
+  border: 1px solid rgba(15, 23, 42, 0.05);
+  padding: 24px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.015);
+}
+
+.featuresTitle {
+  font-size: 0.95rem;
+  font-weight: 900;
+  margin-top: 0;
+  margin-bottom: 18px;
+  letter-spacing: -0.01em;
+}
+
+.featuresList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.featureItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 0.84rem;
+  font-weight: 650;
+  color: #334155;
+  line-height: 1.45;
+}
+
+.checkIcon {
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+/* ── Bottom Call to Action ── */
+.bottomCTA {
+  margin-top: 32px;
+}
+
+.ctaCard {
+  background: #ffffff;
+  border-radius: 16px;
+  border: 1px solid rgba(15, 23, 42, 0.05);
+  padding: 28px 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 28px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.01);
+}
+
+.ctaInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.ctaTitle {
+  font-size: 1.15rem;
+  font-weight: 900;
+  color: #0f172a;
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+.ctaDesc {
+  font-size: 0.84rem;
+  color: #64748b;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* ── 404 Page ── */
+.notFoundContainer {
+  max-width: 480px;
+  margin: 120px auto 100px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 0 24px;
+}
+
+.notFoundTitle {
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: #0f172a;
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+.notFoundDesc {
+  font-size: 0.9rem;
+  color: #64748b;
+  margin: 0 0 12px;
+  line-height: 1.6;
+}
+
+/* ── Responsive ── */
+@media (max-width: 1024px) {
+  .textSection {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .textRight {
+    position: static;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding-top: 80px;
+  }
+  .header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+  .visualBody {
+    padding: 12px;
+  }
+  .mockupBody {
+    padding: 0 !important;
+    min-height: auto !important;
+  }
+  
+  /* CRM Dashboard Shell Mobile Responsiveness */
+  .dashboardShell {
+    grid-template-columns: 1fr !important;
+  }
+  
+  .dashboardSidebar {
+    display: none !important; /* Hide sidebar to save space on mobile mockup */
+  }
+
+  .dashboardWorkspace {
+    width: 100% !important;
+  }
+
+  .workspaceBody {
+    grid-template-columns: 1fr !important;
+    display: flex !important;
+    flex-direction: column !important;
+    padding: 12px !important;
+    gap: 12px !important;
+  }
+
+  .workspacePrimary {
+    width: 100% !important;
+  }
+
+  .workspaceFeed {
+    width: 100% !important;
+    margin-top: 12px !important;
+  }
+
+  .crmKanban {
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+  }
+
+  .crmKPIs {
+    grid-template-columns: 1fr !important;
+    gap: 8px !important;
+  }
+
+  .crmCalGrid {
+    grid-template-columns: repeat(7, 1fr) !important;
+  }
+
+  .crmCalCell {
+    min-height: 28px !important;
+  }
+
+  .crmCalEvent {
+    display: none !important;
+  }
+
+  .crmLedger {
+    overflow-x: auto !important;
+    max-width: 100% !important;
+  }
+
+  .crmLedgerTable {
+    min-width: 400px !important;
+  }
+
+  .crmRecruitment {
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+  }
+
+  /* Old mockup compatibility definitions */
+  .mockInbox, .mockGeneral {
+    grid-template-columns: 1fr;
+  }
+  .mockSidebar, .genSidebar {
+    border-right: none;
+    border-bottom: 1px solid #e2e8f0;
+  }
+  .mockKanban, .mockRecruitment {
+    grid-template-columns: 1fr;
+  }
+  .dashKPIs {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .calGrid {
+    grid-template-columns: repeat(7, 1fr);
+  }
+  .calCell {
+    min-height: 36px;
+  }
+  .calEvent {
+    display: none;
+  }
+  .ctaCard {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 20px;
+    text-align: center;
+  }
+}
+
+/* ── Dark Mode ── */
+:global([data-theme='dark']) .container {
+  background: #080812 !important;
+}
+
+:global([data-theme='dark']) .title {
+  color: #edeaf8 !important;
+}
+
+:global([data-theme='dark']) .backBtn {
+  color: #8b85a8 !important;
+}
+
+:global([data-theme='dark']) .backBtn:hover {
+  color: #a78bfa !important;
+}
+
+:global([data-theme='dark']) .sectionH2,
+:global([data-theme='dark']) .ctaTitle,
+:global([data-theme='dark']) .notFoundTitle {
+  color: #edeaf8 !important;
+}
+
+:global([data-theme='dark']) .descriptionText {
+  color: #94a3b8 !important;
+}
+
+:global([data-theme='dark']) .descriptionSecondary,
+:global([data-theme='dark']) .ctaDesc,
+:global([data-theme='dark']) .notFoundDesc {
+  color: #8b85a8 !important;
+}
+
+:global([data-theme='dark']) .visualWrapper {
+  background: #13131f !important;
+  border-color: rgba(255, 255, 255, 0.05) !important;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2) !important;
+}
+
+:global([data-theme='dark']) .mockupHeader {
+  background: #1e1e30 !important;
+  border-color: rgba(255, 255, 255, 0.05) !important;
+}
+
+:global([data-theme='dark']) .mockupURL {
+  background: #13131f !important;
+  border-color: rgba(255, 255, 255, 0.05) !important;
+}
+
+:global([data-theme='dark']) .mockupBody {
+  background: #181827 !important;
+}
+
+/* Dark Mockups */
+:global([data-theme='dark']) .mockInbox,
+:global([data-theme='dark']) .kanbanCard,
+:global([data-theme='dark']) .kpiBox,
+:global([data-theme='dark']) .dashChart,
+:global([data-theme='dark']) .mockCalendar,
+:global([data-theme='dark']) .mockLedger,
+:global([data-theme='dark']) .pipeCard,
+:global([data-theme='dark']) .flowStep,
+:global([data-theme='dark']) .mockGeneral,
+:global([data-theme='dark']) .featuresCard,
+:global([data-theme='dark']) .ctaCard {
+  background: #13131f !important;
+  border-color: rgba(255, 255, 255, 0.06) !important;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.2) !important;
+}
+
+:global([data-theme='dark']) .mockSidebar,
+:global([data-theme='dark']) .colHeader,
+:global([data-theme='dark']) .calDayName,
+:global([data-theme='dark']) .calCell,
+:global([data-theme='dark']) .ledgerTable th,
+:global([data-theme='dark']) .ledgerTable td,
+:global([data-theme='dark']) .pipelineCol,
+:global([data-theme='dark']) .pipeHeader,
+:global([data-theme='dark']) .genSidebar,
+:global([data-theme='dark']) .genStatCard {
+  background: rgba(255, 255, 255, 0.02) !important;
+  border-color: rgba(255, 255, 255, 0.04) !important;
+  color: #94a3b8 !important;
+}
+
+:global([data-theme='dark']) .folderActive,
+:global([data-theme='dark']) .genMenuActive {
+  background: rgba(255, 255, 255, 0.04) !important;
+  color: #edeaf8 !important;
+}
+
+:global([data-theme='dark']) .emailSender,
+:global([data-theme='dark']) .emailSubject,
+:global([data-theme='dark']) .cardTitle,
+:global([data-theme='dark']) .kpiValue,
+:global([data-theme='dark']) .calTitle,
+:global([data-theme='dark']) .ledgerHeader,
+:global([data-theme='dark']) .ledgerTable td,
+:global([data-theme='dark']) .candidateName,
+:global([data-theme='dark']) .stepTitle,
+:global([data-theme='dark']) .genLogo,
+:global([data-theme='dark']) .genTitle,
+:global([data-theme='dark']) .genStatNum,
+:global([data-theme='dark']) .featureItem {
+  color: #edeaf8 !important;
+}
+
+:global([data-theme='dark']) .emailSnippet,
+:global([data-theme='dark']) .kpiLabel,
+:global([data-theme='dark']) .calDayNum,
+:global([data-theme='dark']) .candidateRole,
+:global([data-theme='dark']) .genStatLabel {
+  color: #8b85a8 !important;
+}
+
+/* Force Light Theme on the Mockup Dashboard Shell regardless of theme */
+:global([data-theme='dark']) .mockupBody {
+  background: #f8fafc !important;
+}
+
+:global([data-theme='dark']) .dashboardShell {
+  background: #f8fafc !important;
+  color: #0f172a !important;
+}
+
+:global([data-theme='dark']) .dashboardSidebar {
+  background: #ffffff !important;
+  border-right-color: rgba(15, 23, 42, 0.05) !important;
+}
+
+:global([data-theme='dark']) .sidebarBrand {
+  color: #0f172a !important;
+}
+
+:global([data-theme='dark']) .navItem {
+  color: #64748b !important;
+}
+
+:global([data-theme='dark']) .navItemActive {
+  background: rgba(15, 23, 42, 0.03) !important;
+  color: #0f172a !important;
+}
+
+:global([data-theme='dark']) .profileName {
+  color: #1e293b !important;
+}
+
+:global([data-theme='dark']) .profileRole {
+  color: #94a3b8 !important;
+}
+
+:global([data-theme='dark']) .dashboardWorkspace {
+  background: #f8fafc !important;
+}
+
+:global([data-theme='dark']) .dashboardTopbar {
+  background: #ffffff !important;
+  border-bottom-color: rgba(15, 23, 42, 0.05) !important;
+}
+
+:global([data-theme='dark']) .topbarLeft {
+  background: #f1f5f9 !important;
+}
+
+:global([data-theme='dark']) .topbarSearch {
+  color: #1e293b !important;
+}
+
+:global([data-theme='dark']) .topbarAvatar {
+  background: #ffffff !important;
+  color: #475569 !important;
+}
+
+:global([data-theme='dark']) .workspaceFeed {
+  background: #ffffff !important;
+  border-color: rgba(15, 23, 42, 0.04) !important;
+}
+
+:global([data-theme='dark']) .feedHeader {
+  color: #1e293b !important;
+}
+
+:global([data-theme='dark']) .feedText {
+  color: #334155 !important;
+}
+
+:global([data-theme='dark']) .feedTime {
+  color: #94a3b8 !important;
+}
+
+:global([data-theme='dark']) .moduleHeading {
+  color: #0f172a !important;
+}
+
+/* Mailbox */
+:global([data-theme='dark']) .crmMailbox {
+  background: #ffffff !important;
+  border-color: rgba(15, 23, 42, 0.04) !important;
+}
+
+:global([data-theme='dark']) .mailCount {
+  color: #475569 !important;
+}
+
+:global([data-theme='dark']) .mailItem,
+:global([data-theme='dark']) .mailItemActive {
+  border-bottom-color: rgba(15, 23, 42, 0.04) !important;
+}
+
+:global([data-theme='dark']) .mailItemActive {
+  background: rgba(15, 23, 42, 0.01) !important;
+}
+
+:global([data-theme='dark']) .mailSender {
+  color: #0f172a !important;
+}
+
+:global([data-theme='dark']) .mailSubj {
+  color: #1e293b !important;
+}
+
+:global([data-theme='dark']) .mailBody {
+  color: #64748b !important;
+}
+
+/* Kanban */
+:global([data-theme='dark']) .kanbanCol {
+  background: rgba(15, 23, 42, 0.02) !important;
+}
+
+:global([data-theme='dark']) .kanbanColHeader {
+  color: #475569 !important;
+  border-bottom-color: rgba(0,0,0,0.03) !important;
+}
+
+:global([data-theme='dark']) .kanbanCount {
+  background: rgba(0,0,0,0.05) !important;
+}
+
+:global([data-theme='dark']) .crmKanban .kanbanCard {
+  background: #ffffff !important;
+  border-color: rgba(15, 23, 42, 0.04) !important;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.005) !important;
+}
+
+:global([data-theme='dark']) .kanbanCardTitle {
+  color: #0f172a !important;
+}
+
+:global([data-theme='dark']) .kanbanTag {
+  background: rgba(0,0,0,0.04) !important;
+  color: #64748b !important;
+}
+
+/* Dashboard KPIs */
+:global([data-theme='dark']) .crmKPIBox {
+  background: #ffffff !important;
+  border-color: rgba(15, 23, 42, 0.04) !important;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.005) !important;
+}
+
+:global([data-theme='dark']) .kpiBoxLabel {
+  color: #94a3b8 !important;
+}
+
+:global([data-theme='dark']) .kpiBoxVal {
+  color: #0f172a !important;
+}
+
+:global([data-theme='dark']) .kpiBoxGrowth {
+  color: #64748b !important;
+}
+
+:global([data-theme='dark']) .crmChartContainer {
+  background: #ffffff !important;
+  border-color: rgba(15, 23, 42, 0.04) !important;
+}
+
+:global([data-theme='dark']) .crmChartHeader {
+  color: #1e293b !important;
+}
+
+:global([data-theme='dark']) .crmChartLabel {
+  color: #94a3b8 !important;
+}
+
+/* Calendar */
+:global([data-theme='dark']) .crmCalendar {
+  background: #ffffff !important;
+  border-color: rgba(15, 23, 42, 0.04) !important;
+}
+
+:global([data-theme='dark']) .crmCalTitle {
+  color: #0f172a !important;
+}
+
+:global([data-theme='dark']) .crmCalDayHeader {
+  color: #94a3b8 !important;
+}
+
+:global([data-theme='dark']) .crmCalCell {
+  background: #fafbfc !important;
+  border-color: #f8fafc !important;
+}
+
+:global([data-theme='dark']) .crmCalDayNum {
+  color: #cbd5e1 !important;
+}
+
+/* Ledger */
+:global([data-theme='dark']) .crmLedger {
+  background: #ffffff !important;
+  border-color: rgba(15, 23, 42, 0.04) !important;
+}
+
+:global([data-theme='dark']) .crmLedgerHeader {
+  color: #0f172a !important;
+}
+
+:global([data-theme='dark']) .crmLedgerSubtitle {
+  color: #94a3b8 !important;
+}
+
+:global([data-theme='dark']) .crmLedgerTable th {
+  color: #94a3b8 !important;
+  border-bottom-color: #f1f5f9 !important;
+}
+
+:global([data-theme='dark']) .crmLedgerTable td {
+  color: #475569 !important;
+  border-bottom-color: #f1f5f9 !important;
+}
+
+/* Recruitment */
+:global([data-theme='dark']) .recCol {
+  background: rgba(15, 23, 42, 0.02) !important;
+}
+
+:global([data-theme='dark']) .recColHeader {
+  color: #475569 !important;
+  border-bottom-color: rgba(0,0,0,0.03) !important;
+}
+
+:global([data-theme='dark']) .recCard {
+  background: #ffffff !important;
+  border-color: rgba(15, 23, 42, 0.04) !important;
+}
+
+:global([data-theme='dark']) .recName {
+  color: #0f172a !important;
+}
+
+:global([data-theme='dark']) .recRole {
+  color: #94a3b8 !important;
+}
+
+/* Workflow */
+:global([data-theme='dark']) .flowNode {
+  background: #ffffff !important;
+  border-color: rgba(15, 23, 42, 0.04) !important;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.005) !important;
+}
+
+:global([data-theme='dark']) .flowNodeText {
+  color: #334155 !important;
+}
+
+/* General */
+:global([data-theme='dark']) .crmGeneral {
+  background: #ffffff !important;
+  border-color: rgba(15, 23, 42, 0.04) !important;
+}
+
+:global([data-theme='dark']) .crmGenHeader {
+  color: #0f172a !important;
+}
+
+:global([data-theme='dark']) .genBox {
+  background: #f8fafc !important;
+  border-color: rgba(15, 23, 42, 0.02) !important;
+}
+
+:global([data-theme='dark']) .genNum {
+  color: #0f172a !important;
+}
+
+:global([data-theme='dark']) .genLbl {
+  color: #94a3b8 !important;
+}
+
+:global([data-theme='dark']) .crmGenDetails {
+  border-top-color: #f1f5f9 !important;
+}
+
+:global([data-theme='dark']) .genDetailsRow {
+  color: #475569 !important;
+}
+
+/* ── PREMIUM DASHBOARD RE-DESIGN STYLES (Decko/emitly inspiration) ── */
+
+/* Premium Sidebar (Light Theme override) */
+.dashboardSidebar {
+  background: #f8fafc !important; /* premium off-white/light-gray background */
+  border-right: 1px solid #e2e8f0 !important;
+  padding: 20px 14px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  height: 100% !important;
+  box-sizing: border-box !important;
+}
+
+.brandIcon {
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-weight: 850;
+  font-size: 0.72rem;
+  flex-shrink: 0;
+}
+
+.brandName {
+  font-size: 0.82rem;
+  font-weight: 850;
+  color: #0f172a !important;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  line-height: 1.1;
+}
+
+.brandNameSub {
+  font-size: 0.55rem;
+  color: #64748b !important;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-top: 1px;
+}
+
+.sidebarSearchWrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #ffffff !important;
+  border: 1px solid #e2e8f0 !important;
+  border-radius: 8px;
+  padding: 6px 10px;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+}
+
+.sidebarSearchInput {
+  border: none;
+  background: transparent;
+  font-size: 0.65rem;
+  color: #0f172a !important;
+  outline: none;
+  width: 100%;
+  padding: 0;
+  cursor: not-allowed;
+}
+
+.searchShortcut {
+  font-size: 0.52rem;
+  color: #64748b !important;
+  background: #f1f5f9 !important;
+  padding: 1px 4px;
+  border-radius: 4px;
+  border: 1px solid #cbd5e1 !important;
+  font-weight: 700;
+}
+
+.sidebarSectionTitle {
+  font-size: 0.58rem;
+  color: #64748b !important;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 8px;
+  text-align: left;
+}
+
+.navItem {
+  color: #475569 !important;
+  font-size: 0.72rem !important;
+  font-weight: 600 !important; /* cleaner semibold weight */
+  padding: 7px 12px !important; /* slightly slimmer padding */
+  border-radius: 8px !important;
+  cursor: pointer !important;
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 2px !important; /* space out menu items */
+  text-decoration: none !important;
+}
+
+.navItem:hover {
+  color: #0f172a !important;
+  background: #f1f5f9 !important;
+}
+
+.navItemActive {
+  color: #ffffff !important;
+  background: var(--service-color) !important;
+}
+
+.sidebarEventCard {
+  background: #ffffff !important;
+  border: 1px solid #e2e8f0 !important;
+  border-radius: 10px;
+  padding: 10px;
+  margin-top: auto;
+  margin-bottom: 16px;
+  text-align: left;
+  box-sizing: border-box;
+}
+
+.eventTime {
+  font-size: 0.52rem;
+  color: #64748b !important;
+  font-weight: 700;
+}
+
+.eventTitle {
+  font-size: 0.65rem;
+  color: #0f172a !important;
+  font-weight: 750;
+  margin: 2px 0 4px;
+  line-height: 1.2;
+}
+
+.eventStatus {
+  font-size: 0.55rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.sidebarProfile {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-top: 1px solid #e2e8f0 !important;
+  padding-top: 12px;
+  margin-top: auto;
+}
+
+/* Greeting Header Styling */
+.greetingHeader {
+  padding: 20px 20px 0;
+  text-align: left;
+  box-sizing: border-box;
+}
+
+.greetingTitle {
+  font-size: 1.25rem;
+  font-weight: 955;
+  color: #0f172a !important;
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+.greetingSub {
+  font-size: 0.72rem;
+  color: #475569 !important;
+  font-weight: 550;
+  margin: 2px 0 0;
+}
+
+/* Topbar Profile Alignments */
+.topbarProfile {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-align: right;
+}
+
+.profileMetaText {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.profileUserName {
+  font-size: 0.74rem;
+  font-weight: 800;
+  color: #0f172a !important;
+  line-height: 1.2;
+}
+
+.profileUserEmail {
+  font-size: 0.58rem;
+  color: #64748b !important;
+  font-weight: 600;
+}
+
+.profileUserAv {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.65rem;
+  font-weight: 800;
+}
+
+.themeToggleBtn {
+  background: transparent;
+  border: none;
+  cursor: not-allowed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #64748b;
+  padding: 4px;
+}
+
+/* Redesigned KPI Metrics Cards */
+.crmKPIs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.crmKPIBox {
+  background: #ffffff !important;
+  border: 1px solid rgba(15, 23, 42, 0.05) !important;
+  border-radius: 16px !important;
+  padding: 14px !important;
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.01) !important;
+  box-sizing: border-box !important;
+  transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+}
+
+.crmKPIBox:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.03) !important;
+}
+
+.kpiMeta {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  text-align: left;
+}
+
+.kpiBoxLabel {
+  font-size: 0.62rem !important;
+  color: #64748b !important;
+  font-weight: 750 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.02em !important;
+}
+
+.kpiBoxVal {
+  font-size: 1.15rem !important;
+  font-weight: 900 !important;
+  color: #0f172a !important;
+  margin: 0 !important;
+  line-height: 1 !important;
+}
+
+.kpiBoxGrowth {
+  font-size: 0.58rem !important;
+  font-weight: 800 !important;
+  padding: 2px 8px !important;
+  border-radius: 50px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  margin-top: 4px !important;
+  width: max-content !important;
+  line-height: 1 !important;
+}
+
+.kpiIconCircle {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.01);
+}
+
+/* Premium 12-Month Bar Chart */
+.crmChartContainer {
+  background: #ffffff !important;
+  border: 1px solid rgba(15, 23, 42, 0.05) !important;
+  border-radius: 16px !important;
+  padding: 16px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.01) !important;
+  flex: 1;
+  min-height: 220px !important;
+  box-sizing: border-box;
+}
+
+.crmChartHeader {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.72rem;
+  font-weight: 850;
+  color: #0f172a !important;
+}
+
+.crmChartLegend {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.65rem;
+}
+
+.legendColor {
+  width: 8px;
+  height: 8px;
+  border-radius: 2px;
+}
+
+.crmChartMain {
+  position: relative;
+  height: 150px;
+  margin-top: 16px;
+  width: 100%;
+}
+
+.crmChartGridLine {
+  position: absolute;
+  left: 0;
+  right: 0;
+  border-top: 1px dashed rgba(15, 23, 42, 0.08);
+  display: flex;
+  align-items: center;
+  z-index: 1;
+}
+
+.crmChartLineTag {
+  font-size: 0.56rem;
+  background: #ffffff;
+  color: #64748b;
+  font-weight: 800;
+  padding: 0 6px;
+  position: absolute;
+  left: 12px;
+  transform: translateY(-50%);
+  border: 1px solid rgba(15, 23, 42, 0.05);
+  border-radius: 4px;
+  line-height: 1;
+}
+
+.crmChartBars {
+  position: absolute;
+  inset: 0;
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: flex-end !important;
+  z-index: 2;
+  padding: 0 4px !important;
+}
+
+.crmChartBarCol {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  gap: 6px !important;
+  position: relative !important;
+  height: 100% !important;
+  justify-content: flex-end !important;
+  flex: 1 !important;
+}
+
+.crmChartTooltip {
+  position: absolute !important;
+  bottom: 100% !important;
+  transform: translateY(-8px) !important;
+  background: #0f172a !important;
+  color: #ffffff !important;
+  border-radius: 6px !important;
+  padding: 6px 10px !important;
+  font-size: 0.55rem !important;
+  font-weight: 750;
+  z-index: 10 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 2px !important;
+  white-space: nowrap !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15) !important;
+  text-align: left;
+}
+
+.crmChartTooltip::after {
+  content: '' !important;
+  position: absolute !important;
+  bottom: -4px !important;
+  left: 50% !important;
+  transform: translateX(-50%) rotate(45deg) !important;
+  width: 8px !important;
+  height: 8px !important;
+  background: #0f172a !important;
+}
+
+.crmDoubleBars {
+  display: flex !important;
+  gap: 3px !important;
+  align-items: flex-end !important;
+  height: calc(100% - 22px) !important;
+  background: transparent !important;
+  width: auto !important;
+  border-radius: 0 !important;
+  overflow: visible !important;
+}
+
+.crmBarFill {
+  width: 5px !important;
+  border-radius: 20px 20px 0 0 !important;
+  transition: height 0.3s ease !important;
+}
+
+.crmBarFillExpense {
+  width: 5px !important;
+  border-radius: 20px 20px 0 0 !important;
+  transition: height 0.3s ease !important;
+}
+
+.crmChartLabel {
+  font-size: 0.58rem;
+  color: #94a3b8;
+  font-weight: 700;
+}
+
+/* Premium Calendar & Schedule Cards */
+.crmCalendarSection {
+  display: grid !important;
+  grid-template-columns: 1fr 1.2fr !important;
+  gap: 16px !important;
+  align-items: start !important;
+}
+
+.crmCalendar {
+  background: #ffffff !important;
+  border: 1px solid rgba(15, 23, 42, 0.05) !important;
+  border-radius: 16px !important;
+  padding: 16px !important;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.01) !important;
+  box-sizing: border-box !important;
+}
+
+.crmCalGrid {
+  display: grid !important;
+  grid-template-columns: repeat(7, 1fr) !important;
+  gap: 4px !important;
+}
+
+.crmCalCell {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  aspect-ratio: 1 !important;
+  border-radius: 50% !important;
+  font-size: 0.65rem !important;
+  color: #475569 !important;
+  cursor: not-allowed !important;
+  background: transparent !important;
+  border: none !important;
+  min-height: auto !important;
+  padding: 0 !important;
+  transition: all 0.2s ease !important;
+}
+
+.crmCalCell:hover {
+  background: #f1f5f9 !important;
+}
+
+.crmCalCellActive {
+  background: var(--service-color) !important;
+  color: #ffffff !important;
+  font-weight: 800 !important;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.1) !important;
+}
+
+.crmCalDayNum {
+  font-size: 0.65rem !important;
+}
+
+.crmScheduleCard {
+  background: #ffffff !important;
+  border: 1px solid rgba(15, 23, 42, 0.05) !important;
+  border-radius: 16px !important;
+  padding: 16px !important;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.01) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 12px !important;
+  box-sizing: border-box !important;
+}
+
+.scheduleHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.74rem;
+  font-weight: 850;
+  color: #0f172a !important;
+}
+
+.scheduleDots {
+  color: #94a3b8;
+  font-weight: bold;
+  cursor: not-allowed;
+}
+
+.scheduleList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.scheduleItem {
+  display: flex !important;
+  align-items: flex-start !important;
+  gap: 10px !important;
+  padding: 6px !important;
+  border-radius: 8px !important;
+  transition: all 0.2s ease !important;
+  text-align: left;
+}
+
+.scheduleItemActive {
+  background: #f8fafc !important;
+  border: 1px solid #f1f5f9 !important;
+}
+
+.scheduleCheck {
+  width: 14px !important;
+  height: 14px !important;
+  border-radius: 4px !important;
+  border: 1px solid #cbd5e1 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex-shrink: 0 !important;
+  margin-top: 2px !important;
+  cursor: not-allowed;
+}
+
+.scheduleMeta {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  flex: 1;
+}
+
+.scheduleTime {
+  font-size: 0.58rem;
+  font-weight: 800;
+  color: #475569 !important;
+  white-space: nowrap;
+  margin-top: 2px;
+  width: 60px;
+}
+
+.scheduleMainInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.scheduleTitle {
+  font-size: 0.68rem;
+  font-weight: 750;
+  color: #0f172a !important;
+}
+
+.scheduleSub {
+  font-size: 0.56rem;
+  color: #94a3b8 !important;
+  font-weight: 600;
+}
+
+/* Directory Profile Card layout */
+.crmDirectoryGrid {
+  display: grid !important;
+  grid-template-columns: repeat(2, 1fr) !important;
+  gap: 12px !important;
+  flex: 1 !important;
+}
+
+.directoryCard {
+  background: #ffffff !important;
+  border: 1px solid rgba(15, 23, 42, 0.05) !important;
+  border-radius: 14px !important;
+  padding: 12px !important;
+  display: flex !important;
+  gap: 12px !important;
+  align-items: center !important;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.005) !important;
+  box-sizing: border-box;
+  transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+}
+
+.directoryCard:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.02) !important;
+}
+
+.directoryAv {
+  width: 36px !important;
+  height: 36px !important;
+  border-radius: 50% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 0.8rem !important;
+  font-weight: 800 !important;
+  flex-shrink: 0 !important;
+}
+
+.directoryMeta {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 2px !important;
+  min-width: 0 !important;
+  text-align: left !important;
+}
+
+.directoryName {
+  font-size: 0.74rem !important;
+  color: #0f172a !important;
+  font-weight: 800 !important;
+}
+
+.directoryCompany {
+  font-size: 0.6rem !important;
+  color: #475569 !important;
+  font-weight: 600 !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+
+.directoryEmail {
+  font-size: 0.58rem !important;
+  color: #94a3b8 !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+
+.directoryTags {
+  display: flex !important;
+  gap: 4px !important;
+  margin-top: 4px !important;
+  flex-wrap: wrap !important;
+}
+
+.directoryStatusBadge {
+  font-size: 0.55rem !important;
+  font-weight: 800 !important;
+  padding: 1px 6px !important;
+  border-radius: 4px !important;
+}
+
+.directoryTag {
+  font-size: 0.55rem !important;
+  font-weight: 750 !important;
+  padding: 1px 6px !important;
+  border-radius: 4px !important;
+}
+
+/* Override dark-theme styles to force mockup dashboard elements to remain in light theme */
+:global([data-theme='dark']) .dashboardShell {
+  background: #f1f5f9 !important;
+  color: #0f172a !important;
+}
+:global([data-theme='dark']) .dashboardSidebar {
+  background: #f8fafc !important;
+  border-right-color: #e2e8f0 !important;
+}
+:global([data-theme='dark']) .brandName {
+  color: #0f172a !important;
+}
+:global([data-theme='dark']) .brandNameSub {
+  color: #64748b !important;
+}
+:global([data-theme='dark']) .sidebarSearchWrap {
+  background: #ffffff !important;
+  border-color: #e2e8f0 !important;
+}
+:global([data-theme='dark']) .sidebarSearchInput {
+  color: #0f172a !important;
+}
+:global([data-theme='dark']) .searchShortcut {
+  color: #64748b !important;
+  background: #f1f5f9 !important;
+  border-color: #cbd5e1 !important;
+}
+:global([data-theme='dark']) .sidebarSectionTitle {
+  color: #64748b !important;
+}
+:global([data-theme='dark']) .navItem {
+  color: #475569 !important;
+}
+:global([data-theme='dark']) .navItem:hover {
+  color: #0f172a !important;
+  background: #f1f5f9 !important;
+}
+:global([data-theme='dark']) .navItemActive {
+  color: #ffffff !important;
+}
+:global([data-theme='dark']) .sidebarEventCard {
+  background: #ffffff !important;
+  border-color: #e2e8f0 !important;
+}
+:global([data-theme='dark']) .eventTime {
+  color: #64748b !important;
+}
+:global([data-theme='dark']) .eventTitle {
+  color: #0f172a !important;
+}
+:global([data-theme='dark']) .sidebarProfile {
+  border-top-color: #e2e8f0 !important;
+}
+:global([data-theme='dark']) .profileName {
+  color: #1e293b !important;
+}
+:global([data-theme='dark']) .profileRole {
+  color: #94a3b8 !important;
+}
+:global([data-theme='dark']) .dashboardTopbar {
+  background: #ffffff !important;
+  border-bottom-color: #e2e8f0 !important;
+}
+:global([data-theme='dark']) .topbarLeft {
+  background: #f1f5f9 !important;
+}
+:global([data-theme='dark']) .topbarSearch {
+  color: #0f172a !important;
+}
+:global([data-theme='dark']) .profileUserName {
+  color: #0f172a !important;
+}
+:global([data-theme='dark']) .profileUserEmail {
+  color: #64748b !important;
+}
+:global([data-theme='dark']) .greetingTitle {
+  color: #0f172a !important;
+}
+:global([data-theme='dark']) .greetingSub {
+  color: #475569 !important;
+}
+:global([data-theme='dark']) .moduleHeading {
+  color: #0f172a !important;
+}
+:global([data-theme='dark']) .workspaceFeed {
+  background: #ffffff !important;
+  border-color: rgba(15, 23, 42, 0.05) !important;
+}
+:global([data-theme='dark']) .feedHeader {
+  color: #0f172a !important;
+}
+:global([data-theme='dark']) .feedText {
+  color: #334155 !important;
+}
+:global([data-theme='dark']) .feedTime {
+  color: #64748b !important;
+}
+:global([data-theme='dark']) .crmKPIBox {
+  background: #ffffff !important;
+  border-color: rgba(15, 23, 42, 0.05) !important;
+}
+:global([data-theme='dark']) .kpiBoxLabel {
+  color: #64748b !important;
+}
+:global([data-theme='dark']) .kpiBoxVal {
+  color: #0f172a !important;
+}
+:global([data-theme='dark']) .crmChartContainer {
+  background: #ffffff !important;
+  border-color: rgba(15, 23, 42, 0.05) !important;
+}
+:global([data-theme='dark']) .crmChartHeader {
+  color: #0f172a !important;
+}
+:global([data-theme='dark']) .crmChartLabel {
+  color: #94a3b8 !important;
+}
+:global([data-theme='dark']) .crmCalendar {
+  background: #ffffff !important;
+  border-color: rgba(15, 23, 42, 0.05) !important;
+}
+:global([data-theme='dark']) .crmCalTitle {
+  color: #0f172a !important;
+}
+:global([data-theme='dark']) .crmCalDayHeader {
+  color: #94a3b8 !important;
+}
+:global([data-theme='dark']) .crmCalDayNum {
+  color: #475569 !important;
+}
+:global([data-theme='dark']) .crmScheduleCard {
+  background: #ffffff !important;
+  border-color: rgba(15, 23, 42, 0.05) !important;
+}
+:global([data-theme='dark']) .scheduleHeader {
+  color: #0f172a !important;
+}
+:global([data-theme='dark']) .scheduleTitle {
+  color: #0f172a !important;
+}
+:global([data-theme='dark']) .scheduleSub {
+  color: #94a3b8 !important;
+}
+:global([data-theme='dark']) .scheduleItemActive {
+  background: #f8fafc !important;
+  border-color: #f1f5f9 !important;
+}
+:global([data-theme='dark']) .crmMailbox {
+  background: #ffffff !important;
+  border-color: rgba(15, 23, 42, 0.05) !important;
+}
+:global([data-theme='dark']) .mailCount {
+  color: #475569 !important;
+}
+:global([data-theme='dark']) .mailSender {
+  color: #0f172a !important;
+}
+:global([data-theme='dark']) .mailSubj {
+  color: #1e293b !important;
+}
+:global([data-theme='dark']) .mailBody {
+  color: #64748b !important;
+}
+:global([data-theme='dark']) .crmKanban .kanbanCol {
+  background: rgba(15, 23, 42, 0.02) !important;
+}
+:global([data-theme='dark']) .kanbanColHeader {
+  color: #475569 !important;
+}
+:global([data-theme='dark']) .crmKanban .kanbanCard {
+  background: #ffffff !important;
+  border-color: rgba(15, 23, 42, 0.04) !important;
+}
+:global([data-theme='dark']) .kanbanCardTitle {
+  color: #0f172a !important;
+}
+:global([data-theme='dark']) .kanbanTag {
+  background: rgba(0,0,0,0.04) !important;
+  color: #64748b !important;
+}
+:global([data-theme='dark']) .crmLedger {
+  background: #ffffff !important;
+  border-color: rgba(15, 23, 42, 0.05) !important;
+}
+:global([data-theme='dark']) .crmLedgerHeader {
+  color: #0f172a !important;
+}
+:global([data-theme='dark']) .crmLedgerSubtitle {
+  color: #94a3b8 !important;
+}
+:global([data-theme='dark']) .crmLedgerTable th {
+  color: #94a3b8 !important;
+}
+:global([data-theme='dark']) .crmLedgerTable td {
+  color: #475569 !important;
+  border-bottom-color: #f1f5f9 !important;
+}
+:global([data-theme='dark']) .recCol {
+  background: rgba(15, 23, 42, 0.02) !important;
+}
+:global([data-theme='dark']) .recColHeader {
+  color: #475569 !important;
+}
+:global([data-theme='dark']) .recCard {
+  background: #ffffff !important;
+  border-color: rgba(15, 23, 42, 0.04) !important;
+}
+:global([data-theme='dark']) .recName {
+  color: #0f172a !important;
+}
+:global([data-theme='dark']) .recRole {
+  color: #94a3b8 !important;
+}
+:global([data-theme='dark']) .flowNode {
+  background: #ffffff !important;
+  border-color: rgba(15, 23, 42, 0.04) !important;
+}
+:global([data-theme='dark']) .flowNodeText {
+  color: #334155 !important;
+}
+:global([data-theme='dark']) .directoryCard {
+  background: #ffffff !important;
+  border-color: rgba(15, 23, 42, 0.05) !important;
+}
+:global([data-theme='dark']) .directoryName {
+  color: #0f172a !important;
+}
+:global([data-theme='dark']) .directoryCompany {
+  color: #475569 !important;
+}
+:global([data-theme='dark']) .directoryEmail {
+  color: #94a3b8 !important;
+}
+
+/* Media Query Adaptations */
+.mobileDropdownWrap {
+  display: none !important; /* hidden by default on desktop/tablet */
+}
+
+@media (max-width: 768px) {
+  .crmCalendarSection {
+    grid-template-columns: 1fr !important;
+  }
+  
+  .dashboardShell {
+    grid-template-columns: 1fr !important;
+    position: relative !important;
+    padding-bottom: 0px !important; /* remove space for bottom nav bar */
+  }
+
+  .dashboardSidebar {
+    display: none !important;
+  }
+
+  .dashboardWorkspace {
+    width: 100% !important;
+  }
+
+  .greetingHeader {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 12px !important;
+    align-items: stretch !important;
+  }
+
+  .mobileDropdownWrap {
+    display: block !important;
+    position: relative !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    z-index: 100 !important;
+  }
+
+  .mobileDropdownBtn {
+    width: 100% !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    background: #ffffff !important;
+    border: 1px solid #cbd5e1 !important;
+    border-radius: 10px !important;
+    padding: 10px 14px !important;
+    font-size: 0.74rem !important;
+    color: #0f172a !important;
+    cursor: pointer !important;
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.02) !important;
+    transition: all 0.2s ease !important;
+    outline: none !important;
+  }
+
+  .mobileDropdownBtn:hover {
+    background: #f8fafc !important;
+    border-color: #94a3b8 !important;
+  }
+
+  .mobileDropdownMenu {
+    position: absolute !important;
+    top: 100% !important;
+    left: 0 !important;
+    right: 0 !important;
+    margin-top: 6px !important;
+    background: #ffffff !important;
+    border: 1px solid #e2e8f0 !important;
+    border-radius: 10px !important;
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08) !important;
+    z-index: 110 !important;
+    max-height: 240px !important;
+    overflow-y: auto !important;
+    padding: 6px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 4px !important;
+    box-sizing: border-box !important;
+  }
+
+  .mobileDropdownItem {
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    padding: 8px 12px !important;
+    font-size: 0.72rem !important;
+    color: #475569 !important;
+    text-decoration: none !important;
+    border-radius: 8px !important;
+    transition: all 0.15s ease !important;
+    font-weight: 700 !important;
+    text-align: left !important;
+    box-sizing: border-box !important;
+  }
+
+  .mobileDropdownItem:hover {
+    background: #f1f5f9 !important;
+    color: #0f172a !important;
+  }
+
+  .mobileDropdownItemActive {
+    background: var(--service-color) !important;
+    color: #ffffff !important;
+    box-shadow: 0 2px 8px rgba(15, 23, 42, 0.08) !important;
+  }
+}
+
+/* Force Light Theme on mobile dropdown under dark site mode */
+:global([data-theme='dark']) .mobileDropdownBtn {
+  background: #ffffff !important;
+  border-color: #cbd5e1 !important;
+  color: #0f172a !important;
+}
+:global([data-theme='dark']) .mobileDropdownMenu {
+  background: #ffffff !important;
+  border-color: #e2e8f0 !important;
+}
+:global([data-theme='dark']) .mobileDropdownItem {
+  color: #475569 !important;
+}
+:global([data-theme='dark']) .mobileDropdownItem:hover {
+  background: #f1f5f9 !important;
+  color: #0f172a !important;
+}
+:global([data-theme='dark']) .mobileDropdownItemActive {
+  background: var(--service-color) !important;
+  color: #ffffff !important;
+}
+
+/* Force clean website typography on all mockup elements */
+.dashboardShell * {
+  font-family: inherit !important;
+}

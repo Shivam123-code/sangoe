@@ -163,11 +163,7 @@ export default function MobileBottomNav() {
               {/* Sheet Header */}
               <div className={styles.sheetHeader}>
                 <div className={styles.sheetLogo}>
-                  <svg width="24" height="24" viewBox="0 0 32 32" fill="none">
-                    <rect width="32" height="32" rx="9" fill="#7C3AED" />
-                    <path d="M8 16L12.5 11.5L16.5 15.5L20.5 9.5L24 16L20.5 22.5L16.5 18.5L12.5 22.5L8 16Z" fill="white" />
-                  </svg>
-                  <span>SANGOE</span>
+                  <img src="/logos/1.png" alt="Sangoe Logo" className={styles.logoImage} />
                 </div>
                 <button
                   className={styles.sheetClose}

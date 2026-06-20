@@ -54,6 +54,12 @@
   letter-spacing: 0.08em;
 }
 
+.logoImage {
+  height: 52px;
+  width: auto;
+  display: block;
+}
+
 .tagline {
   font-size: 0.85rem;
   line-height: 1.7;
@@ -102,13 +108,13 @@
   color: #111827; /* Dark headers */
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  margin-bottom: 18px;
+  margin-bottom: 24px;
 }
 
 .linkList {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 16px;
 }
 
 .link {
@@ -154,25 +160,36 @@
 .legalLink:hover { color: #7C3AED; }
 
 /* Download Badges */
-.downloadGrid {
+.downloadSection {
+  margin-top: 24px;
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  max-width: 180px;
+  gap: 8px;
+}
+
+.downloadGrid {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  width: 100%;
+  max-width: 320px;
+  flex-wrap: wrap;
 }
 
 .downloadBtn {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 8px;
   background: #111827;
   color: #ffffff !important;
   border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 10px;
-  padding: 8px 16px;
+  border-radius: 8px;
+  padding: 6px 12px;
   text-decoration: none !important;
   transition: all 0.2s ease;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  flex: 1;
+  min-width: 120px;
 }
 
 .downloadBtn:hover {
@@ -194,7 +211,7 @@
 }
 
 .downloadSub {
-  font-size: 0.58rem;
+  font-size: 0.52rem;
   text-transform: uppercase;
   font-weight: 600;
   color: #9ca3af;
@@ -202,7 +219,7 @@
 }
 
 .downloadMain {
-  font-size: 0.8rem;
+  font-size: 0.74rem;
   font-weight: 750;
   color: #ffffff;
 }

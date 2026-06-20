@@ -123,7 +123,7 @@ export default function HeroVideo() {
             {[
               { n: '500+', l: 'Businesses' },
               { n: '21+',  l: 'Industries' },
-              { n: '9',    l: 'Business Clouds' },
+              { n: 'Unified', l: 'Business Clouds' },
               { n: '98%',  l: 'Compliance Rate' },
             ].map((s, i) => (
               <div key={i} className={styles.stat}>

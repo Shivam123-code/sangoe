@@ -155,7 +155,7 @@ export default function AISection() {
               <span style={{ background: 'linear-gradient(135deg,#a78bfa,#f0abfc)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>Anything</span>
             </motion.h2>
             <motion.p variants={fadeUp} className={styles.sub}>
-              Sangoe AI Co-Pilot connects to all nine operational clouds. Ask questions in plain English and get instant audits, delayed task alerts, and actionable recommendations.
+              Sangoe AI Co-Pilot connects to all operational clouds. Ask questions in plain English and get instant audits, delayed task alerts, and actionable recommendations.
             </motion.p>
             <motion.div variants={fadeUp} style={{ marginTop: '16px' }}>
               <Link href="/platform" className={`btn btn-outline-white ${styles.cta}`} id="try-ai-copilot">

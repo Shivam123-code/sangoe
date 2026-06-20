@@ -1,5 +1,5 @@
 'use client';
-import { useState, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence, useInView } from 'framer-motion';
 import Link from 'next/link';
 import { 
@@ -9,7 +9,9 @@ import {
   TrendingDown,
   Rocket,
   Globe,
-  Compass
+  Compass,
+  ChevronLeft,
+  ChevronRight
 } from 'lucide-react';
 import { INDUSTRIES } from './IndustryModules';
 import styles from './SolutionStatement.module.css';
@@ -27,6 +29,42 @@ export default function SolutionStatement() {
   const [activeIndustryId, setActiveIndustryId] = useState('construction');
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: '-60px' });
+
+  const tabsRef = useRef(null);
+  const [showLeftArrow, setShowLeftArrow] = useState(false);
+  const [showRightArrow, setShowRightArrow] = useState(true);
+
+  const checkScroll = () => {
+    if (tabsRef.current) {
+      const { scrollLeft, scrollWidth, clientWidth } = tabsRef.current;
+      setShowLeftArrow(scrollLeft > 10);
+      setShowRightArrow(scrollWidth > clientWidth && scrollLeft < scrollWidth - clientWidth - 10);
+    }
+  };
+
+  useEffect(() => {
+    const tabsContainer = tabsRef.current;
+    if (tabsContainer) {
+      checkScroll();
+      tabsContainer.addEventListener('scroll', checkScroll);
+      window.addEventListener('resize', checkScroll);
+      
+      const timer = setTimeout(checkScroll, 100);
+
+      return () => {
+        tabsContainer.removeEventListener('scroll', checkScroll);
+        window.removeEventListener('resize', checkScroll);
+        clearTimeout(timer);
+      };
+    }
+  }, [activeIndustryId]);
+
+  const handleScroll = (direction) => {
+    if (tabsRef.current) {
+      const scrollAmount = direction === 'left' ? -200 : 200;
+      tabsRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    }
+  };
 
   const activeIndustry = INDUSTRIES.find(ind => ind.id === activeIndustryId) || INDUSTRIES[0];
 
@@ -70,28 +108,48 @@ export default function SolutionStatement() {
 
           {/* Industry tabs scrollable bar */}
           <motion.div
-            className={styles.tabsWrap}
+            className={styles.tabsWrapper}
             initial={{ opacity: 0, y: 16 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.15 }}
           >
-            <div className={styles.tabs}>
-              {INDUSTRIES.map(ind => {
-                const Icon = ind.icon;
-                const isActive = ind.id === activeIndustryId;
-                return (
-                  <button
-                    key={ind.id}
-                    className={`${styles.tab} ${isActive ? styles.tabActive : ''}`}
-                    onClick={() => setActiveIndustryId(ind.id)}
-                    style={isActive ? { '--tab-color': ind.color, borderColor: ind.color, background: ind.bg } : {}}
-                  >
-                    <Icon size={13} style={isActive ? { color: ind.color } : {}} />
-                    <span>{ind.label}</span>
-                  </button>
-                );
-              })}
+            <button 
+              type="button"
+              className={`${styles.scrollBtn} ${styles.scrollBtnLeft} ${!showLeftArrow ? styles.scrollBtnHidden : ''}`} 
+              onClick={() => handleScroll('left')}
+              aria-label="Scroll left"
+            >
+              <ChevronLeft size={16} />
+            </button>
+
+            <div className={styles.tabsWrap} ref={tabsRef}>
+              <div className={styles.tabs}>
+                {INDUSTRIES.map(ind => {
+                  const Icon = ind.icon;
+                  const isActive = ind.id === activeIndustryId;
+                  return (
+                    <button
+                      key={ind.id}
+                      className={`${styles.tab} ${isActive ? styles.tabActive : ''}`}
+                      onClick={() => setActiveIndustryId(ind.id)}
+                      style={isActive ? { '--tab-color': ind.color, borderColor: ind.color, background: ind.bg } : {}}
+                    >
+                      <Icon size={13} style={isActive ? { color: ind.color } : {}} />
+                      <span>{ind.label}</span>
+                    </button>
+                  );
+                })}
+              </div>
             </div>
+
+            <button 
+              type="button"
+              className={`${styles.scrollBtn} ${styles.scrollBtnRight} ${!showRightArrow ? styles.scrollBtnHidden : ''}`} 
+              onClick={() => handleScroll('right')}
+              aria-label="Scroll right"
+            >
+              <ChevronRight size={16} />
+            </button>
           </motion.div>
         </div>
 
@@ -128,7 +186,7 @@ export default function SolutionStatement() {
                         <span className={styles.badgeIcon}>
                           <IndustryIcon size={24} />
                         </span>
-                        <span className={styles.badgeLabel} style={{ fontSize: '0.72rem', fontWeight: '850', marginTop: '4px', textTransform: 'uppercase', color: '#ffffff', textAlign: 'center', wordBreak: 'break-word', maxWidth: '80px', lineHeight: '1.1' }}>
+                        <span className={styles.badgeLabel} style={{ fontSize: '0.68rem', fontWeight: '850', marginTop: '4px', textTransform: 'uppercase', color: '#ffffff', textAlign: 'center', whiteSpace: 'nowrap', lineHeight: '1.1' }}>
                           {shortLabel}
                         </span>
                         <span className={styles.badgeLabel} style={{ fontSize: '0.55rem', fontWeight: '700', opacity: 0.8, color: '#ffffff', marginTop: '1px' }}>

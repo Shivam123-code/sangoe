@@ -392,6 +392,221 @@
   line-height: 1.35;
 }
 
+/* Window controls */
+.windowControls {
+  display: flex;
+  gap: 4.5px;
+  align-items: center;
+}
+
+.windowDot {
+  width: 5.5px;
+  height: 5.5px;
+  border-radius: 50%;
+}
+
+/* Top bar center search */
+.topbarCenter {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background: #f1f5f9;
+  border-radius: 6px;
+  padding: 3px 8px;
+  width: 105px;
+  box-sizing: border-box;
+}
+
+.topbarPlaceholder {
+  font-size: 0.55rem;
+  color: #94a3b8;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* Sidebar navigation */
+.dSideItems {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
+  align-items: center;
+}
+
+.dSideItem {
+  width: 20px;
+  height: 20px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #94a3b8;
+  transition: all 0.2s;
+  background: transparent;
+}
+
+.dSideItemActive {
+  background: #ffffff !important;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.08);
+}
+
+/* Live dot pulsing */
+.dLiveDot {
+  width: 4.5px;
+  height: 4.5px;
+  border-radius: 50%;
+  animation: pulseLive 1.5s infinite ease-in-out;
+  flex-shrink: 0;
+}
+
+@keyframes pulseLive {
+  0% { transform: scale(0.9); opacity: 0.7; }
+  50% { transform: scale(1.4); opacity: 1; }
+  100% { transform: scale(0.9); opacity: 0.7; }
+}
+
+/* Widgets Container & Music Player */
+.dWidgets {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+}
+
+.musicWidget {
+  background: #f8fafc;
+  border: 1px solid rgba(15, 23, 42, 0.04);
+  border-radius: 8px;
+  padding: 5px 6px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.005);
+  box-sizing: border-box;
+  min-width: 0;
+}
+
+.musicDisk {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: rotateDisk 4s linear infinite;
+  box-shadow: 0 2px 4px rgba(15, 23, 42, 0.1);
+  flex-shrink: 0;
+}
+
+@keyframes rotateDisk {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.musicDetails {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  flex: 1;
+  text-align: left;
+}
+
+.musicTrack {
+  font-size: 0.58rem;
+  font-weight: 850;
+  color: #1e293b;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.1;
+}
+
+.musicArtist {
+  font-size: 0.48rem;
+  color: #94a3b8;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.musicBtn {
+  background: #ffffff;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  border-radius: 50%;
+  width: 15px;
+  height: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+  transition: transform 0.1s, background-color 0.2s;
+  padding: 0;
+  flex-shrink: 0;
+  outline: none;
+}
+
+.musicBtn:hover {
+  transform: scale(1.08);
+  background: #f8fafc;
+}
+
+.musicBtn:active {
+  transform: scale(0.95);
+}
+
+/* Equalizer */
+.equalizer {
+  display: flex;
+  align-items: flex-end;
+  gap: 1.5px;
+  height: 10px;
+  width: 14px;
+  flex-shrink: 0;
+  padding-bottom: 1px;
+}
+
+.eqBar {
+  width: 1.5px;
+  height: 100%;
+  border-radius: 99px;
+  background: var(--color);
+  animation: bounceBar 0.8s ease-in-out infinite alternate;
+}
+
+.eqBar:nth-child(2) { animation-delay: 0.15s; }
+.eqBar:nth-child(3) { animation-delay: 0.3s; }
+.eqBar:nth-child(4) { animation-delay: 0.45s; }
+
+@keyframes bounceBar {
+  0% { height: 25%; }
+  100% { height: 100%; }
+}
+
+.dAlertsList {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+/* Dark theme additions */
+:global([data-theme='dark']) .topbarCenter {
+  background: #181827 !important;
+}
+
+:global([data-theme='dark']) .musicWidget {
+  background: #181827 !important;
+  border-color: rgba(255,255,255,0.06) !important;
+}
+
+:global([data-theme='dark']) .musicTrack {
+  color: #edeaf8 !important;
+}
+
+:global([data-theme='dark']) .musicBtn {
+  background: #1e1e30 !important;
+  border-color: rgba(255,255,255,0.1) !important;
+}
+
 /* ── Dark mode ── */
 :global([data-theme='dark']) .section { background: #080812 !important; }
 :global([data-theme='dark']) .h2 { color: #edeaf8 !important; }

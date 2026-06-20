@@ -219,6 +219,12 @@
   font-family: 'Inter', system-ui, sans-serif;
 }
 
+.logoImage {
+  height: 38px;
+  width: auto;
+  display: block;
+}
+
 .sheetClose {
   width: 32px;
   height: 32px;

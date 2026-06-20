@@ -10,7 +10,7 @@ import SolutionStatement from '@/components/home/SolutionStatement';
 
 import JourneySection from '@/components/home/JourneySection';
 import IPORoadmap from '@/components/home/IPORoadmap';
-import FeatureEcosystem from '@/components/home/FeatureEcosystem';
+import FeaturesOverview from '@/components/home/FeaturesOverview';
 import AdvancedSolutions from '@/components/home/AdvancedSolutions';
 import IndustriesSection from '@/components/home/IndustriesSection'; // preserved
 import AISection from '@/components/home/AISection';
@@ -44,7 +44,7 @@ export default function HomePage() {
 
       <JourneySection />
       <IPORoadmap />
-      <FeatureEcosystem />
+      <FeaturesOverview />
       <AdvancedSolutions />
       {/* OLD IndustriesSection — preserved: <IndustriesSection /> */}
       <AISection />

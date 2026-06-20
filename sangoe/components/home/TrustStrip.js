@@ -13,7 +13,7 @@ import styles from './TrustStrip.module.css';
 const ITEMS = [
   { 
     icon: Cloud, 
-    text: '9 Business Clouds', 
+    text: 'Unified Business Clouds', 
     tagline: 'Modular Growth OS', 
     color: '#7C3AED', 
     bg: '#f5f0ff', 

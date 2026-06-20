@@ -64,13 +64,7 @@ export default function Navbar() {
         <div className={styles.container}>
           {/* Logo */}
           <Link href="/" className={styles.logo}>
-            <span className={styles.logoMark}>
-              <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-                <rect width="32" height="32" rx="9" fill="#7C3AED" />
-                <path d="M8 16L12.5 11.5L16.5 15.5L20.5 9.5L24 16L20.5 22.5L16.5 18.5L12.5 22.5L8 16Z" fill="white" />
-              </svg>
-            </span>
-            <span className={styles.logoText}>SANGOE</span>
+            <img src="/logos/1.png" alt="Sangoe Logo" className={styles.logoImage} />
           </Link>
 
           {/* Center Navigation Capsule */}

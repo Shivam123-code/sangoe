@@ -35,7 +35,7 @@ const TABS = [
     id: 'businessos',
     label: 'Business OS™',
     title: 'Structured Core Operating System',
-    subtitle: '9 Connected clouds replacing scattered files and single-purpose SaaS tools.',
+    subtitle: 'Connected clouds replacing scattered files and single-purpose SaaS tools.',
     bullets: [
       'Pre-built SOP maps for all departments',
       'Automated approval matrix & workflows',
@@ -90,7 +90,7 @@ export default function PlatformPage() {
               <Link href="/products" className="btn btn-outline-white">View All Clouds</Link>
             </motion.div>
             <motion.div style={{ display: 'flex', gap: '32px', marginTop: '48px', paddingTop: '32px', borderTop: '1px solid rgba(255,255,255,0.08)' }} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.7, duration: 0.6 }}>
-              {[['3', 'Core Modules'], ['9', 'Business Clouds'], ['1', 'Command Center']].map(([num, label]) => (
+              {[['3', 'Core Modules'], ['Enterprise', 'Business Clouds'], ['1', 'Command Center']].map(([num, label]) => (
                 <div key={label}><div style={{ fontSize: '1.6rem', fontWeight: 900, color: '#ffffff' }}>{num}</div><div style={{ fontSize: '0.7rem', color: 'rgba(255,255,255,0.45)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.06em', marginTop: '2px' }}>{label}</div></div>
               ))}
             </motion.div>
@@ -258,7 +258,7 @@ export default function PlatformPage() {
             </div>
             <h3 style={{ fontSize: '1.6rem', fontWeight: 800, color: '#111827', marginBottom: '12px' }}>Full Mobile Capability</h3>
             <p style={{ color: '#4b5563', lineHeight: 1.6, fontSize: '0.95rem', marginBottom: '18px' }}>
-              Every feature of FounderOS™ and the 9 Clouds is accessible on your phone. Approve budgets, review client issues, and track employee check-ins while on the move.
+              Every feature of FounderOS™ and our Business Clouds is accessible on your phone. Approve budgets, review client issues, and track employee check-ins while on the move.
             </p>
             <div style={{ display: 'flex', gap: '16px' }}>
               <span style={{ fontSize: '0.85rem', fontWeight: 700, color: '#7C3AED', display: 'flex', alignItems: 'center', gap: '6px' }}>

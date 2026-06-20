@@ -99,7 +99,7 @@ export default function HeroUniverse() {
             {[
               { n: '500+', l: 'Businesses' },
               { n: '21+', l: 'Industries' },
-              { n: '9', l: 'Business Clouds' },
+              { n: 'Enterprise', l: 'Business Clouds' },
               { n: '98%', l: 'Compliance Rate' },
             ].map((s, i) => (
               <div key={i} className={styles.stat}>
@@ -109,7 +109,7 @@ export default function HeroUniverse() {
             ))}
           </div>
         </motion.div>
-
+ 
         {/* RIGHT — Glassmorphism Dashboard */}
         <motion.div
           className={styles.right}
@@ -135,7 +135,7 @@ export default function HeroUniverse() {
                 <span>Live</span>
               </div>
             </div>
-
+ 
             {/* KPI cards */}
             <div className={styles.kpiGrid}>
               {KPI_CARDS.map((k, i) => {
@@ -163,7 +163,7 @@ export default function HeroUniverse() {
                 );
               })}
             </div>
-
+ 
             {/* Chart + Modules row */}
             <div className={styles.midRow}>
               {/* Revenue chart */}
@@ -192,12 +192,12 @@ export default function HeroUniverse() {
                   ))}
                 </div>
               </div>
-
+ 
               {/* Active modules */}
               <div className={styles.modulesBox}>
                 <div className={styles.chartHeader}>
                   <span>Active Modules</span>
-                  <span style={{ color: '#a78bfa', fontSize: '0.7rem' }}>6/9</span>
+                  <span style={{ color: '#a78bfa', fontSize: '0.7rem' }}>Active</span>
                 </div>
                 <div className={styles.modulesList}>
                   {MODULES_ACTIVE.map((m, i) => (

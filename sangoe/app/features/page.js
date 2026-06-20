@@ -13,7 +13,7 @@ import styles from './page.module.css';
 /* ── Data ─────────────────────────────────────────────────────────── */
 const STATS = [
   { value: '5', label: 'Core Pillars' },
-  { value: '9', label: 'Business Clouds' },
+  { value: 'Unified', label: 'Business Clouds' },
   { value: '50+', label: 'Modules & Features' },
   { value: '1000+', label: 'Business Templates' },
   { value: '100%', label: 'Compliance Coverage' },
@@ -50,7 +50,7 @@ const PILLARS = [
     color: '#3B82F6',
     bg: 'linear-gradient(135deg, #EFF6FF 0%, #DBEAFE 100%)',
     border: 'rgba(59,130,246,0.12)',
-    name: '9 Core Business Clouds',
+    name: 'Core Business Clouds',
     tagline: '50+ Business Functions Under One Roof',
     desc: 'Stop paying for 10+ disjointed SaaS apps. Sangoe unifies Sales, HR, Operations, Finance, Compliance, and Business Intelligence into one integrated system.',
     image: '/images/hero_products.png',

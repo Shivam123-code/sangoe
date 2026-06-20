@@ -68,30 +68,69 @@
 }
 
 /* Industry selector tabs */
-.tabsWrap {
+.tabsWrapper {
+  position: relative;
   width: 100%;
   max-width: 1200px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.tabsWrap {
+  width: 100%;
   overflow-x: auto;
-  padding: 4px 0 12px;
-  scrollbar-width: thin;
-  scrollbar-color: rgba(124, 58, 237, 0.2) transparent;
+  padding: 6px 38px;
+  scrollbar-width: none;
+  scroll-behavior: smooth;
 }
 
 .tabsWrap::-webkit-scrollbar {
-  height: 5px;
+  display: none;
 }
 
-.tabsWrap::-webkit-scrollbar-track {
-  background: transparent;
+.scrollBtn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #7c3aed !important;
+  border: none !important;
+  color: #ffffff !important;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(124, 58, 237, 0.35) !important;
+  transition: opacity 0.25s ease, transform 0.25s ease, background 0.2s ease, box-shadow 0.2s ease;
+  z-index: 5;
+  outline: none;
 }
 
-.tabsWrap::-webkit-scrollbar-thumb {
-  background: rgba(124, 58, 237, 0.15);
-  border-radius: 10px;
+.scrollBtnLeft {
+  left: 4px;
 }
 
-.tabsWrap::-webkit-scrollbar-thumb:hover {
-  background: rgba(124, 58, 237, 0.3);
+.scrollBtnRight {
+  right: 4px;
+}
+
+.scrollBtn:hover {
+  background: #6d28d9 !important;
+  box-shadow: 0 6px 18px rgba(124, 58, 237, 0.45) !important;
+  transform: translateY(-50%) scale(1.08) !important;
+}
+
+.scrollBtn:active {
+  transform: translateY(-50%) scale(0.9);
+}
+
+.scrollBtnHidden {
+  opacity: 0 !important;
+  pointer-events: none !important;
+  transform: translateY(-50%) scale(0.7) !important;
 }
 
 .tabs {

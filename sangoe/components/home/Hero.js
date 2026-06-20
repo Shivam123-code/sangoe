@@ -19,7 +19,7 @@ import {
 } from 'lucide-react';
 import styles from './Hero.module.css';
 
-// Floating Sangoe-relevant module bubbles — all related to Sangoe's 9 clouds
+// Floating Sangoe-relevant module bubbles — all related to Sangoe's Business Clouds
 const ICONS = [
   { icon: TrendingUp,   label: 'Sales Cloud',      top: '12%', left: '5%',   anim: 'floatA', delay: '0s',    size: 64, color: '#3B82F6', bg: '#EFF6FF' },
   { icon: Users,        label: 'HR Cloud',          top: '16%', left: '82%',  anim: 'floatB', delay: '.7s',   size: 58, color: '#10B981', bg: '#ECFDF5' },

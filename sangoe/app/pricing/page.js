@@ -36,9 +36,9 @@ export default function PricingPage() {
             <motion.p style={{ fontSize: '1.05rem', color: 'rgba(255,255,255,0.62)', lineHeight: 1.75, maxWidth: '440px', marginBottom: '32px' }} initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.35, duration: 0.6 }}>
               Choose a plan that matches your business stage—from a growing team to an enterprise readying for IPO listing.
             </motion.p>
-            <motion.div style={{ display: 'inline-flex', background: 'rgba(255,255,255,0.08)', padding: '4px', borderRadius: '99px', border: '1px solid rgba(255,255,255,0.12)', marginBottom: '32px' }} initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.45, duration: 0.5 }}>
-              <button onClick={() => setBillingCycle('monthly')} style={{ padding: '8px 24px', borderRadius: '99px', fontSize: '0.85rem', fontWeight: 700, backgroundColor: billingCycle === 'monthly' ? '#7C3AED' : 'transparent', color: billingCycle === 'monthly' ? '#ffffff' : 'rgba(255,255,255,0.6)', border: 'none', cursor: 'pointer', transition: 'all 0.2s' }}>Monthly Billing</button>
-              <button onClick={() => setBillingCycle('annual')} style={{ padding: '8px 24px', borderRadius: '99px', fontSize: '0.85rem', fontWeight: 700, backgroundColor: billingCycle === 'annual' ? '#7C3AED' : 'transparent', color: billingCycle === 'annual' ? '#ffffff' : 'rgba(255,255,255,0.6)', border: 'none', cursor: 'pointer', transition: 'all 0.2s' }}>Annual Billing <span style={{ color: '#34d399', fontSize: '0.75rem' }}>(Save 20%)</span></button>
+            <motion.div style={{ display: 'flex', gap: '14px', flexWrap: 'wrap', marginBottom: '32px' }} initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.45, duration: 0.5 }}>
+              <Link href="/contact" className="btn btn-purple">Start Free Trial</Link>
+              <Link href="/contact" className="btn btn-outline-white">Book Live Demo</Link>
             </motion.div>
             <motion.div style={{ display: 'flex', gap: '32px', paddingTop: '32px', borderTop: '1px solid rgba(255,255,255,0.08)' }} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.7, duration: 0.6 }}>
               {[['3', 'Flexible Plans'], ['20%', 'Annual Discount'], ['₹0', 'Setup Fee']].map(([num, label]) => (
@@ -64,6 +64,47 @@ export default function PricingPage() {
         </div>
       </section>
 
+      {/* Billing Cycle Toggle Section */}
+      <section style={{ padding: '48px 20px 16px', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '12px' }}>
+        <div style={{ display: 'inline-flex', background: 'rgba(15, 23, 42, 0.05)', padding: '4px', borderRadius: '99px', border: '1px solid rgba(15, 23, 42, 0.08)' }}>
+          <button 
+            onClick={() => setBillingCycle('monthly')} 
+            style={{ 
+              padding: '10px 28px', 
+              borderRadius: '99px', 
+              fontSize: '0.88rem', 
+              fontWeight: 750, 
+              backgroundColor: billingCycle === 'monthly' ? '#7C3AED' : 'transparent', 
+              color: billingCycle === 'monthly' ? '#ffffff' : '#475569', 
+              border: 'none', 
+              cursor: 'pointer', 
+              transition: 'all 0.2s cubic-bezier(0.16, 1, 0.3, 1)' 
+            }}
+          >
+            Monthly Billing
+          </button>
+          <button 
+            onClick={() => setBillingCycle('annual')} 
+            style={{ 
+              padding: '10px 28px', 
+              borderRadius: '99px', 
+              fontSize: '0.88rem', 
+              fontWeight: 750, 
+              backgroundColor: billingCycle === 'annual' ? '#7C3AED' : 'transparent', 
+              color: billingCycle === 'annual' ? '#ffffff' : '#475569', 
+              border: 'none', 
+              cursor: 'pointer', 
+              transition: 'all 0.2s cubic-bezier(0.16, 1, 0.3, 1)' 
+            }}
+          >
+            Annual Billing <span style={{ color: billingCycle === 'annual' ? '#10b981' : '#059669', fontSize: '0.78rem', marginLeft: '4px', fontWeight: 800 }}>(Save 20%)</span>
+          </button>
+        </div>
+        <p style={{ fontSize: '0.85rem', color: '#64748b', fontWeight: 550, margin: 0 }}>
+          ⚡ Start your 14-day free trial on any plan. No credit card required.
+        </p>
+      </section>
+
       {/* Pricing Cards */}
       <section style={{ padding: '20px', maxWidth: '1100px', margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 320px), 1fr))', gap: '32px' }}>
         {/* Startup Plan */}
@@ -87,7 +128,7 @@ export default function PricingPage() {
             </div>
           </div>
           <div style={{ marginTop: '40px' }}>
-            <Link href="/contact" className="btn btn-purple" style={{ width: '100%', justifyContent: 'center', background: '#F3F4F6', color: '#4b5563', boxShadow: 'none' }}>
+            <Link href="/contact" className="btn btn-purple" style={{ width: '100%', justifyContent: 'center' }}>
               Start Free Trial
             </Link>
           </div>
@@ -98,14 +139,14 @@ export default function PricingPage() {
           <span style={{ position: 'absolute', top: '-14px', left: '50%', transform: 'translateX(-50%)', background: '#7C3AED', color: '#ffffff', fontSize: '0.75rem', fontWeight: 700, padding: '4px 14px', borderRadius: '99px', textTransform: 'uppercase', letterSpacing: '0.04rem' }}>Recommended</span>
           <div>
             <h3 style={{ fontSize: '1.4rem', fontWeight: 800, color: '#111827', marginBottom: '8px' }}>Business Growth OS™</h3>
-            <p style={{ fontSize: '0.85rem', color: '#6b7280', marginBottom: '24px' }}>Our signature platform including all 9 Clouds and compliance towers.</p>
+            <p style={{ fontSize: '0.85rem', color: '#6b7280', marginBottom: '24px' }}>Our signature platform including all Business Clouds and compliance towers.</p>
             <div style={{ display: 'flex', alignItems: 'baseline', gap: '4px', marginBottom: '32px' }}>
               <span style={{ fontSize: '2.5rem', fontWeight: 900, color: '#7C3AED' }}>{formatter.format(getPrice(29999))}</span>
               <span style={{ fontSize: '0.9rem', color: '#6b7280' }}>/ month</span>
             </div>
             <div style={{ borderTop: '1px solid #f3f4f6', paddingTop: '24px' }}>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-                {['Access to all 9 Business Clouds', 'FounderOS™ Command Center', 'Compliance Control Tower™', 'Trust Intelligence Verification', 'MSME Systemization Blueprint', 'Premium OKR / KPI Dashboards', 'Dedicated CA/CS Onboarding support'].map(f => (
+                {['Access to all Business Clouds', 'FounderOS™ Command Center', 'Compliance Control Tower™', 'Trust Intelligence Verification', 'MSME Systemization Blueprint', 'Premium OKR / KPI Dashboards', 'Dedicated CA/CS Onboarding support'].map(f => (
                   <div key={f} style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.88rem', color: '#4b5563', fontWeight: 550 }}>
                     <CheckCircle2 size={16} style={{ color: '#7C3AED', flexShrink: 0 }} />
                     <span>{f}</span>
@@ -114,8 +155,11 @@ export default function PricingPage() {
               </div>
             </div>
           </div>
-          <div style={{ marginTop: '40px' }}>
+          <div style={{ marginTop: '40px', display: 'flex', flexDirection: 'column', gap: '10px' }}>
             <Link href="/contact" className="btn btn-purple" style={{ width: '100%', justifyContent: 'center' }}>
+              Start Free Trial
+            </Link>
+            <Link href="/contact" className="btn" style={{ width: '100%', justifyContent: 'center', background: 'transparent', border: '1px solid #7C3AED', color: '#7C3AED', boxShadow: 'none' }}>
               Book Live Demo
             </Link>
           </div>

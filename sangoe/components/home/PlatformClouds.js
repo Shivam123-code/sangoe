@@ -42,7 +42,7 @@ export default function PlatformClouds() {
         >
           <motion.span variants={fadeUp} className="tag">Platform Overview</motion.span>
           <motion.h2 variants={fadeUp} className={styles.h2}>
-            9 Powerful Clouds.<br />
+            Unified Business Clouds.<br />
             <span className="purple-text">One Unified Platform.</span>
           </motion.h2>
           <motion.p variants={fadeUp} className={styles.sub}>

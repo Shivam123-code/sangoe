@@ -1,10 +1,12 @@
 'use client';
-import { useRef } from 'react';
+import { useState, useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import {
   BarChart2, Users, Briefcase, DollarSign,
   CheckCircle2, AlertTriangle, TrendingUp,
-  ShieldCheck, Search, Bell, ArrowRight
+  ShieldCheck, Search, Bell, ArrowRight,
+  LayoutDashboard, Mail, Target, Settings,
+  Music, Play, Pause
 } from 'lucide-react';
 import Link from 'next/link';
 import styles from './DashboardShowcase.module.css';
@@ -54,28 +56,48 @@ function MiniBar({ bars, color }) {
 }
 
 /* ── Dashboard card ── */
-function DashCard({ title, icon: Icon, color, kpis, alerts, bars, chartLabel }) {
+function DashCard({ title, icon: Icon, color, kpis, alerts, bars, chartLabel, trackName }) {
+  const [isPlaying, setIsPlaying] = useState(true);
+
   return (
     <div className={styles.dashCard}>
       {/* Sidebar */}
       <div className={styles.dSidebar}>
         <div className={styles.dSideIcon} style={{ background: color }}><Icon size={12} color="#fff" /></div>
-        {['⊞','⊟','⊠','⊡','⊟'].map((s, i) => (
-          <div key={i} className={styles.dSideItem}>{s}</div>
-        ))}
+        <div className={styles.dSideItems}>
+          <div className={`${styles.dSideItem} ${styles.dSideItemActive}`}>
+            <LayoutDashboard size={10} style={{ color }} />
+          </div>
+          <div className={styles.dSideItem}>
+            <Mail size={10} />
+          </div>
+          <div className={styles.dSideItem}>
+            <Target size={10} />
+          </div>
+          <div className={styles.dSideItem}>
+            <DollarSign size={10} />
+          </div>
+          <div className={styles.dSideItem}>
+            <Settings size={10} />
+          </div>
+        </div>
       </div>
 
       {/* Main */}
       <div className={styles.dMain}>
         {/* Top bar */}
         <div className={styles.dTopBar}>
-          <div className={styles.dTitleRow}>
-            <span className={styles.dDot} style={{ background: color }} />
-            <span className={styles.dTitle}>{title}</span>
+          <div className={styles.windowControls}>
+            <span className={styles.windowDot} style={{ background: '#ff5f56' }} />
+            <span className={styles.windowDot} style={{ background: '#ffbd2e' }} />
+            <span className={styles.windowDot} style={{ background: '#27c93f' }} />
+          </div>
+          <div className={styles.topbarCenter}>
+            <Search size={8} color="#94a3b8" />
+            <span className={styles.topbarPlaceholder}>Search OS...</span>
           </div>
           <div className={styles.dIcons}>
-            <Search size={10} color="#94a3b8" />
-            <Bell   size={10} color="#94a3b8" />
+            <Bell size={10} color="#94a3b8" />
             <div className={styles.dAvatar} style={{ background: color }} />
           </div>
         </div>
@@ -83,7 +105,10 @@ function DashCard({ title, icon: Icon, color, kpis, alerts, bars, chartLabel }) 
         {/* Sub header */}
         <div className={styles.dSubBar}>
           <span className={styles.dSubTitle}>{title}</span>
-          <span className={styles.dBadge} style={{ color, background: `${color}14`, border: `1px solid ${color}28` }}>Live ▾</span>
+          <div style={{ display: 'flex', gap: '6px', alignItems: 'center' }}>
+            <span className={styles.dLiveDot} style={{ background: color }} />
+            <span className={styles.dBadge} style={{ color, background: `${color}14`, border: `1px solid ${color}28` }}>Live</span>
+          </div>
         </div>
 
         {/* KPIs */}
@@ -91,22 +116,47 @@ function DashCard({ title, icon: Icon, color, kpis, alerts, bars, chartLabel }) 
           {kpis.map((k, i) => <KpiTile key={i} {...k} />)}
         </div>
 
-        {/* Bottom row: chart + alerts */}
+        {/* Bottom row: chart + widgets column (music & alerts) */}
         <div className={styles.dBottom}>
           <div className={styles.dChart}>
             <div className={styles.dChartLabel}>{chartLabel}</div>
             <MiniBar bars={bars} color={color} />
           </div>
-          <div className={styles.dAlerts}>
-            {alerts.map((a, i) => {
-              const Ic = a.icon;
-              return (
-                <div key={i} className={styles.dAlert}>
-                  <Ic size={9} style={{ color: a.color, flexShrink: 0 }} />
-                  <span>{a.text}</span>
-                </div>
-              );
-            })}
+
+          <div className={styles.dWidgets}>
+            {/* Ambient Music Player Widget */}
+            <div className={styles.musicWidget}>
+              <div className={styles.musicDisk} style={{ animationPlayState: isPlaying ? 'running' : 'paused', background: `linear-gradient(135deg, ${color}, #4f46e5)` }}>
+                <Music size={8} color="#ffffff" />
+              </div>
+              <div className={styles.musicDetails}>
+                <span className={styles.musicTrack}>{trackName}</span>
+                <span className={styles.musicArtist}>Sangoe Focus</span>
+              </div>
+              <button className={styles.musicBtn} onClick={() => setIsPlaying(!isPlaying)}>
+                {isPlaying ? <Pause size={8} fill="#64748b" color="#64748b" /> : <Play size={8} fill="#64748b" color="#64748b" />}
+              </button>
+              {/* Pulsing Visualizer Equalizer */}
+              <div className={styles.equalizer}>
+                <div className={styles.eqBar} style={{ '--color': color, animationPlayState: isPlaying ? 'running' : 'paused' }} />
+                <div className={styles.eqBar} style={{ '--color': color, animationPlayState: isPlaying ? 'running' : 'paused' }} />
+                <div className={styles.eqBar} style={{ '--color': color, animationPlayState: isPlaying ? 'running' : 'paused' }} />
+                <div className={styles.eqBar} style={{ '--color': color, animationPlayState: isPlaying ? 'running' : 'paused' }} />
+              </div>
+            </div>
+
+            {/* Alert Logs */}
+            <div className={styles.dAlertsList}>
+              {alerts.map((a, i) => {
+                const Ic = a.icon;
+                return (
+                  <div key={i} className={styles.dAlert}>
+                    <Ic size={9} style={{ color: a.color, flexShrink: 0 }} />
+                    <span>{a.text}</span>
+                  </div>
+                );
+              })}
+            </div>
           </div>
         </div>
       </div>
@@ -126,6 +176,7 @@ const SHOWCASES = [
     heading: 'Your Entire Business.\nOne Dashboard.',
     desc: 'See monthly revenue, compliance status, IPO readiness, project delivery — all at a glance. No spreadsheets. No guesswork.',
     features: ['Real-time P&L', 'Compliance score', 'IPO readiness tracker', 'Business health score'],
+    trackName: 'Founder Focus Lofi',
     kpis: [
       { label: 'Monthly Revenue',   value: '₹42.8L', trend: '▲ +12.5%', trendColor: '#7c3aed', sparkPath: 'M0,18 C10,14 22,9 34,6 S46,2 54,1' },
       { label: 'Compliance Tasks',  value: '28/28',  trend: '✓ 100%',   trendColor: '#10b981', sparkPath: 'M0,20 C10,18 22,14 34,8 S46,4 54,1' },
@@ -148,6 +199,7 @@ const SHOWCASES = [
     heading: 'Manage People.\nScale Teams Effortlessly.',
     desc: 'From payroll to performance appraisals — manage your entire workforce with real-time data, attendance, and smart insights.',
     features: ['Payroll automation', 'Leave & attendance', 'Appraisal cycles', 'Hiring pipeline'],
+    trackName: 'Hiring Vibes Lofi',
     kpis: [
       { label: 'Total Employees', value: '142',    trend: '▲ +4 this mo', trendColor: '#10b981', sparkPath: 'M0,20 C10,16 22,12 34,8 S46,4 54,1' },
       { label: 'Attrition Rate',  value: '4.2%',   trend: '▼ -1.1%',     trendColor: '#10b981', sparkPath: 'M0,4 C10,7 22,11 34,14 S46,17 54,20' },
@@ -158,7 +210,7 @@ const SHOWCASES = [
       { icon: Users, color: '#3b82f6', text: '3 candidates in finals' },
     ],
     bars: [20, 35, 25, 45, 60],
-    chartLabel: 'Hiring vs Attrition (YTD)',
+    chartLabel: 'Hiring vs Attrion (YTD)',
   },
   {
     id: 'projects',
@@ -170,6 +222,7 @@ const SHOWCASES = [
     heading: 'Deliver Projects.\nOn Time. Every Time.',
     desc: 'Track milestones, manage resources, monitor billable hours and ensure 100% client satisfaction with full project visibility.',
     features: ['Gantt & Kanban views', 'Resource allocation', 'Billable hour tracking', 'Client milestone sign-off'],
+    trackName: 'Sprint Beats Synth',
     kpis: [
       { label: 'Active Projects',  value: '24',     trend: '4 near deadline',  trendColor: '#3b82f6', sparkPath: 'M0,16 C10,12 22,10 34,7 S46,3 54,2' },
       { label: 'Overall Progress', value: '78%',    trend: '▲ On Track',       trendColor: '#10b981', sparkPath: 'M0,18 C10,13 22,9 34,6 S46,2 54,1' },
@@ -192,6 +245,7 @@ const SHOWCASES = [
     heading: 'Full Financial Control.\nZero Compliance Risk.',
     desc: 'Real-time cash flow, automated GST/TDS filings, P&L reports and audit-ready financials — all in one unified cloud.',
     features: ['GST & TDS automation', 'Cash flow forecasting', 'P&L & balance sheet', 'Audit trail management'],
+    trackName: 'Ledger Flow Chill',
     kpis: [
       { label: 'Cash Flow',      value: '₹1.2Cr', trend: '▲ +15% vs last', trendColor: '#10b981', sparkPath: 'M0,18 C10,13 22,9 34,6 S46,2 54,1' },
       { label: 'Compliance',     value: '100%',   trend: '✓ Fully Done',   trendColor: '#10b981', sparkPath: 'M0,20 C10,18 22,14 34,8 S46,4 54,1' },
@@ -277,7 +331,7 @@ export default function DashboardShowcase() {
             <span className={styles.grad}>Every Business Function.</span>
           </h2>
           <p className={styles.headerSub}>
-            Sangoe&apos;s 9 Business Clouds work together as one unified operating system.
+            Sangoe&apos;s Business Clouds work together as one unified operating system.
             See each module in action.
           </p>
         </motion.div>

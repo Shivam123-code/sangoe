@@ -8,7 +8,7 @@ const FOOTER_COLUMNS = [
     links: [
       { label: 'The Platform', href: '/platform' },
       { label: 'Operating Features', href: '/features' },
-      { label: '9 Business Clouds', href: '/products' },
+      { label: 'Business Clouds', href: '/products' },
       { label: 'Advanced Solutions', href: '/solutions' },
       { label: 'Industries We Serve', href: '/industries' },
       { label: 'Pricing Plans', href: '/pricing' },
@@ -59,11 +59,7 @@ export default function Footer() {
           {/* Brand */}
           <div className={styles.brand}>
             <Link href="/" className={styles.logo}>
-              <svg width="28" height="28" viewBox="0 0 32 32" fill="none">
-                <rect width="32" height="32" rx="9" fill="#7C3AED" />
-                <path d="M8 16L12.5 11.5L16.5 15.5L20.5 9.5L24 16L20.5 22.5L16.5 18.5L12.5 22.5L8 16Z" fill="white" />
-              </svg>
-              <span>SANGOE</span>
+              <img src="/logos/1.png" alt="Sangoe Logo" className={styles.logoImage} />
             </Link>
             <p className={styles.tagline}>
               Build a Business That Runs Without You. One unified Operating System to control, compliance-proof, and scale your entire enterprise.
@@ -72,26 +68,10 @@ export default function Footer() {
               <input type="email" placeholder="Email Address" className={styles.emailInput} aria-label="Email Address" />
               <button className={`btn btn-purple ${styles.subBtn}`}>Subscribe</button>
             </div>
-          </div>
 
-          {/* Link Columns + Download App Column */}
-          <div className={styles.linkGrid}>
-            {FOOTER_COLUMNS.map(col => (
-              <div key={col.title} className={styles.linkCol}>
-                <h4 className={styles.colTitle}>{col.title}</h4>
-                <ul className={styles.linkList}>
-                  {col.links.map(link => (
-                    <li key={link.label}>
-                      <Link href={link.href} className={styles.link}>{link.label}</Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-
-            {/* Download App Column */}
-            <div className={styles.linkCol}>
-              <h4 className={styles.colTitle}>Download App</h4>
+            {/* Download App (monoline, below email) */}
+            <div className={styles.downloadSection}>
+              <h4 className={styles.colTitle} style={{ marginBottom: '10px' }}>Download App</h4>
               <div className={styles.downloadGrid}>
                 {/* Apple App Store */}
                 <a href="#" className={styles.downloadBtn}>
@@ -112,6 +92,22 @@ export default function Footer() {
                 </a>
               </div>
             </div>
+          </div>
+
+          {/* Link Columns */}
+          <div className={styles.linkGrid}>
+            {FOOTER_COLUMNS.map(col => (
+              <div key={col.title} className={styles.linkCol}>
+                <h4 className={styles.colTitle}>{col.title}</h4>
+                <ul className={styles.linkList}>
+                  {col.links.map(link => (
+                    <li key={link.label}>
+                      <Link href={link.href} className={styles.link}>{link.label}</Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
           </div>
         </div>
 

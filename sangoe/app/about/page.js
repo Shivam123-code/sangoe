@@ -27,7 +27,7 @@ export default function AboutPage() {
               <Link href="/platform" className="btn btn-outline-white">See the Platform</Link>
             </motion.div>
             <motion.div style={{ display: 'flex', gap: '32px', marginTop: '48px', paddingTop: '32px', borderTop: '1px solid rgba(255,255,255,0.08)' }} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.7, duration: 0.6 }}>
-              {[['2023', 'Founded'], ['100+', 'Businesses'], ['9', 'Cloud Modules']].map(([num, label]) => (
+              {[['2023', 'Founded'], ['100+', 'Businesses'], ['Unified', 'Cloud Modules']].map(([num, label]) => (
                 <div key={label}><div style={{ fontSize: '1.6rem', fontWeight: 900, color: '#ffffff' }}>{num}</div><div style={{ fontSize: '0.7rem', color: 'rgba(255,255,255,0.45)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.06em', marginTop: '2px' }}>{label}</div></div>
               ))}
             </motion.div>
