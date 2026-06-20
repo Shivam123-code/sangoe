@@ -1050,22 +1050,135 @@
 }
 
 :global([data-theme='dark']) .serviceCard {
-  background: #ffffff !important;
-  border-color: rgba(255, 255, 255, 0.1) !important;
-  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.3) !important;
+  background: #111625 !important;
+  border-color: rgba(255, 255, 255, 0.05) !important;
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.4) !important;
 }
 
 :global([data-theme='dark']) .serviceCard:hover {
-  background: #ffffff !important;
-  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.45) !important;
+  background: #161c33 !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.55) !important;
+}
+
+:global([data-theme='dark']) .iconWrap {
+  border-color: #111625 !important;
+}
+
+:global([data-theme='dark']) .serviceCard:hover .iconWrap {
+  background: #161c33 !important;
+  border-color: #161c33 !important;
 }
 
 :global([data-theme='dark']) .signatureName {
-  color: #0f172a !important;
+  color: #ffffff !important;
 }
 
 :global([data-theme='dark']) .quoteDesc {
-  color: #475569 !important;
+  color: #cbd5e1 !important;
+}
+
+:global([data-theme='dark']) .categoryRole {
+  color: #94a3b8 !important;
+}
+
+:global([data-theme='dark']) .serviceCard:hover .cardBottom {
+  background: rgba(17, 22, 37, 0.88) !important;
+  border-top-color: rgba(255, 255, 255, 0.08) !important;
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.2) !important;
+}
+
+:global([data-theme='dark']) .actionBadge {
+  background: #1c243f !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* ── Dark Mockups ── */
+:global([data-theme='dark']) .mockupContainer {
+  background: linear-gradient(135deg, #090d16 0%, #0d1222 100%) !important;
+}
+
+:global([data-theme='dark']) .mockHeader {
+  border-bottom-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+:global([data-theme='dark']) .mockHeaderText {
+  color: #ffffff !important;
+}
+
+:global([data-theme='dark']) .mockBar {
+  background: rgba(255, 255, 255, 0.08) !important;
+}
+
+:global([data-theme='dark']) .mockDot {
+  background: rgba(255, 255, 255, 0.2) !important;
+}
+
+:global([data-theme='dark']) .mockStatCard,
+:global([data-theme='dark']) .mockChartArea,
+:global([data-theme='dark']) .pipelineCol,
+:global([data-theme='dark']) .inboxItem,
+:global([data-theme='dark']) .inboxDetail,
+:global([data-theme='dark']) .docSheet,
+:global([data-theme='dark']) .tasksLayout,
+:global([data-theme='dark']) .bentoCard1,
+:global([data-theme='dark']) .bentoCard2,
+:global([data-theme='dark']) .bentoCard3 {
+  background: #161c33 !important;
+  border-color: rgba(255, 255, 255, 0.06) !important;
+}
+
+:global([data-theme='dark']) .inboxItemActive {
+  background: #1c243f !important;
+}
+
+:global([data-theme='dark']) .pipelineCard {
+  background: #1c243f !important;
+  border-left-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+:global([data-theme='dark']) .pipeCardName,
+:global([data-theme='dark']) .inboxSender,
+:global([data-theme='dark']) .detailSenderName,
+:global([data-theme='dark']) .docHeaderTitle,
+:global([data-theme='dark']) .docTableRow span:first-child,
+:global([data-theme='dark']) .taskItemText {
+  color: #ffffff !important;
+}
+
+:global([data-theme='dark']) .pipeCardVal,
+:global([data-theme='dark']) .inboxSubj,
+:global([data-theme='dark']) .detailBodyText,
+:global([data-theme='dark']) .docTableRow span,
+:global([data-theme='dark']) .progressLabel,
+:global([data-theme='dark']) .progressText {
+  color: #cbd5e1 !important;
+}
+
+:global([data-theme='dark']) .docTable,
+:global([data-theme='dark']) .docTableHeader,
+:global([data-theme='dark']) .docFooter {
+  border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+:global([data-theme='dark']) .docTableHeader span {
+  color: #94a3b8 !important;
+}
+
+:global([data-theme='dark']) .taskCheckbox {
+  border-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+:global([data-theme='dark']) .progressBarBg {
+  background: rgba(255, 255, 255, 0.08) !important;
+}
+
+:global([data-theme='dark']) .bentoCardLabel {
+  color: #94a3b8 !important;
+}
+
+:global([data-theme='dark']) .bentoToggleTrack {
+  background: rgba(255, 255, 255, 0.1) !important;
 }
 
 :global([data-theme='dark']) .noResults {
