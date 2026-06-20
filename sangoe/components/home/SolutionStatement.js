@@ -99,7 +99,7 @@ export default function SolutionStatement() {
           >
             <span className={styles.tag}>ONE PLATFORM. TOTAL CONTROL.</span>
             <h2 className={styles.h2}>
-              One Platform to <span className={styles.highlightText}>Run, Control</span> &amp; Scale Your Business
+              One Platform to <span className={styles.highlightText}>Run, Control</span>{" "}&amp; Scale Your Business
             </h2>
             <p className={styles.sub}>
               Sangoe brings all core operations into one unified Business Growth Operating System. Replaces scattered files, spreadsheets, and disconnected SaaS subscriptions.

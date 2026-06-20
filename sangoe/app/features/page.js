@@ -9,6 +9,7 @@ import {
   TrendingUp, Leaf, ChevronRight, Star, Zap, Globe, Lock
 } from 'lucide-react';
 import styles from './page.module.css';
+import FeaturesOverview from '@/components/home/FeaturesOverview';
 
 /* ── Data ─────────────────────────────────────────────────────────── */
 const STATS = [
@@ -350,6 +351,9 @@ export default function FeaturesPage() {
           );
         })}
       </div>
+
+      {/* ── Interactive Features Directory ── */}
+      <FeaturesOverview />
 
       {/* ── Comparison Matrix ────────────────────────────────────── */}
       <section className={styles.comparison}>

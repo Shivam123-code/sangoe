@@ -298,7 +298,7 @@ const renderMiniMockup = (service) => {
   );
 };
 
-export default function FeaturesOverview() {
+export default function FeaturesOverview({ limit = null }) {
   const [activeCategory, setActiveCategory] = useState('core');
   const [searchQuery, setSearchQuery] = useState('');
   
@@ -351,6 +351,9 @@ export default function FeaturesOverview() {
                           service.desc.toLowerCase().includes(searchQuery.toLowerCase());
     return matchesCategory && matchesSearch;
   });
+
+  const isLimited = limit && activeCategory === 'all' && !searchQuery;
+  const displayedServices = isLimited ? filteredServices.slice(0, limit) : filteredServices;
 
   return (
     <section className={styles.section} ref={sectionRef} id="features-overview">
@@ -455,8 +458,8 @@ export default function FeaturesOverview() {
                 className={styles.grid}
                 layout
               >
-                {filteredServices.length > 0 ? (
-                  filteredServices.map((service) => (
+                {displayedServices.length > 0 ? (
+                  displayedServices.map((service) => (
                     <Link 
                       href={`/services/${service.slug}`} 
                       key={service.slug}
@@ -519,6 +522,14 @@ export default function FeaturesOverview() {
               </motion.div>
             </AnimatePresence>
           </div>
+
+          {isLimited && filteredServices.length > limit && (
+            <div className={styles.seeAllWrapper}>
+              <Link href="/features" className="btn btn-purple">
+                See All Features
+              </Link>
+            </div>
+          )}
         </div>
 
       </div>

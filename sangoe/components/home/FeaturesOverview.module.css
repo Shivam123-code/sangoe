@@ -1184,3 +1184,11 @@
 :global([data-theme='dark']) .noResults {
   color: #8b85a8 !important;
 }
+
+.seeAllWrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+  position: relative;
+  z-index: 10;
+}

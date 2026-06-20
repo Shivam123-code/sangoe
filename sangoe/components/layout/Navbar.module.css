@@ -11,7 +11,7 @@
   left: 0;
   right: 0;
   z-index: 1100;
-  padding: 16px 0;
+  padding: 10px 0;
   background: transparent;
   transition:
     padding      0.3s ease,
@@ -22,7 +22,7 @@
 
 /* ── Scrolled state: clean white glass ──────────────────── */
 .headerScrolled {
-  padding: 10px 0;
+  padding: 7px 0;
   background: rgba(255, 255, 255, 0.88);
   backdrop-filter: blur(24px) saturate(180%);
   -webkit-backdrop-filter: blur(24px) saturate(180%);
@@ -55,10 +55,13 @@
 }
 
 .logoImage {
-  height: 52px;
+  height: 40px;
   width: auto;
   display: block;
 }
+
+@media (max-width: 768px) { .logoImage { height: 34px; } }
+@media (max-width: 480px) { .logoImage { height: 30px; } }
 
 .logoMark {
   display: flex;
@@ -541,13 +544,13 @@
 /* Mobile: hide burger (MobileBottomNav handles it) */
 @media (max-width: 768px) {
   .burger { display: none; }
-  .header { padding: 14px 0; }
-  .headerScrolled { padding: 9px 0; }
+  .header { padding: 10px 0; }
+  .headerScrolled { padding: 7px 0; }
 }
 
 @media (max-width: 480px) {
-  .header { padding: 12px 0; }
-  .headerScrolled { padding: 8px 0; }
+  .header { padding: 8px 0; }
+  .headerScrolled { padding: 6px 0; }
   .logoText { font-size: 0.95rem; }
 }
 

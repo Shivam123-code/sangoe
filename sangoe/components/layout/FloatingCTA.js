@@ -3,8 +3,9 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Phone, MessageCircle, X } from 'lucide-react';
 
-const PHONE = '+919876543210';
-const WHATSAPP_MSG = encodeURIComponent(`Hi Sangoe! I'd like to know more about your Business Growth OS.`);
+const PHONE_TEL      = '02269620896';          // for tel: links
+const PHONE_WA       = '912269620896';          // WhatsApp: country code 91 + number
+const WHATSAPP_MSG   = encodeURIComponent(`Hi Sangoe! I'd like to know more about your Business Growth OS.`);
 
 export default function FloatingCTA() {
   const [open, setOpen] = useState(false);
@@ -22,7 +23,7 @@ export default function FloatingCTA() {
           >
             {/* Call button */}
             <a
-              href={`tel:${PHONE}`}
+              href={`tel:${PHONE_TEL}`}
               style={{
                 display: 'flex', alignItems: 'center', gap: '10px',
                 background: '#1c1c2e', color: '#edeaf8',
@@ -47,7 +48,7 @@ export default function FloatingCTA() {
 
             {/* WhatsApp button */}
             <a
-              href={`https://wa.me/${PHONE}?text=${WHATSAPP_MSG}`}
+              href={`https://wa.me/${PHONE_WA}?text=${WHATSAPP_MSG}`}
               target="_blank"
               rel="noopener noreferrer"
               style={{

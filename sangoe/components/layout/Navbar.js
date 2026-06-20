@@ -60,7 +60,7 @@ export default function Navbar() {
 
   return (
     <>
-      <header className={`${styles.header} ${scrolled ? styles.headerScrolled : ''} ${!isOnHero ? styles.lightTheme : styles.heroTheme}`}>
+      <header className={`${styles.header} ${scrolled ? styles.headerScrolled : ''} ${styles.lightTheme}`}>
         <div className={styles.container}>
           {/* Logo */}
           <Link href="/" className={styles.logo}>

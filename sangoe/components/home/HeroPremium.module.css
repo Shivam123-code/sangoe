@@ -1,0 +1,80 @@
+.hero {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  margin-top: 60px;   /* logo 40px + padding 10px×2 */
+  line-height: 0;
+}
+
+.imageWrap {
+  position: relative;
+  width: 100%;
+  display: block;
+  line-height: 0;
+}
+
+.heroImg {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+}
+
+/* ═══════════════════════════════════════════════════
+   Invisible hit areas — sized from image coordinates
+   Image natural size: 1512 × 756 px
+
+   "Start Free Trial" button in image:
+     x: 48–248px  →  left: 3.17%,  width: 13.2%
+     y: 563–613px →  top:  74.5%,  height: 6.6%
+
+   "Book Live Demo" button in image:
+     x: 265–500px →  left: 17.5%,  width: 15.5%
+     y: 563–613px →  top:  74.5%,  height: 6.6%
+   ═══════════════════════════════════════════════════ */
+
+/* shared invisible style */
+.hitStart,
+.hitDemo {
+  position: absolute;
+  top: 74.5%;
+  height: 6.6%;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: block;
+  /* min tap target for touch devices */
+  min-height: 44px;
+  min-width: 80px;
+}
+
+.hitStart {
+  left: 3.17%;
+  width: 13.2%;
+}
+
+.hitDemo {
+  left: 17.5%;
+  width: 15.5%;
+}
+
+/* ─── Tablet ≤ 1024px ─── */
+@media (max-width: 1024px) {
+  .hero { margin-top: 60px; }
+}
+
+/* ─── Mobile ≤ 768px ─── */
+@media (max-width: 768px) {
+  .hero { margin-top: 54px; }   /* logo 34px + padding 10px×2 */
+  .hitStart,
+  .hitDemo {
+    top: 73%;
+    height: 8%;
+  }
+}
+
+/* ─── Small mobile ≤ 480px ─── */
+@media (max-width: 480px) {
+  .hero { margin-top: 46px; }   /* logo 30px + padding 8px×2 */
+}
+

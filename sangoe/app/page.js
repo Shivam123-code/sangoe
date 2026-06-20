@@ -1,6 +1,7 @@
 // import Hero from '@/components/home/Hero'; // ← PRESERVED — old Three.js-free hero
-// import HeroUniverse from '@/components/home/HeroUniverse'; // ← PRESERVED — Three.js universe hero
-import HeroVideo from '@/components/home/HeroVideo'; // ← ACTIVE — video hero
+// import HeroUniverse from '@/components/home/HeroUniverse'; // ← PRESERVED — universe orbits hero
+// import HeroVideo from '@/components/home/HeroVideo'; // ← PRESERVED — video hero
+import HeroPremium from '@/components/home/HeroPremium'; // ← ACTIVE — premium SaaS hero
 import DashboardShowcase from '@/components/home/DashboardShowcase'; // NEW — sequential dashboard reveals
 import MissionStatement from '@/components/home/MissionStatement';
 import TrustStrip from '@/components/home/TrustStrip';
@@ -29,8 +30,10 @@ export default function HomePage() {
           To restore: swap import + JSX on this line
           ───────────────────────────────────────────────────── */}
 
-      {/* ACTIVE HERO — Video background, clean text */}
-      <HeroVideo />
+      {/* ACTIVE HERO — Premium SaaS hero */}
+      <HeroPremium />
+      {/* <HeroUniverse /> */}
+      {/* <HeroVideo /> */}
 
       {/* Dashboard Showcase — 4 modules revealed one by one on scroll */}
       <DashboardShowcase />
@@ -44,7 +47,7 @@ export default function HomePage() {
 
       <JourneySection />
       <IPORoadmap />
-      <FeaturesOverview />
+      <FeaturesOverview limit={6} />
       <AdvancedSolutions />
       {/* OLD IndustriesSection — preserved: <IndustriesSection /> */}
       <AISection />
