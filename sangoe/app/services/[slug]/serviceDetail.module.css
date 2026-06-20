@@ -1423,150 +1423,150 @@
   color: #8b85a8 !important;
 }
 
-/* Force Light Theme on the Mockup Dashboard Shell regardless of theme */
+/* Dark Theme styling for general Mockup elements */
 :global([data-theme='dark']) .mockupBody {
-  background: #f8fafc !important;
+  background: #090d16 !important;
 }
 
 :global([data-theme='dark']) .dashboardShell {
-  background: #f8fafc !important;
-  color: #0f172a !important;
+  background: #090d16 !important;
+  color: #f8fafc !important;
 }
 
 :global([data-theme='dark']) .dashboardSidebar {
-  background: #ffffff !important;
-  border-right-color: rgba(15, 23, 42, 0.05) !important;
+  background: #0b101f !important;
+  border-right-color: rgba(255, 255, 255, 0.06) !important;
 }
 
 :global([data-theme='dark']) .sidebarBrand {
-  color: #0f172a !important;
+  color: #ffffff !important;
 }
 
 :global([data-theme='dark']) .navItem {
-  color: #64748b !important;
+  color: #94a3b8 !important;
 }
 
 :global([data-theme='dark']) .navItemActive {
-  background: rgba(15, 23, 42, 0.03) !important;
-  color: #0f172a !important;
+  background: var(--service-color) !important;
+  color: #ffffff !important;
 }
 
 :global([data-theme='dark']) .profileName {
-  color: #1e293b !important;
+  color: #ffffff !important;
 }
 
 :global([data-theme='dark']) .profileRole {
-  color: #94a3b8 !important;
+  color: #64748b !important;
 }
 
 :global([data-theme='dark']) .dashboardWorkspace {
-  background: #f8fafc !important;
+  background: #090d16 !important;
 }
 
 :global([data-theme='dark']) .dashboardTopbar {
-  background: #ffffff !important;
-  border-bottom-color: rgba(15, 23, 42, 0.05) !important;
+  background: #0b101f !important;
+  border-bottom-color: rgba(255, 255, 255, 0.06) !important;
 }
 
 :global([data-theme='dark']) .topbarLeft {
-  background: #f1f5f9 !important;
+  background: #13192e !important;
 }
 
 :global([data-theme='dark']) .topbarSearch {
-  color: #1e293b !important;
+  color: #ffffff !important;
 }
 
 :global([data-theme='dark']) .topbarAvatar {
-  background: #ffffff !important;
-  color: #475569 !important;
+  background: #0b101f !important;
+  color: #ffffff !important;
 }
 
 :global([data-theme='dark']) .workspaceFeed {
-  background: #ffffff !important;
-  border-color: rgba(15, 23, 42, 0.04) !important;
+  background: #0d1222 !important;
+  border-color: rgba(255, 255, 255, 0.06) !important;
 }
 
 :global([data-theme='dark']) .feedHeader {
-  color: #1e293b !important;
+  color: #ffffff !important;
 }
 
 :global([data-theme='dark']) .feedText {
-  color: #334155 !important;
+  color: #cbd5e1 !important;
 }
 
 :global([data-theme='dark']) .feedTime {
-  color: #94a3b8 !important;
+  color: #64748b !important;
 }
 
 :global([data-theme='dark']) .moduleHeading {
-  color: #0f172a !important;
+  color: #ffffff !important;
 }
 
 /* Mailbox */
 :global([data-theme='dark']) .crmMailbox {
-  background: #ffffff !important;
-  border-color: rgba(15, 23, 42, 0.04) !important;
+  background: #0d1222 !important;
+  border-color: rgba(255, 255, 255, 0.06) !important;
 }
 
 :global([data-theme='dark']) .mailCount {
-  color: #475569 !important;
+  color: #94a3b8 !important;
 }
 
 :global([data-theme='dark']) .mailItem,
 :global([data-theme='dark']) .mailItemActive {
-  border-bottom-color: rgba(15, 23, 42, 0.04) !important;
+  border-bottom-color: rgba(255, 255, 255, 0.04) !important;
 }
 
 :global([data-theme='dark']) .mailItemActive {
-  background: rgba(15, 23, 42, 0.01) !important;
+  background: rgba(255, 255, 255, 0.02) !important;
 }
 
 :global([data-theme='dark']) .mailSender {
-  color: #0f172a !important;
+  color: #ffffff !important;
 }
 
 :global([data-theme='dark']) .mailSubj {
-  color: #1e293b !important;
+  color: #e2e8f0 !important;
 }
 
 :global([data-theme='dark']) .mailBody {
-  color: #64748b !important;
+  color: #94a3b8 !important;
 }
 
 /* Kanban */
 :global([data-theme='dark']) .kanbanCol {
-  background: rgba(15, 23, 42, 0.02) !important;
+  background: #0d1222 !important;
 }
 
 :global([data-theme='dark']) .kanbanColHeader {
-  color: #475569 !important;
-  border-bottom-color: rgba(0,0,0,0.03) !important;
+  color: #e2e8f0 !important;
+  border-bottom-color: rgba(255, 255, 255, 0.06) !important;
 }
 
 :global([data-theme='dark']) .kanbanCount {
-  background: rgba(0,0,0,0.05) !important;
+  background: rgba(255, 255, 255, 0.08) !important;
 }
 
 :global([data-theme='dark']) .crmKanban .kanbanCard {
-  background: #ffffff !important;
-  border-color: rgba(15, 23, 42, 0.04) !important;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.005) !important;
+  background: #13192e !important;
+  border-color: rgba(255, 255, 255, 0.06) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
 }
 
 :global([data-theme='dark']) .kanbanCardTitle {
-  color: #0f172a !important;
+  color: #ffffff !important;
 }
 
 :global([data-theme='dark']) .kanbanTag {
-  background: rgba(0,0,0,0.04) !important;
-  color: #64748b !important;
+  background: rgba(255, 255, 255, 0.06) !important;
+  color: #94a3b8 !important;
 }
 
 /* Dashboard KPIs */
 :global([data-theme='dark']) .crmKPIBox {
-  background: #ffffff !important;
-  border-color: rgba(15, 23, 42, 0.04) !important;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.005) !important;
+  background: #0d1222 !important;
+  border-color: rgba(255, 255, 255, 0.06) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
 }
 
 :global([data-theme='dark']) .kpiBoxLabel {
@@ -1574,20 +1574,20 @@
 }
 
 :global([data-theme='dark']) .kpiBoxVal {
-  color: #0f172a !important;
+  color: #ffffff !important;
 }
 
 :global([data-theme='dark']) .kpiBoxGrowth {
-  color: #64748b !important;
+  color: #94a3b8 !important;
 }
 
 :global([data-theme='dark']) .crmChartContainer {
-  background: #ffffff !important;
-  border-color: rgba(15, 23, 42, 0.04) !important;
+  background: #0d1222 !important;
+  border-color: rgba(255, 255, 255, 0.06) !important;
 }
 
 :global([data-theme='dark']) .crmChartHeader {
-  color: #1e293b !important;
+  color: #ffffff !important;
 }
 
 :global([data-theme='dark']) .crmChartLabel {
@@ -1596,12 +1596,12 @@
 
 /* Calendar */
 :global([data-theme='dark']) .crmCalendar {
-  background: #ffffff !important;
-  border-color: rgba(15, 23, 42, 0.04) !important;
+  background: #0d1222 !important;
+  border-color: rgba(255, 255, 255, 0.06) !important;
 }
 
 :global([data-theme='dark']) .crmCalTitle {
-  color: #0f172a !important;
+  color: #ffffff !important;
 }
 
 :global([data-theme='dark']) .crmCalDayHeader {
@@ -1609,22 +1609,22 @@
 }
 
 :global([data-theme='dark']) .crmCalCell {
-  background: #fafbfc !important;
-  border-color: #f8fafc !important;
+  background: #13192e !important;
+  border-color: #0b101f !important;
 }
 
 :global([data-theme='dark']) .crmCalDayNum {
-  color: #cbd5e1 !important;
+  color: #94a3b8 !important;
 }
 
 /* Ledger */
 :global([data-theme='dark']) .crmLedger {
-  background: #ffffff !important;
-  border-color: rgba(15, 23, 42, 0.04) !important;
+  background: #0d1222 !important;
+  border-color: rgba(255, 255, 255, 0.06) !important;
 }
 
 :global([data-theme='dark']) .crmLedgerHeader {
-  color: #0f172a !important;
+  color: #ffffff !important;
 }
 
 :global([data-theme='dark']) .crmLedgerSubtitle {
@@ -1633,31 +1633,31 @@
 
 :global([data-theme='dark']) .crmLedgerTable th {
   color: #94a3b8 !important;
-  border-bottom-color: #f1f5f9 !important;
+  border-bottom-color: rgba(255, 255, 255, 0.06) !important;
 }
 
 :global([data-theme='dark']) .crmLedgerTable td {
-  color: #475569 !important;
-  border-bottom-color: #f1f5f9 !important;
+  color: #cbd5e1 !important;
+  border-bottom-color: rgba(255, 255, 255, 0.04) !important;
 }
 
 /* Recruitment */
 :global([data-theme='dark']) .recCol {
-  background: rgba(15, 23, 42, 0.02) !important;
+  background: #0d1222 !important;
 }
 
 :global([data-theme='dark']) .recColHeader {
-  color: #475569 !important;
-  border-bottom-color: rgba(0,0,0,0.03) !important;
+  color: #e2e8f0 !important;
+  border-bottom-color: rgba(255, 255, 255, 0.06) !important;
 }
 
 :global([data-theme='dark']) .recCard {
-  background: #ffffff !important;
-  border-color: rgba(15, 23, 42, 0.04) !important;
+  background: #13192e !important;
+  border-color: rgba(255, 255, 255, 0.06) !important;
 }
 
 :global([data-theme='dark']) .recName {
-  color: #0f172a !important;
+  color: #ffffff !important;
 }
 
 :global([data-theme='dark']) .recRole {
@@ -1666,32 +1666,32 @@
 
 /* Workflow */
 :global([data-theme='dark']) .flowNode {
-  background: #ffffff !important;
-  border-color: rgba(15, 23, 42, 0.04) !important;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.005) !important;
+  background: #13192e !important;
+  border-color: rgba(255, 255, 255, 0.06) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
 }
 
 :global([data-theme='dark']) .flowNodeText {
-  color: #334155 !important;
+  color: #ffffff !important;
 }
 
 /* General */
 :global([data-theme='dark']) .crmGeneral {
-  background: #ffffff !important;
-  border-color: rgba(15, 23, 42, 0.04) !important;
+  background: #0d1222 !important;
+  border-color: rgba(255, 255, 255, 0.06) !important;
 }
 
 :global([data-theme='dark']) .crmGenHeader {
-  color: #0f172a !important;
+  color: #ffffff !important;
 }
 
 :global([data-theme='dark']) .genBox {
-  background: #f8fafc !important;
-  border-color: rgba(15, 23, 42, 0.02) !important;
+  background: #13192e !important;
+  border-color: rgba(255, 255, 255, 0.06) !important;
 }
 
 :global([data-theme='dark']) .genNum {
-  color: #0f172a !important;
+  color: #ffffff !important;
 }
 
 :global([data-theme='dark']) .genLbl {
@@ -1699,11 +1699,11 @@
 }
 
 :global([data-theme='dark']) .crmGenDetails {
-  border-top-color: #f1f5f9 !important;
+  border-top-color: rgba(255, 255, 255, 0.06) !important;
 }
 
 :global([data-theme='dark']) .genDetailsRow {
-  color: #475569 !important;
+  color: #cbd5e1 !important;
 }
 
 /* ── PREMIUM DASHBOARD RE-DESIGN STYLES (Decko/emitly inspiration) ── */
@@ -2389,192 +2389,197 @@
   border-radius: 4px !important;
 }
 
-/* Override dark-theme styles to force mockup dashboard elements to remain in light theme */
+/* Override dark-theme styles to style mockup dashboard elements in premium dark theme */
 :global([data-theme='dark']) .dashboardShell {
-  background: #f1f5f9 !important;
-  color: #0f172a !important;
+  background: #090d16 !important;
+  color: #f8fafc !important;
 }
 :global([data-theme='dark']) .dashboardSidebar {
-  background: #f8fafc !important;
-  border-right-color: #e2e8f0 !important;
+  background: #0b101f !important;
+  border-right-color: rgba(255, 255, 255, 0.06) !important;
 }
 :global([data-theme='dark']) .brandName {
-  color: #0f172a !important;
+  color: #ffffff !important;
 }
 :global([data-theme='dark']) .brandNameSub {
-  color: #64748b !important;
+  color: #94a3b8 !important;
 }
 :global([data-theme='dark']) .sidebarSearchWrap {
-  background: #ffffff !important;
-  border-color: #e2e8f0 !important;
+  background: #13192e !important;
+  border-color: rgba(255, 255, 255, 0.08) !important;
 }
 :global([data-theme='dark']) .sidebarSearchInput {
-  color: #0f172a !important;
+  color: #ffffff !important;
 }
 :global([data-theme='dark']) .searchShortcut {
-  color: #64748b !important;
-  background: #f1f5f9 !important;
-  border-color: #cbd5e1 !important;
+  color: #94a3b8 !important;
+  background: #1b223c !important;
+  border-color: rgba(255, 255, 255, 0.08) !important;
 }
 :global([data-theme='dark']) .sidebarSectionTitle {
   color: #64748b !important;
 }
 :global([data-theme='dark']) .navItem {
-  color: #475569 !important;
+  color: #94a3b8 !important;
 }
 :global([data-theme='dark']) .navItem:hover {
-  color: #0f172a !important;
-  background: #f1f5f9 !important;
+  color: #ffffff !important;
+  background: rgba(255, 255, 255, 0.05) !important;
 }
 :global([data-theme='dark']) .navItemActive {
   color: #ffffff !important;
+  background: var(--service-color) !important;
 }
 :global([data-theme='dark']) .sidebarEventCard {
-  background: #ffffff !important;
-  border-color: #e2e8f0 !important;
+  background: #13192e !important;
+  border-color: rgba(255, 255, 255, 0.06) !important;
 }
 :global([data-theme='dark']) .eventTime {
-  color: #64748b !important;
-}
-:global([data-theme='dark']) .eventTitle {
-  color: #0f172a !important;
-}
-:global([data-theme='dark']) .sidebarProfile {
-  border-top-color: #e2e8f0 !important;
-}
-:global([data-theme='dark']) .profileName {
-  color: #1e293b !important;
-}
-:global([data-theme='dark']) .profileRole {
   color: #94a3b8 !important;
 }
-:global([data-theme='dark']) .dashboardTopbar {
-  background: #ffffff !important;
-  border-bottom-color: #e2e8f0 !important;
+:global([data-theme='dark']) .eventTitle {
+  color: #ffffff !important;
 }
-:global([data-theme='dark']) .topbarLeft {
-  background: #f1f5f9 !important;
+:global([data-theme='dark']) .sidebarProfile {
+  border-top-color: rgba(255, 255, 255, 0.06) !important;
 }
-:global([data-theme='dark']) .topbarSearch {
-  color: #0f172a !important;
+:global([data-theme='dark']) .profileName {
+  color: #ffffff !important;
 }
-:global([data-theme='dark']) .profileUserName {
-  color: #0f172a !important;
-}
-:global([data-theme='dark']) .profileUserEmail {
+:global([data-theme='dark']) .profileRole {
   color: #64748b !important;
 }
+:global([data-theme='dark']) .dashboardWorkspace {
+  background: #090d16 !important;
+}
+:global([data-theme='dark']) .dashboardTopbar {
+  background: #0b101f !important;
+  border-bottom-color: rgba(255, 255, 255, 0.06) !important;
+}
+:global([data-theme='dark']) .topbarLeft {
+  background: #13192e !important;
+}
+:global([data-theme='dark']) .topbarSearch {
+  color: #ffffff !important;
+}
+:global([data-theme='dark']) .profileUserName {
+  color: #ffffff !important;
+}
+:global([data-theme='dark']) .profileUserEmail {
+  color: #94a3b8 !important;
+}
 :global([data-theme='dark']) .greetingTitle {
-  color: #0f172a !important;
+  color: #ffffff !important;
 }
 :global([data-theme='dark']) .greetingSub {
-  color: #475569 !important;
+  color: #94a3b8 !important;
 }
 :global([data-theme='dark']) .moduleHeading {
-  color: #0f172a !important;
+  color: #ffffff !important;
 }
 :global([data-theme='dark']) .workspaceFeed {
-  background: #ffffff !important;
-  border-color: rgba(15, 23, 42, 0.05) !important;
+  background: #0d1222 !important;
+  border-color: rgba(255, 255, 255, 0.06) !important;
 }
 :global([data-theme='dark']) .feedHeader {
-  color: #0f172a !important;
+  color: #ffffff !important;
 }
 :global([data-theme='dark']) .feedText {
-  color: #334155 !important;
+  color: #cbd5e1 !important;
 }
 :global([data-theme='dark']) .feedTime {
   color: #64748b !important;
 }
 :global([data-theme='dark']) .crmKPIBox {
-  background: #ffffff !important;
-  border-color: rgba(15, 23, 42, 0.05) !important;
+  background: #0d1222 !important;
+  border-color: rgba(255, 255, 255, 0.06) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
 }
 :global([data-theme='dark']) .kpiBoxLabel {
-  color: #64748b !important;
+  color: #94a3b8 !important;
 }
 :global([data-theme='dark']) .kpiBoxVal {
-  color: #0f172a !important;
+  color: #ffffff !important;
 }
 :global([data-theme='dark']) .crmChartContainer {
-  background: #ffffff !important;
-  border-color: rgba(15, 23, 42, 0.05) !important;
+  background: #0d1222 !important;
+  border-color: rgba(255, 255, 255, 0.06) !important;
 }
 :global([data-theme='dark']) .crmChartHeader {
-  color: #0f172a !important;
+  color: #ffffff !important;
 }
 :global([data-theme='dark']) .crmChartLabel {
   color: #94a3b8 !important;
 }
 :global([data-theme='dark']) .crmCalendar {
-  background: #ffffff !important;
-  border-color: rgba(15, 23, 42, 0.05) !important;
+  background: #0d1222 !important;
+  border-color: rgba(255, 255, 255, 0.06) !important;
 }
 :global([data-theme='dark']) .crmCalTitle {
-  color: #0f172a !important;
+  color: #ffffff !important;
 }
 :global([data-theme='dark']) .crmCalDayHeader {
   color: #94a3b8 !important;
 }
 :global([data-theme='dark']) .crmCalDayNum {
-  color: #475569 !important;
+  color: #94a3b8 !important;
 }
 :global([data-theme='dark']) .crmScheduleCard {
-  background: #ffffff !important;
-  border-color: rgba(15, 23, 42, 0.05) !important;
+  background: #0d1222 !important;
+  border-color: rgba(255, 255, 255, 0.06) !important;
 }
 :global([data-theme='dark']) .scheduleHeader {
-  color: #0f172a !important;
+  color: #ffffff !important;
 }
 :global([data-theme='dark']) .scheduleTitle {
-  color: #0f172a !important;
+  color: #ffffff !important;
 }
 :global([data-theme='dark']) .scheduleSub {
   color: #94a3b8 !important;
 }
 :global([data-theme='dark']) .scheduleItemActive {
-  background: #f8fafc !important;
-  border-color: #f1f5f9 !important;
+  background: #13192e !important;
+  border-color: rgba(255, 255, 255, 0.06) !important;
 }
 :global([data-theme='dark']) .crmMailbox {
-  background: #ffffff !important;
-  border-color: rgba(15, 23, 42, 0.05) !important;
+  background: #0d1222 !important;
+  border-color: rgba(255, 255, 255, 0.06) !important;
 }
 :global([data-theme='dark']) .mailCount {
-  color: #475569 !important;
+  color: #94a3b8 !important;
 }
 :global([data-theme='dark']) .mailSender {
-  color: #0f172a !important;
+  color: #ffffff !important;
 }
 :global([data-theme='dark']) .mailSubj {
-  color: #1e293b !important;
+  color: #e2e8f0 !important;
 }
 :global([data-theme='dark']) .mailBody {
-  color: #64748b !important;
+  color: #94a3b8 !important;
 }
 :global([data-theme='dark']) .crmKanban .kanbanCol {
-  background: rgba(15, 23, 42, 0.02) !important;
+  background: #0d1222 !important;
 }
 :global([data-theme='dark']) .kanbanColHeader {
-  color: #475569 !important;
+  color: #e2e8f0 !important;
 }
 :global([data-theme='dark']) .crmKanban .kanbanCard {
-  background: #ffffff !important;
-  border-color: rgba(15, 23, 42, 0.04) !important;
+  background: #13192e !important;
+  border-color: rgba(255, 255, 255, 0.06) !important;
 }
 :global([data-theme='dark']) .kanbanCardTitle {
-  color: #0f172a !important;
+  color: #ffffff !important;
 }
 :global([data-theme='dark']) .kanbanTag {
-  background: rgba(0,0,0,0.04) !important;
-  color: #64748b !important;
+  background: rgba(255, 255, 255, 0.06) !important;
+  color: #94a3b8 !important;
 }
 :global([data-theme='dark']) .crmLedger {
-  background: #ffffff !important;
-  border-color: rgba(15, 23, 42, 0.05) !important;
+  background: #0d1222 !important;
+  border-color: rgba(255, 255, 255, 0.06) !important;
 }
 :global([data-theme='dark']) .crmLedgerHeader {
-  color: #0f172a !important;
+  color: #ffffff !important;
 }
 :global([data-theme='dark']) .crmLedgerSubtitle {
   color: #94a3b8 !important;
@@ -2583,41 +2588,41 @@
   color: #94a3b8 !important;
 }
 :global([data-theme='dark']) .crmLedgerTable td {
-  color: #475569 !important;
-  border-bottom-color: #f1f5f9 !important;
+  color: #cbd5e1 !important;
+  border-bottom-color: rgba(255, 255, 255, 0.04) !important;
 }
 :global([data-theme='dark']) .recCol {
-  background: rgba(15, 23, 42, 0.02) !important;
+  background: #0d1222 !important;
 }
 :global([data-theme='dark']) .recColHeader {
-  color: #475569 !important;
+  color: #e2e8f0 !important;
 }
 :global([data-theme='dark']) .recCard {
-  background: #ffffff !important;
-  border-color: rgba(15, 23, 42, 0.04) !important;
+  background: #13192e !important;
+  border-color: rgba(255, 255, 255, 0.06) !important;
 }
 :global([data-theme='dark']) .recName {
-  color: #0f172a !important;
+  color: #ffffff !important;
 }
 :global([data-theme='dark']) .recRole {
   color: #94a3b8 !important;
 }
 :global([data-theme='dark']) .flowNode {
-  background: #ffffff !important;
-  border-color: rgba(15, 23, 42, 0.04) !important;
+  background: #13192e !important;
+  border-color: rgba(255, 255, 255, 0.06) !important;
 }
 :global([data-theme='dark']) .flowNodeText {
-  color: #334155 !important;
+  color: #ffffff !important;
 }
 :global([data-theme='dark']) .directoryCard {
-  background: #ffffff !important;
-  border-color: rgba(15, 23, 42, 0.05) !important;
+  background: #13192e !important;
+  border-color: rgba(255, 255, 255, 0.06) !important;
 }
 :global([data-theme='dark']) .directoryName {
-  color: #0f172a !important;
+  color: #ffffff !important;
 }
 :global([data-theme='dark']) .directoryCompany {
-  color: #475569 !important;
+  color: #cbd5e1 !important;
 }
 :global([data-theme='dark']) .directoryEmail {
   color: #94a3b8 !important;
