@@ -131,19 +131,21 @@ function ContactContent() {
                 <span style={{ fontSize: '0.72rem', fontWeight: 800, color: '#A78BFA', textTransform: 'uppercase', letterSpacing: '0.08em' }}>
                   Your Selection
                 </span>
-                <Link
-                  href={`/get-started?plan=${plan}&services=${servicesRaw}`}
-                  style={{
-                    display: 'inline-flex', alignItems: 'center', gap: '4px',
-                    fontSize: '0.72rem', fontWeight: 700, color: '#A78BFA',
-                    textDecoration: 'none', padding: '4px 10px',
-                    background: 'var(--theme-bg-secondary)', borderRadius: '6px',
-                    border: '1px solid var(--theme-border)',
-                    transition: 'all 0.15s',
-                  }}
-                >
-                  <ArrowLeft size={11} /> Change Services
-                </Link>
+                {serviceIds.length > 0 && (
+                  <Link
+                    href={`/get-started?plan=${plan}&services=${servicesRaw}`}
+                    style={{
+                      display: 'inline-flex', alignItems: 'center', gap: '4px',
+                      fontSize: '0.72rem', fontWeight: 700, color: '#A78BFA',
+                      textDecoration: 'none', padding: '4px 10px',
+                      background: 'var(--theme-bg-secondary)', borderRadius: '6px',
+                      border: '1px solid var(--theme-border)',
+                      transition: 'all 0.15s',
+                    }}
+                  >
+                    <ArrowLeft size={11} /> Change Services
+                  </Link>
+                )}
               </div>
 
               {/* Plan badge */}

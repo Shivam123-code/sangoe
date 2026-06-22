@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
-import { CheckCircle2, Handshake } from 'lucide-react';
+import { CheckCircle2, Handshake, Loader2 } from 'lucide-react';
 
 const MODELS = [
   {
@@ -38,12 +38,28 @@ const ECOSYSTEM_CATEGORIES = [
 ];
 
 export default function PartnersPage() {
-  const [formData, setFormData] = useState({ name: '', company: '', email: '', phone: '', model: 'Referral' });
+  const [formData, setFormData] = useState({ name: '', company: '', email: '', phone: '', model: 'Referral Partner' });
+  const [status, setStatus] = useState('idle'); // idle | sending | success | error
+  const [errorMsg, setErrorMsg] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    alert(`Thank you, ${formData.name}! Your partner application has been recorded. Our team will contact you within 24 hours.`);
-    setFormData({ name: '', company: '', email: '', phone: '', model: 'Referral' });
+    setStatus('sending');
+    setErrorMsg('');
+    try {
+      const res = await fetch('/api/partner', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || 'Failed to send');
+      setStatus('success');
+      setFormData({ name: '', company: '', email: '', phone: '', model: 'Referral Partner' });
+    } catch (err) {
+      setStatus('error');
+      setErrorMsg(err.message);
+    }
   };
 
   return (
@@ -162,33 +178,68 @@ export default function PartnersPage() {
           <h2 style={{ fontSize: '1.5rem', fontWeight: 800, color: 'var(--theme-text-main)', textAlign: 'center', marginBottom: '8px' }}>Apply for Partnership</h2>
           <p style={{ fontSize: '0.85rem', color: 'var(--theme-text-sub)', textAlign: 'center', marginBottom: '32px' }}>Submit details to start a partnership conversation with our business development leads.</p>
 
-          <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-            <div className="responsive-grid-2" style={{ gap: '16px' }}>
-              <div>
-                <label style={{ fontSize: '0.8rem', fontWeight: 700, display: 'block', marginBottom: '6px', color: 'var(--theme-text-main)' }}>Your Name</label>
-                <input required type="text" value={formData.name} onChange={(e) => setFormData({ ...formData, name: e.target.value })} style={{ width: '100%', padding: '10px 14px', borderRadius: '8px', border: '1px solid var(--theme-input-border)', background: 'var(--theme-input-bg)', color: 'var(--theme-text-main)', outline: 'none' }} />
+          {status === 'success' ? (
+            <div style={{ textAlign: 'center', padding: '20px 0' }}>
+              <div style={{ display: 'inline-flex', background: 'rgba(16, 185, 129, 0.1)', color: '#10B981', padding: '16px', borderRadius: '50%', marginBottom: '16px' }}>
+                <CheckCircle2 size={40} />
               </div>
-              <div>
-                <label style={{ fontSize: '0.8rem', fontWeight: 700, display: 'block', marginBottom: '6px', color: 'var(--theme-text-main)' }}>Company Name</label>
-                <input required type="text" value={formData.company} onChange={(e) => setFormData({ ...formData, company: e.target.value })} style={{ width: '100%', padding: '10px 14px', borderRadius: '8px', border: '1px solid var(--theme-input-border)', background: 'var(--theme-input-bg)', color: 'var(--theme-text-main)', outline: 'none' }} />
+              <h3 style={{ fontSize: '1.25rem', fontWeight: 800, color: 'var(--theme-text-main)', marginBottom: '8px' }}>Application Submitted!</h3>
+              <p style={{ fontSize: '0.88rem', color: 'var(--theme-text-sub)', maxWidth: '320px', margin: '0 auto 24px', lineHeight: 1.5 }}>
+                Thank you! Your partnership request has been recorded. Our Business Development team will reach out to you within 24 hours.
+              </p>
+              <button onClick={() => setStatus('idle')} className="btn btn-purple">Submit Another Application</button>
+            </div>
+          ) : (
+            <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+              <div className="responsive-grid-2" style={{ gap: '16px' }}>
+                <div>
+                  <label style={{ fontSize: '0.8rem', fontWeight: 700, display: 'block', marginBottom: '6px', color: 'var(--theme-text-main)' }}>Your Name</label>
+                  <input required type="text" value={formData.name} onChange={(e) => setFormData({ ...formData, name: e.target.value })} style={{ width: '100%', padding: '10px 14px', borderRadius: '8px', border: '1px solid var(--theme-input-border)', background: 'var(--theme-input-bg)', color: 'var(--theme-text-main)', outline: 'none' }} />
+                </div>
+                <div>
+                  <label style={{ fontSize: '0.8rem', fontWeight: 700, display: 'block', marginBottom: '6px', color: 'var(--theme-text-main)' }}>Company Name</label>
+                  <input required type="text" value={formData.company} onChange={(e) => setFormData({ ...formData, company: e.target.value })} style={{ width: '100%', padding: '10px 14px', borderRadius: '8px', border: '1px solid var(--theme-input-border)', background: 'var(--theme-input-bg)', color: 'var(--theme-text-main)', outline: 'none' }} />
+                </div>
               </div>
-            </div>
-            <div>
-              <label style={{ fontSize: '0.8rem', fontWeight: 700, display: 'block', marginBottom: '6px', color: 'var(--theme-text-main)' }}>Work Email</label>
-              <input required type="email" value={formData.email} onChange={(e) => setFormData({ ...formData, email: e.target.value })} style={{ width: '100%', padding: '10px 14px', borderRadius: '8px', border: '1px solid var(--theme-input-border)', background: 'var(--theme-input-bg)', color: 'var(--theme-text-main)', outline: 'none' }} />
-            </div>
-            <div>
-              <label style={{ fontSize: '0.8rem', fontWeight: 700, display: 'block', marginBottom: '6px', color: 'var(--theme-text-main)' }}>Partnership Model</label>
-              <select value={formData.model} onChange={(e) => setFormData({ ...formData, model: e.target.value })} style={{ width: '100%', padding: '10px 14px', borderRadius: '8px', border: '1px solid var(--theme-input-border)', background: 'var(--theme-input-bg)', color: 'var(--theme-text-main)', outline: 'none' }}>
-                <option>Referral Partner</option>
-                <option>Implementation Partner</option>
-                <option>White Label Reseller</option>
-              </select>
-            </div>
-            <button type="submit" className="btn btn-purple" style={{ width: '100%', justifyContent: 'center', marginTop: '10px' }}>
-              Submit Partnership Request
-            </button>
-          </form>
+              
+              <div className="responsive-grid-2" style={{ gap: '16px' }}>
+                <div>
+                  <label style={{ fontSize: '0.8rem', fontWeight: 700, display: 'block', marginBottom: '6px', color: 'var(--theme-text-main)' }}>Work Email</label>
+                  <input required type="email" value={formData.email} onChange={(e) => setFormData({ ...formData, email: e.target.value })} style={{ width: '100%', padding: '10px 14px', borderRadius: '8px', border: '1px solid var(--theme-input-border)', background: 'var(--theme-input-bg)', color: 'var(--theme-text-main)', outline: 'none' }} />
+                </div>
+                <div>
+                  <label style={{ fontSize: '0.8rem', fontWeight: 700, display: 'block', marginBottom: '6px', color: 'var(--theme-text-main)' }}>Phone Number (Optional)</label>
+                  <input type="tel" value={formData.phone} onChange={(e) => setFormData({ ...formData, phone: e.target.value })} style={{ width: '100%', padding: '10px 14px', borderRadius: '8px', border: '1px solid var(--theme-input-border)', background: 'var(--theme-input-bg)', color: 'var(--theme-text-main)', outline: 'none' }} placeholder="+91 98765 43210" />
+                </div>
+              </div>
+
+              <div>
+                <label style={{ fontSize: '0.8rem', fontWeight: 700, display: 'block', marginBottom: '6px', color: 'var(--theme-text-main)' }}>Partnership Model</label>
+                <select value={formData.model} onChange={(e) => setFormData({ ...formData, model: e.target.value })} style={{ width: '100%', padding: '10px 14px', borderRadius: '8px', border: '1px solid var(--theme-input-border)', background: 'var(--theme-input-bg)', color: 'var(--theme-text-main)', outline: 'none' }}>
+                  <option>Referral Partner</option>
+                  <option>Implementation Partner</option>
+                  <option>White Label Reseller</option>
+                </select>
+              </div>
+
+              {status === 'error' && (
+                <div style={{ color: '#EF4444', fontSize: '0.82rem', fontWeight: 600 }}>
+                  ✕ {errorMsg || 'Failed to submit. Please try again.'}
+                </div>
+              )}
+
+              <button type="submit" disabled={status === 'sending'} className="btn btn-purple" style={{ width: '100%', justifyContent: 'center', marginTop: '10px' }}>
+                {status === 'sending' ? (
+                  <>
+                    <Loader2 size={16} className="animate-spin" style={{ marginRight: '8px' }} />
+                    Submitting request...
+                  </>
+                ) : (
+                  'Submit Partnership Request'
+                )}
+              </button>
+            </form>
+          )}
         </div>
       </section>
     </div>
