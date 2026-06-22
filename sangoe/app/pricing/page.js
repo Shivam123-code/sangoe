@@ -37,7 +37,7 @@ export default function PricingPage() {
               Choose a plan that matches your business stage—from a growing team to an enterprise readying for IPO listing.
             </motion.p>
             <motion.div style={{ display: 'flex', gap: '14px', flexWrap: 'wrap', marginBottom: '32px' }} initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.45, duration: 0.5 }}>
-              <Link href="/contact" className="btn btn-purple">Start Free Trial</Link>
+              <Link href="/get-started?plan=trial" className="btn btn-purple">Start Free Trial</Link>
               <Link href="/contact" className="btn btn-outline-white">Book Live Demo</Link>
             </motion.div>
             <motion.div style={{ display: 'flex', gap: '32px', paddingTop: '32px', borderTop: '1px solid rgba(255,255,255,0.08)' }} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.7, duration: 0.6 }}>
@@ -128,7 +128,7 @@ export default function PricingPage() {
             </div>
           </div>
           <div style={{ marginTop: '40px' }}>
-            <Link href="/contact" className="btn btn-purple" style={{ width: '100%', justifyContent: 'center' }}>
+            <Link href="/get-started?plan=startup" className="btn btn-purple" style={{ width: '100%', justifyContent: 'center' }}>
               Start Free Trial
             </Link>
           </div>
@@ -156,7 +156,7 @@ export default function PricingPage() {
             </div>
           </div>
           <div style={{ marginTop: '40px', display: 'flex', flexDirection: 'column', gap: '10px' }}>
-            <Link href="/contact" className="btn btn-purple" style={{ width: '100%', justifyContent: 'center' }}>
+            <Link href="/get-started?plan=growth" className="btn btn-purple" style={{ width: '100%', justifyContent: 'center' }}>
               Start Free Trial
             </Link>
             <Link href="/contact" className="btn" style={{ width: '100%', justifyContent: 'center', background: 'transparent', border: '1px solid #7C3AED', color: '#7C3AED', boxShadow: 'none' }}>
@@ -185,7 +185,7 @@ export default function PricingPage() {
             </div>
           </div>
           <div style={{ marginTop: '40px' }}>
-            <Link href="/contact" className="btn btn-purple" style={{ width: '100%', justifyContent: 'center', background: '#111827', color: '#ffffff', boxShadow: 'none' }}>
+            <Link href="/get-started?plan=enterprise" className="btn btn-purple" style={{ width: '100%', justifyContent: 'center', background: '#111827', color: '#ffffff', boxShadow: 'none' }}>
               Contact Enterprise BD
             </Link>
           </div>

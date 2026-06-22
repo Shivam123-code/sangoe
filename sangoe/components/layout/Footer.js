@@ -1,108 +1,316 @@
+'use client';
+import { useState } from 'react';
 import Link from 'next/link';
-import { Apple, Play, ShieldCheck, CreditCard, Smartphone } from 'lucide-react';
+import { usePathname } from 'next/navigation';
+import { Apple, Play, ShieldCheck, ChevronDown, ChevronUp } from 'lucide-react';
 import styles from './Footer.module.css';
 
-const FOOTER_COLUMNS = [
-  {
-    title: 'Platform & Products',
-    links: [
-      { label: 'The Platform', href: '/platform' },
-      { label: 'Operating Features', href: '/features' },
-      { label: 'Business Clouds', href: '/products' },
-      { label: 'Advanced Solutions', href: '/solutions' },
-      { label: 'Industries We Serve', href: '/industries' },
-      { label: 'Pricing Plans', href: '/pricing' },
-    ]
-  },
-  {
-    title: 'Resources & Tools',
-    links: [
-      { label: 'Sangoe Academy', href: '/academy' },
-      { label: 'Free Calculators', href: '/calculators' },
-      { label: 'Business Assessments', href: '/assessments' },
-      { label: 'Template Library', href: '/resources' },
-      { label: 'Blog & Case Studies', href: '#' },
-      { label: 'API Documentation', href: '#' },
-    ]
-  },
+/* ── Real brand SVG icons ── */
+const IconLinkedIn = () => (
+  <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+    <rect x="2" y="9" width="4" height="12"/>
+    <circle cx="4" cy="4" r="2"/>
+  </svg>
+);
+const IconTwitterX = () => (
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.748l7.73-8.835L1.254 2.25H8.08l4.259 5.631 5.905-5.631zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+  </svg>
+);
+const IconInstagram = () => (
+  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+    <circle cx="12" cy="12" r="4"/>
+    <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/>
+  </svg>
+);
+const IconYouTube = () => (
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/>
+    <polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="white"/>
+  </svg>
+);
+const IconFacebook = () => (
+  <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+  </svg>
+);
+
+/* ═══════════════════════════════════════════════════
+   DATA
+═══════════════════════════════════════════════════ */
+const COLUMNS = [
   {
     title: 'Company',
     links: [
-      { label: 'About Sangoe', href: '/about' },
-      { label: 'Partner Ecosystem', href: '/partners' },
-      { label: 'Contact Us', href: '/contact' },
-      { label: 'Careers', href: '#' },
-      { label: 'Press & Media', href: '#' },
-      { label: 'Affiliate Programme', href: '#' },
-    ]
+      { label: 'About Sangoe',    href: '/about' },
+      { label: 'Leadership Team', href: '/about#leadership' },
+      { label: 'Careers',         disabled: true },
+      { label: 'Contact Us',      href: '/contact' },
+      { label: 'Media & Press',   disabled: true },
+    ],
   },
   {
-    title: 'Legal & Compliance',
+    title: 'Platform',
     links: [
-      { label: 'Privacy Policy', href: '/privacy' },
-      { label: 'Terms of Service', href: '/terms' },
-      { label: 'Refund Policy', href: '#' },
-      { label: 'Cookie Policy', href: '#' },
-      { label: 'Data Processing Agreement', href: '#' },
-      { label: 'SLA Agreement', href: '#' },
-    ]
-  }
+      { label: 'FounderOS™',           href: '/platform' },
+      { label: 'AI Business Co-Pilot',  disabled: true },
+      { label: 'Integrations',          disabled: true },
+      { label: 'Mobile App',            disabled: true },
+      { label: 'Security',              href: '/trust-centre#security' },
+    ],
+  },
+  {
+    title: 'Products',
+    links: [
+      { label: 'CRM',                   href: '/products' },
+      { label: 'HRMS',                  href: '/products' },
+      { label: 'Recruitment ATS',       href: '/products' },
+      { label: 'Project Management',    href: '/products' },
+      { label: 'Compliance Management', href: '/products' },
+      { label: 'Business Intelligence', href: '/products' },
+    ],
+  },
+  {
+    title: 'Solutions',
+    links: [
+      { label: 'MSME Transformation',       href: '/solutions' },
+      { label: 'Compliance Control Tower™', href: '/solutions' },
+      { label: 'Safety Management',          href: '/solutions' },
+      { label: 'ESG Management',             href: '/solutions' },
+      { label: 'IPO Readiness',              href: '/solutions' },
+    ],
+  },
+  {
+    title: 'Resources',
+    links: [
+      { label: 'Blog',         disabled: true },
+      { label: 'Academy',      href: '/academy' },
+      { label: 'Templates',    href: '/resources' },
+      { label: 'Case Studies', disabled: true },
+      { label: 'Webinars',     disabled: true },
+    ],
+  },
+  {
+    title: 'Partners',
+    links: [
+      { label: 'Referral Partner',       href: '/partners' },
+      { label: 'Implementation Partner', href: '/partners' },
+      { label: 'White Label Partner',    href: '/partners' },
+      { label: 'Technology Partner',     href: '/partners' },
+    ],
+  },
 ];
 
+const TRUST_LINKS = [
+  { label: 'Trust Centre',           href: '/trust-centre' },
+  { label: 'Security',               href: '/trust-centre#security' },
+  { label: 'Privacy Policy',         href: '/legal/privacy' },
+  { label: 'Terms of Service',       href: '/legal/terms' },
+  { label: 'Cookie Policy',          href: '/legal/cookies' },
+  { label: 'Service Status',         disabled: true },
+  { label: 'Responsible Disclosure', href: '/trust-centre#disclosure' },
+];
+
+const SEO_SECTIONS = [
+  {
+    title: 'Popular Solutions',
+    links: [
+      { label: 'CRM Software for MSMEs',         href: '/solutions/crm-msme' },
+      { label: 'HRMS Software',                  href: '/solutions/hrms' },
+      { label: 'Compliance Management Software', href: '/solutions/compliance' },
+      { label: 'Recruitment Software',           href: '/solutions/recruitment' },
+      { label: 'Safety Management Software',     href: '/solutions/safety' },
+      { label: 'ESG Management Software',        href: '/solutions/esg' },
+      { label: 'Project Management Software',    href: '/solutions/projects' },
+    ],
+  },
+  {
+    title: 'Industries',
+    links: [
+      { label: 'Construction ERP',   href: '/industries/construction' },
+      { label: 'Manufacturing ERP',  href: '/industries/manufacturing' },
+      { label: 'Logistics Software', href: '/industries/logistics' },
+      { label: 'Staffing Software',  href: '/industries/staffing' },
+      { label: 'Healthcare Software',href: '/industries/healthcare' },
+    ],
+  },
+  {
+    title: 'Free Tools',
+    links: [
+      { label: 'Business Health Score', href: '/tools/health-score' },
+      { label: 'Compliance Score',      href: '/tools/compliance-score' },
+      { label: 'Safety Score',          href: '/tools/safety-score' },
+      { label: 'IPO Readiness Score',   href: '/tools/ipo-score' },
+      { label: 'GST Calculator',        href: '/tools/gst-calculator' },
+      { label: 'PF Calculator',         href: '/tools/pf-calculator' },
+    ],
+  },
+  {
+    title: 'Free Templates',
+    links: [
+      { label: 'HR Policy Templates',  href: '/resources/templates/hr' },
+      { label: 'SOP Templates',        href: '/resources/templates/sop' },
+      { label: 'Risk Register Templates', href: '/resources/templates/risk' },
+      { label: 'Audit Checklist',      href: '/resources/templates/audit' },
+      { label: 'Incident Report Forms',href: '/resources/templates/incident' },
+    ],
+  },
+];
+
+const SOCIALS = [
+  { Icon: IconLinkedIn,  href: 'https://linkedin.com/company/sangoe',  label: 'LinkedIn' },
+  { Icon: IconTwitterX,  href: 'https://twitter.com/sangoe',           label: 'Twitter/X' },
+  { Icon: IconInstagram, href: 'https://instagram.com/sangoe',         label: 'Instagram' },
+  { Icon: IconYouTube,   href: 'https://youtube.com/@sangoe',          label: 'YouTube' },
+  { Icon: IconFacebook,  href: 'https://facebook.com/sangoe',          label: 'Facebook' },
+];
+
+const CERTS = ['ISO 42001', 'ISO 27001', 'PCI DSS', 'SDG Aligned', 'ESG Ready'];
+
+/* Pages that show the SEO expanded footer */
+const SEO_PAGES = ['/', '/blog', '/resources', '/academy'];
+
+/* ═══════════════════════════════════════════════════
+   FOOTER COMPONENT
+═══════════════════════════════════════════════════ */
 export default function Footer() {
+  const pathname = usePathname();
+  const showSeo = SEO_PAGES.includes(pathname) || pathname.startsWith('/blog') || pathname.startsWith('/resources');
+  const [seoOpen, setSeoOpen] = useState(false);
+  const [nlEmail, setNlEmail] = useState('');
+  const [nlStatus, setNlStatus] = useState('idle'); // idle | sending | done | error
+
+  const handleNewsletter = async (e) => {
+    e.preventDefault();
+    if (!nlEmail) return;
+    setNlStatus('sending');
+    try {
+      const res = await fetch('/api/newsletter', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: nlEmail }),
+      });
+      setNlStatus(res.ok ? 'done' : 'error');
+    } catch { setNlStatus('error'); }
+  };
+
   return (
     <footer className={styles.footer}>
-      <div className={`container ${styles.inner}`}>
 
-        {/* Top Row */}
-        <div className={styles.top}>
-          {/* Brand */}
-          <div className={styles.brand}>
-            <Link href="/" className={styles.logo}>
-              <img src="/logos/1.png" alt="Sangoe Logo" className={styles.logoImage} />
-            </Link>
-            <p className={styles.tagline}>
-              Build a Business That Runs Without You. One unified Operating System to control, compliance-proof, and scale your entire enterprise.
-            </p>
-            <div className={styles.subscribe}>
-              <input type="email" placeholder="Email Address" className={styles.emailInput} aria-label="Email Address" />
-              <button className={`btn btn-purple ${styles.subBtn}`}>Subscribe</button>
-            </div>
+      {/* ════════════════════════════════
+          LEVEL 3 — SEO EXPANDED FOOTER
+          (homepage + resource pages only)
+      ════════════════════════════════ */}
+      {showSeo && (
+        <div className={styles.seoSection}>
+          <div className={styles.seoInner}>
+            <button
+              className={styles.seoToggle}
+              onClick={() => setSeoOpen(o => !o)}
+              aria-expanded={seoOpen}
+            >
+              <span>{seoOpen ? 'Show Less' : 'Explore More'}</span>
+              {seoOpen ? <ChevronUp size={15} /> : <ChevronDown size={15} />}
+            </button>
 
-            {/* Download App (monoline, below email) */}
-            <div className={styles.downloadSection}>
-              <h4 className={styles.colTitle} style={{ marginBottom: '10px' }}>Download App</h4>
-              <div className={styles.downloadGrid}>
-                {/* Apple App Store */}
-                <a href="#" className={styles.downloadBtn}>
-                  <Apple size={16} className={styles.downloadIcon} />
-                  <div className={styles.downloadText}>
-                    <span className={styles.downloadSub}>Download on the</span>
-                    <span className={styles.downloadMain}>App Store</span>
+            {seoOpen && (
+              <div className={styles.seoGrid}>
+                {SEO_SECTIONS.map(sec => (
+                  <div key={sec.title} className={styles.seoCol}>
+                    <h4 className={styles.seoColTitle}>{sec.title}</h4>
+                    <ul className={styles.seoList}>
+                      {sec.links.map(l => (
+                        <li key={l.label}>
+                          <Link href={l.href} className={styles.seoLink}>{l.label}</Link>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
-                </a>
-
-                {/* Google Play */}
-                <a href="#" className={styles.downloadBtn}>
-                  <Play size={14} fill="currentColor" className={styles.downloadIcon} />
-                  <div className={styles.downloadText}>
-                    <span className={styles.downloadSub}>GET IT ON</span>
-                    <span className={styles.downloadMain}>Google Play</span>
-                  </div>
-                </a>
+                ))}
               </div>
+            )}
+          </div>
+        </div>
+      )}
+
+      {/* ════════════════════════════════
+          LEVEL 1 — MAIN FOOTER
+      ════════════════════════════════ */}
+      <div className={styles.main}>
+        <div className={styles.mainInner}>
+
+          {/* ── Brand Column ── */}
+          <div className={styles.brand}>
+            <Link href="/" className={styles.logoWrap} aria-label="Sangoe Home">
+              <img src="/logos/1.png" alt="Sangoe" className={styles.logoImg} />
+            </Link>
+
+            <p className={styles.brandSlogan}>Build. Control. Scale.</p>
+            <p className={styles.brandTagline}>India&apos;s Business Growth Operating System™</p>
+            <p className={styles.brandDesc}>
+              One unified OS to control, compliance-proof, and scale your entire enterprise — from MSME to IPO.
+            </p>
+
+            {/* Newsletter */}
+            {nlStatus === 'done' ? (
+              <div style={{ fontSize: '0.8rem', color: '#10B981', fontWeight: 700, padding: '10px 0', marginBottom: '18px' }}>
+                ✓ Subscribed! Thank you.
+              </div>
+            ) : (
+              <form onSubmit={handleNewsletter} className={styles.newsletter}>
+                <input
+                  type="email"
+                  required
+                  placeholder="Your work email"
+                  className={styles.emailInput}
+                  aria-label="Subscribe to newsletter"
+                  value={nlEmail}
+                  onChange={e => setNlEmail(e.target.value)}
+                />
+                <button type="submit" className={styles.subBtn} disabled={nlStatus === 'sending'}>
+                  {nlStatus === 'sending' ? '…' : 'Subscribe'}
+                </button>
+              </form>
+            )}
+
+            {/* Socials + App buttons — single row */}
+            <div className={styles.socialAppRow}>
+              {SOCIALS.map(({ Icon, href, label }) => (
+                <a
+                  key={label}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={label}
+                  className={styles.socialIcon}
+                >
+                  <Icon size={15} strokeWidth={1.8} />
+                </a>
+              ))}
+
+              <a href="#" className={styles.appIconBtn} aria-label="Download on App Store">
+                <Apple size={15} />
+              </a>
+              <a href="#" className={styles.appIconBtn} aria-label="Get it on Google Play">
+                <Play size={13} fill="currentColor" />
+              </a>
             </div>
           </div>
 
-          {/* Link Columns */}
+          {/* ── Link Columns ── */}
           <div className={styles.linkGrid}>
-            {FOOTER_COLUMNS.map(col => (
+            {COLUMNS.map(col => (
               <div key={col.title} className={styles.linkCol}>
                 <h4 className={styles.colTitle}>{col.title}</h4>
                 <ul className={styles.linkList}>
-                  {col.links.map(link => (
-                    <li key={link.label}>
-                      <Link href={link.href} className={styles.link}>{link.label}</Link>
+                  {col.links.map(l => (
+                    <li key={l.label}>
+                      {l.disabled
+                        ? <span className={styles.linkDisabled}>{l.label}</span>
+                        : <Link href={l.href} className={styles.link}>{l.label}</Link>
+                      }
                     </li>
                   ))}
                 </ul>
@@ -110,79 +318,46 @@ export default function Footer() {
             ))}
           </div>
         </div>
+      </div>
 
-        {/* Trust & Security Banner */}
-        <div className={styles.trustBanner}>
-          <div className={styles.trustGroup}>
-            <span className={styles.trustLabel}>Secure Payments</span>
-            <div className={styles.paymentGrid}>
-              <div className={styles.iconWrapper}>
-                <img src="https://cdn.simpleicons.org/phonepe/4b5563" alt="PhonePe" className={styles.creativeIcon} />
-              </div>
-              <div className={styles.iconWrapper}>
-                <img src="https://cdn.simpleicons.org/googlepay/4b5563" alt="Google Pay" className={styles.creativeIcon} />
-              </div>
-              <div className={styles.iconWrapper}>
-                <img src="https://cdn.simpleicons.org/paypal/4b5563" alt="PayPal" className={styles.creativeIcon} />
-              </div>
-              <div className={styles.iconWrapper}>
-                <img src="https://cdn.simpleicons.org/mastercard/4b5563" alt="Mastercard" className={styles.creativeIcon} />
-              </div>
-              <div className={styles.iconWrapper}>
-                <img src="https://cdn.jsdelivr.net/gh/activemerchant/payment_icons/app/assets/images/payment_icons/payu.svg" alt="PayU" className={styles.creativeIcon} />
-              </div>
-              <div className={styles.iconWrapper}>
-                <img src="https://cdn.simpleicons.org/visa/4b5563" alt="Visa" className={styles.creativeIcon} />
-              </div>
-            </div>
+      {/* ════════════════════════════════
+          LEVEL 2 — TRUST BAR
+      ════════════════════════════════ */}
+      <div className={styles.trustBar}>
+        <div className={styles.trustBarInner}>
+          <div className={styles.trustBarLeft}>
+            <ShieldCheck size={13} className={styles.trustIcon} />
+            <span className={styles.trustBarLabel}>Trust &amp; Compliance</span>
           </div>
-
-          <div className={styles.trustVerticalDivider} />
-
-          <div className={styles.trustGroup}>
-            <span className={styles.trustLabel}>Global Compliance</span>
-            <div className={styles.certGrid}>
-              <div className={styles.creativeCert}>
-                <div className={styles.certIconWrap}><ShieldCheck size={10} strokeWidth={2.5} /></div>
-                ISO 42001
-              </div>
-              <div className={styles.creativeCert}>
-                <div className={styles.certIconWrap}><ShieldCheck size={10} strokeWidth={2.5} /></div>
-                PCI DSS
-              </div>
-              <div className={styles.creativeCert}>
-                <div className={styles.creativeCertGlow} />
-                <div className={styles.certIconWrap}><ShieldCheck size={10} strokeWidth={2.5} /></div>
-                ISO 27001
-              </div>
-              <div className={styles.creativeCert}>
-                <div className={styles.certIconWrap} style={{ background: '#eff6ff', color: '#3b82f6' }}><ShieldCheck size={10} strokeWidth={2.5} /></div>
-                SDG Aligned
-              </div>
-              <div className={styles.creativeCert}>
-                <div className={styles.certIconWrap} style={{ background: '#f5f3ff', color: '#7c3aed' }}><ShieldCheck size={10} strokeWidth={2.5} /></div>
-                ESG Ready
-              </div>
-            </div>
-          </div>
+          <nav className={styles.trustLinks} aria-label="Trust and legal links">
+              {TRUST_LINKS.map((item, i) => (
+              <span key={item.label} className={styles.trustLinkWrap}>
+                {i > 0 && <span className={styles.trustDivider}>|</span>}
+                {item.disabled
+                  ? <span className={styles.trustLinkDisabled}>{item.label}</span>
+                  : <Link href={item.href} className={styles.trustLink}>{item.label}</Link>
+                }
+              </span>
+            ))}
+          </nav>
         </div>
+      </div>
 
-        {/* Divider */}
-        <div className={styles.divider} />
-
-        {/* Bottom */}
-        <div className={styles.bottom}>
-          <p className={styles.copyright}>© 2026 Sangoe. All Rights Reserved.</p>
-          <div className={styles.legal}>
-            <a href="/privacy" className={styles.legalLink}>Privacy Policy</a>
-            <span>·</span>
-            <a href="/terms" className={styles.legalLink}>Terms of Service</a>
-            <span>·</span>
-            <a href="#" className={styles.legalLink}>Refund Policy</a>
-            <span>·</span>
-            <a href="#" className={styles.legalLink}>Cookie Policy</a>
-            <span>·</span>
-            <a href="#" className={styles.legalLink}>SLA</a>
+      {/* ════════════════════════════════
+          BOTTOM BAR — Copyright
+      ════════════════════════════════ */}
+      <div className={styles.bottom}>
+        <div className={styles.bottomInner}>
+          <p className={styles.copyright}>
+            © 2026 Sangoe Technologies Pvt. Ltd. All rights reserved.
+          </p>
+          <div className={styles.certs}>
+            {CERTS.map(c => (
+              <span key={c} className={styles.cert}>
+                <ShieldCheck size={9} />
+                {c}
+              </span>
+            ))}
           </div>
         </div>
       </div>

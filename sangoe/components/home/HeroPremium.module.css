@@ -1,8 +1,12 @@
+/* ═══════════════════════════════════════════════════
+   HeroPremium — Full-Image Hero + Overlaid Buttons
+   ═══════════════════════════════════════════════════ */
+
 .hero {
   display: block;
   width: 100%;
   max-width: 100%;
-  margin-top: 60px;   /* logo 40px + padding 10px×2 */
+  margin-top: 72px;
   line-height: 0;
 }
 
@@ -21,60 +25,131 @@
 }
 
 /* ═══════════════════════════════════════════════════
-   Invisible hit areas — sized from image coordinates
-   Image natural size: 1512 × 756 px
-
-   "Start Free Trial" button in image:
-     x: 48–248px  →  left: 3.17%,  width: 13.2%
-     y: 563–613px →  top:  74.5%,  height: 6.6%
-
-   "Book Live Demo" button in image:
-     x: 265–500px →  left: 17.5%,  width: 15.5%
-     y: 563–613px →  top:  74.5%,  height: 6.6%
+   DESKTOP — absolute overlay on image
+   Image: 1512 × 756 px
+   Stats row bottom ≈ y 650px → 650/756 = 86%
+   Empty space below → top: 87%, left: 3.5%
    ═══════════════════════════════════════════════════ */
-
-/* shared invisible style */
-.hitStart,
-.hitDemo {
+.btnRow {
   position: absolute;
-  top: 74.5%;
-  height: 6.6%;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  display: block;
-  /* min tap target for touch devices */
-  min-height: 44px;
-  min-width: 80px;
+  top: 87%;
+  left: 3.5%;
+  display: flex;
+  align-items: center;
+  gap: 1.2%;
+  line-height: normal;
 }
 
-.hitStart {
-  left: 3.17%;
-  width: 13.2%;
+/* ── Primary: purple "Start Free Trial" ── */
+.btnPrimary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  font-size: clamp(0.55rem, 1.05vw, 0.88rem);
+  font-weight: 700;
+  padding: 0.72em 1.5em;
+  border-radius: 50px;
+  background: linear-gradient(135deg, #8B5CF6 0%, #6C4CF1 50%, #5B21B6 100%);
+  color: #ffffff;
+  text-decoration: none;
+  white-space: nowrap;
+  box-shadow: 0 4px 18px rgba(124, 58, 237, 0.4);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  letter-spacing: 0.01em;
+}
+.btnPrimary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(124, 58, 237, 0.55);
 }
 
-.hitDemo {
-  left: 17.5%;
-  width: 15.5%;
+/* ── Secondary: white "Book Live Demo" ── */
+.btnSecondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55em;
+  font-size: clamp(0.55rem, 1.05vw, 0.88rem);
+  font-weight: 700;
+  padding: 0.7em 1.4em;
+  border-radius: 50px;
+  background: #ffffff;
+  color: #111827;
+  border: 1.5px solid #E5E7EB;
+  text-decoration: none;
+  white-space: nowrap;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.07);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  letter-spacing: 0.01em;
+}
+.btnSecondary:hover {
+  transform: translateY(-2px);
+  border-color: rgba(124, 58, 237, 0.35);
+  box-shadow: 0 4px 16px rgba(124, 58, 237, 0.12);
+}
+
+.playIcon {
+  width: 1.6em;
+  height: 1.6em;
+  border-radius: 50%;
+  background: rgba(108, 76, 241, 0.08);
+  border: 1.5px solid rgba(108, 76, 241, 0.22);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
 }
 
 /* ─── Tablet ≤ 1024px ─── */
 @media (max-width: 1024px) {
-  .hero { margin-top: 60px; }
+  .hero { margin-top: 72px; }
 }
 
-/* ─── Mobile ≤ 768px ─── */
+/* ═══════════════════════════════════════════════════
+   MOBILE ≤ 768px
+   — buttons leave the image, flow below it as a
+     full-size readable row on a matching background
+   ═══════════════════════════════════════════════════ */
 @media (max-width: 768px) {
-  .hero { margin-top: 54px; }   /* logo 34px + padding 10px×2 */
-  .hitStart,
-  .hitDemo {
-    top: 73%;
-    height: 8%;
+  .hero {
+    margin-top: 54px;
+    line-height: normal;
+    background: #eeedf8; /* matches image bg */
+  }
+
+  .imageWrap {
+    line-height: normal;
+  }
+
+  /* Break out of absolute — flow below the image */
+  .btnRow {
+    position: static;
+    justify-content: center;
+    gap: 12px;
+    padding: 18px 20px 22px;
+  }
+
+  .btnPrimary,
+  .btnSecondary {
+    font-size: 0.9rem;
+    padding: 12px 22px;
   }
 }
 
 /* ─── Small mobile ≤ 480px ─── */
 @media (max-width: 480px) {
-  .hero { margin-top: 46px; }   /* logo 30px + padding 8px×2 */
-}
+  .hero { margin-top: 46px; }
 
+  .btnRow {
+    flex-direction: column;
+    align-items: center;
+    padding: 16px 24px 20px;
+    gap: 10px;
+  }
+
+  .btnPrimary,
+  .btnSecondary {
+    width: 100%;
+    max-width: 300px;
+    justify-content: center;
+    font-size: 0.95rem;
+  }
+}

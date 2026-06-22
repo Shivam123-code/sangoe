@@ -1,5 +1,6 @@
 'use client';
 import Link from 'next/link';
+import { ArrowRight, Play } from 'lucide-react';
 import styles from './HeroPremium.module.css';
 
 export default function HeroPremium() {
@@ -16,9 +17,18 @@ export default function HeroPremium() {
           draggable={false}
         />
 
-        {/* Invisible click targets — perfectly over the image buttons */}
-        <Link href="/pricing" className={styles.hitStart} id="hero-start-trial" aria-label="Start Free Trial" />
-        <Link href="/contact" className={styles.hitDemo}  id="hero-book-demo"   aria-label="Book Live Demo" />
+        {/* Buttons overlaid on the empty space below the 500+ stats row */}
+        <div className={styles.btnRow}>
+          <Link href="/get-started?plan=trial" className={styles.btnPrimary} id="hero-start-trial">
+            Start Free Trial <ArrowRight size={15} strokeWidth={2.5} />
+          </Link>
+          <Link href="/contact" className={styles.btnSecondary} id="hero-book-demo">
+            Book Live Demo
+            <span className={styles.playIcon}>
+              <Play size={9} fill="#6C4CF1" strokeWidth={0} />
+            </span>
+          </Link>
+        </div>
       </div>
     </section>
   );

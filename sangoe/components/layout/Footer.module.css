@@ -1,438 +1,415 @@
+/* ══════════════════════════════════════════════════════
+   SANGOE FOOTER — Light theme matching site design
+══════════════════════════════════════════════════════ */
 .footer {
-  background: #FAF9FF;
-  color: #4b5563;
-  padding: 56px 0 28px;
-  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  font-family: var(--font-sans, 'Inter', sans-serif);
 }
 
-.inner {
-  width: 100%;
-  max-width: var(--max-w);
+/* ── Level 3: SEO Expanded Section ── */
+.seoSection {
+  background: #EEEDF4;
+  border-top: 1px solid #DDD9EE;
+}
+.seoInner {
+  max-width: 1200px;
   margin: 0 auto;
   padding: 0 40px;
 }
-
-@media (max-width: 1024px) {
-  .inner {
-    padding: 0 32px;
-  }
-}
-
-@media (max-width: 768px) {
-  .inner {
-    padding: 0 20px;
-  }
-}
-
-@media (max-width: 480px) {
-  .inner {
-    padding: 0 16px;
-  }
-}
-
-.top {
-  display: grid;
-  grid-template-columns: 340px 1fr;
-  gap: 44px;
-  margin-bottom: 48px;
-}
-
-/* Brand */
-.brand {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.logo {
+.seoToggle {
+  width: 100%;
   display: flex;
   align-items: center;
-  gap: 10px;
-  font-size: 1.25rem;
-  font-weight: 950;
-  color: #111827; /* Dark logo text */
-  letter-spacing: 0.08em;
-}
-
-.logoImage {
-  height: 52px;
-  width: auto;
-  display: block;
-}
-
-.tagline {
-  font-size: 0.85rem;
-  line-height: 1.7;
-  color: #6b7280;
-  max-width: 300px;
-}
-
-.subscribe {
-  display: flex;
+  justify-content: center;
   gap: 8px;
-  margin-top: 8px;
+  padding: 14px 0;
+  background: none;
+  border: none;
+  color: #6B7280;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: color 0.2s;
 }
+.seoToggle:hover { color: #7C3AED; }
 
-.emailInput {
-  flex: 1;
-  padding: 12px 16px;
-  border-radius: 8px;
-  border: 1px solid #d1d5db;
-  background: #ffffff;
-  color: #111827;
-  font-size: 0.85rem;
-  outline: none;
-  font-family: inherit;
-  transition: border-color 0.2s;
-}
-
-.emailInput::placeholder { color: #9ca3af; }
-.emailInput:focus { border-color: #7C3AED; }
-
-.subBtn {
-  padding: 12px 20px;
-  font-size: 0.85rem;
-  white-space: nowrap;
-}
-
-/* Link Grid */
-.linkGrid {
+.seoGrid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 32px;
+  padding: 24px 0 32px;
+  border-top: 1px solid #DDD9EE;
 }
-
-.colTitle {
-  font-size: 0.8rem;
-  font-weight: 750;
-  color: #111827; /* Dark headers */
-  letter-spacing: 0.06em;
+.seoColTitle {
+  font-size: 0.7rem;
+  font-weight: 800;
+  color: #374151;
   text-transform: uppercase;
-  margin-bottom: 24px;
+  letter-spacing: 0.09em;
+  margin: 0 0 12px;
 }
-
-.linkList {
+.seoList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 8px;
+}
+.seoLink {
+  font-size: 0.78rem;
+  color: #6B7280;
+  text-decoration: none;
+  transition: color 0.15s;
+}
+.seoLink:hover { color: #7C3AED; }
+
+/* ── Level 1: Main Footer ── */
+.main {
+  background: #F5F3FF;
+  padding: 56px 0 40px;
+  border-top: 1px solid #DDD9EE;
+}
+.mainInner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 60px;
+  align-items: flex-start;
 }
 
-.link {
-  font-size: 0.85rem;
-  color: #4b5563;
-  transition: color 0.2s;
+/* Brand */
+.brand {}
+.logoWrap {
+  display: inline-block;
+  margin-bottom: 16px;
 }
-
-.link:hover {
+.logoImg {
+  height: 34px;
+  width: auto;
+}
+.brandSlogan {
+  font-size: 1rem;
+  font-weight: 900;
+  color: #111827;
+  letter-spacing: -0.01em;
+  margin: 0 0 4px;
+}
+.brandTagline {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
   color: #7C3AED;
+  margin: 0 0 12px;
+}
+.brandDesc {
+  font-size: 0.8rem;
+  line-height: 1.75;
+  color: #6B7280;
+  margin: 0 0 20px;
+  max-width: 230px;
 }
 
-/* Bottom */
-.divider {
-  height: 1px;
-  background: rgba(0, 0, 0, 0.06);
-  margin-bottom: 24px;
+/* Newsletter */
+.newsletter {
+  display: flex;
+  margin-bottom: 18px;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid #D1D5DB;
+}
+.emailInput {
+  flex: 1;
+  min-width: 0;
+  padding: 9px 12px;
+  background: #fff;
+  border: none;
+  color: #111827;
+  font-size: 0.78rem;
+  outline: none;
+}
+.emailInput::placeholder { color: #9CA3AF; }
+.subBtn {
+  padding: 9px 16px;
+  background: #7C3AED;
+  color: #fff;
+  border: none;
+  font-size: 0.73rem;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.2s;
+}
+.subBtn:hover { background: #6D28D9; }
+
+/* All social icons + app buttons in ONE single row */
+.socialAppRow {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 7px;
+  margin-bottom: 0;
 }
 
+/* Socials */
+.socials {
+  display: flex;
+  gap: 7px;
+  flex-wrap: wrap;
+}
+.socialIcon {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: #fff;
+  border: 1px solid #E5E7EB;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #6B7280;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+.socialIcon:hover {
+  background: #F5F3FF;
+  color: #7C3AED;
+  border-color: #C4B5FD;
+}
+
+/* App store icon buttons — same size as social icons */
+.appIconBtn {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: #7C3AED;
+  border: 1px solid #6D28D9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  text-decoration: none;
+  transition: background 0.2s;
+  flex-shrink: 0;
+}
+.appIconBtn:hover { background: #6D28D9; }
+
+/* App buttons (fallback, unused now but kept) */
+.appRow {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.appBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 12px;
+  background: #fff;
+  border: 1px solid #E5E7EB;
+  border-radius: 8px;
+  color: #374151;
+  text-decoration: none;
+  font-size: 0.7rem;
+  transition: background 0.2s;
+}
+.appBtn span {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.3;
+}
+.appBtn small {
+  font-size: 0.58rem;
+  color: #9CA3AF;
+  font-weight: 500;
+}
+.appBtn strong {
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+.appBtn:hover { background: #F5F3FF; }
+
+/* Link grid — 6 columns */
+.linkGrid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 20px;
+}
+.linkCol {}
+.colTitle {
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: #111827;
+  margin: 0 0 14px;
+}
+.linkList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.link {
+  font-size: 0.8rem;
+  color: #6B7280;
+  text-decoration: none;
+  line-height: 1.4;
+  transition: color 0.15s;
+}
+.link:hover { color: #7C3AED; }
+
+/* Disabled link — same color as active, just not clickable */
+.linkDisabled {
+  font-size: 0.8rem;
+  color: #6B7280;
+  line-height: 1.4;
+  cursor: default;
+  user-select: none;
+}
+
+/* ── Level 2: Trust Bar ── */
+.trustBar {
+  background: #EDE9FE;
+  border-top: 1px solid #DDD6FE;
+  padding: 13px 0;
+}
+.trustBarInner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.trustBarLeft {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+.trustIcon { color: #10B981; }
+.trustBarLabel {
+  font-size: 0.68rem;
+  font-weight: 800;
+  color: #374151;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+}
+.trustLinks {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 2px;
+}
+.trustLinkWrap {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+.trustDivider {
+  color: #C4B5FD;
+  font-size: 0.7rem;
+  padding: 0 2px;
+}
+.trustLink {
+  font-size: 0.73rem;
+  color: #6B7280;
+  text-decoration: none;
+  padding: 3px 6px;
+  border-radius: 4px;
+  white-space: nowrap;
+  transition: color 0.15s, background 0.15s;
+}
+.trustLink:hover {
+  color: #7C3AED;
+  background: rgba(124, 58, 237, 0.08);
+}
+.trustLinkDisabled {
+  font-size: 0.73rem;
+  color: #6B7280;
+  padding: 3px 6px;
+  white-space: nowrap;
+  cursor: default;
+}
+
+/* ── Bottom Bar ── */
 .bottom {
+  background: #EDE9FE;
+  border-top: 1px solid #DDD6FE;
+  padding: 14px 0;
+}
+.bottomInner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-}
-
-.copyright {
-  font-size: 0.82rem;
-  color: #9ca3af;
-}
-
-.legal {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  color: #d1d5db;
-  font-size: 0.82rem;
-}
-
-.legalLink {
-  color: #6b7280;
-  transition: color 0.2s;
-}
-.legalLink:hover { color: #7C3AED; }
-
-/* Download Badges */
-.downloadSection {
-  margin-top: 24px;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.downloadGrid {
-  display: flex;
-  flex-direction: row;
-  gap: 8px;
-  width: 100%;
-  max-width: 320px;
+  gap: 16px;
   flex-wrap: wrap;
 }
-
-.downloadBtn {
+.copyright {
+  font-size: 0.73rem;
+  color: #9CA3AF;
+  margin: 0;
+}
+.certs {
   display: flex;
   align-items: center;
-  gap: 8px;
-  background: #111827;
-  color: #ffffff !important;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 8px;
-  padding: 6px 12px;
-  text-decoration: none !important;
-  transition: all 0.2s ease;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-  flex: 1;
-  min-width: 120px;
+  gap: 14px;
+  flex-wrap: wrap;
 }
-
-.downloadBtn:hover {
-  background: #1f2937;
-  border-color: rgba(255, 255, 255, 0.15);
-  transform: translateY(-1px);
-}
-
-.downloadIcon {
-  color: #ffffff;
-  flex-shrink: 0;
-}
-
-.downloadText {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  line-height: 1.25;
-}
-
-.downloadSub {
-  font-size: 0.52rem;
-  text-transform: uppercase;
-  font-weight: 600;
-  color: #9ca3af;
+.cert {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: #9CA3AF;
   letter-spacing: 0.04em;
 }
 
-.downloadMain {
-  font-size: 0.74rem;
-  font-weight: 750;
-  color: #ffffff;
-}
-
-@media (max-width: 1024px) {
-  .top {
-    grid-template-columns: 1fr;
-    gap: 40px;
-  }
-  .linkGrid {
-    grid-template-columns: repeat(2, 1fr);
-  }
+/* ══════════════════════════════════════════════════════
+   RESPONSIVE
+══════════════════════════════════════════════════════ */
+@media (max-width: 1100px) {
+  .mainInner { grid-template-columns: 220px 1fr; gap: 40px; }
+  .linkGrid { grid-template-columns: repeat(3, 1fr); gap: 24px; }
 }
 
 @media (max-width: 768px) {
-  .inner { padding: 0 16px; }
-  .footer { padding: 44px 0 22px; }
-  .top { gap: 32px; }
-  .tagline { max-width: 100%; }
-  .linkGrid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 32px;
+  .main { padding: 40px 0 32px; }
+  .mainInner {
+    grid-template-columns: 1fr;
+    padding: 0 20px;
+    gap: 36px;
   }
-}
-
-@media (max-width: 600px) {
-  .linkGrid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-  }
-  .bottom {
+  .brandDesc { max-width: 100%; }
+  .linkGrid { grid-template-columns: repeat(2, 1fr); gap: 22px; }
+  .seoGrid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+  .seoInner { padding: 0 20px; }
+  .trustBarInner { padding: 0 20px; gap: 10px; }
+  .bottomInner {
+    padding: 0 20px;
     flex-direction: column;
-    gap: 12px;
-    text-align: center;
-  }
-  .subscribe {
-    flex-direction: column;
-  }
-  .subBtn {
-    padding: 12px 20px;
-    text-align: center;
+    align-items: flex-start;
+    gap: 10px;
   }
 }
 
 @media (max-width: 480px) {
-  .footer { padding: 36px 0 20px; }
-  .linkGrid {
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-  }
-  .logo { font-size: 1.1rem; }
-  .downloadGrid { max-width: 100%; }
-  .downloadBtn { padding: 8px 12px; }
+  .linkGrid { grid-template-columns: 1fr 1fr; gap: 18px; }
+  .seoGrid { grid-template-columns: 1fr 1fr; gap: 16px; }
+  .socialAppRow { flex-wrap: wrap; }
+  .newsletter { flex-direction: column; }
+  .subBtn { border-radius: 0 0 8px 8px; padding: 10px; text-align: center; }
+  .certs { gap: 8px; }
 }
-
-/* Trust & Payments Strip */
-.trustStrip {
-  background: transparent;
-  border-top: 1px solid rgba(0, 0, 0, 0.05);
-  padding: 32px 0 0;
-  margin-top: 40px;
-  display: flex;
-  justify-content: space-between;
-  gap: 40px;
-  align-items: center;
-  flex-wrap: wrap;
-}
-
-/* Trust & Security Banner */
-.trustBanner {
-  display: flex;
-  background: #ffffff;
-  border: 1px solid rgba(0, 0, 0, 0.04);
-  box-shadow: 0 4px 24px rgba(0,0,0,0.02);
-  border-radius: 16px;
-  padding: 12px 20px;
-  margin-top: 40px;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  overflow-x: auto;
-  white-space: nowrap;
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none;  /* IE/Edge */
-}
-
-.trustBanner::-webkit-scrollbar {
-  display: none; /* Chrome, Safari, Opera */
-}
-
-.trustGroup {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  flex-shrink: 0;
-}
-
-.trustLabel {
-  font-size: 0.68rem;
-  font-weight: 800;
-  color: #9ca3af;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  white-space: nowrap;
-}
-
-.paymentGrid {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  flex-wrap: nowrap;
-  flex-shrink: 0;
-}
-
-.iconWrapper {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 18px;
-  width: 30px;
-  flex-shrink: 0;
-}
-
-.creativeIcon {
-  max-height: 100%;
-  max-width: 100%;
-  width: auto;
-  height: auto;
-  opacity: 0.65;
-  filter: grayscale(100%);
-  transition: all 0.3s ease;
-  flex-shrink: 0;
-}
-
-.creativeIcon:hover {
-  opacity: 1;
-  filter: grayscale(0%);
-  transform: translateY(-2px);
-}
-
-.trustVerticalDivider {
-  width: 1px;
-  height: 22px;
-  background: rgba(0,0,0,0.08);
-  flex-shrink: 0;
-}
-
-.certGrid {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  flex-wrap: nowrap;
-  flex-shrink: 0;
-}
-
-.creativeCert {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  padding: 4px 8px;
-  background: #f9fafb;
-  border: 1px solid #f3f4f6;
-  border-radius: 6px;
-  font-size: 0.66rem;
-  font-weight: 750;
-  color: #4b5563;
-  transition: all 0.2s ease;
-  white-space: nowrap;
-  flex-shrink: 0;
-}
-
-.creativeCert:hover {
-  background: #ffffff;
-  border-color: #e5e7eb;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.04);
-  transform: translateY(-2px);
-}
-
-.certIconWrap {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 14px;
-  height: 14px;
-  background: #ecfdf5;
-  color: #10b981;
-  border-radius: 3px;
-}
-
-@media (max-width: 768px) {
-  .trustStrip {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 24px 0 0;
-    gap: 32px;
-  }
-}
-
-/* -- DARK MODE ------------------------------------------- */
-:global([data-theme='dark']) .footer { background: #0b0b14 !important; border-color: rgba(255,255,255,0.06) !important; }
-:global([data-theme='dark']) .inner { background: transparent !important; }
-:global([data-theme='dark']) .top { border-color: rgba(255,255,255,0.06) !important; }
-:global([data-theme='dark']) .tagline { color: #8b85a8 !important; }
-:global([data-theme='dark']) .colTitle { color: #edeaf8 !important; }
-:global([data-theme='dark']) .link { color: #8b85a8 !important; }
-:global([data-theme='dark']) .link:hover { color: #edeaf8 !important; }
-:global([data-theme='dark']) .divider { background: rgba(255,255,255,0.06) !important; }
-:global([data-theme='dark']) .copyright { color: #5f597a !important; }
-:global([data-theme='dark']) .legalLink { color: #5f597a !important; }
-:global([data-theme='dark']) .emailInput { background: #1c1c2e !important; border-color: rgba(255,255,255,0.1) !important; color: #edeaf8 !important; }
-:global([data-theme='dark']) .trustStrip { background: #111128 !important; border-color: rgba(255,255,255,0.05) !important; }
-:global([data-theme='dark']) .trustBanner { background: #111128 !important; }
-:global([data-theme='dark']) .certGrid { background: transparent !important; }
-:global([data-theme='dark']) .downloadBtn { background: #1c1c2e !important; border-color: rgba(255,255,255,0.1) !important; }
-:global([data-theme='dark']) .downloadText { color: #edeaf8 !important; }
-:global([data-theme='dark']) .downloadSub { color: #8b85a8 !important; }
