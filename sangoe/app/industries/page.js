@@ -55,7 +55,7 @@ export default function IndustriesPage() {
     : INDUSTRIES.filter(i => i.cat === activeCat);
 
   return (
-    <div style={{ paddingTop: '0', minHeight: '100vh', background: '#f9fafb', paddingBottom: '80px' }}>
+    <div style={{ paddingTop: '0', minHeight: '100vh', background: 'var(--theme-bg)', paddingBottom: '80px' }}>
       {/* Hero */}
       <section style={{ position: 'relative', background: 'linear-gradient(135deg, #030d0a 0%, #071f12 50%, #0a2918 100%)', overflow: 'hidden' }}>
         <div style={{ position: 'absolute', top: '-130px', right: '-80px', width: '480px', height: '480px', borderRadius: '50%', background: 'radial-gradient(circle, rgba(16,185,129,0.2) 0%, transparent 70%)', pointerEvents: 'none' }} />
@@ -89,7 +89,7 @@ export default function IndustriesPage() {
             </div>
             <motion.div animate={{ y: [0, -8, 0] }} transition={{ repeat: Infinity, duration: 3, ease: 'easeInOut' }} style={{ position: 'absolute', top: '-18px', right: '-18px', background: '#ffffff', borderRadius: '14px', padding: '10px 16px', boxShadow: '0 16px 40px rgba(0,0,0,0.35)', zIndex: 10, display: 'flex', alignItems: 'center', gap: '8px' }}>
               <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#10B981', flexShrink: 0 }} />
-              <span style={{ fontSize: '0.78rem', fontWeight: 700, color: '#111827', whiteSpace: 'nowrap' }}>18 Industries Covered</span>
+              <span style={{ fontSize: '0.78rem', fontWeight: 700, color: 'var(--theme-text-main)', whiteSpace: 'nowrap' }}>18 Industries Covered</span>
             </motion.div>
             <motion.div animate={{ y: [0, 7, 0] }} transition={{ repeat: Infinity, duration: 4, ease: 'easeInOut', delay: 1.2 }} style={{ position: 'absolute', bottom: '-18px', left: '-18px', background: 'linear-gradient(135deg, #059669, #047857)', borderRadius: '14px', padding: '12px 18px', boxShadow: '0 16px 40px rgba(5,150,105,0.45)', zIndex: 10 }}>
               <div style={{ fontSize: '1.2rem', fontWeight: 900, color: '#ffffff' }}>All</div>
@@ -113,10 +113,10 @@ export default function IndustriesPage() {
                 borderRadius: '99px',
                 fontSize: '0.85rem',
                 fontWeight: 700,
-                backgroundColor: isActive ? '#10B981' : '#ffffff',
-                color: isActive ? '#ffffff' : '#4b5563',
-                border: isActive ? '1.5px solid #10B981' : '1.5px solid rgba(0, 0, 0, 0.06)',
-                boxShadow: isActive ? '0 8px 16px -4px rgba(16,185,129,0.2)' : '0 2px 6px rgba(0,0,0,0.02)',
+                backgroundColor: isActive ? '#10B981' : 'var(--theme-card-bg)',
+                color: isActive ? '#ffffff' : 'var(--theme-text-sub)',
+                border: isActive ? '1.5px solid #10B981' : '1.5px solid var(--theme-card-border)',
+                boxShadow: isActive ? '0 8px 16px -4px rgba(16,185,129,0.2)' : 'var(--theme-shadow-card)',
                 cursor: 'pointer',
                 transition: 'all 0.2s'
               }}
@@ -139,13 +139,13 @@ export default function IndustriesPage() {
               <motion.div
                 layout
                 key={ind.name}
-                whileHover={{ y: -5, boxShadow: '0 12px 30px rgba(0,0,0,0.05)' }}
+                whileHover={{ y: -5, boxShadow: 'var(--theme-shadow-card)' }}
                 style={{
-                  background: '#ffffff',
+                  background: 'var(--theme-card-bg)',
                   borderRadius: '16px',
                   padding: '28px',
-                  border: '1px solid rgba(0,0,0,0.04)',
-                  boxShadow: '0 2px 10px rgba(0,0,0,0.008)',
+                  border: '1px solid var(--theme-card-border)',
+                  boxShadow: 'var(--theme-shadow-card)',
                   display: 'flex',
                   flexDirection: 'column',
                   gap: '12px',
@@ -156,15 +156,15 @@ export default function IndustriesPage() {
                   <span style={{ display: 'inline-flex', color: ind.color, background: ind.bg, padding: '8px', borderRadius: '10px' }}>
                     <IconComponent size={22} />
                   </span>
-                  <span style={{ fontWeight: 800, color: '#111827', fontSize: '1.05rem' }}>{ind.name}</span>
+                  <span style={{ fontWeight: 800, color: 'var(--theme-text-main)', fontSize: '1.05rem' }}>{ind.name}</span>
                 </div>
-                <div style={{ fontSize: '0.7rem', color: '#9ca3af', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.04em' }}>{ind.cat}</div>
+                <div style={{ fontSize: '0.7rem', color: 'var(--theme-text-faint)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.04em' }}>{ind.cat}</div>
                 
-                <div style={{ borderTop: '1px solid #f3f4f6', paddingTop: '12px', marginTop: '4px' }}>
-                  <div style={{ fontSize: '0.78rem', color: '#6b7280', lineHeight: 1.5 }}>
+                <div style={{ borderTop: '1px solid var(--theme-border)', paddingTop: '12px', marginTop: '4px' }}>
+                  <div style={{ fontSize: '0.78rem', color: 'var(--theme-text-muted)', lineHeight: 1.5 }}>
                     <strong style={{ color: '#ef4444' }}>Pain Point:</strong> {ind.challenge}
                   </div>
-                  <div style={{ fontSize: '0.78rem', color: '#6b7280', lineHeight: 1.5, marginTop: '8px' }}>
+                  <div style={{ fontSize: '0.78rem', color: 'var(--theme-text-muted)', lineHeight: 1.5, marginTop: '8px' }}>
                     <strong style={{ color: '#10b981' }}>Sangoe Stack:</strong> {ind.solution}
                   </div>
                 </div>

@@ -20,7 +20,7 @@ const SOLUTIONS = [
     highlights: ['SOP Management & Mapping', 'Department Scorecards & KPI Frameworks', 'Delegation & Workload Systems', 'Business Maturity Frameworks'],
     icon: Settings,
     color: '#3B82F6',
-    bg: '#EFF6FF',
+    bg: 'rgba(59, 130, 246, 0.1)',
     badge: 'Operations'
   },
   {
@@ -29,7 +29,7 @@ const SOLUTIONS = [
     highlights: ['PF & ESIC Automatic Tracking', 'Labour Laws & POSH Checklists', 'Factory Act & Fire Clearances', 'Contractor & Vendor Audit Compliance'],
     icon: ShieldCheck,
     color: '#8B5CF6',
-    bg: '#F5F3FF',
+    bg: 'rgba(139, 92, 246, 0.1)',
     badge: 'Legal & Risk'
   },
   {
@@ -38,7 +38,7 @@ const SOLUTIONS = [
     highlights: ['Director & Business Verification', 'Employee & Driver Screening', 'Contractor & Tenant Clearances', 'Database Risk Intelligence Checks'],
     icon: Search,
     color: '#06B6D4',
-    bg: '#ECFEFF',
+    bg: 'rgba(6, 182, 212, 0.1)',
     badge: 'Security'
   },
   {
@@ -47,7 +47,7 @@ const SOLUTIONS = [
     highlights: ['Corporate Governance Tracker', 'Board Meeting Managers', 'Investor Secure Data Room', 'Due Diligence Checklists'],
     icon: Rocket,
     color: '#F55F0B',
-    bg: '#FFFBEB',
+    bg: 'rgba(245, 95, 11, 0.1)',
     badge: 'Finance & Growth'
   },
   {
@@ -56,7 +56,7 @@ const SOLUTIONS = [
     highlights: ['SDG Alignment Mapping', 'Carbon Footprint Calculators', 'Social Impact Measurement', 'Governance Compliance Checks'],
     icon: Leaf,
     color: '#059669',
-    bg: '#E6F4EA',
+    bg: 'rgba(5, 150, 105, 0.1)',
     badge: 'Sustainability'
   },
   {
@@ -65,14 +65,14 @@ const SOLUTIONS = [
     highlights: ['Digital Permit-To-Work Systems', 'Near Miss & Hazard Auditing', 'Contractor Safety Compliances', 'Safety Incident Managers'],
     icon: ShieldAlert,
     color: '#EF4444',
-    bg: '#FEF2F2',
+    bg: 'rgba(239, 68, 68, 0.1)',
     badge: 'Site Operations'
   }
 ];
 
 export default function SolutionsPage() {
   return (
-    <div style={{ paddingTop: '0', minHeight: '100vh', background: '#f9fafb', paddingBottom: '80px' }}>
+    <div style={{ paddingTop: '0', minHeight: '100vh', background: 'var(--theme-bg)', paddingBottom: '80px' }}>
       {/* Hero */}
       <section style={{ position: 'relative', background: 'linear-gradient(135deg, #0c0b22 0%, #1a1060 50%, #2d1065 100%)', overflow: 'hidden' }}>
         <div style={{ position: 'absolute', top: '-130px', right: '-60px', width: '480px', height: '480px', borderRadius: '50%', background: 'radial-gradient(circle, rgba(139,92,246,0.2) 0%, transparent 70%)', pointerEvents: 'none' }} />
@@ -104,9 +104,9 @@ export default function SolutionsPage() {
               <Image src="/images/hero_solutions.png" alt="Sangoe solutions war room" width={520} height={360} style={{ width: '100%', height: 'auto', display: 'block' }} priority />
               <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, rgba(12,11,34,0.2) 0%, transparent 60%)' }} />
             </div>
-            <motion.div animate={{ y: [0, -8, 0] }} transition={{ repeat: Infinity, duration: 3, ease: 'easeInOut' }} style={{ position: 'absolute', top: '-18px', right: '-18px', background: '#ffffff', borderRadius: '14px', padding: '10px 16px', boxShadow: '0 16px 40px rgba(0,0,0,0.35)', zIndex: 10, display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <motion.div animate={{ y: [0, -8, 0] }} transition={{ repeat: Infinity, duration: 3, ease: 'easeInOut' }} style={{ position: 'absolute', top: '-18px', right: '-18px', background: 'var(--theme-card-bg)', border: '1px solid var(--theme-card-border)', borderRadius: '14px', padding: '10px 16px', boxShadow: '0 16px 40px rgba(0,0,0,0.35)', zIndex: 10, display: 'flex', alignItems: 'center', gap: '8px' }}>
               <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#8b5cf6', flexShrink: 0 }} />
-              <span style={{ fontSize: '0.78rem', fontWeight: 700, color: '#111827', whiteSpace: 'nowrap' }}>6 Active Solutions</span>
+              <span style={{ fontSize: '0.78rem', fontWeight: 700, color: 'var(--theme-text-main)', whiteSpace: 'nowrap' }}>6 Active Solutions</span>
             </motion.div>
             <motion.div animate={{ y: [0, 7, 0] }} transition={{ repeat: Infinity, duration: 4, ease: 'easeInOut', delay: 1.2 }} style={{ position: 'absolute', bottom: '-18px', left: '-18px', background: 'linear-gradient(135deg, #8b5cf6, #7c3aed)', borderRadius: '14px', padding: '12px 18px', boxShadow: '0 16px 40px rgba(139,92,246,0.45)', zIndex: 10 }}>
               <div style={{ fontSize: '1.2rem', fontWeight: 900, color: '#ffffff' }}>IPO</div>
@@ -128,13 +128,13 @@ export default function SolutionsPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1, duration: 0.5 }}
-                whileHover={{ y: -8, boxShadow: '0 25px 50px -12px rgba(124, 58, 237, 0.12)' }}
+                whileHover={{ y: -8, boxShadow: 'var(--theme-shadow-card)' }}
                 style={{
-                  background: '#ffffff',
+                  background: 'var(--theme-card-bg)',
                   borderRadius: '24px',
                   padding: '36px',
-                  border: '1px solid rgba(0,0,0,0.04)',
-                  boxShadow: '0 4px 30px rgba(0,0,0,0.015)',
+                  border: '1px solid var(--theme-card-border)',
+                  boxShadow: 'var(--theme-shadow-card)',
                   display: 'flex',
                   flexDirection: 'column',
                   height: '100%',
@@ -149,14 +149,14 @@ export default function SolutionsPage() {
                   <span style={{ fontSize: '0.7rem', fontWeight: 700, textTransform: 'uppercase', color: sol.color, background: sol.bg, padding: '4px 10px', borderRadius: '99px', letterSpacing: '0.04em' }}>{sol.badge}</span>
                 </div>
 
-                <h3 style={{ fontSize: '1.4rem', fontWeight: 800, color: '#111827', marginBottom: '12px' }}>{sol.title}</h3>
-                <p style={{ fontSize: '0.92rem', color: '#6b7280', lineHeight: 1.6, marginBottom: '24px', flexGrow: 1 }}>{sol.desc}</p>
+                <h3 style={{ fontSize: '1.4rem', fontWeight: 800, color: 'var(--theme-text-main)', marginBottom: '12px' }}>{sol.title}</h3>
+                <p style={{ fontSize: '0.92rem', color: 'var(--theme-text-sub)', lineHeight: 1.6, marginBottom: '24px', flexGrow: 1 }}>{sol.desc}</p>
 
-                <div style={{ borderTop: '1px solid #f3f4f6', paddingTop: '20px' }}>
-                  <div style={{ fontSize: '0.8rem', fontWeight: 700, color: '#4b5563', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '12px' }}>Core Capabilities:</div>
+                <div style={{ borderTop: '1px solid var(--theme-border)', paddingTop: '20px' }}>
+                  <div style={{ fontSize: '0.8rem', fontWeight: 700, color: 'var(--theme-text-sub)', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '12px' }}>Core Capabilities:</div>
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
                     {sol.highlights.map(h => (
-                      <div key={h} style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.85rem', color: '#374151', fontWeight: 550 }}>
+                      <div key={h} style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.85rem', color: 'var(--theme-text-main)', fontWeight: 550 }}>
                         <CheckCircle2 size={14} style={{ color: '#10B981', flexShrink: 0 }} />
                         <span>{h}</span>
                       </div>
@@ -177,3 +177,4 @@ export default function SolutionsPage() {
     </div>
   );
 }
+

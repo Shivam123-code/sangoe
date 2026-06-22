@@ -1,5 +1,5 @@
 'use client';
-import { useState, useEffect, Suspense } from 'react';
+import { useState, useEffect, Suspense, useMemo } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
@@ -9,13 +9,18 @@ import { Mail, MessageSquare, ArrowLeft, CheckCircle2, Loader2, X } from 'lucide
 /* ── Read all service labels from get-started IDs ── */
 function useServiceLabels(ids) {
   const [labels, setLabels] = useState([]);
+  const idsStr = (ids || []).join(',');
   useEffect(() => {
-    if (!ids?.length) return;
+    if (!idsStr) {
+      if (labels.length > 0) setLabels([]);
+      return;
+    }
+    const idArray = idsStr.split(',');
     // Dynamically import service data to resolve IDs → names
     import('@/app/get-started/page').catch(() => null);
     // Fallback: just show IDs humanised
-    setLabels(ids.map(id => id.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase())));
-  }, [ids]);
+    setLabels(idArray.map(id => id.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase())));
+  }, [idsStr]);
   return labels;
 }
 
@@ -28,7 +33,7 @@ function ContactContent() {
 
   const plan = params.get('plan') || '';
   const servicesRaw = params.get('services') || '';
-  const serviceIds = servicesRaw ? servicesRaw.split(',').filter(Boolean) : [];
+  const serviceIds = useMemo(() => servicesRaw ? servicesRaw.split(',').filter(Boolean) : [], [servicesRaw]);
   const serviceLabels = useServiceLabels(serviceIds);
 
   const fromGetStarted = !!plan || serviceIds.length > 0;
@@ -65,13 +70,15 @@ function ContactContent() {
 
   const inputStyle = {
     width: '100%', padding: '10px 14px', borderRadius: '8px',
-    border: '1px solid #D1D5DB', outline: 'none', fontSize: '0.88rem',
-    fontFamily: 'inherit', transition: 'border-color 0.15s',
+    background: 'var(--theme-input-bg)',
+    color: 'var(--theme-text-main)',
+    border: '1px solid var(--theme-input-border)', outline: 'none', fontSize: '0.88rem',
+    fontFamily: 'inherit', transition: 'all 0.15s',
   };
-  const labelStyle = { fontSize: '0.78rem', fontWeight: 700, display: 'block', marginBottom: '6px', color: '#374151' };
+  const labelStyle = { fontSize: '0.78rem', fontWeight: 700, display: 'block', marginBottom: '6px', color: 'var(--theme-text-sub)' };
 
   return (
-    <div style={{ paddingTop: '0', minHeight: '100vh', background: '#f9fafb', paddingBottom: '80px' }}>
+    <div style={{ paddingTop: '0', minHeight: '100vh', background: 'var(--theme-bg)', paddingBottom: '80px' }}>
 
       {/* ── Hero ── */}
       <section style={{ position: 'relative', background: 'linear-gradient(135deg, #080414 0%, #120838 50%, #1a0d4a 100%)', overflow: 'hidden' }}>
@@ -115,24 +122,24 @@ function ContactContent() {
       <section className="responsive-grid-split" style={{ padding: '40px 20px', maxWidth: '1000px', margin: '0 auto', gap: '48px' }}>
 
         {/* LEFT: Form */}
-        <div style={{ background: '#ffffff', borderRadius: '24px', padding: '40px', border: '1px solid rgba(0,0,0,0.05)', boxShadow: '0 10px 40px rgba(0,0,0,0.03)' }}>
+        <div style={{ background: 'var(--theme-card-bg)', borderRadius: '24px', padding: '40px', border: '1px solid var(--theme-card-border)', boxShadow: 'var(--theme-shadow-card)' }}>
 
           {/* ── Selected Plan & Services (only when arriving from /get-started) ── */}
           {fromGetStarted && (
-            <div style={{ background: '#F5F3FF', border: '1px solid #DDD6FE', borderRadius: '14px', padding: '16px 18px', marginBottom: '24px' }}>
+            <div style={{ background: 'rgba(124, 58, 237, 0.08)', border: '1px solid var(--theme-border)', borderRadius: '14px', padding: '16px 18px', marginBottom: '24px' }}>
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '10px' }}>
-                <span style={{ fontSize: '0.72rem', fontWeight: 800, color: '#7C3AED', textTransform: 'uppercase', letterSpacing: '0.08em' }}>
+                <span style={{ fontSize: '0.72rem', fontWeight: 800, color: '#A78BFA', textTransform: 'uppercase', letterSpacing: '0.08em' }}>
                   Your Selection
                 </span>
                 <Link
                   href={`/get-started?plan=${plan}&services=${servicesRaw}`}
                   style={{
                     display: 'inline-flex', alignItems: 'center', gap: '4px',
-                    fontSize: '0.72rem', fontWeight: 700, color: '#7C3AED',
+                    fontSize: '0.72rem', fontWeight: 700, color: '#A78BFA',
                     textDecoration: 'none', padding: '4px 10px',
-                    background: '#EDE9FE', borderRadius: '6px',
-                    border: '1px solid #C4B5FD',
-                    transition: 'background 0.15s',
+                    background: 'var(--theme-bg-secondary)', borderRadius: '6px',
+                    border: '1px solid var(--theme-border)',
+                    transition: 'all 0.15s',
                   }}
                 >
                   <ArrowLeft size={11} /> Change Services
@@ -154,11 +161,11 @@ function ContactContent() {
                   {serviceLabels.map(label => (
                     <span key={label} style={{
                       display: 'inline-flex', alignItems: 'center', gap: '4px',
-                      background: '#fff', border: '1px solid #C4B5FD',
+                      background: 'var(--theme-card-bg)', border: '1px solid var(--theme-border)',
                       borderRadius: '6px', padding: '3px 10px',
-                      fontSize: '0.73rem', color: '#5B21B6', fontWeight: 600,
+                      fontSize: '0.73rem', color: 'var(--theme-text-main)', fontWeight: 600,
                     }}>
-                      <CheckCircle2 size={11} color="#7C3AED" />
+                      <CheckCircle2 size={11} color="#A78BFA" />
                       {label}
                     </span>
                   ))}
@@ -167,7 +174,7 @@ function ContactContent() {
             </div>
           )}
 
-          <h3 style={{ fontSize: '1.35rem', fontWeight: 800, color: '#111827', marginBottom: '24px' }}>Send Us a Message</h3>
+          <h3 style={{ fontSize: '1.35rem', fontWeight: 800, color: 'var(--theme-text-main)', marginBottom: '24px' }}>Send Us a Message</h3>
 
           {/* Success state */}
           {status === 'success' ? (
@@ -244,32 +251,32 @@ function ContactContent() {
         {/* RIGHT: Info */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: '32px' }}>
           <div>
-            <h4 style={{ fontSize: '1.1rem', fontWeight: 750, color: '#111827', marginBottom: '16px' }}>Quick Communications</h4>
+            <h4 style={{ fontSize: '1.1rem', fontWeight: 750, color: 'var(--theme-text-main)', marginBottom: '16px' }}>Quick Communications</h4>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                <span style={{ color: '#7C3AED', display: 'flex', padding: '8px', background: '#F5F3FF', borderRadius: '8px' }}>
+                <span style={{ color: '#7C3AED', display: 'flex', padding: '8px', background: 'var(--theme-bg-secondary)', borderRadius: '8px', border: '1px solid var(--theme-border)' }}>
                   <Mail size={18} />
                 </span>
                 <div>
-                  <div style={{ fontSize: '0.75rem', color: '#9ca3af', fontWeight: 700 }}>Support / Sales</div>
-                  <a href="mailto:support@sangoe.in" style={{ fontSize: '0.9rem', color: '#7C3AED', fontWeight: 600 }}>support@sangoe.in</a>
+                  <div style={{ fontSize: '0.75rem', color: 'var(--theme-text-muted)', fontWeight: 700 }}>Support / Sales</div>
+                  <a href="mailto:support@sangoe.in" style={{ fontSize: '0.9rem', color: '#A78BFA', fontWeight: 600 }}>support@sangoe.in</a>
                 </div>
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                <span style={{ color: '#10B981', display: 'flex', padding: '8px', background: '#ECFDF5', borderRadius: '8px' }}>
+                <span style={{ color: '#10B981', display: 'flex', padding: '8px', background: 'var(--theme-bg-secondary)', borderRadius: '8px', border: '1px solid var(--theme-border)' }}>
                   <MessageSquare size={18} />
                 </span>
                 <div>
-                  <div style={{ fontSize: '0.75rem', color: '#9ca3af', fontWeight: 700 }}>Phone Support</div>
+                  <div style={{ fontSize: '0.75rem', color: 'var(--theme-text-muted)', fontWeight: 700 }}>Phone Support</div>
                   <a href="tel:02269620896" style={{ fontSize: '0.9rem', color: '#10B981', fontWeight: 600 }}>022 69620896</a>
                 </div>
               </div>
             </div>
           </div>
 
-          <div style={{ borderTop: '1px solid #e5e7eb', paddingTop: '24px' }}>
-            <h4 style={{ fontSize: '1.1rem', fontWeight: 750, color: '#111827', marginBottom: '16px' }}>Office Address</h4>
-            <p style={{ fontSize: '0.88rem', color: '#6b7280', lineHeight: 1.6 }}>
+          <div style={{ borderTop: '1px solid var(--theme-border)', paddingTop: '24px' }}>
+            <h4 style={{ fontSize: '1.1rem', fontWeight: 750, color: 'var(--theme-text-main)', marginBottom: '16px' }}>Office Address</h4>
+            <p style={{ fontSize: '0.88rem', color: 'var(--theme-text-sub)', lineHeight: 1.6 }}>
               TCP, S18, Vashi, Navi Mumbai,<br />Maharashtra-400703
             </p>
           </div>

@@ -413,3 +413,94 @@
   .subBtn { border-radius: 0 0 8px 8px; padding: 10px; text-align: center; }
   .certs { gap: 8px; }
 }
+
+/* ── Dark Mode Overrides ── */
+:global([data-theme='dark']) .seoSection {
+  background: #100f1c;
+  border-top: 1px solid #1f1f33;
+}
+:global([data-theme='dark']) .seoGrid {
+  border-top: 1px solid #1f1f33;
+}
+:global([data-theme='dark']) .seoColTitle {
+  color: #edeaf8;
+}
+:global([data-theme='dark']) .seoLink {
+  color: #8b85a8;
+}
+:global([data-theme='dark']) .seoLink:hover {
+  color: #a78bfa;
+}
+:global([data-theme='dark']) .seoToggle {
+  color: #8b85a8;
+}
+:global([data-theme='dark']) .seoToggle:hover {
+  color: #a78bfa;
+}
+:global([data-theme='dark']) .main {
+  background: #0b0a14;
+  border-top: 1px solid #1f1f33;
+}
+:global([data-theme='dark']) .brandSlogan {
+  color: #edeaf8;
+}
+:global([data-theme='dark']) .brandDesc {
+  color: #8b85a8;
+}
+:global([data-theme='dark']) .emailInput {
+  background: #1c1c2e;
+  color: #edeaf8;
+  border: 1px solid rgba(255,255,255,0.12);
+}
+:global([data-theme='dark']) .socialIcon {
+  background: #1c1c2e;
+  border-color: rgba(255,255,255,0.1);
+  color: #8b85a8;
+}
+:global([data-theme='dark']) .socialIcon:hover {
+  background: #2a2638;
+  color: #a78bfa;
+  border-color: #a78bfa;
+}
+:global([data-theme='dark']) .colTitle {
+  color: #edeaf8;
+}
+:global([data-theme='dark']) .link {
+  color: #8b85a8;
+}
+:global([data-theme='dark']) .link:hover {
+  color: #a78bfa;
+}
+:global([data-theme='dark']) .linkDisabled {
+  color: #5f597a;
+}
+:global([data-theme='dark']) .trustBar {
+  background: #0f0c1c;
+  border-top: 1px solid #1c1833;
+}
+:global([data-theme='dark']) .trustBarLabel {
+  color: #edeaf8;
+}
+:global([data-theme='dark']) .trustDivider {
+  color: #4a0e96;
+}
+:global([data-theme='dark']) .trustLink {
+  color: #8b85a8;
+}
+:global([data-theme='dark']) .trustLink:hover {
+  color: #a78bfa;
+  background: rgba(167, 139, 250, 0.08);
+}
+:global([data-theme='dark']) .trustLinkDisabled {
+  color: #5f597a;
+}
+:global([data-theme='dark']) .bottom {
+  background: #0f0c1c;
+  border-top: 1px solid #1c1833;
+}
+:global([data-theme='dark']) .copyright {
+  color: #5f597a;
+}
+:global([data-theme='dark']) .cert {
+  color: #5f597a;
+}

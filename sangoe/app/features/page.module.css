@@ -980,3 +980,7 @@
 :global([data-theme='dark']) .mockupImg {
   filter: none !important;
 }
+
+:global([data-theme='dark']) .page {
+  background: var(--theme-bg);
+}

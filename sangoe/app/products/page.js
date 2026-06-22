@@ -94,7 +94,7 @@ export default function ProductsPage() {
   const [selectedIdx, setSelectedIdx] = useState(null);
 
   return (
-    <div style={{ paddingTop: '0', minHeight: '100vh', background: '#f9fafb', paddingBottom: '80px' }}>
+    <div style={{ paddingTop: '0', minHeight: '100vh', background: 'var(--theme-bg)', paddingBottom: '80px' }}>
       {/* Hero */}
       <section style={{ position: 'relative', background: 'linear-gradient(135deg, #060b18 0%, #0f1f45 45%, #1a1060 100%)', overflow: 'hidden' }}>
         <div style={{ position: 'absolute', top: '-150px', right: '-80px', width: '500px', height: '500px', borderRadius: '50%', background: 'radial-gradient(circle, rgba(59,130,246,0.18) 0%, transparent 70%)', pointerEvents: 'none' }} />
@@ -128,7 +128,7 @@ export default function ProductsPage() {
             </div>
             <motion.div animate={{ y: [0, -8, 0] }} transition={{ repeat: Infinity, duration: 3, ease: 'easeInOut' }} style={{ position: 'absolute', top: '-18px', right: '-18px', background: '#ffffff', borderRadius: '14px', padding: '10px 16px', boxShadow: '0 16px 40px rgba(0,0,0,0.35)', zIndex: 10, display: 'flex', alignItems: 'center', gap: '8px' }}>
               <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#10B981', flexShrink: 0 }} />
-              <span style={{ fontSize: '0.78rem', fontWeight: 700, color: '#111827', whiteSpace: 'nowrap' }}>All Clouds Active</span>
+              <span style={{ fontSize: '0.78rem', fontWeight: 700, color: 'var(--theme-text-main)', whiteSpace: 'nowrap' }}>All Clouds Active</span>
             </motion.div>
             <motion.div animate={{ y: [0, 7, 0] }} transition={{ repeat: Infinity, duration: 4, ease: 'easeInOut', delay: 1.2 }} style={{ position: 'absolute', bottom: '-18px', left: '-18px', background: 'linear-gradient(135deg, #3b82f6, #6366f1)', borderRadius: '14px', padding: '12px 18px', boxShadow: '0 16px 40px rgba(59,130,246,0.45)', zIndex: 10 }}>
               <div style={{ fontSize: '1.2rem', fontWeight: 900, color: '#ffffff' }}>50+</div>
@@ -146,14 +146,14 @@ export default function ProductsPage() {
             return (
               <motion.div
                 key={cloud.name}
-                whileHover={{ y: -6, boxShadow: '0 20px 40px rgba(0,0,0,0.06)' }}
+                whileHover={{ y: -6, boxShadow: 'var(--theme-shadow-card)' }}
                 onClick={() => setSelectedIdx(selectedIdx === idx ? null : idx)}
                 style={{
-                  background: '#ffffff',
+                  background: 'var(--theme-card-bg)',
                   borderRadius: '20px',
                   padding: '32px',
-                  border: '1px solid rgba(0,0,0,0.04)',
-                  boxShadow: '0 4px 20px rgba(0,0,0,0.015)',
+                  border: '1px solid var(--theme-card-border)',
+                  boxShadow: 'var(--theme-shadow-card)',
                   cursor: 'pointer',
                   position: 'relative',
                   overflow: 'hidden',
@@ -168,12 +168,12 @@ export default function ProductsPage() {
                     <IconComponent size={28} />
                   </span>
                   <div>
-                    <h3 style={{ fontSize: '1.25rem', fontWeight: 800, color: '#111827' }}>{cloud.name}</h3>
+                    <h3 style={{ fontSize: '1.25rem', fontWeight: 800, color: 'var(--theme-text-main)' }}>{cloud.name}</h3>
                     <p style={{ fontSize: '0.8rem', color: cloud.color, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.04em', marginTop: '2px' }}>{cloud.tagline}</p>
                   </div>
                 </div>
 
-                <div style={{ fontSize: '0.9rem', color: '#6b7280', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <div style={{ fontSize: '0.9rem', color: 'var(--theme-text-muted)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                   <span>{cloud.modules.length} Core Modules Included</span>
                   <span style={{ color: cloud.color, fontWeight: 'bold' }}>
                     {selectedIdx === idx ? 'Close ▲' : 'Explore Modules ▼'}
@@ -190,10 +190,10 @@ export default function ProductsPage() {
                       transition={{ duration: 0.25 }}
                       style={{ overflow: 'hidden' }}
                     >
-                      <div style={{ borderTop: '1px solid #f3f4f6', paddingTop: '16px' }}>
+                      <div style={{ borderTop: '1px solid var(--theme-border)', paddingTop: '16px' }}>
                         <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
                           {cloud.modules.map(mod => (
-                            <div key={mod} style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.85rem', color: '#4b5563' }}>
+                            <div key={mod} style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.85rem', color: 'var(--theme-text-sub)' }}>
                               <span style={{ color: cloud.color }}>•</span>
                               <span>{mod}</span>
                             </div>

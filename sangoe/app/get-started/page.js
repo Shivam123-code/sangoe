@@ -216,13 +216,13 @@ function ServiceCard({ service, catColor, selected, onToggle }) {
       style={{
         display: 'flex', alignItems: 'center', gap: '12px',
         padding: '12px 14px',
-        background: isOn ? `${catColor}0d` : '#ffffff',
-        border: `1.5px solid ${isOn ? catColor : '#E9EBEF'}`,
+        background: isOn ? `${catColor}0d` : 'var(--theme-card-bg)',
+        border: `1.5px solid ${isOn ? catColor : 'var(--theme-card-border)'}`,
         borderRadius: '12px', cursor: 'pointer',
         textAlign: 'left', width: '100%',
         boxShadow: isOn
           ? `0 4px 14px ${catColor}22`
-          : '0 1px 3px rgba(0,0,0,0.04)',
+          : 'var(--theme-shadow-card)',
         transition: 'border-color 0.15s, background 0.15s, box-shadow 0.15s',
         position: 'relative',
       }}
@@ -239,14 +239,14 @@ function ServiceCard({ service, catColor, selected, onToggle }) {
       <span style={{ flex: 1, minWidth: 0 }}>
         <span style={{
           display: 'block', fontSize: '0.82rem', fontWeight: 700,
-          color: isOn ? catColor : '#1F2937',
+          color: isOn ? catColor : 'var(--theme-text-main)',
           lineHeight: 1.3, marginBottom: '2px',
           whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis',
         }}>
           {service.name}
         </span>
         <span style={{
-          display: 'block', fontSize: '0.7rem', color: '#9CA3AF',
+          display: 'block', fontSize: '0.7rem', color: 'var(--theme-text-muted)',
           fontWeight: 500, lineHeight: 1.3,
           whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis',
         }}>
@@ -257,11 +257,11 @@ function ServiceCard({ service, catColor, selected, onToggle }) {
       {/* Checkmark */}
       <span style={{
         width: '18px', height: '18px', borderRadius: '50%', flexShrink: 0,
-        background: isOn ? catColor : '#F3F4F6',
+        background: isOn ? catColor : 'var(--theme-bg)',
         display: 'flex', alignItems: 'center', justifyContent: 'center',
         transition: 'background 0.15s',
       }}>
-        <CheckCircle2 size={11} color={isOn ? '#fff' : '#D1D5DB'} strokeWidth={2.5} />
+        <CheckCircle2 size={11} color={isOn ? '#fff' : 'var(--theme-text-faint)'} strokeWidth={2.5} />
       </span>
     </motion.button>
   );
@@ -287,10 +287,19 @@ function GetStartedContent() {
   useEffect(() => {
     setMounted(true);
     try {
+      // 1. Prioritize URL query parameters (e.g. when clicking 'Change Services')
+      const urlServices = params.get('services');
+      if (urlServices) {
+        const ids = urlServices.split(',').filter(Boolean);
+        setSelected(new Set(ids));
+        return;
+      }
+
+      // 2. Fallback to localStorage
       const saved = localStorage.getItem(LS_KEY);
       if (saved) setSelected(new Set(JSON.parse(saved)));
     } catch { /* ignore */ }
-  }, []);
+  }, [params]);
 
   // Persist to localStorage whenever selection changes (client-only)
   useEffect(() => {
@@ -344,7 +353,7 @@ function GetStartedContent() {
   };
 
   return (
-    <div style={{ minHeight: '100vh', background: '#F5F4FE' }}>
+    <div style={{ minHeight: '100vh', background: 'var(--theme-bg)' }}>
 
       {/* ── Top Hero Bar ── */}
       <div style={{
@@ -419,16 +428,16 @@ function GetStartedContent() {
               style={{ display: 'none', marginBottom: '12px' }}
             >
               <div style={{
-                background: '#fff', borderRadius: '14px',
-                border: '1px solid #EAECF0',
-                boxShadow: '0 2px 10px rgba(0,0,0,0.06)',
+                background: 'var(--theme-card-bg)', borderRadius: '14px',
+                border: '1px solid var(--theme-card-border)',
+                boxShadow: 'var(--theme-shadow-card)',
                 overflow: 'hidden',
               }}>
                 {/* Header */}
                 <div style={{
                   display: 'flex', alignItems: 'center', justifyContent: 'space-between',
                   padding: '12px 14px',
-                  borderBottom: '1px solid #F3F4F6',
+                  borderBottom: '1px solid var(--theme-border)',
                   background: 'linear-gradient(135deg, rgba(124,58,237,0.05), rgba(99,102,241,0.05))',
                 }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
@@ -438,7 +447,7 @@ function GetStartedContent() {
                       display: 'flex', alignItems: 'center', justifyContent: 'center',
                       fontSize: '0.7rem', fontWeight: 800, flexShrink: 0,
                     }}>{selected.size}</span>
-                    <span style={{ fontSize: '0.85rem', fontWeight: 800, color: '#111827' }}>
+                    <span style={{ fontSize: '0.85rem', fontWeight: 800, color: 'var(--theme-text-main)' }}>
                       Service{selected.size > 1 ? 's' : ''} Selected
                     </span>
                   </div>
@@ -487,8 +496,8 @@ function GetStartedContent() {
 
         <div style={{ flex: 1, minWidth: 0 }}>
           {filtered.length === 0 && (
-            <div style={{ textAlign: 'center', padding: '60px 20px', color: '#9CA3AF' }}>
-              <Search size={36} color="#D1D5DB" />
+            <div style={{ textAlign: 'center', padding: '60px 20px', color: 'var(--theme-text-muted)' }}>
+              <Search size={36} color="var(--theme-text-faint)" />
               <p style={{ marginTop: '12px', fontSize: '0.95rem' }}>No services match your search.</p>
             </div>
           )}
@@ -500,11 +509,11 @@ function GetStartedContent() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: ci * 0.04, duration: 0.35 }}
               style={{
-                background: '#fff', borderRadius: '16px',
-                border: '1px solid #EAECF0',
+                background: 'var(--theme-card-bg)', borderRadius: '16px',
+                border: '1px solid var(--theme-card-border)',
                 marginBottom: '16px',
                 overflow: 'hidden',
-                boxShadow: '0 1px 4px rgba(0,0,0,0.04)',
+                boxShadow: 'var(--theme-shadow-card)',
               }}
             >
               {/* Category header */}
@@ -513,13 +522,13 @@ function GetStartedContent() {
                 style={{
                   width: '100%', display: 'flex', alignItems: 'center', gap: '12px',
                   padding: '14px 18px', background: 'none', border: 'none', cursor: 'pointer',
-                  borderBottom: openCats.has(cat.id) ? '1px solid #F3F4F6' : 'none',
+                  borderBottom: openCats.has(cat.id) ? '1px solid var(--theme-border)' : 'none',
                 }}
               >
                 <span style={{ fontSize: '1.1rem' }}>{cat.emoji}</span>
                 <span style={{
                   flex: 1, textAlign: 'left', fontSize: '0.9rem', fontWeight: 800,
-                  color: '#111827',
+                  color: 'var(--theme-text-main)',
                 }}>
                   {cat.label}
                   <span style={{
@@ -541,7 +550,7 @@ function GetStartedContent() {
                   )}
                 </span>
                 <ChevronDown
-                  size={16} color="#9CA3AF"
+                  size={16} color="var(--theme-text-muted)"
                   style={{ transform: openCats.has(cat.id) ? 'rotate(180deg)' : 'rotate(0)', transition: 'transform 0.2s' }}
                 />
               </button>
@@ -587,24 +596,24 @@ function GetStartedContent() {
         }}>
           {/* Summary card */}
           <div style={{
-            background: '#fff', borderRadius: '16px',
-            border: '1px solid #EAECF0',
-            boxShadow: '0 2px 12px rgba(0,0,0,0.06)',
+            background: 'var(--theme-card-bg)', borderRadius: '16px',
+            border: '1px solid var(--theme-card-border)',
+            boxShadow: 'var(--theme-shadow-card)',
             overflow: 'hidden',
           }}>
             {/* Card header */}
             <div style={{
               padding: '16px 18px 12px',
-              borderBottom: '1px solid #F3F4F6',
+              borderBottom: '1px solid var(--theme-border)',
               display: 'flex', alignItems: 'center', justifyContent: 'space-between',
             }}>
               <div>
-                <div style={{ fontSize: '0.88rem', fontWeight: 800, color: '#111827' }}>
+                <div style={{ fontSize: '0.88rem', fontWeight: 800, color: 'var(--theme-text-main)' }}>
                   {selected.size > 0
                     ? `${selected.size} Service${selected.size > 1 ? 's' : ''} Selected`
                     : 'No services yet'}
                 </div>
-                <div style={{ fontSize: '0.72rem', color: '#9CA3AF', marginTop: '1px' }}>
+                <div style={{ fontSize: '0.72rem', color: 'var(--theme-text-muted)', marginTop: '1px' }}>
                   {selected.size === 0 ? 'Click modules to add them' : 'Your selection summary'}
                 </div>
               </div>
@@ -621,9 +630,9 @@ function GetStartedContent() {
             {/* Selected list */}
             <div style={{ maxHeight: '260px', overflowY: 'auto', padding: '12px 18px' }}>
               {selected.size === 0 ? (
-                <div style={{ textAlign: 'center', padding: '20px 0', color: '#D1D5DB' }}>
-                  <CheckCircle2 size={28} color="#E5E7EB" />
-                  <p style={{ fontSize: '0.78rem', marginTop: '8px', color: '#D1D5DB' }}>Select services from the left</p>
+                <div style={{ textAlign: 'center', padding: '20px 0', color: 'var(--theme-text-faint)' }}>
+                  <CheckCircle2 size={28} color="var(--theme-border)" />
+                  <p style={{ fontSize: '0.78rem', marginTop: '8px', color: 'var(--theme-text-faint)' }}>Select services from the left</p>
                 </div>
               ) : (
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
@@ -634,10 +643,10 @@ function GetStartedContent() {
                       background: `${item.catColor}08`,
                     }}>
                       <Icon name={item.icon} size={13} color={item.catColor} />
-                      <span style={{ fontSize: '0.76rem', color: '#374151', fontWeight: 600, flex: 1 }}>{item.name}</span>
+                      <span style={{ fontSize: '0.76rem', color: 'var(--theme-text-sub)', fontWeight: 600, flex: 1 }}>{item.name}</span>
                       <button
                         onClick={() => toggle(item.id)}
-                        style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#D1D5DB', padding: '0 2px', lineHeight: 1 }}
+                        style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'var(--theme-text-faint)', padding: '0 2px', lineHeight: 1 }}
                       >
                         <X size={12} />
                       </button>
@@ -656,7 +665,7 @@ function GetStartedContent() {
               textAlign: 'center',
             }}>
               <div style={{ fontSize: '0.78rem', fontWeight: 800, color: '#7C3AED' }}>14-day free trial</div>
-              <div style={{ fontSize: '0.7rem', color: '#9CA3AF', marginTop: '2px' }}>No credit card required</div>
+              <div style={{ fontSize: '0.7rem', color: 'var(--theme-text-muted)', marginTop: '2px' }}>No credit card required</div>
             </div>
 
             {/* Continue button */}
@@ -668,8 +677,8 @@ function GetStartedContent() {
                   width: '100%', padding: '13px',
                   background: selected.size > 0
                     ? 'linear-gradient(135deg, #8B5CF6 0%, #6C4CF1 50%, #5B21B6 100%)'
-                    : '#F3F4F6',
-                  color: selected.size > 0 ? '#fff' : '#9CA3AF',
+                    : 'var(--theme-bg)',
+                  color: selected.size > 0 ? '#fff' : 'var(--theme-text-faint)',
                   border: 'none', borderRadius: '10px',
                   fontSize: '0.88rem', fontWeight: 800, cursor: selected.size > 0 ? 'pointer' : 'default',
                   display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px',
@@ -680,7 +689,7 @@ function GetStartedContent() {
                 Continue <ArrowRight size={15} strokeWidth={2.5} />
               </button>
               {selected.size === 0 && (
-                <p style={{ textAlign: 'center', fontSize: '0.7rem', color: '#D1D5DB', marginTop: '8px', marginBottom: 0 }}>
+                <p style={{ textAlign: 'center', fontSize: '0.7rem', color: 'var(--theme-text-faint)', marginTop: '8px', marginBottom: 0 }}>
                   Select at least 1 service
                 </p>
               )}
@@ -689,11 +698,11 @@ function GetStartedContent() {
 
           {/* Help note */}
           <div style={{
-            background: '#fff', borderRadius: '12px', border: '1px solid #EAECF0',
+            background: 'var(--theme-card-bg)', borderRadius: '12px', border: '1px solid var(--theme-card-border)',
             padding: '14px 16px',
           }}>
-            <p style={{ fontSize: '0.75rem', color: '#6B7280', margin: 0, lineHeight: 1.6 }}>
-              💡 <strong style={{ color: '#374151' }}>Not sure what to pick?</strong> Just select anything that looks relevant — our team will guide you during onboarding.
+            <p style={{ fontSize: '0.75rem', color: 'var(--theme-text-muted)', margin: 0, lineHeight: 1.6 }}>
+              💡 <strong style={{ color: 'var(--theme-text-sub)' }}>Not sure what to pick?</strong> Just select anything that looks relevant — our team will guide you during onboarding.
             </p>
           </div>
         </div>
@@ -702,7 +711,7 @@ function GetStartedContent() {
       {/* ── Mobile floating bar — visibility controlled ONLY by CSS, no inline display ── */}
       <div className={`mob-bar${selected.size > 0 ? ' mob-bar--visible' : ''}`}>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '10px' }}>
-          <span style={{ fontSize: '0.82rem', fontWeight: 700, color: '#374151' }}>
+          <span style={{ fontSize: '0.82rem', fontWeight: 700, color: 'var(--theme-text-sub)' }}>
             {selected.size} service{selected.size > 1 ? 's' : ''} selected
           </span>
           <button
@@ -741,11 +750,12 @@ function GetStartedContent() {
           position: fixed;
           bottom: 64px;
           left: 0; right: 0;
-          background: #fff;
+          background: var(--theme-card-bg);
           border: none;
+          border-top: 1px solid var(--theme-card-border);
           border-radius: 0;
           padding: 14px 16px 16px;
-          box-shadow: 0 -6px 24px rgba(0,0,0,0.10);
+          box-shadow: var(--theme-shadow-card);
           z-index: 1300;
           transform: translateY(calc(100% + 64px));
           transition: transform 0.25s cubic-bezier(0.16,1,0.3,1);
@@ -774,8 +784,8 @@ function GetStartedContent() {
 
         /* Sidebar scrollbar */
         .gs-sidebar ::-webkit-scrollbar { width: 4px; }
-        .gs-sidebar ::-webkit-scrollbar-track { background: #F9FAFB; }
-        .gs-sidebar ::-webkit-scrollbar-thumb { background: #E5E7EB; border-radius: 4px; }
+        .gs-sidebar ::-webkit-scrollbar-track { background: var(--theme-bg); }
+        .gs-sidebar ::-webkit-scrollbar-thumb { background: var(--theme-input-border); border-radius: 4px; }
       `}</style>
 
     </div>
@@ -785,8 +795,8 @@ function GetStartedContent() {
 export default function GetStartedPage() {
   return (
     <Suspense fallback={
-      <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-        <div style={{ fontSize: '0.9rem', color: '#7C3AED', fontWeight: 600 }}>Loading services...</div>
+      <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'var(--theme-bg)' }}>
+        <div style={{ fontSize: '0.9rem', color: 'var(--purple-500)', fontWeight: 600 }}>Loading services...</div>
       </div>
     }>
       <GetStartedContent />

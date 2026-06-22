@@ -114,7 +114,7 @@ export default async function LegalDocPage({ params }) {
   }
 
   return (
-    <div style={{ minHeight: '100vh', background: '#F8F9FC', paddingTop: '72px' }}>
+    <div style={{ minHeight: '100vh', background: 'var(--theme-bg)', paddingTop: '72px' }}>
 
       {/* Header */}
       <div style={{
@@ -142,17 +142,17 @@ export default async function LegalDocPage({ params }) {
       <div style={{ maxWidth: '800px', margin: '0 auto', padding: '48px 20px 80px' }}>
         {policy.sections.map(sec => (
           <div key={sec.heading} style={{
-            background: '#fff',
+            background: 'var(--theme-card-bg)',
             borderRadius: '16px',
-            border: '1px solid #E8ECF2',
+            border: '1px solid var(--theme-card-border)',
             padding: '28px 32px',
             marginBottom: '12px',
-            boxShadow: '0 2px 8px rgba(15,23,42,0.03)',
+            boxShadow: 'var(--theme-shadow-card)',
           }}>
-            <h2 style={{ fontSize: '1rem', fontWeight: 800, color: '#0F172A', marginBottom: '12px', letterSpacing: '-0.005em' }}>
+            <h2 style={{ fontSize: '1rem', fontWeight: 800, color: 'var(--theme-text-main)', marginBottom: '12px', letterSpacing: '-0.005em' }}>
               {sec.heading}
             </h2>
-            <p style={{ fontSize: '0.85rem', color: '#475569', lineHeight: 1.8, margin: 0 }}>
+            <p style={{ fontSize: '0.85rem', color: 'var(--theme-text-sub)', lineHeight: 1.8, margin: 0 }}>
               {sec.body}
             </p>
           </div>
@@ -160,13 +160,14 @@ export default async function LegalDocPage({ params }) {
 
         <div style={{
           marginTop: '40px', padding: '24px 28px',
-          background: '#fff', borderRadius: '16px', border: '1px solid #E8ECF2',
+          background: 'var(--theme-card-bg)', borderRadius: '16px', border: '1px solid var(--theme-card-border)',
           display: 'flex', alignItems: 'center', justifyContent: 'space-between',
           flexWrap: 'wrap', gap: '12px',
+          boxShadow: 'var(--theme-shadow-card)',
         }}>
           <div>
-            <p style={{ fontSize: '0.85rem', fontWeight: 700, color: '#0F172A', margin: '0 0 2px' }}>Questions about this document?</p>
-            <p style={{ fontSize: '0.78rem', color: '#64748B', margin: 0 }}>Email us at legal@sangoe.com — we respond within 2 business days.</p>
+            <p style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--theme-text-main)', margin: '0 0 2px' }}>Questions about this document?</p>
+            <p style={{ fontSize: '0.78rem', color: 'var(--theme-text-sub)', margin: 0 }}>Email us at legal@sangoe.com — we respond within 2 business days.</p>
           </div>
           <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
             <Link href="/legal" style={{

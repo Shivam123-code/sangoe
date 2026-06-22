@@ -68,7 +68,7 @@ const DOCS = [
 
 export default function LegalPage() {
   return (
-    <div style={{ minHeight: '100vh', background: '#F8F9FC', paddingTop: '72px' }}>
+    <div style={{ minHeight: '100vh', background: 'var(--theme-bg)', paddingTop: '72px' }}>
 
       {/* ── Hero ── */}
       <div style={{
@@ -133,15 +133,15 @@ export default function LegalPage() {
 
                 <div style={{ flex: 1 }}>
                   <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: '8px', marginBottom: '6px' }}>
-                    <h2 style={{ fontSize: '0.95rem', fontWeight: 800, color: '#0F172A', margin: 0 }}>
+                    <h2 style={{ fontSize: '0.95rem', fontWeight: 800, color: 'var(--theme-text-main)', margin: 0 }}>
                       {doc.title}
                     </h2>
                     <ArrowUpRight size={15} color="#CBD5E1" style={{ flexShrink: 0, marginTop: '2px' }} />
                   </div>
-                  <p style={{ fontSize: '0.8rem', color: '#64748B', margin: '0 0 8px', lineHeight: 1.6 }}>
+                  <p style={{ fontSize: '0.8rem', color: 'var(--theme-text-sub)', margin: '0 0 8px', lineHeight: 1.6 }}>
                     {doc.desc}
                   </p>
-                  <span style={{ fontSize: '0.68rem', color: '#94A3B8', fontWeight: 600 }}>
+                  <span style={{ fontSize: '0.68rem', color: 'var(--theme-text-muted)', fontWeight: 600 }}>
                     Last updated: {doc.updated}
                   </span>
                 </div>
@@ -153,12 +153,12 @@ export default function LegalPage() {
         {/* Trust note */}
         <div style={{
           marginTop: '48px',
-          background: '#fff',
-          border: '1px solid #E8ECF2',
+          background: 'var(--theme-card-bg)',
+          border: '1px solid var(--theme-card-border)',
           borderRadius: '16px',
           padding: '28px 32px',
           display: 'flex', alignItems: 'flex-start', gap: '16px',
-          boxShadow: '0 2px 8px rgba(15,23,42,0.04)',
+          boxShadow: 'var(--theme-shadow-card)',
         }}>
           <div style={{
             width: '40px', height: '40px', borderRadius: '12px', flexShrink: 0,
@@ -168,10 +168,10 @@ export default function LegalPage() {
             <Shield size={18} color="#10B981" strokeWidth={1.8} />
           </div>
           <div>
-            <h3 style={{ fontSize: '0.95rem', fontWeight: 800, color: '#0F172A', margin: '0 0 6px' }}>
+            <h3 style={{ fontSize: '0.95rem', fontWeight: 800, color: 'var(--theme-text-main)', margin: '0 0 6px' }}>
               Questions about our legal documents?
             </h3>
-            <p style={{ fontSize: '0.82rem', color: '#64748B', margin: '0 0 12px', lineHeight: 1.6 }}>
+            <p style={{ fontSize: '0.82rem', color: 'var(--theme-text-sub)', margin: '0 0 12px', lineHeight: 1.6 }}>
               Our legal team is available to clarify any policies. For enterprise customers, we also offer custom Data Processing Agreements (DPAs) and MSAs.
             </p>
             <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>

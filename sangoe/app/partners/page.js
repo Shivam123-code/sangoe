@@ -47,7 +47,7 @@ export default function PartnersPage() {
   };
 
   return (
-    <div style={{ paddingTop: '0', minHeight: '100vh', background: '#f9fafb', paddingBottom: '80px' }}>
+    <div style={{ paddingTop: '0', minHeight: '100vh', background: 'var(--theme-bg)', paddingBottom: '80px' }}>
       {/* Hero */}
       <section style={{ position: 'relative', background: 'linear-gradient(135deg, #030c1e 0%, #071a40 50%, #0a2558 100%)', overflow: 'hidden' }}>
         <div style={{ position: 'absolute', top: '-130px', right: '-80px', width: '480px', height: '480px', borderRadius: '50%', background: 'radial-gradient(circle, rgba(59,130,246,0.2) 0%, transparent 70%)', pointerEvents: 'none' }} />
@@ -79,9 +79,9 @@ export default function PartnersPage() {
               <Image src="/images/hero_partners.png" alt="Sangoe partner network" width={520} height={360} style={{ width: '100%', height: 'auto', display: 'block' }} priority />
               <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, rgba(3,12,30,0.2) 0%, transparent 60%)' }} />
             </div>
-            <motion.div animate={{ y: [0, -8, 0] }} transition={{ repeat: Infinity, duration: 3, ease: 'easeInOut' }} style={{ position: 'absolute', top: '-18px', right: '-18px', background: '#ffffff', borderRadius: '14px', padding: '10px 16px', boxShadow: '0 16px 40px rgba(0,0,0,0.35)', zIndex: 10, display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <motion.div animate={{ y: [0, -8, 0] }} transition={{ repeat: Infinity, duration: 3, ease: 'easeInOut' }} style={{ position: 'absolute', top: '-18px', right: '-18px', background: 'var(--theme-card-bg)', border: '1px solid var(--theme-card-border)', borderRadius: '14px', padding: '10px 16px', boxShadow: '0 16px 40px rgba(0,0,0,0.35)', zIndex: 10, display: 'flex', alignItems: 'center', gap: '8px' }}>
               <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#3b82f6', flexShrink: 0 }} />
-              <span style={{ fontSize: '0.78rem', fontWeight: 700, color: '#111827', whiteSpace: 'nowrap' }}>15% Revenue Share</span>
+              <span style={{ fontSize: '0.78rem', fontWeight: 700, color: 'var(--theme-text-main)', whiteSpace: 'nowrap' }}>15% Revenue Share</span>
             </motion.div>
             <motion.div animate={{ y: [0, 7, 0] }} transition={{ repeat: Infinity, duration: 4, ease: 'easeInOut', delay: 1.2 }} style={{ position: 'absolute', bottom: '-18px', left: '-18px', background: 'linear-gradient(135deg, #2563eb, #1d4ed8)', borderRadius: '14px', padding: '12px 18px', boxShadow: '0 16px 40px rgba(37,99,235,0.45)', zIndex: 10 }}>
               <div style={{ fontSize: '1.2rem', fontWeight: 900, color: '#ffffff' }}>3</div>
@@ -98,11 +98,11 @@ export default function PartnersPage() {
             <div
               key={model.title}
               style={{
-                background: '#ffffff',
+                background: 'var(--theme-card-bg)',
                 borderRadius: '24px',
                 padding: '36px',
-                border: '1px solid rgba(0,0,0,0.04)',
-                boxShadow: '0 4px 20px rgba(0,0,0,0.008)',
+                border: '1px solid var(--theme-card-border)',
+                boxShadow: 'var(--theme-shadow-card)',
                 display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'space-between'
@@ -111,12 +111,12 @@ export default function PartnersPage() {
               <div>
                 <div style={{ display: 'flex', gap: '8px', alignItems: 'center', marginBottom: '16px' }}>
                   <Handshake size={20} style={{ color: '#3B82F6' }} />
-                  <h3 style={{ fontSize: '1.35rem', fontWeight: 800, color: '#111827' }}>{model.title}</h3>
+                  <h3 style={{ fontSize: '1.35rem', fontWeight: 800, color: 'var(--theme-text-main)' }}>{model.title}</h3>
                 </div>
-                <p style={{ fontSize: '0.9rem', color: '#6b7280', lineHeight: 1.6, marginBottom: '24px' }}>{model.desc}</p>
+                <p style={{ fontSize: '0.9rem', color: 'var(--theme-text-sub)', lineHeight: 1.6, marginBottom: '24px' }}>{model.desc}</p>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
                   {model.benefits.map(b => (
-                    <div key={b} style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.85rem', color: '#374151', fontWeight: 550 }}>
+                    <div key={b} style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.85rem', color: 'var(--theme-text-sub)', fontWeight: 550 }}>
                       <CheckCircle2 size={14} style={{ color: '#10B981' }} />
                       <span>{b}</span>
                     </div>
@@ -131,55 +131,55 @@ export default function PartnersPage() {
       {/* Ecosystem Categories Grid */}
       <section style={{ padding: '40px 20px', maxWidth: '1200px', margin: '0 auto' }}>
         <div style={{ textAlign: 'center', marginBottom: '40px' }}>
-          <h2 style={{ fontSize: '2rem', fontWeight: 900, color: '#111827' }}>Who Partners With Us?</h2>
-          <p style={{ fontSize: '1.05rem', color: '#6b7280', marginTop: '12px' }}>A diverse ecosystem built for professionals scaling Indian businesses.</p>
+          <h2 style={{ fontSize: '2rem', fontWeight: 900, color: 'var(--theme-text-main)' }}>Who Partners With Us?</h2>
+          <p style={{ fontSize: '1.05rem', color: 'var(--theme-text-sub)', marginTop: '12px' }}>A diverse ecosystem built for professionals scaling Indian businesses.</p>
         </div>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '20px' }}>
           {ECOSYSTEM_CATEGORIES.map(cat => (
             <div
               key={cat.name}
               style={{
-                background: '#ffffff',
+                background: 'var(--theme-card-bg)',
                 borderRadius: '16px',
                 padding: '24px',
-                border: '1px solid rgba(0,0,0,0.04)',
-                boxShadow: '0 2px 10px rgba(0,0,0,0.01)',
+                border: '1px solid var(--theme-card-border)',
+                boxShadow: 'var(--theme-shadow-card)',
                 display: 'flex',
                 flexDirection: 'column',
                 gap: '8px'
               }}
             >
               <h3 style={{ fontSize: '1.1rem', fontWeight: 800, color: '#3b82f6' }}>{cat.name}</h3>
-              <p style={{ fontSize: '0.85rem', color: '#4b5563', lineHeight: 1.5 }}>{cat.desc}</p>
+              <p style={{ fontSize: '0.85rem', color: 'var(--theme-text-sub)', lineHeight: 1.5 }}>{cat.desc}</p>
             </div>
           ))}
         </div>
       </section>
 
       {/* Partnership Form */}
-      <section style={{ padding: '40px 20px', maxWidth: '600px', margin: '40px auto 0' }}>
-        <div style={{ background: '#ffffff', borderRadius: '24px', padding: '40px', border: '1px solid rgba(0,0,0,0.05)', boxShadow: '0 10px 40px rgba(0,0,0,0.015)' }}>
-          <h2 style={{ fontSize: '1.5rem', fontWeight: 800, color: '#111827', textAlign: 'center', marginBottom: '8px' }}>Apply for Partnership</h2>
-          <p style={{ fontSize: '0.85rem', color: '#6b7280', textAlign: 'center', marginBottom: '32px' }}>Submit details to start a partnership conversation with our business development leads.</p>
+      <section id="apply" style={{ padding: '40px 20px', maxWidth: '600px', margin: '40px auto 0' }}>
+        <div style={{ background: 'var(--theme-card-bg)', borderRadius: '24px', padding: '40px', border: '1px solid var(--theme-card-border)', boxShadow: 'var(--theme-shadow-card)' }}>
+          <h2 style={{ fontSize: '1.5rem', fontWeight: 800, color: 'var(--theme-text-main)', textAlign: 'center', marginBottom: '8px' }}>Apply for Partnership</h2>
+          <p style={{ fontSize: '0.85rem', color: 'var(--theme-text-sub)', textAlign: 'center', marginBottom: '32px' }}>Submit details to start a partnership conversation with our business development leads.</p>
 
           <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
             <div className="responsive-grid-2" style={{ gap: '16px' }}>
               <div>
-                <label style={{ fontSize: '0.8rem', fontWeight: 700, display: 'block', marginBottom: '6px' }}>Your Name</label>
-                <input required type="text" value={formData.name} onChange={(e) => setFormData({ ...formData, name: e.target.value })} style={{ width: '100%', padding: '10px 14px', borderRadius: '8px', border: '1px solid #d1d5db', outline: 'none' }} />
+                <label style={{ fontSize: '0.8rem', fontWeight: 700, display: 'block', marginBottom: '6px', color: 'var(--theme-text-main)' }}>Your Name</label>
+                <input required type="text" value={formData.name} onChange={(e) => setFormData({ ...formData, name: e.target.value })} style={{ width: '100%', padding: '10px 14px', borderRadius: '8px', border: '1px solid var(--theme-input-border)', background: 'var(--theme-input-bg)', color: 'var(--theme-text-main)', outline: 'none' }} />
               </div>
               <div>
-                <label style={{ fontSize: '0.8rem', fontWeight: 700, display: 'block', marginBottom: '6px' }}>Company Name</label>
-                <input required type="text" value={formData.company} onChange={(e) => setFormData({ ...formData, company: e.target.value })} style={{ width: '100%', padding: '10px 14px', borderRadius: '8px', border: '1px solid #d1d5db', outline: 'none' }} />
+                <label style={{ fontSize: '0.8rem', fontWeight: 700, display: 'block', marginBottom: '6px', color: 'var(--theme-text-main)' }}>Company Name</label>
+                <input required type="text" value={formData.company} onChange={(e) => setFormData({ ...formData, company: e.target.value })} style={{ width: '100%', padding: '10px 14px', borderRadius: '8px', border: '1px solid var(--theme-input-border)', background: 'var(--theme-input-bg)', color: 'var(--theme-text-main)', outline: 'none' }} />
               </div>
             </div>
             <div>
-              <label style={{ fontSize: '0.8rem', fontWeight: 700, display: 'block', marginBottom: '6px' }}>Work Email</label>
-              <input required type="email" value={formData.email} onChange={(e) => setFormData({ ...formData, email: e.target.value })} style={{ width: '100%', padding: '10px 14px', borderRadius: '8px', border: '1px solid #d1d5db', outline: 'none' }} />
+              <label style={{ fontSize: '0.8rem', fontWeight: 700, display: 'block', marginBottom: '6px', color: 'var(--theme-text-main)' }}>Work Email</label>
+              <input required type="email" value={formData.email} onChange={(e) => setFormData({ ...formData, email: e.target.value })} style={{ width: '100%', padding: '10px 14px', borderRadius: '8px', border: '1px solid var(--theme-input-border)', background: 'var(--theme-input-bg)', color: 'var(--theme-text-main)', outline: 'none' }} />
             </div>
             <div>
-              <label style={{ fontSize: '0.8rem', fontWeight: 700, display: 'block', marginBottom: '6px' }}>Partnership Model</label>
-              <select value={formData.model} onChange={(e) => setFormData({ ...formData, model: e.target.value })} style={{ width: '100%', padding: '10px 14px', borderRadius: '8px', border: '1px solid #d1d5db', outline: 'none', background: '#fff' }}>
+              <label style={{ fontSize: '0.8rem', fontWeight: 700, display: 'block', marginBottom: '6px', color: 'var(--theme-text-main)' }}>Partnership Model</label>
+              <select value={formData.model} onChange={(e) => setFormData({ ...formData, model: e.target.value })} style={{ width: '100%', padding: '10px 14px', borderRadius: '8px', border: '1px solid var(--theme-input-border)', background: 'var(--theme-input-bg)', color: 'var(--theme-text-main)', outline: 'none' }}>
                 <option>Referral Partner</option>
                 <option>Implementation Partner</option>
                 <option>White Label Reseller</option>

@@ -20,7 +20,7 @@ export default function PricingPage() {
   };
 
   return (
-    <div style={{ paddingTop: '0', minHeight: '100vh', background: '#f9fafb', paddingBottom: '80px' }}>
+    <div style={{ paddingTop: '0', minHeight: '100vh', background: 'var(--theme-bg)', paddingBottom: '80px' }}>
       {/* Hero */}
       <section style={{ position: 'relative', background: 'linear-gradient(135deg, #0a0014 0%, #1a054a 50%, #2a0a6a 100%)', overflow: 'hidden' }}>
         <div style={{ position: 'absolute', top: '-120px', right: '-80px', width: '480px', height: '480px', borderRadius: '50%', background: 'radial-gradient(circle, rgba(124,58,237,0.22) 0%, transparent 70%)', pointerEvents: 'none' }} />
@@ -41,7 +41,7 @@ export default function PricingPage() {
               <Link href="/contact" className="btn btn-outline-white">Book Live Demo</Link>
             </motion.div>
             <motion.div style={{ display: 'flex', gap: '32px', paddingTop: '32px', borderTop: '1px solid rgba(255,255,255,0.08)' }} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.7, duration: 0.6 }}>
-              {[['3', 'Flexible Plans'], ['20%', 'Annual Discount'], ['₹0', 'Setup Fee']].map(([num, label]) => (
+              {[['4', 'Flexible Plans'], ['20%', 'Annual Discount'], ['₹0', 'Setup Fee']].map(([num, label]) => (
                 <div key={label}><div style={{ fontSize: '1.6rem', fontWeight: 900, color: '#ffffff' }}>{num}</div><div style={{ fontSize: '0.7rem', color: 'rgba(255,255,255,0.45)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.06em', marginTop: '2px' }}>{label}</div></div>
               ))}
             </motion.div>
@@ -106,21 +106,48 @@ export default function PricingPage() {
       </section>
 
       {/* Pricing Cards */}
-      <section style={{ padding: '20px', maxWidth: '1100px', margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 320px), 1fr))', gap: '32px' }}>
-        {/* Startup Plan */}
-        <div style={{ background: '#ffffff', borderRadius: '24px', padding: '40px', border: '1px solid rgba(0,0,0,0.04)', boxShadow: '0 4px 20px rgba(0,0,0,0.008)', display: 'flex', flexDirection: 'column', justifyBetween: 'space-between' }}>
+      <section style={{ padding: '20px', maxWidth: '1300px', margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 270px), 1fr))', gap: '24px' }}>
+        {/* Free Plan */}
+        <div style={{ background: 'var(--theme-card-bg)', borderRadius: '24px', padding: '36px 24px', border: '1px solid var(--theme-card-border)', boxShadow: 'var(--theme-shadow-card)', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
           <div>
-            <h3 style={{ fontSize: '1.4rem', fontWeight: 800, color: '#111827', marginBottom: '8px' }}>Startup OS™</h3>
-            <p style={{ fontSize: '0.85rem', color: '#6b7280', marginBottom: '24px' }}>Essential operational tracking systems for growing business teams.</p>
+            <h3 style={{ fontSize: '1.4rem', fontWeight: 800, color: 'var(--theme-text-main)', marginBottom: '8px' }}>Free Module</h3>
+            <p style={{ fontSize: '0.85rem', color: 'var(--theme-text-sub)', marginBottom: '24px' }}>Choose one service or module completely free to run your core function.</p>
             <div style={{ display: 'flex', alignItems: 'baseline', gap: '4px', marginBottom: '32px' }}>
-              <span style={{ fontSize: '2.5rem', fontWeight: 900, color: '#111827' }}>{formatter.format(getPrice(12499))}</span>
-              <span style={{ fontSize: '0.9rem', color: '#6b7280' }}>/ month</span>
+              <span style={{ fontSize: '2.5rem', fontWeight: 900, color: 'var(--theme-text-main)' }}>{formatter.format(0)}</span>
+              <span style={{ fontSize: '0.9rem', color: 'var(--theme-text-muted)' }}>/ month</span>
             </div>
-            <div style={{ borderTop: '1px solid #f3f4f6', paddingTop: '24px' }}>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+            <div style={{ borderTop: '1px solid var(--theme-border)', paddingTop: '24px' }}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+                {['1 Cloud Module completely free', 'Basic CRM or HR Tools access', 'Up to 3 team member accounts', 'Standard reports & workflows', 'Self-serve knowledge base'].map(f => (
+                  <div key={f} style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', fontSize: '0.88rem', color: 'var(--theme-text-sub)', fontWeight: 550, lineHeight: 1.4 }}>
+                    <CheckCircle2 size={16} style={{ color: '#10B981', flexShrink: 0, marginTop: '2px' }} />
+                    <span>{f}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+          <div style={{ marginTop: '40px' }}>
+            <Link href="/get-started?plan=free" className="btn btn-purple" style={{ width: '100%', justifyContent: 'center' }}>
+              Start from 0
+            </Link>
+          </div>
+        </div>
+
+        {/* Startup Plan */}
+        <div style={{ background: 'var(--theme-card-bg)', borderRadius: '24px', padding: '36px 24px', border: '1px solid var(--theme-card-border)', boxShadow: 'var(--theme-shadow-card)', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+          <div>
+            <h3 style={{ fontSize: '1.4rem', fontWeight: 800, color: 'var(--theme-text-main)', marginBottom: '8px' }}>Startup OS™</h3>
+            <p style={{ fontSize: '0.85rem', color: 'var(--theme-text-sub)', marginBottom: '24px' }}>Essential operational tracking systems for growing business teams.</p>
+            <div style={{ display: 'flex', alignItems: 'baseline', gap: '4px', marginBottom: '32px' }}>
+              <span style={{ fontSize: '2.5rem', fontWeight: 900, color: 'var(--theme-text-main)' }}>{formatter.format(getPrice(12499))}</span>
+              <span style={{ fontSize: '0.9rem', color: 'var(--theme-text-muted)' }}>/ month</span>
+            </div>
+            <div style={{ borderTop: '1px solid var(--theme-border)', paddingTop: '24px' }}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
                 {['Sales & CRM Cloud Access', 'HR & Attendance Systems', 'Standard Projects & Worksheets', '3 Verification Checks / mo', 'Basic Reports Dashboard'].map(f => (
-                  <div key={f} style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.88rem', color: '#4b5563', fontWeight: 550 }}>
-                    <CheckCircle2 size={16} style={{ color: '#10B981', flexShrink: 0 }} />
+                  <div key={f} style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', fontSize: '0.88rem', color: 'var(--theme-text-sub)', fontWeight: 550, lineHeight: 1.4 }}>
+                    <CheckCircle2 size={16} style={{ color: '#10B981', flexShrink: 0, marginTop: '2px' }} />
                     <span>{f}</span>
                   </div>
                 ))}
@@ -135,20 +162,20 @@ export default function PricingPage() {
         </div>
 
         {/* Growth/Scale Plan (Recommended) */}
-        <div style={{ background: '#ffffff', borderRadius: '24px', padding: '40px', border: '2px solid #7C3AED', boxShadow: '0 20px 40px rgba(124,58,237,0.08)', display: 'flex', flexDirection: 'column', justifyBetween: 'space-between', position: 'relative' }}>
+        <div style={{ background: 'var(--theme-card-bg)', borderRadius: '24px', padding: '36px 24px', border: '2px solid #7C3AED', boxShadow: 'var(--theme-shadow-card)', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', position: 'relative' }}>
           <span style={{ position: 'absolute', top: '-14px', left: '50%', transform: 'translateX(-50%)', background: '#7C3AED', color: '#ffffff', fontSize: '0.75rem', fontWeight: 700, padding: '4px 14px', borderRadius: '99px', textTransform: 'uppercase', letterSpacing: '0.04rem' }}>Recommended</span>
           <div>
-            <h3 style={{ fontSize: '1.4rem', fontWeight: 800, color: '#111827', marginBottom: '8px' }}>Business Growth OS™</h3>
-            <p style={{ fontSize: '0.85rem', color: '#6b7280', marginBottom: '24px' }}>Our signature platform including all Business Clouds and compliance towers.</p>
+            <h3 style={{ fontSize: '1.4rem', fontWeight: 800, color: 'var(--theme-text-main)', marginBottom: '8px' }}>Business Growth OS™</h3>
+            <p style={{ fontSize: '0.85rem', color: 'var(--theme-text-sub)', marginBottom: '24px' }}>Our signature platform including all Business Clouds and compliance towers.</p>
             <div style={{ display: 'flex', alignItems: 'baseline', gap: '4px', marginBottom: '32px' }}>
               <span style={{ fontSize: '2.5rem', fontWeight: 900, color: '#7C3AED' }}>{formatter.format(getPrice(29999))}</span>
-              <span style={{ fontSize: '0.9rem', color: '#6b7280' }}>/ month</span>
+              <span style={{ fontSize: '0.9rem', color: 'var(--theme-text-muted)' }}>/ month</span>
             </div>
-            <div style={{ borderTop: '1px solid #f3f4f6', paddingTop: '24px' }}>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+            <div style={{ borderTop: '1px solid var(--theme-border)', paddingTop: '24px' }}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
                 {['Access to all Business Clouds', 'FounderOS™ Command Center', 'Compliance Control Tower™', 'Trust Intelligence Verification', 'MSME Systemization Blueprint', 'Premium OKR / KPI Dashboards', 'Dedicated CA/CS Onboarding support'].map(f => (
-                  <div key={f} style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.88rem', color: '#4b5563', fontWeight: 550 }}>
-                    <CheckCircle2 size={16} style={{ color: '#7C3AED', flexShrink: 0 }} />
+                  <div key={f} style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', fontSize: '0.88rem', color: 'var(--theme-text-sub)', fontWeight: 550, lineHeight: 1.4 }}>
+                    <CheckCircle2 size={16} style={{ color: '#7C3AED', flexShrink: 0, marginTop: '2px' }} />
                     <span>{f}</span>
                   </div>
                 ))}
@@ -166,18 +193,18 @@ export default function PricingPage() {
         </div>
 
         {/* Enterprise Plan */}
-        <div style={{ background: '#ffffff', borderRadius: '24px', padding: '40px', border: '1px solid rgba(0,0,0,0.04)', boxShadow: '0 4px 20px rgba(0,0,0,0.008)', display: 'flex', flexDirection: 'column', justifyBetween: 'space-between' }}>
+        <div style={{ background: 'var(--theme-card-bg)', borderRadius: '24px', padding: '36px 24px', border: '1px solid var(--theme-card-border)', boxShadow: 'var(--theme-shadow-card)', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
           <div>
-            <h3 style={{ fontSize: '1.4rem', fontWeight: 800, color: '#111827', marginBottom: '8px' }}>Enterprise OS™</h3>
-            <p style={{ fontSize: '0.85rem', color: '#6b7280', marginBottom: '24px' }}>Full white-labeled architecture and dedicated deployment configurations.</p>
+            <h3 style={{ fontSize: '1.4rem', fontWeight: 800, color: 'var(--theme-text-main)', marginBottom: '8px' }}>Enterprise OS™</h3>
+            <p style={{ fontSize: '0.85rem', color: 'var(--theme-text-sub)', marginBottom: '24px' }}>Full white-labeled architecture and dedicated deployment configurations.</p>
             <div style={{ display: 'flex', alignItems: 'baseline', gap: '4px', marginBottom: '32px' }}>
-              <span style={{ fontSize: '2.3rem', fontWeight: 900, color: '#111827' }}>Custom Quotation</span>
+              <span style={{ fontSize: '2.3rem', fontWeight: 900, color: 'var(--theme-text-main)' }}>Custom Quotation</span>
             </div>
-            <div style={{ borderTop: '1px solid #f3f4f6', paddingTop: '24px' }}>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+            <div style={{ borderTop: '1px solid var(--theme-border)', paddingTop: '24px' }}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
                 {['Custom Private VPS Deployments', 'White-labeled Partner portal & Reselling', 'Full custom API code integrations', 'Enterprise Risk registers audit reviews', 'Investor Board meetings document suites', 'Unlimited verifications check access'].map(f => (
-                  <div key={f} style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.88rem', color: '#4b5563', fontWeight: 550 }}>
-                    <CheckCircle2 size={16} style={{ color: '#10B981', flexShrink: 0 }} />
+                  <div key={f} style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', fontSize: '0.88rem', color: 'var(--theme-text-sub)', fontWeight: 550, lineHeight: 1.4 }}>
+                    <CheckCircle2 size={16} style={{ color: '#10B981', flexShrink: 0, marginTop: '2px' }} />
                     <span>{f}</span>
                   </div>
                 ))}
@@ -194,14 +221,14 @@ export default function PricingPage() {
 
       {/* Comparison table capability */}
       <section style={{ padding: '60px 20px', maxWidth: '900px', margin: '40px auto 0' }}>
-        <h2 style={{ fontSize: '1.6rem', fontWeight: 800, color: '#111827', textAlign: 'center', marginBottom: '32px' }}>Platform Comparisons</h2>
-        <div style={{ background: '#ffffff', borderRadius: '16px', overflowX: 'auto', border: '1px solid #e5e7eb', boxShadow: '0 4px 12px rgba(0,0,0,0.008)' }}>
+        <h2 style={{ fontSize: '1.6rem', fontWeight: 800, color: 'var(--theme-text-main)', textAlign: 'center', marginBottom: '32px' }}>Platform Comparisons</h2>
+        <div style={{ background: 'var(--theme-card-bg)', borderRadius: '16px', overflowX: 'auto', border: '1px solid var(--theme-card-border)', boxShadow: 'var(--theme-shadow-card)' }}>
           <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.85rem' }}>
             <thead>
-              <tr style={{ background: '#f9fafb', borderBottom: '1px solid #e5e7eb', textAlign: 'left' }}>
-                <th style={{ padding: '16px' }}>Capability</th>
-                <th style={{ padding: '16px' }}>Traditional CRM</th>
-                <th style={{ padding: '16px' }}>Heavy ERP</th>
+              <tr style={{ background: 'var(--theme-bg-secondary)', borderBottom: '1px solid var(--theme-border)', textAlign: 'left' }}>
+                <th style={{ padding: '16px', color: 'var(--theme-text-main)' }}>Capability</th>
+                <th style={{ padding: '16px', color: 'var(--theme-text-main)' }}>Traditional CRM</th>
+                <th style={{ padding: '16px', color: 'var(--theme-text-main)' }}>Heavy ERP</th>
                 <th style={{ padding: '16px', color: '#7C3AED', fontWeight: 800 }}>Sangoe System</th>
               </tr>
             </thead>
@@ -216,8 +243,8 @@ export default function PricingPage() {
                 { name: 'IPO Readiness Data Rooms', crm: false, erp: false, sangoe: true },
                 { name: 'Interactive FounderOS Command Screen', crm: 'limited', erp: 'limited', sangoe: true }
               ].map((row, idx) => (
-                <tr key={idx} style={{ borderBottom: idx === 7 ? 'none' : '1px solid #e5e7eb' }}>
-                  <td style={{ padding: '16px', fontWeight: 700, color: '#374151' }}>{row.name}</td>
+                <tr key={idx} style={{ borderBottom: idx === 7 ? 'none' : '1px solid var(--theme-border)' }}>
+                  <td style={{ padding: '16px', fontWeight: 700, color: 'var(--theme-text-sub)' }}>{row.name}</td>
                   <td style={{ padding: '16px' }}>
                     {row.crm === true && <CheckCircle2 size={16} style={{ color: '#10B981', margin: '0 auto' }} />}
                     {row.crm === false && <XCircle size={16} style={{ color: '#EF4444', margin: '0 auto' }} />}
@@ -228,7 +255,7 @@ export default function PricingPage() {
                     {row.erp === false && <XCircle size={16} style={{ color: '#EF4444', margin: '0 auto' }} />}
                     {row.erp === 'limited' && <span style={{ fontSize: '0.75rem', fontWeight: 700, color: '#F59E0B', background: 'rgba(245,158,11,0.08)', padding: '3px 8px', borderRadius: '99px' }}>Limited</span>}
                   </td>
-                  <td style={{ padding: '16px', background: 'rgba(124, 58, 237, 0.02)' }}>
+                  <td style={{ padding: '16px', background: 'rgba(124, 58, 237, 0.08)' }}>
                     {row.sangoe === true && <CheckCircle2 size={16} style={{ color: '#7C3AED', margin: '0 auto' }} />}
                   </td>
                 </tr>

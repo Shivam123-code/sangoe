@@ -46,7 +46,7 @@ export default function ResourcesPage() {
   });
 
   return (
-    <div style={{ paddingTop: '0', minHeight: '100vh', background: '#f9fafb', paddingBottom: '80px' }}>
+    <div style={{ paddingTop: '0', minHeight: '100vh', background: 'var(--theme-bg)', paddingBottom: '80px' }}>
       {/* Hero */}
       <section style={{ position: 'relative', background: 'linear-gradient(135deg, #030d14 0%, #0a1f35 50%, #0d2744 100%)', overflow: 'hidden' }}>
         <div style={{ position: 'absolute', top: '-130px', right: '-80px', width: '500px', height: '500px', borderRadius: '50%', background: 'radial-gradient(circle, rgba(6,182,212,0.15) 0%, transparent 70%)', pointerEvents: 'none' }} />
@@ -91,8 +91,8 @@ export default function ResourcesPage() {
       </section>
 
       {/* Filter and Search Panel */}
-      <section style={{ padding: '20px', maxWidth: '1200px', margin: '0 auto' }}>
-        <div style={{ background: '#ffffff', borderRadius: '16px', padding: '24px', border: '1px solid rgba(0,0,0,0.04)', boxShadow: '0 4px 12px rgba(0,0,0,0.008)', display: 'flex', gap: '20px', alignItems: 'center', flexWrap: 'wrap', justifyContent: 'space-between' }}>
+      <section id="templates" style={{ padding: '20px', maxWidth: '1200px', margin: '0 auto' }}>
+        <div style={{ background: 'var(--theme-card-bg)', borderRadius: '16px', padding: '24px', border: '1px solid var(--theme-card-border)', boxShadow: 'var(--theme-shadow-card)', display: 'flex', gap: '20px', alignItems: 'center', flexWrap: 'wrap', justifyContent: 'space-between' }}>
           {/* Categories */}
           <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap' }}>
             {CATEGORIES.map(cat => {
@@ -106,8 +106,8 @@ export default function ResourcesPage() {
                     borderRadius: '8px',
                     fontSize: '0.8rem',
                     fontWeight: 700,
-                    backgroundColor: isActive ? '#7C3AED' : '#f3f4f6',
-                    color: isActive ? '#ffffff' : '#4b5563',
+                    backgroundColor: isActive ? 'var(--purple-600)' : 'var(--theme-bg)',
+                    color: isActive ? '#ffffff' : 'var(--theme-text-sub)',
                     border: 'none',
                     cursor: 'pointer',
                     transition: 'all 0.2s'
@@ -130,12 +130,14 @@ export default function ResourcesPage() {
                 width: '100%',
                 padding: '10px 16px 10px 40px',
                 borderRadius: '8px',
-                border: '1px solid #d1d5db',
+                background: 'var(--theme-input-bg)',
+                color: 'var(--theme-text-main)',
+                border: '1px solid var(--theme-input-border)',
                 outline: 'none',
                 fontSize: '0.85rem'
               }}
             />
-            <Search size={16} style={{ position: 'absolute', left: '14px', top: '50%', transform: 'translateY(-50%)', color: '#9ca3af' }} />
+            <Search size={16} style={{ position: 'absolute', left: '14px', top: '50%', transform: 'translateY(-50%)', color: 'var(--theme-text-faint)' }} />
           </div>
         </div>
       </section>
@@ -146,13 +148,13 @@ export default function ResourcesPage() {
           {filtered.map(file => (
             <motion.div
               key={file.title}
-              whileHover={{ y: -4, boxShadow: '0 12px 30px rgba(0,0,0,0.04)' }}
+              whileHover={{ y: -4, boxShadow: 'var(--theme-shadow-card)' }}
               style={{
-                background: '#ffffff',
+                background: 'var(--theme-card-bg)',
                 borderRadius: '16px',
                 padding: '24px',
-                border: '1px solid rgba(0,0,0,0.04)',
-                boxShadow: '0 2px 8px rgba(0,0,0,0.008)',
+                border: '1px solid var(--theme-card-border)',
+                boxShadow: 'var(--theme-shadow-card)',
                 display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'space-between',
@@ -162,23 +164,23 @@ export default function ResourcesPage() {
             >
               <div>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
-                  <span style={{ fontSize: '0.65rem', fontWeight: 800, background: '#EFF6FF', color: '#1E40AF', padding: '3px 8px', borderRadius: '4px' }}>{file.cat}</span>
-                  <span style={{ fontSize: '0.65rem', fontWeight: 800, background: '#F3F4F6', color: '#374151', padding: '3px 8px', borderRadius: '4px' }}>{file.type}</span>
+                  <span style={{ fontSize: '0.65rem', fontWeight: 800, background: 'rgba(59, 130, 246, 0.12)', color: '#3b82f6', padding: '3px 8px', borderRadius: '4px' }}>{file.cat}</span>
+                  <span style={{ fontSize: '0.65rem', fontWeight: 800, background: 'var(--theme-bg)', color: 'var(--theme-text-muted)', padding: '3px 8px', borderRadius: '4px' }}>{file.type}</span>
                 </div>
-                <h3 style={{ fontSize: '1rem', fontWeight: 800, color: '#111827', lineHeight: 1.4, marginBottom: '20px' }}>
-                  <FileText size={16} style={{ color: '#7C3AED', marginRight: '8px', verticalAlign: 'middle', display: 'inline' }} />
+                <h3 style={{ fontSize: '1rem', fontWeight: 800, color: 'var(--theme-text-main)', lineHeight: 1.4, marginBottom: '20px' }}>
+                  <FileText size={16} style={{ color: 'var(--purple-500)', marginRight: '8px', verticalAlign: 'middle', display: 'inline' }} />
                   {file.title}
                 </h3>
               </div>
 
-              <div style={{ borderTop: '1px solid #f3f4f6', paddingTop: '16px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                <span style={{ fontSize: '0.75rem', color: '#9ca3af' }}>{file.downloads.toLocaleString()} DLs</span>
+              <div style={{ borderTop: '1px solid var(--theme-border)', paddingTop: '16px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <span style={{ fontSize: '0.75rem', color: 'var(--theme-text-faint)' }}>{file.downloads.toLocaleString()} DLs</span>
                 <button
                   onClick={() => handleDownload(file)}
                   style={{
                     fontSize: '0.8rem',
                     fontWeight: 700,
-                    color: '#7C3AED',
+                    color: 'var(--purple-500)',
                     cursor: 'pointer',
                     background: 'none',
                     border: 'none',
@@ -218,20 +220,20 @@ export default function ResourcesPage() {
               animate={{ scale: 1 }}
               exit={{ scale: 0.9 }}
               style={{
-                background: '#ffffff',
+                background: 'var(--theme-card-bg)',
                 padding: '40px',
                 borderRadius: '24px',
                 textAlign: 'center',
-                boxShadow: '0 20px 50px rgba(0,0,0,0.15)',
+                boxShadow: 'var(--theme-shadow-card)',
                 maxWidth: '400px',
                 width: '100%',
                 margin: '0 20px',
-                border: '1px solid rgba(0,0,0,0.05)'
+                border: '1px solid var(--theme-card-border)'
               }}
             >
-              <div style={{ display: 'inline-block', width: '48px', height: '48px', border: '4px solid #F3E8FF', borderTopColor: '#7C3AED', borderRadius: '50%', animation: 'spin 1s linear infinite', marginBottom: '20px' }} />
-              <h3 style={{ fontSize: '1.25rem', fontWeight: 800, color: '#111827', marginBottom: '8px' }}>Preparing Download</h3>
-              <p style={{ fontSize: '0.85rem', color: '#6b7280' }}>Configuring files and links for <strong>{downloadingFile.title}</strong>...</p>
+              <div style={{ display: 'inline-block', width: '48px', height: '48px', border: '4px solid var(--theme-bg)', borderTopColor: 'var(--purple-500)', borderRadius: '50%', animation: 'spin 1s linear infinite', marginBottom: '20px' }} />
+              <h3 style={{ fontSize: '1.25rem', fontWeight: 800, color: 'var(--theme-text-main)', marginBottom: '8px' }}>Preparing Download</h3>
+              <p style={{ fontSize: '0.85rem', color: 'var(--theme-text-muted)' }}>Configuring files and links for <strong>{downloadingFile.title}</strong>...</p>
             </motion.div>
           </motion.div>
         )}

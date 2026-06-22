@@ -205,15 +205,15 @@ export default function AssessmentsPage() {
   };
 
   return (
-    <div style={{ paddingTop: '100px', minHeight: '100vh', background: '#f9fafb', paddingBottom: '80px' }}>
+    <div style={{ paddingTop: '100px', minHeight: '100vh', background: 'var(--theme-bg)', paddingBottom: '80px' }}>
       {/* Header */}
-      <section style={{ padding: '80px 20px', textAlign: 'center', background: 'linear-gradient(180deg, #F3E8FF 0%, #FAF5FF 60%, #F9FAFB 100%)' }}>
+      <section style={{ padding: '80px 20px', textAlign: 'center', background: 'linear-gradient(180deg, var(--theme-bg-secondary) 0%, var(--theme-bg) 100%)' }}>
         <div style={{ maxWidth: '800px', margin: '0 auto' }}>
           <span className="tag" style={{ marginBottom: '16px' }}>Diagnostic tools</span>
-          <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 3.8rem)', fontWeight: 950, color: '#111827', lineHeight: 1.1, marginBottom: '20px' }}>
-            Free Business <br /><span style={{ color: '#7C3AED' }}>Assessments &amp; Audits</span>
+          <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 3.8rem)', fontWeight: 950, color: 'var(--theme-text-main)', lineHeight: 1.1, marginBottom: '20px' }}>
+            Free Business <br /><span style={{ color: 'var(--purple-500)' }}>Assessments &amp; Audits</span>
           </h1>
-          <p style={{ fontSize: '1.15rem', color: '#4b5563', lineHeight: 1.7 }}>
+          <p style={{ fontSize: '1.15rem', color: 'var(--theme-text-sub)', lineHeight: 1.7 }}>
             Identify operational bottlenecks, compliance risks, and founder-dependency scores instantly with our diagnostic frameworks.
           </p>
         </div>
@@ -237,11 +237,11 @@ export default function AssessmentsPage() {
                   <div
                     key={item.id}
                     style={{
-                      background: '#ffffff',
+                      background: 'var(--theme-card-bg)',
                       borderRadius: '20px',
                       padding: '32px',
-                      border: '1px solid rgba(0,0,0,0.04)',
-                      boxShadow: '0 4px 12px rgba(0,0,0,0.008)',
+                      border: '1px solid var(--theme-card-border)',
+                      boxShadow: 'var(--theme-shadow-card)',
                       display: 'flex',
                       justifyContent: 'space-between',
                       alignItems: 'center',
@@ -254,8 +254,8 @@ export default function AssessmentsPage() {
                         <IconComponent size={28} />
                       </span>
                       <div>
-                        <h3 style={{ fontSize: '1.3rem', fontWeight: 800, color: '#111827', marginBottom: '8px' }}>{item.name}</h3>
-                        <p style={{ fontSize: '0.9rem', color: '#6b7280', lineHeight: 1.5 }}>{item.desc}</p>
+                        <h3 style={{ fontSize: '1.3rem', fontWeight: 800, color: 'var(--theme-text-main)', marginBottom: '8px' }}>{item.name}</h3>
+                        <p style={{ fontSize: '0.9rem', color: 'var(--theme-text-muted)', lineHeight: 1.5 }}>{item.desc}</p>
                       </div>
                     </div>
                     <button onClick={() => startAssessment(item)} className="btn btn-purple" style={{ backgroundColor: item.color, boxShadow: 'none' }}>
@@ -273,40 +273,40 @@ export default function AssessmentsPage() {
               animate={{ scale: 1, opacity: 1 }}
               exit={{ opacity: 0 }}
               style={{
-                background: '#ffffff',
+                background: 'var(--theme-card-bg)',
                 borderRadius: '24px',
                 padding: '48px',
-                border: '1px solid rgba(0,0,0,0.04)',
-                boxShadow: '0 20px 40px rgba(0,0,0,0.015)',
+                border: '1px solid var(--theme-card-border)',
+                boxShadow: 'var(--theme-shadow-card)',
                 textAlign: 'center'
               }}
             >
-              <div style={{ fontSize: '1.2rem', color: '#6b7280', fontWeight: 700, marginBottom: '8px' }}>Your Score</div>
+              <div style={{ fontSize: '1.2rem', color: 'var(--theme-text-muted)', fontWeight: 700, marginBottom: '8px' }}>Your Score</div>
               <div style={{ fontSize: '4.5rem', fontWeight: 900, color: getInterpretation(calculateFinalScore()).color, lineHeight: 1 }}>
                 {calculateFinalScore()}%
               </div>
 
               <div style={{ margin: '24px 0' }}>
-                <h3 style={{ fontSize: '1.5rem', fontWeight: 900, color: '#111827', marginBottom: '8px' }}>
+                <h3 style={{ fontSize: '1.5rem', fontWeight: 900, color: 'var(--theme-text-main)', marginBottom: '8px' }}>
                   {getInterpretation(calculateFinalScore()).title}
                 </h3>
-                <p style={{ color: '#4b5563', lineHeight: 1.6, maxWidth: '500px', margin: '0 auto', fontWeight: 500 }}>
+                <p style={{ color: 'var(--theme-text-sub)', lineHeight: 1.6, maxWidth: '500px', margin: '0 auto', fontWeight: 500 }}>
                   {getInterpretation(calculateFinalScore()).text}
                 </p>
               </div>
 
-              <div style={{ borderTop: '1px solid #f3f4f6', paddingTop: '28px', marginTop: '28px' }}>
-                <h4 style={{ fontSize: '1.05rem', fontWeight: 800, color: '#111827', marginBottom: '12px' }}>Download Full Business Assessment PDF</h4>
-                <p style={{ fontSize: '0.85rem', color: '#6b7280', marginBottom: '20px' }}>Enter your work email to receive your full breakdown report.</p>
+              <div style={{ borderTop: '1px solid var(--theme-border)', paddingTop: '28px', marginTop: '28px' }}>
+                <h4 style={{ fontSize: '1.05rem', fontWeight: 800, color: 'var(--theme-text-main)', marginBottom: '12px' }}>Download Full Business Assessment PDF</h4>
+                <p style={{ fontSize: '0.85rem', color: 'var(--theme-text-muted)', marginBottom: '20px' }}>Enter your work email to receive your full breakdown report.</p>
                 <div style={{ display: 'flex', gap: '8px', maxWidth: '440px', margin: '0 auto', flexWrap: 'wrap' }}>
-                  <input type="email" placeholder="Enter Work Email" style={{ flex: 1, padding: '12px 18px', borderRadius: '8px', border: '1px solid #d1d5db', outline: 'none' }} />
+                  <input type="email" placeholder="Enter Work Email" style={{ flex: 1, padding: '12px 18px', borderRadius: '8px', background: 'var(--theme-input-bg)', color: 'var(--theme-text-main)', border: '1px solid var(--theme-input-border)', outline: 'none' }} />
                   <button className="btn btn-purple" onClick={() => alert('Diagnostic Report sent to your email!')}>Get PDF Report</button>
                 </div>
               </div>
 
               <button
                 onClick={() => setSelectedAssessment(null)}
-                style={{ marginTop: '32px', fontSize: '0.85rem', color: '#7C3AED', fontWeight: 700, cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: '6px' }}
+                style={{ marginTop: '32px', fontSize: '0.85rem', color: 'var(--purple-500)', fontWeight: 700, cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: '6px', background: 'none', border: 'none' }}
               >
                 <ArrowLeft size={14} /> Back to Assessments List
               </button>
@@ -319,21 +319,21 @@ export default function AssessmentsPage() {
               animate={{ x: 0, opacity: 1 }}
               exit={{ x: -30, opacity: 0 }}
               style={{
-                background: '#ffffff',
+                background: 'var(--theme-card-bg)',
                 borderRadius: '24px',
                 padding: '40px',
-                border: '1px solid rgba(0,0,0,0.04)',
-                boxShadow: '0 20px 40px rgba(0,0,0,0.015)'
+                border: '1px solid var(--theme-card-border)',
+                boxShadow: 'var(--theme-shadow-card)'
               }}
             >
               {/* Progress Indicator */}
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '24px' }}>
-                <span style={{ fontSize: '0.8rem', color: '#9ca3af', fontWeight: 700 }}>
+                <span style={{ fontSize: '0.8rem', color: 'var(--theme-text-faint)', fontWeight: 700 }}>
                   Question {currentQuestionIdx + 1} of {selectedAssessment.questions.length}
                 </span>
                 <span style={{ fontSize: '0.85rem', color: selectedAssessment.color, fontWeight: 700 }}>{selectedAssessment.name}</span>
               </div>
-              <div style={{ height: '4px', background: '#f3f4f6', borderRadius: '2px', width: '100%', marginBottom: '32px', overflow: 'hidden' }}>
+              <div style={{ height: '4px', background: 'var(--theme-bg)', borderRadius: '2px', width: '100%', marginBottom: '32px', overflow: 'hidden' }}>
                 <div
                   style={{
                     height: '100%',
@@ -345,7 +345,7 @@ export default function AssessmentsPage() {
               </div>
 
               {/* Question Text */}
-              <h3 style={{ fontSize: '1.35rem', fontWeight: 800, color: '#111827', marginBottom: '28px', lineHeight: 1.4 }}>
+              <h3 style={{ fontSize: '1.35rem', fontWeight: 800, color: 'var(--theme-text-main)', marginBottom: '28px', lineHeight: 1.4 }}>
                 {selectedAssessment.questions[currentQuestionIdx].q}
               </h3>
 
@@ -359,17 +359,17 @@ export default function AssessmentsPage() {
                       width: '100%',
                       padding: '16px 20px',
                       borderRadius: '12px',
-                      border: '1.5px solid #e5e7eb',
-                      background: '#ffffff',
+                      border: '1.5px solid var(--theme-border)',
+                      background: 'var(--theme-card-bg)',
                       textAlign: 'left',
                       fontSize: '0.92rem',
                       fontWeight: 600,
-                      color: '#374151',
+                      color: 'var(--theme-text-sub)',
                       cursor: 'pointer',
                       transition: 'all 0.2s'
                     }}
-                    onMouseEnter={(e) => { e.currentTarget.style.borderColor = selectedAssessment.color; e.currentTarget.style.background = '#F9F8FF'; }}
-                    onMouseLeave={(e) => { e.currentTarget.style.borderColor = '#e5e7eb'; e.currentTarget.style.background = '#ffffff'; }}
+                    onMouseEnter={(e) => { e.currentTarget.style.borderColor = selectedAssessment.color; e.currentTarget.style.background = 'var(--theme-bg)'; }}
+                    onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'var(--theme-border)'; e.currentTarget.style.background = 'var(--theme-card-bg)'; }}
                   >
                     {option.text}
                   </button>
@@ -379,7 +379,7 @@ export default function AssessmentsPage() {
               <div style={{ marginTop: '32px', textAlign: 'center' }}>
                 <button
                   onClick={() => setSelectedAssessment(null)}
-                  style={{ fontSize: '0.8rem', color: '#9ca3af', fontWeight: 700, cursor: 'pointer' }}
+                  style={{ fontSize: '0.8rem', color: 'var(--theme-text-faint)', fontWeight: 700, cursor: 'pointer', background: 'none', border: 'none' }}
                 >
                   Cancel Assessment
                 </button>

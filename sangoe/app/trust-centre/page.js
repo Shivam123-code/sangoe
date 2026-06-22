@@ -121,7 +121,7 @@ const SECTIONS = [
 
 export default function TrustCentrePage() {
   return (
-    <div style={{ minHeight: '100vh', background: '#F8F9FC', paddingTop: '72px' }}>
+    <div style={{ minHeight: '100vh', background: 'var(--theme-bg)', paddingTop: '72px' }}>
 
       {/* ── Hero ── */}
       <div style={{
@@ -199,7 +199,7 @@ export default function TrustCentrePage() {
                   <SIcon size={22} color={sec.color} strokeWidth={1.8} />
                 </div>
                 <div>
-                  <h2 style={{ fontSize: '1.35rem', fontWeight: 900, color: '#0F172A', margin: 0, letterSpacing: '-0.01em' }}>
+                  <h2 style={{ fontSize: '1.35rem', fontWeight: 900, color: 'var(--theme-text-main)', margin: 0, letterSpacing: '-0.01em' }}>
                     {sec.title}
                   </h2>
                 </div>
@@ -213,19 +213,19 @@ export default function TrustCentrePage() {
               }}>
                 {sec.items.map(item => (
                   <div key={item.heading} style={{
-                    background: '#fff',
+                    background: 'var(--theme-card-bg)',
                     borderRadius: '16px',
-                    border: '1px solid #E8ECF2',
+                    border: '1px solid var(--theme-card-border)',
                     padding: '24px 26px',
-                    boxShadow: '0 2px 10px rgba(15,23,42,0.04)',
+                    boxShadow: 'var(--theme-shadow-card)',
                   }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '10px' }}>
                       <CheckCircle2 size={15} color={sec.color} strokeWidth={2.5} />
-                      <h3 style={{ fontSize: '0.95rem', fontWeight: 800, color: '#111827', margin: 0 }}>
+                      <h3 style={{ fontSize: '0.95rem', fontWeight: 800, color: 'var(--theme-text-main)', margin: 0 }}>
                         {item.heading}
                       </h3>
                     </div>
-                    <p style={{ fontSize: '0.84rem', color: '#64748B', lineHeight: 1.75, margin: 0 }}>
+                    <p style={{ fontSize: '0.84rem', color: 'var(--theme-text-sub)', lineHeight: 1.75, margin: 0 }}>
                       {item.body}
                     </p>
                   </div>

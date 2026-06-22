@@ -55,15 +55,15 @@ export default function CalculatorsPage() {
   });
 
   return (
-    <div style={{ paddingTop: '100px', minHeight: '100vh', background: '#f9fafb', paddingBottom: '80px' }}>
+    <div style={{ paddingTop: '100px', minHeight: '100vh', background: 'var(--theme-bg)', paddingBottom: '80px' }}>
       {/* Header */}
-      <section style={{ padding: '80px 20px', textAlign: 'center', background: 'linear-gradient(180deg, #EFF6FF 0%, #FAF5FF 60%, #F9FAFB 100%)' }}>
+      <section style={{ padding: '80px 20px', textAlign: 'center', background: 'linear-gradient(180deg, var(--theme-bg-secondary) 0%, var(--theme-bg) 100%)' }}>
         <div style={{ maxWidth: '800px', margin: '0 auto' }}>
-          <span className="tag" style={{ marginBottom: '16px', color: '#3b82f6', background: '#eff6ff', borderColor: '#bfdbfe' }}>Interactive calculators</span>
-          <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 3.8rem)', fontWeight: 950, color: '#111827', lineHeight: 1.1, marginBottom: '20px' }}>
-            Free Business <br /><span style={{ color: '#3B82F6' }}>Growth &amp; Tax Calculators</span>
+          <span className="tag" style={{ marginBottom: '16px' }}>Interactive calculators</span>
+          <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 3.8rem)', fontWeight: 950, color: 'var(--theme-text-main)', lineHeight: 1.1, marginBottom: '20px' }}>
+            Free Business <br /><span style={{ color: 'var(--purple-500)' }}>Growth &amp; Tax Calculators</span>
           </h1>
-          <p style={{ fontSize: '1.15rem', color: '#4b5563', lineHeight: 1.7 }}>
+          <p style={{ fontSize: '1.15rem', color: 'var(--theme-text-sub)', lineHeight: 1.7 }}>
             Run instant financial audits, calculate payroll overheads, GST filings, and business valuation estimates.
           </p>
         </div>
@@ -81,10 +81,10 @@ export default function CalculatorsPage() {
               textAlign: 'left',
               fontWeight: 700,
               fontSize: '0.85rem',
-              backgroundColor: activeTab === 'roi' ? '#3B82F6' : '#ffffff',
-              color: activeTab === 'roi' ? '#ffffff' : '#4b5563',
-              border: '1px solid rgba(0,0,0,0.05)',
-              boxShadow: '0 2px 6px rgba(0,0,0,0.02)',
+              backgroundColor: activeTab === 'roi' ? 'var(--purple-600)' : 'var(--theme-card-bg)',
+              color: activeTab === 'roi' ? '#ffffff' : 'var(--theme-text-sub)',
+              border: '1px solid var(--theme-card-border)',
+              boxShadow: 'var(--theme-shadow-card)',
               cursor: 'pointer',
               transition: 'all 0.2s',
               display: 'flex',
@@ -103,10 +103,10 @@ export default function CalculatorsPage() {
               textAlign: 'left',
               fontWeight: 700,
               fontSize: '0.85rem',
-              backgroundColor: activeTab === 'gst' ? '#3B82F6' : '#ffffff',
-              color: activeTab === 'gst' ? '#ffffff' : '#4b5563',
-              border: '1px solid rgba(0,0,0,0.05)',
-              boxShadow: '0 2px 6px rgba(0,0,0,0.02)',
+              backgroundColor: activeTab === 'gst' ? 'var(--purple-600)' : 'var(--theme-card-bg)',
+              color: activeTab === 'gst' ? '#ffffff' : 'var(--theme-text-sub)',
+              border: '1px solid var(--theme-card-border)',
+              boxShadow: 'var(--theme-shadow-card)',
               cursor: 'pointer',
               transition: 'all 0.2s',
               display: 'flex',
@@ -125,10 +125,10 @@ export default function CalculatorsPage() {
               textAlign: 'left',
               fontWeight: 700,
               fontSize: '0.85rem',
-              backgroundColor: activeTab === 'valuation' ? '#3B82F6' : '#ffffff',
-              color: activeTab === 'valuation' ? '#ffffff' : '#4b5563',
-              border: '1px solid rgba(0,0,0,0.05)',
-              boxShadow: '0 2px 6px rgba(0,0,0,0.02)',
+              backgroundColor: activeTab === 'valuation' ? 'var(--purple-600)' : 'var(--theme-card-bg)',
+              color: activeTab === 'valuation' ? '#ffffff' : 'var(--theme-text-sub)',
+              border: '1px solid var(--theme-card-border)',
+              boxShadow: 'var(--theme-shadow-card)',
               cursor: 'pointer',
               transition: 'all 0.2s',
               display: 'flex',
@@ -147,10 +147,10 @@ export default function CalculatorsPage() {
               textAlign: 'left',
               fontWeight: 700,
               fontSize: '0.85rem',
-              backgroundColor: activeTab === 'project' ? '#3B82F6' : '#ffffff',
-              color: activeTab === 'project' ? '#ffffff' : '#4b5563',
-              border: '1px solid rgba(0,0,0,0.05)',
-              boxShadow: '0 2px 6px rgba(0,0,0,0.02)',
+              backgroundColor: activeTab === 'project' ? 'var(--purple-600)' : 'var(--theme-card-bg)',
+              color: activeTab === 'project' ? '#ffffff' : 'var(--theme-text-sub)',
+              border: '1px solid var(--theme-card-border)',
+              boxShadow: 'var(--theme-shadow-card)',
               cursor: 'pointer',
               transition: 'all 0.2s',
               display: 'flex',
@@ -169,10 +169,10 @@ export default function CalculatorsPage() {
               textAlign: 'left',
               fontWeight: 700,
               fontSize: '0.85rem',
-              backgroundColor: activeTab === 'employee' ? '#3B82F6' : '#ffffff',
-              color: activeTab === 'employee' ? '#ffffff' : '#4b5563',
-              border: '1px solid rgba(0,0,0,0.05)',
-              boxShadow: '0 2px 6px rgba(0,0,0,0.02)',
+              backgroundColor: activeTab === 'employee' ? 'var(--purple-600)' : 'var(--theme-card-bg)',
+              color: activeTab === 'employee' ? '#ffffff' : 'var(--theme-text-sub)',
+              border: '1px solid var(--theme-card-border)',
+              boxShadow: 'var(--theme-shadow-card)',
               cursor: 'pointer',
               transition: 'all 0.2s',
               display: 'flex',
@@ -184,8 +184,8 @@ export default function CalculatorsPage() {
             <span>Employee Productivity</span>
           </button>
 
-          <div style={{ padding: '20px', background: '#ffffff', border: '1px solid rgba(0,0,0,0.05)', borderRadius: '16px', fontSize: '0.78rem', color: '#6b7280', marginTop: '16px', boxShadow: '0 2px 8px rgba(0,0,0,0.01)' }}>
-            <strong style={{ color: '#111827' }}>Other Tools Included:</strong>
+          <div style={{ padding: '20px', background: 'var(--theme-card-bg)', border: '1px solid var(--theme-card-border)', borderRadius: '16px', fontSize: '0.78rem', color: 'var(--theme-text-muted)', marginTop: '16px', boxShadow: 'var(--theme-shadow-card)' }}>
+            <strong style={{ color: 'var(--theme-text-main)' }}>Other Tools Included:</strong>
             <div style={{ marginTop: '10px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
               {['PF Calculator', 'ESIC Calculator', 'Payroll Calculator', 'Working Capital', 'Recruitment Cost'].map(t => (
                 <div key={t} style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
@@ -198,18 +198,18 @@ export default function CalculatorsPage() {
         </div>
 
         {/* Right Active Calculator view */}
-        <div style={{ background: '#ffffff', borderRadius: '24px', padding: '40px', border: '1px solid rgba(0,0,0,0.04)', boxShadow: '0 10px 30px rgba(0,0,0,0.015)' }}>
+        <div style={{ background: 'var(--theme-card-bg)', borderRadius: '24px', padding: '40px', border: '1px solid var(--theme-card-border)', boxShadow: 'var(--theme-shadow-card)' }}>
           {activeTab === 'roi' && (
             <div>
-              <h2 style={{ fontSize: '1.6rem', fontWeight: 900, color: '#111827', marginBottom: '8px' }}>ROI &amp; Savings Calculator</h2>
-              <p style={{ fontSize: '0.88rem', color: '#6b7280', marginBottom: '32px' }}>Estimate how much annual operational overhead your business can save by systemizing processes under Sangoe.</p>
+              <h2 style={{ fontSize: '1.6rem', fontWeight: 900, color: 'var(--theme-text-main)', marginBottom: '8px' }}>ROI &amp; Savings Calculator</h2>
+              <p style={{ fontSize: '0.88rem', color: 'var(--theme-text-muted)', marginBottom: '32px' }}>Estimate how much annual operational overhead your business can save by systemizing processes under Sangoe.</p>
 
               <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
                 {/* Revenue Input */}
                 <div>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px', fontSize: '0.9rem', fontWeight: 700 }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px', fontSize: '0.9rem', fontWeight: 700, color: 'var(--theme-text-main)' }}>
                     <span>Current Monthly Revenue</span>
-                    <span style={{ color: '#3B82F6' }}>{formatter.format(revenue)}</span>
+                    <span style={{ color: 'var(--purple-500)' }}>{formatter.format(revenue)}</span>
                   </div>
                   <input
                     type="range"
@@ -218,15 +218,15 @@ export default function CalculatorsPage() {
                     step="50000"
                     value={revenue}
                     onChange={(e) => setRevenue(Number(e.target.value))}
-                    style={{ width: '100%', accentColor: '#3B82F6' }}
+                    style={{ width: '100%', accentColor: 'var(--purple-500)' }}
                   />
                 </div>
 
                 {/* Overhead savings input */}
                 <div>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px', fontSize: '0.9rem', fontWeight: 700 }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px', fontSize: '0.9rem', fontWeight: 700, color: 'var(--theme-text-main)' }}>
                     <span>Expected Process Efficiency Gain</span>
-                    <span style={{ color: '#3B82F6' }}>{savingsRate}%</span>
+                    <span style={{ color: 'var(--purple-500)' }}>{savingsRate}%</span>
                   </div>
                   <input
                     type="range"
@@ -235,15 +235,15 @@ export default function CalculatorsPage() {
                     step="1"
                     value={savingsRate}
                     onChange={(e) => setSavingsRate(Number(e.target.value))}
-                    style={{ width: '100%', accentColor: '#3B82F6' }}
+                    style={{ width: '100%', accentColor: 'var(--purple-500)' }}
                   />
                 </div>
 
                 {/* Output Display */}
-                <div style={{ background: '#EFF6FF', borderRadius: '16px', padding: '24px', marginTop: '16px', border: '1px solid #DBEAFE', textAlign: 'center' }}>
-                  <div style={{ fontSize: '0.82rem', color: '#1e40af', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.04em' }}>Estimated Annual Cash Savings</div>
-                  <div style={{ fontSize: '2.5rem', fontWeight: 900, color: '#1e3a8a', margin: '8px 0' }}>{formatter.format(calculatedSavings)}</div>
-                  <p style={{ fontSize: '0.8rem', color: '#60a5fa', margin: 0 }}>*Based on processes automation reducing resource leakages and bill collection delays.</p>
+                <div style={{ background: 'rgba(124, 58, 237, 0.06)', borderRadius: '16px', padding: '24px', marginTop: '16px', border: '1px solid var(--theme-border)', textAlign: 'center' }}>
+                  <div style={{ fontSize: '0.82rem', color: 'var(--purple-500)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.04em' }}>Estimated Annual Cash Savings</div>
+                  <div style={{ fontSize: '2.5rem', fontWeight: 900, color: 'var(--theme-text-main)', margin: '8px 0' }}>{formatter.format(calculatedSavings)}</div>
+                  <p style={{ fontSize: '0.8rem', color: 'var(--theme-text-muted)', margin: 0 }}>*Based on processes automation reducing resource leakages and bill collection delays.</p>
                 </div>
               </div>
             </div>
@@ -251,15 +251,15 @@ export default function CalculatorsPage() {
 
           {activeTab === 'gst' && (
             <div>
-              <h2 style={{ fontSize: '1.6rem', fontWeight: 900, color: '#111827', marginBottom: '8px' }}>GST Calculator</h2>
-              <p style={{ fontSize: '0.88rem', color: '#6b7280', marginBottom: '32px' }}>Calculate GST additions or exclusions for pricing estimates and invoices.</p>
+              <h2 style={{ fontSize: '1.6rem', fontWeight: 900, color: 'var(--theme-text-main)', marginBottom: '8px' }}>GST Calculator</h2>
+              <p style={{ fontSize: '0.88rem', color: 'var(--theme-text-muted)', marginBottom: '32px' }}>Calculate GST additions or exclusions for pricing estimates and invoices.</p>
 
               <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
                 {/* GST Amount input */}
                 <div>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px', fontSize: '0.9rem', fontWeight: 700 }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px', fontSize: '0.9rem', fontWeight: 700, color: 'var(--theme-text-main)' }}>
                     <span>Transaction Base Amount</span>
-                    <span style={{ color: '#3B82F6' }}>{formatter.format(gstAmount)}</span>
+                    <span style={{ color: 'var(--purple-500)' }}>{formatter.format(gstAmount)}</span>
                   </div>
                   <input
                     type="range"
@@ -268,13 +268,13 @@ export default function CalculatorsPage() {
                     step="1000"
                     value={gstAmount}
                     onChange={(e) => setGstAmount(Number(e.target.value))}
-                    style={{ width: '100%', accentColor: '#3B82F6' }}
+                    style={{ width: '100%', accentColor: 'var(--purple-500)' }}
                   />
                 </div>
 
                 {/* GST Rate selectors */}
                 <div>
-                  <div style={{ fontSize: '0.9rem', fontWeight: 700, marginBottom: '10px' }}>GST Tax Rate (%)</div>
+                  <div style={{ fontSize: '0.9rem', fontWeight: 700, marginBottom: '10px', color: 'var(--theme-text-main)' }}>GST Tax Rate (%)</div>
                   <div style={{ display: 'flex', gap: '10px' }}>
                     {[5, 12, 18, 28].map(rate => (
                       <button
@@ -285,8 +285,8 @@ export default function CalculatorsPage() {
                           padding: '12px',
                           borderRadius: '8px',
                           fontWeight: 700,
-                          backgroundColor: gstRate === rate ? '#3B82F6' : '#f3f4f6',
-                          color: gstRate === rate ? '#ffffff' : '#4b5563',
+                          backgroundColor: gstRate === rate ? 'var(--purple-600)' : 'var(--theme-bg)',
+                          color: gstRate === rate ? '#ffffff' : 'var(--theme-text-sub)',
                           border: 'none',
                           cursor: 'pointer'
                         }}
@@ -299,7 +299,7 @@ export default function CalculatorsPage() {
 
                 {/* Add or Remove Toggle */}
                 <div>
-                  <div style={{ fontSize: '0.9rem', fontWeight: 700, marginBottom: '10px' }}>GST Type</div>
+                  <div style={{ fontSize: '0.9rem', fontWeight: 700, marginBottom: '10px', color: 'var(--theme-text-main)' }}>GST Type</div>
                   <div style={{ display: 'flex', gap: '10px' }}>
                     <button
                       onClick={() => setGstType('add')}
@@ -308,8 +308,8 @@ export default function CalculatorsPage() {
                         padding: '12px',
                         borderRadius: '8px',
                         fontWeight: 700,
-                        backgroundColor: gstType === 'add' ? '#3B82F6' : '#f3f4f6',
-                        color: gstType === 'add' ? '#ffffff' : '#4b5563',
+                        backgroundColor: gstType === 'add' ? 'var(--purple-600)' : 'var(--theme-bg)',
+                        color: gstType === 'add' ? '#ffffff' : 'var(--theme-text-sub)',
                         border: 'none',
                         cursor: 'pointer'
                       }}
@@ -323,8 +323,8 @@ export default function CalculatorsPage() {
                         padding: '12px',
                         borderRadius: '8px',
                         fontWeight: 700,
-                        backgroundColor: gstType === 'remove' ? '#3B82F6' : '#f3f4f6',
-                        color: gstType === 'remove' ? '#ffffff' : '#4b5563',
+                        backgroundColor: gstType === 'remove' ? 'var(--purple-600)' : 'var(--theme-bg)',
+                        color: gstType === 'remove' ? '#ffffff' : 'var(--theme-text-sub)',
                         border: 'none',
                         cursor: 'pointer'
                       }}
@@ -336,13 +336,13 @@ export default function CalculatorsPage() {
 
                 {/* Output Grid */}
                 <div className="responsive-grid-2" style={{ gap: '16px', marginTop: '16px' }}>
-                  <div style={{ background: '#f9fafb', border: '1px solid rgba(0,0,0,0.04)', borderRadius: '12px', padding: '16px', textAlign: 'center' }}>
-                    <div style={{ fontSize: '0.75rem', color: '#6b7280', fontWeight: 600 }}>Calculated GST Tax</div>
-                    <div style={{ fontSize: '1.3rem', fontWeight: 800, color: '#111827', marginTop: '6px' }}>{formatter.format(gstValue)}</div>
+                  <div style={{ background: 'var(--theme-bg)', border: '1px solid var(--theme-card-border)', borderRadius: '12px', padding: '16px', textAlign: 'center' }}>
+                    <div style={{ fontSize: '0.75rem', color: 'var(--theme-text-muted)', fontWeight: 600 }}>Calculated GST Tax</div>
+                    <div style={{ fontSize: '1.3rem', fontWeight: 800, color: 'var(--theme-text-main)', marginTop: '6px' }}>{formatter.format(gstValue)}</div>
                   </div>
-                  <div style={{ background: '#EFF6FF', border: '1px solid #bfdbfe', borderRadius: '12px', padding: '16px', textAlign: 'center' }}>
-                    <div style={{ fontSize: '0.75rem', color: '#1e40af', fontWeight: 600 }}>Total Final Amount</div>
-                    <div style={{ fontSize: '1.3rem', fontWeight: 800, color: '#1e3a8a', marginTop: '6px' }}>{formatter.format(gstTotal)}</div>
+                  <div style={{ background: 'rgba(124, 58, 237, 0.06)', border: '1px solid var(--theme-border)', borderRadius: '12px', padding: '16px', textAlign: 'center' }}>
+                    <div style={{ fontSize: '0.75rem', color: 'var(--purple-500)', fontWeight: 600 }}>Total Final Amount</div>
+                    <div style={{ fontSize: '1.3rem', fontWeight: 800, color: 'var(--theme-text-main)', marginTop: '6px' }}>{formatter.format(gstTotal)}</div>
                   </div>
                 </div>
               </div>
@@ -351,15 +351,15 @@ export default function CalculatorsPage() {
 
           {activeTab === 'valuation' && (
             <div>
-              <h2 style={{ fontSize: '1.6rem', fontWeight: 900, color: '#111827', marginBottom: '8px' }}>Business Valuation Calculator</h2>
-              <p style={{ fontSize: '0.88rem', color: '#6b7280', marginBottom: '32px' }}>Obtain a quick multiple-based estimation of your business valuation.</p>
+              <h2 style={{ fontSize: '1.6rem', fontWeight: 900, color: 'var(--theme-text-main)', marginBottom: '8px' }}>Business Valuation Calculator</h2>
+              <p style={{ fontSize: '0.88rem', color: 'var(--theme-text-muted)', marginBottom: '32px' }}>Obtain a quick multiple-based estimation of your business valuation.</p>
 
               <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
                 {/* Profit input */}
                 <div>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px', fontSize: '0.9rem', fontWeight: 700 }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px', fontSize: '0.9rem', fontWeight: 700, color: 'var(--theme-text-main)' }}>
                     <span>Net Annual Profit (EBITDA)</span>
-                    <span style={{ color: '#3B82F6' }}>{formatter.format(profit)}</span>
+                    <span style={{ color: 'var(--purple-500)' }}>{formatter.format(profit)}</span>
                   </div>
                   <input
                     type="range"
@@ -368,15 +368,15 @@ export default function CalculatorsPage() {
                     step="500000"
                     value={profit}
                     onChange={(e) => setProfit(Number(e.target.value))}
-                    style={{ width: '100%', accentColor: '#3B82F6' }}
+                    style={{ width: '100%', accentColor: 'var(--purple-500)' }}
                   />
                 </div>
 
                 {/* Multiplier input */}
                 <div>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px', fontSize: '0.9rem', fontWeight: 700 }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px', fontSize: '0.9rem', fontWeight: 700, color: 'var(--theme-text-main)' }}>
                     <span>Profit Multiplier Range</span>
-                    <span style={{ color: '#3B82F6' }}>{multiplier}x</span>
+                    <span style={{ color: 'var(--purple-500)' }}>{multiplier}x</span>
                   </div>
                   <input
                     type="range"
@@ -385,15 +385,15 @@ export default function CalculatorsPage() {
                     step="1"
                     value={multiplier}
                     onChange={(e) => setMultiplier(Number(e.target.value))}
-                    style={{ width: '100%', accentColor: '#3B82F6' }}
+                    style={{ width: '100%', accentColor: 'var(--purple-500)' }}
                   />
                 </div>
 
                 {/* Output Display */}
-                <div style={{ background: '#ECFDF5', borderRadius: '16px', padding: '24px', marginTop: '16px', border: '1px solid #A7F3D0', textAlign: 'center' }}>
-                  <div style={{ fontSize: '0.82rem', color: '#065f46', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.04em' }}>Estimated Business Enterprise Value</div>
-                  <div style={{ fontSize: '2.5rem', fontWeight: 900, color: '#064e3b', margin: '8px 0' }}>{formatter.format(valuation)}</div>
-                  <p style={{ fontSize: '0.8rem', color: '#059669', margin: 0 }}>*This is a standard EBITDA-based multiple projection. Real market valuation varies based on sectors.</p>
+                <div style={{ background: 'rgba(16, 185, 129, 0.06)', borderRadius: '16px', padding: '24px', marginTop: '16px', border: '1px solid var(--theme-border)', textAlign: 'center' }}>
+                  <div style={{ fontSize: '0.82rem', color: '#10b981', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.04em' }}>Estimated Business Enterprise Value</div>
+                  <div style={{ fontSize: '2.5rem', fontWeight: 900, color: 'var(--theme-text-main)', margin: '8px 0' }}>{formatter.format(valuation)}</div>
+                  <p style={{ fontSize: '0.8rem', color: 'var(--theme-text-muted)', margin: 0 }}>*This is a standard EBITDA-based multiple projection. Real market valuation varies based on sectors.</p>
                 </div>
               </div>
             </div>
@@ -401,15 +401,15 @@ export default function CalculatorsPage() {
 
           {activeTab === 'project' && (
             <div>
-              <h2 style={{ fontSize: '1.6rem', fontWeight: 900, color: '#111827', marginBottom: '8px' }}>Project Profitability Calculator</h2>
-              <p style={{ fontSize: '0.88rem', color: '#6b7280', marginBottom: '32px' }}>Estimate the net profit margin for any given contract or project delivery.</p>
+              <h2 style={{ fontSize: '1.6rem', fontWeight: 900, color: 'var(--theme-text-main)', marginBottom: '8px' }}>Project Profitability Calculator</h2>
+              <p style={{ fontSize: '0.88rem', color: 'var(--theme-text-muted)', marginBottom: '32px' }}>Estimate the net profit margin for any given contract or project delivery.</p>
 
               <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
                 {/* Revenue input */}
                 <div>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px', fontSize: '0.9rem', fontWeight: 700 }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px', fontSize: '0.9rem', fontWeight: 700, color: 'var(--theme-text-main)' }}>
                     <span>Total Project Contract Value</span>
-                    <span style={{ color: '#3B82F6' }}>{formatter.format(projectRevenue)}</span>
+                    <span style={{ color: 'var(--purple-500)' }}>{formatter.format(projectRevenue)}</span>
                   </div>
                   <input
                     type="range"
@@ -418,13 +418,13 @@ export default function CalculatorsPage() {
                     step="50000"
                     value={projectRevenue}
                     onChange={(e) => setProjectRevenue(Number(e.target.value))}
-                    style={{ width: '100%', accentColor: '#3B82F6' }}
+                    style={{ width: '100%', accentColor: 'var(--purple-500)' }}
                   />
                 </div>
 
                 {/* Costs input */}
                 <div>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px', fontSize: '0.9rem', fontWeight: 700 }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px', fontSize: '0.9rem', fontWeight: 700, color: 'var(--theme-text-main)' }}>
                     <span>Estimated Project Costs (Labor, Material, Ops)</span>
                     <span style={{ color: '#EF4444' }}>{formatter.format(projectCosts)}</span>
                   </div>
@@ -441,13 +441,13 @@ export default function CalculatorsPage() {
 
                 {/* Output Grid */}
                 <div className="responsive-grid-2" style={{ gap: '16px', marginTop: '16px' }}>
-                  <div style={{ background: '#f9fafb', border: '1px solid rgba(0,0,0,0.04)', borderRadius: '12px', padding: '16px', textAlign: 'center' }}>
-                    <div style={{ fontSize: '0.75rem', color: '#6b7280', fontWeight: 600 }}>Estimated Net Profit</div>
+                  <div style={{ background: 'var(--theme-bg)', border: '1px solid var(--theme-card-border)', borderRadius: '12px', padding: '16px', textAlign: 'center' }}>
+                    <div style={{ fontSize: '0.75rem', color: 'var(--theme-text-muted)', fontWeight: 600 }}>Estimated Net Profit</div>
                     <div style={{ fontSize: '1.3rem', fontWeight: 800, color: projectProfit >= 0 ? '#10b981' : '#ef4444', marginTop: '6px' }}>{formatter.format(projectProfit)}</div>
                   </div>
-                  <div style={{ background: '#EFF6FF', border: '1px solid #bfdbfe', borderRadius: '12px', padding: '16px', textAlign: 'center' }}>
-                    <div style={{ fontSize: '0.75rem', color: '#1e40af', fontWeight: 600 }}>Project Profit Margin</div>
-                    <div style={{ fontSize: '1.3rem', fontWeight: 800, color: '#1e3a8a', marginTop: '6px' }}>{projectMargin}%</div>
+                  <div style={{ background: 'rgba(124, 58, 237, 0.06)', border: '1px solid var(--theme-border)', borderRadius: '12px', padding: '16px', textAlign: 'center' }}>
+                    <div style={{ fontSize: '0.75rem', color: 'var(--purple-500)', fontWeight: 600 }}>Project Profit Margin</div>
+                    <div style={{ fontSize: '1.3rem', fontWeight: 800, color: 'var(--theme-text-main)', marginTop: '6px' }}>{projectMargin}%</div>
                   </div>
                 </div>
               </div>
@@ -456,15 +456,15 @@ export default function CalculatorsPage() {
 
           {activeTab === 'employee' && (
             <div>
-              <h2 style={{ fontSize: '1.6rem', fontWeight: 900, color: '#111827', marginBottom: '8px' }}>Employee Productivity Calculator</h2>
-              <p style={{ fontSize: '0.88rem', color: '#6b7280', marginBottom: '32px' }}>Measure the return on investment for your workforce by calculating the revenue-to-cost ratio.</p>
+              <h2 style={{ fontSize: '1.6rem', fontWeight: 900, color: 'var(--theme-text-main)', marginBottom: '8px' }}>Employee Productivity Calculator</h2>
+              <p style={{ fontSize: '0.88rem', color: 'var(--theme-text-muted)', marginBottom: '32px' }}>Measure the return on investment for your workforce by calculating the revenue-to-cost ratio.</p>
 
               <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
                 {/* Employee Revenue input */}
                 <div>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px', fontSize: '0.9rem', fontWeight: 700 }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px', fontSize: '0.9rem', fontWeight: 700, color: 'var(--theme-text-main)' }}>
                     <span>Annual Revenue Generated per Employee (Avg)</span>
-                    <span style={{ color: '#3B82F6' }}>{formatter.format(employeeRevenue)}</span>
+                    <span style={{ color: 'var(--purple-500)' }}>{formatter.format(employeeRevenue)}</span>
                   </div>
                   <input
                     type="range"
@@ -473,13 +473,13 @@ export default function CalculatorsPage() {
                     step="100000"
                     value={employeeRevenue}
                     onChange={(e) => setEmployeeRevenue(Number(e.target.value))}
-                    style={{ width: '100%', accentColor: '#3B82F6' }}
+                    style={{ width: '100%', accentColor: 'var(--purple-500)' }}
                   />
                 </div>
 
                 {/* Employee Cost input */}
                 <div>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px', fontSize: '0.9rem', fontWeight: 700 }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px', fontSize: '0.9rem', fontWeight: 700, color: 'var(--theme-text-main)' }}>
                     <span>Annual Cost per Employee (Salary + Overhead)</span>
                     <span style={{ color: '#EF4444' }}>{formatter.format(employeeCost)}</span>
                   </div>
@@ -495,10 +495,10 @@ export default function CalculatorsPage() {
                 </div>
 
                 {/* Output Display */}
-                <div style={{ background: '#FFFBEB', borderRadius: '16px', padding: '24px', marginTop: '16px', border: '1px solid #FDE68A', textAlign: 'center' }}>
-                  <div style={{ fontSize: '0.82rem', color: '#b45309', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.04em' }}>Revenue-to-Cost Ratio</div>
-                  <div style={{ fontSize: '2.5rem', fontWeight: 900, color: '#92400e', margin: '8px 0' }}>{productivityRatio}x</div>
-                  <p style={{ fontSize: '0.8rem', color: '#d97706', margin: 0 }}>*A healthy business aims for a ratio of 3.0x or higher. If lower, focus on systemizing workflows to improve output.</p>
+                <div style={{ background: 'rgba(245, 158, 11, 0.06)', borderRadius: '16px', padding: '24px', marginTop: '16px', border: '1px solid var(--theme-border)', textAlign: 'center' }}>
+                  <div style={{ fontSize: '0.82rem', color: '#f59e0b', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.04em' }}>Revenue-to-Cost Ratio</div>
+                  <div style={{ fontSize: '2.5rem', fontWeight: 900, color: 'var(--theme-text-main)', margin: '8px 0' }}>{productivityRatio}x</div>
+                  <p style={{ fontSize: '0.8rem', color: 'var(--theme-text-muted)', margin: 0 }}>*A healthy business aims for a ratio of 3.0x or higher. If lower, focus on systemizing workflows to improve output.</p>
                 </div>
               </div>
             </div>

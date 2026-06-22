@@ -6,7 +6,7 @@ import { Eye, Target, Sparkles } from 'lucide-react';
 
 export default function AboutPage() {
   return (
-    <div style={{ paddingTop: '0', minHeight: '100vh', background: '#f9fafb', paddingBottom: '80px' }}>
+    <div style={{ paddingTop: '0', minHeight: '100vh', background: 'var(--theme-bg)', paddingBottom: '80px' }}>
       {/* Hero */}
       <section style={{ position: 'relative', background: 'linear-gradient(135deg, #030714 0%, #0a1a3a 50%, #0d1f45 100%)', overflow: 'hidden' }}>
         <div style={{ position: 'absolute', top: '-120px', right: '-60px', width: '450px', height: '450px', borderRadius: '50%', background: 'radial-gradient(circle, rgba(124,58,237,0.2) 0%, transparent 70%)', pointerEvents: 'none' }} />
@@ -38,9 +38,9 @@ export default function AboutPage() {
               <Image src="/images/hero_about.png" alt="Sangoe team vision" width={520} height={360} style={{ width: '100%', height: 'auto', display: 'block' }} priority />
               <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, rgba(3,7,20,0.2) 0%, transparent 60%)' }} />
             </div>
-            <motion.div animate={{ y: [0, -8, 0] }} transition={{ repeat: Infinity, duration: 3, ease: 'easeInOut' }} style={{ position: 'absolute', top: '-18px', right: '-18px', background: '#ffffff', borderRadius: '14px', padding: '10px 16px', boxShadow: '0 16px 40px rgba(0,0,0,0.35)', zIndex: 10, display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <motion.div animate={{ y: [0, -8, 0] }} transition={{ repeat: Infinity, duration: 3, ease: 'easeInOut' }} style={{ position: 'absolute', top: '-18px', right: '-18px', background: 'var(--theme-card-bg)', border: '1px solid var(--theme-card-border)', borderRadius: '14px', padding: '10px 16px', boxShadow: '0 16px 40px rgba(0,0,0,0.35)', zIndex: 10, display: 'flex', alignItems: 'center', gap: '8px' }}>
               <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#f59e0b', flexShrink: 0 }} />
-              <span style={{ fontSize: '0.78rem', fontWeight: 700, color: '#111827', whiteSpace: 'nowrap' }}>Mission-Driven Team</span>
+              <span style={{ fontSize: '0.78rem', fontWeight: 700, color: 'var(--theme-text-main)', whiteSpace: 'nowrap' }}>Mission-Driven Team</span>
             </motion.div>
             <motion.div animate={{ y: [0, 7, 0] }} transition={{ repeat: Infinity, duration: 4, ease: 'easeInOut', delay: 1.2 }} style={{ position: 'absolute', bottom: '-18px', left: '-18px', background: 'linear-gradient(135deg, #7c3aed, #4c1d95)', borderRadius: '14px', padding: '12px 18px', boxShadow: '0 16px 40px rgba(124,58,237,0.45)', zIndex: 10 }}>
               <div style={{ fontSize: '1.2rem', fontWeight: 900, color: '#ffffff' }}>100+</div>
@@ -53,22 +53,22 @@ export default function AboutPage() {
       {/* Vision and Mission */}
       <section style={{ padding: '40px 20px', maxWidth: '1000px', margin: '0 auto' }}>
         <div className="responsive-grid-2" style={{ gap: '40px' }}>
-          <div style={{ background: '#ffffff', borderRadius: '24px', padding: '40px', border: '1px solid rgba(0,0,0,0.04)', boxShadow: '0 4px 20px rgba(0,0,0,0.008)' }}>
-            <span style={{ display: 'inline-flex', color: '#7C3AED', background: '#F5F3FF', padding: '12px', borderRadius: '16px', marginBottom: '16px' }}>
+          <div style={{ background: 'var(--theme-card-bg)', borderRadius: '24px', padding: '40px', border: '1px solid var(--theme-card-border)', boxShadow: 'var(--theme-shadow-card)' }}>
+            <span style={{ display: 'inline-flex', color: '#7C3AED', background: 'var(--theme-bg-secondary)', border: '1px solid var(--theme-border)', padding: '12px', borderRadius: '16px', marginBottom: '16px' }}>
               <Eye size={28} />
             </span>
-            <h3 style={{ fontSize: '1.5rem', fontWeight: 800, color: '#111827', marginBottom: '12px' }}>Our Vision</h3>
-            <p style={{ color: '#6b7280', fontSize: '1rem', lineHeight: 1.6 }}>
+            <h3 style={{ fontSize: '1.5rem', fontWeight: 800, color: 'var(--theme-text-main)', marginBottom: '12px' }}>Our Vision</h3>
+            <p style={{ color: 'var(--theme-text-sub)', fontSize: '1rem', lineHeight: 1.6 }}>
               To build the world&apos;s most trusted Business Growth Operating System™—enabling systems-driven accountability and clear visibility across all operational levels.
             </p>
           </div>
 
-          <div style={{ background: '#ffffff', borderRadius: '24px', padding: '40px', border: '1px solid rgba(0,0,0,0.04)', boxShadow: '0 4px 20px rgba(0,0,0,0.008)' }}>
-            <span style={{ display: 'inline-flex', color: '#10B981', background: '#ECFDF5', padding: '12px', borderRadius: '16px', marginBottom: '16px' }}>
+          <div style={{ background: 'var(--theme-card-bg)', borderRadius: '24px', padding: '40px', border: '1px solid var(--theme-card-border)', boxShadow: 'var(--theme-shadow-card)' }}>
+            <span style={{ display: 'inline-flex', color: '#10B981', background: 'rgba(16, 185, 129, 0.1)', border: '1px solid var(--theme-border)', padding: '12px', borderRadius: '16px', marginBottom: '16px' }}>
               <Target size={28} />
             </span>
-            <h3 style={{ fontSize: '1.5rem', fontWeight: 800, color: '#111827', marginBottom: '12px' }}>Our Mission</h3>
-            <p style={{ color: '#6b7280', fontSize: '1rem', lineHeight: 1.6 }}>
+            <h3 style={{ fontSize: '1.5rem', fontWeight: 800, color: 'var(--theme-text-main)', marginBottom: '12px' }}>Our Mission</h3>
+            <p style={{ color: 'var(--theme-text-sub)', fontSize: '1rem', lineHeight: 1.6 }}>
               To help startups, MSMEs and growing enterprises transition seamlessly from founder-dependent management to scalable, systemized, audit-compliant, and IPO-ready organizations.
             </p>
           </div>
@@ -77,7 +77,7 @@ export default function AboutPage() {
 
       {/* Core values */}
       <section style={{ padding: '60px 20px', maxWidth: '1000px', margin: '0 auto' }}>
-        <h3 style={{ fontSize: '1.8rem', fontWeight: 800, color: '#111827', textAlign: 'center', marginBottom: '40px' }}>Our Core Philosophy</h3>
+        <h3 style={{ fontSize: '1.8rem', fontWeight: 800, color: 'var(--theme-text-main)', textAlign: 'center', marginBottom: '40px' }}>Our Core Philosophy</h3>
         <div className="responsive-grid-3" style={{ gap: '24px' }}>
           {[
             { title: 'Authority & Trust', desc: 'We maintain absolute legal, regulatory, and financial audit standards in all modules.' },
@@ -85,11 +85,11 @@ export default function AboutPage() {
             { title: 'System over Founders', desc: 'We believe operations must run on clear rules and checklists, not individuals.' }
           ].map((v, i) => (
             <div key={i} style={{ textAlign: 'center', padding: '24px' }}>
-              <div style={{ width: '48px', height: '48px', borderRadius: '50%', background: '#F5F3FF', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 16px', fontSize: '1.2rem', color: '#7C3AED', fontWeight: 'bold' }}>
+              <div style={{ width: '48px', height: '48px', borderRadius: '50%', background: 'var(--theme-bg-secondary)', border: '1px solid var(--theme-border)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 16px', fontSize: '1.2rem', color: '#7C3AED', fontWeight: 'bold' }}>
                 {i + 1}
               </div>
-              <h4 style={{ fontSize: '1.1rem', fontWeight: 800, color: '#111827', marginBottom: '8px' }}>{v.title}</h4>
-              <p style={{ fontSize: '0.85rem', color: '#6b7280', lineHeight: 1.6 }}>{v.desc}</p>
+              <h4 style={{ fontSize: '1.1rem', fontWeight: 800, color: 'var(--theme-text-main)', marginBottom: '8px' }}>{v.title}</h4>
+              <p style={{ fontSize: '0.85rem', color: 'var(--theme-text-sub)', lineHeight: 1.6 }}>{v.desc}</p>
             </div>
           ))}
         </div>

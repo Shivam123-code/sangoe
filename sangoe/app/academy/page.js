@@ -24,16 +24,17 @@ const COURSES = [
 export default function AcademyPage() {
   const [selectedCourse, setSelectedCourse] = useState(null);
 
+
   return (
-    <div style={{ paddingTop: '100px', minHeight: '100vh', background: '#f9fafb', paddingBottom: '80px' }}>
+    <div style={{ paddingTop: '100px', minHeight: '100vh', background: 'var(--theme-bg)', paddingBottom: '80px' }}>
       {/* Header */}
-      <section style={{ padding: '80px 20px', textAlign: 'center', background: 'linear-gradient(180deg, #FAF5FF 0%, #EFF6FF 60%, #F9FAFB 100%)' }}>
+      <section style={{ padding: '80px 20px', textAlign: 'center', background: 'linear-gradient(180deg, var(--theme-bg-secondary) 0%, var(--theme-bg) 100%)' }}>
         <div style={{ maxWidth: '800px', margin: '0 auto' }}>
-          <span className="tag" style={{ marginBottom: '16px', color: '#7c3aed', background: '#f5f3ff', borderColor: '#c4b5fd' }}>Upskilling hub</span>
-          <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 3.8rem)', fontWeight: 950, color: '#111827', lineHeight: 1.1, marginBottom: '20px' }}>
-            Sangoe Academy™ <br /><span style={{ color: '#7C3AED' }}>Learn. Implement. Scale.</span>
+          <span className="tag" style={{ marginBottom: '16px' }}>Upskilling hub</span>
+          <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 3.8rem)', fontWeight: 950, color: 'var(--theme-text-main)', lineHeight: 1.1, marginBottom: '20px' }}>
+            Sangoe Academy™ <br /><span style={{ color: 'var(--purple-500)' }}>Learn. Implement. Scale.</span>
           </h1>
-          <p style={{ fontSize: '1.15rem', color: '#4b5563', lineHeight: 1.7 }}>
+          <p style={{ fontSize: '1.15rem', color: 'var(--theme-text-sub)', lineHeight: 1.7 }}>
             Unlock certification courses built specifically for business founders, CEOs, HR directors, and operations leads.
           </p>
         </div>
@@ -45,13 +46,13 @@ export default function AcademyPage() {
           {COURSES.map((course, i) => (
             <motion.div
               key={course.title}
-              whileHover={{ y: -5, boxShadow: '0 12px 30px rgba(124, 58, 237, 0.08)' }}
+              whileHover={{ y: -5, boxShadow: 'var(--theme-shadow-card)' }}
               style={{
-                background: '#ffffff',
+                background: 'var(--theme-card-bg)',
                 borderRadius: '20px',
                 padding: '32px',
-                border: '1px solid rgba(124, 58, 237, 0.06)',
-                boxShadow: '0 2px 10px rgba(0,0,0,0.008)',
+                border: '1px solid var(--theme-card-border)',
+                boxShadow: 'var(--theme-shadow-card)',
                 display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'space-between',
@@ -60,18 +61,18 @@ export default function AcademyPage() {
             >
               <div>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
-                  <span style={{ fontSize: '0.65rem', fontWeight: 800, background: '#F5F3FF', color: '#7C3AED', padding: '3px 8px', borderRadius: '4px', textTransform: 'uppercase' }}>{course.category}</span>
-                  <span style={{ fontSize: '0.65rem', fontWeight: 800, background: '#E0F2FE', color: '#0369A1', padding: '3px 8px', borderRadius: '4px' }}>{course.level}</span>
+                  <span style={{ fontSize: '0.65rem', fontWeight: 800, background: 'rgba(124, 58, 237, 0.1)', color: 'var(--purple-500)', padding: '3px 8px', borderRadius: '4px', textTransform: 'uppercase' }}>{course.category}</span>
+                  <span style={{ fontSize: '0.65rem', fontWeight: 800, background: 'rgba(14, 165, 233, 0.1)', color: '#0284c7', padding: '3px 8px', borderRadius: '4px' }}>{course.level}</span>
                 </div>
-                <h3 style={{ fontSize: '1.2rem', fontWeight: 800, color: '#111827', lineHeight: 1.3, marginBottom: '12px' }}>
-                  <GraduationCap size={18} style={{ color: '#7C3AED', marginRight: '6px', verticalAlign: 'middle', display: 'inline' }} />
+                <h3 style={{ fontSize: '1.2rem', fontWeight: 800, color: 'var(--theme-text-main)', lineHeight: 1.3, marginBottom: '12px' }}>
+                  <GraduationCap size={18} style={{ color: 'var(--purple-500)', marginRight: '6px', verticalAlign: 'middle', display: 'inline' }} />
                   {course.title}
                 </h3>
-                <p style={{ fontSize: '0.85rem', color: '#6b7280', lineHeight: 1.5, marginBottom: '24px' }}>{course.desc}</p>
+                <p style={{ fontSize: '0.85rem', color: 'var(--theme-text-muted)', lineHeight: 1.5, marginBottom: '24px' }}>{course.desc}</p>
               </div>
 
-              <div style={{ borderTop: '1px solid #f3f4f6', paddingTop: '16px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                <div style={{ display: 'flex', gap: '12px', fontSize: '0.75rem', color: '#9ca3af', fontWeight: 700 }}>
+              <div style={{ borderTop: '1px solid var(--theme-border)', paddingTop: '16px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <div style={{ display: 'flex', gap: '12px', fontSize: '0.75rem', color: 'var(--theme-text-faint)', fontWeight: 700 }}>
                   <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
                     <Clock size={12} /> {course.duration}
                   </span>
@@ -87,7 +88,7 @@ export default function AcademyPage() {
                   style={{
                     fontSize: '0.82rem',
                     fontWeight: 700,
-                    color: '#7C3AED',
+                    color: 'var(--purple-500)',
                     cursor: 'pointer',
                     background: 'none',
                     border: 'none'
