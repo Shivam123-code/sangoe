@@ -184,17 +184,39 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 28px;
+  gap: 20px;
   flex-wrap: wrap;
-  padding-top: 32px;
+  padding-top: 40px;
   border-top: 1px solid #e8e4ff;
 }
 
-.stripItem {
+.stripItemPill {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--badge-bg);
+  border: 1px solid rgba(124, 58, 237, 0.05);
+  border-left: 3.5px solid var(--badge-color);
+  padding: 8px 18px;
+  border-radius: 10px;
   font-size: 0.78rem;
-  font-weight: 700;
-  color: #64748b;
-  white-space: nowrap;
+  font-weight: 750;
+  color: #374151;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.015);
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  user-select: none;
+}
+
+.stripItemPill:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.04);
+  border-color: var(--badge-color);
+  background: #ffffff;
+}
+
+.stripItemIcon {
+  flex-shrink: 0;
+  display: block;
 }
 
 /* Dark mode */
@@ -205,7 +227,17 @@
 :global([data-theme='dark']) .ratingPlatform { color: #edeaf8 !important; }
 :global([data-theme='dark']) .certCard { background: #1c1c2e !important; border-color: rgba(255,255,255,0.07) !important; }
 :global([data-theme='dark']) .bottomStrip { border-color: rgba(255,255,255,0.07) !important; }
-:global([data-theme='dark']) .stripItem { color: #8b85a8 !important; }
+:global([data-theme='dark']) .stripItemPill {
+  background: rgba(255, 255, 255, 0.02) !important;
+  border-color: rgba(255, 255, 255, 0.06) !important;
+  color: #cbd5e1 !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2) !important;
+}
+:global([data-theme='dark']) .stripItemPill:hover {
+  background: var(--badge-bg) !important;
+  border-color: var(--badge-color) !important;
+  color: #ffffff !important;
+}
 
 @media (max-width: 1024px) {
   .certGrid { grid-template-columns: repeat(3, 1fr); }

@@ -9,11 +9,11 @@ const LOGOS = Array.from({ length: 17 }, (_, i) => ({
   id: i + 1,
   src: `/logos/${i + 1}.png`,
   alt: `Partner ${i + 1}`,
-}));
+})).filter(logo => logo.id !== 1);
 
 // Split into two marquee rows
-const ROW1 = [...LOGOS.slice(0, 9), ...LOGOS.slice(0, 9)];
-const ROW2 = [...LOGOS.slice(9, 17), ...LOGOS.slice(9, 17)];
+const ROW1 = [...LOGOS.slice(0, 8), ...LOGOS.slice(0, 8)];
+const ROW2 = [...LOGOS.slice(8, 16), ...LOGOS.slice(8, 16)];
 
 export default function StrategyPartners() {
   const ref = useRef(null);

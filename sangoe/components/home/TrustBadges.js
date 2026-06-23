@@ -1,17 +1,8 @@
 'use client';
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
-import Image from 'next/image';
-import { Star, Award, Shield } from 'lucide-react';
+import { Star, Shield, Lock, Heart, Briefcase, FileCheck, ShieldCheck } from 'lucide-react';
 import styles from './TrustBadges.module.css';
-
-const CERTIFICATIONS = [
-  { src: '/certifications/iso-27001.png', label: 'ISO 27001', sub: 'Information Security', color: '#3b82f6' },
-  { src: '/certifications/iso-42001.png', label: 'ISO 42001', sub: 'AI Management', color: '#7c3aed' },
-  { src: '/certifications/pci-dss.png',   label: 'PCI DSS',   sub: 'Payment Security',   color: '#f59e0b' },
-  { src: '/certifications/esg-aligned.jpg', label: 'ESG Aligned', sub: 'Sustainability', color: '#10b981' },
-  { src: '/certifications/sdg-contributor.jpg', label: 'SDG Contributor', sub: 'UN Goals', color: '#06b6d4' },
-];
 
 const RATINGS = [
   {
@@ -42,6 +33,14 @@ const RATINGS = [
     icon: '✅',
     color: '#00b67a',
   },
+];
+
+const TRUST_ITEMS = [
+  { text: '256-bit SSL Encrypted', icon: Lock, color: '#10b981', bg: 'rgba(16, 185, 129, 0.06)' },
+  { text: 'Made in India', icon: Heart, color: '#f97316', bg: 'rgba(249, 115, 22, 0.06)' },
+  { text: 'MSME Registered', icon: Briefcase, color: '#3b82f6', bg: 'rgba(59, 130, 246, 0.06)' },
+  { text: 'GDPR Compliant', icon: FileCheck, color: '#a855f7', bg: 'rgba(168, 85, 247, 0.06)' },
+  { text: 'SOC 2 Ready', icon: ShieldCheck, color: '#7c3aed', bg: 'rgba(124, 58, 237, 0.06)' },
 ];
 
 export default function TrustBadges() {
@@ -94,40 +93,6 @@ export default function TrustBadges() {
           ))}
         </motion.div>
 
-        {/* Certification badges grid */}
-        <motion.div
-          className={styles.certGrid}
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.35 }}
-        >
-          {CERTIFICATIONS.map((cert, i) => (
-            <motion.div
-              key={i}
-              className={styles.certCard}
-              whileHover={{ y: -4, boxShadow: `0 16px 48px ${cert.color}22` }}
-              transition={{ duration: 0.2 }}
-            >
-              <div className={styles.certImgWrap}>
-                <Image
-                  src={cert.src}
-                  alt={cert.label}
-                  width={80}
-                  height={80}
-                  style={{ objectFit: 'contain', width: '80px', height: '80px' }}
-                />
-              </div>
-              <div className={styles.certInfo}>
-                <span className={styles.certLabel} style={{ color: cert.color }}>{cert.label}</span>
-                <span className={styles.certSub}>{cert.sub}</span>
-              </div>
-              <span className={styles.certBadge} style={{ background: `${cert.color}15`, color: cert.color }}>
-                <Award size={10} /> Certified
-              </span>
-            </motion.div>
-          ))}
-        </motion.div>
-
         {/* Bottom trust strip */}
         <motion.div
           className={styles.bottomStrip}
@@ -135,9 +100,19 @@ export default function TrustBadges() {
           animate={inView ? { opacity: 1 } : {}}
           transition={{ duration: 0.5, delay: 0.5 }}
         >
-          {['🔒 256-bit SSL Encrypted', '🇮🇳 Made in India', '🏛️ MSME Registered', '📋 GDPR Compliant', '🔐 SOC 2 Ready'].map((item, i) => (
-            <span key={i} className={styles.stripItem}>{item}</span>
-          ))}
+          {TRUST_ITEMS.map((item, i) => {
+            const Icon = item.icon;
+            return (
+              <div
+                key={i}
+                className={styles.stripItemPill}
+                style={{ '--badge-color': item.color, '--badge-bg': item.bg }}
+              >
+                <Icon size={14} className={styles.stripItemIcon} style={{ color: item.color }} />
+                <span>{item.text}</span>
+              </div>
+            );
+          })}
         </motion.div>
       </div>
     </section>

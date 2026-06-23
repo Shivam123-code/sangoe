@@ -46,6 +46,7 @@
   width: 100%;
   border-collapse: collapse;
   font-size: 0.9rem;
+  min-width: 960px;
 }
 
 .table thead tr {
@@ -65,7 +66,8 @@
 
 .capCol {
   text-align: left !important;
-  width: 45%;
+  width: 30%;
+  min-width: 240px;
   color: #111827 !important;
 }
 
@@ -130,6 +132,61 @@
   text-transform: uppercase;
   letter-spacing: 0.02em;
 }
+
+.tableHeaderRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.tableTitle {
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: var(--theme-text-main);
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.swipeHint {
+  display: none;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: #7C3AED;
+  background: rgba(124, 58, 237, 0.06);
+  padding: 4px 12px;
+  border-radius: 999px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  user-select: none;
+}
+
+.swipeArrow {
+  display: inline-block;
+  animation: swipePulse 1.4s infinite ease-in-out;
+}
+
+@keyframes swipePulse {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(4px);
+  }
+}
+
+@media(max-width: 1024px) {
+  .swipeHint {
+    display: inline-flex;
+  }
+}
+
 @media(max-width: 768px) {
   .section { padding: 44px 0; }
   .header { margin-bottom: 36px; }
@@ -146,18 +203,6 @@
   .limited { font-size: 0.65rem; padding: 3px 8px; }
 }
 
-
-
-
-
-
-
-/* -- DARK MODE ------------------------------------------- */
-:global([data-theme='dark']) .section { background: #0e0e1a !important; }
-:global([data-theme='dark']) .whyCard { background: #1c1c2e !important; border-color: rgba(255,255,255,0.07) !important; }
-:global([data-theme='dark']) .whyTitle { color: #edeaf8 !important; }
-:global([data-theme='dark']) .whyDesc { color: #8b85a8 !important; }
-
 /* -- DARK MODE CORRECTED ---------------------------------- */
 :global([data-theme='dark']) .section { background: #0e0e1a !important; }
 :global([data-theme='dark']) .tableWrap { background: #1c1c2e !important; border-color: rgba(255,255,255,0.07) !important; }
@@ -169,3 +214,7 @@
 :global([data-theme='dark']) .capCell { color: #edeaf8 !important; }
 :global([data-theme='dark']) .sangoeCell { color: #a78bfa !important; }
 :global([data-theme='dark']) .limited { color: #8b85a8 !important; }
+:global([data-theme='dark']) .swipeHint {
+  color: #a78bfa !important;
+  background: rgba(167, 139, 250, 0.1) !important;
+}

@@ -25,6 +25,11 @@
   line-height: 1.15;
   letter-spacing: -0.02em;
 }
+@media (min-width: 769px) {
+  .h2 {
+    white-space: nowrap;
+  }
+}
 
 .sub {
   color: #6b7280;

@@ -30,30 +30,34 @@ export default function HomePage() {
           To restore: swap import + JSX on this line
           ───────────────────────────────────────────────────── */}
 
-      {/* ACTIVE HERO — Premium SaaS hero */}
+      {/* 1. ACTIVE HERO — Premium SaaS hero & Trust Strip */}
       <HeroPremium />
       {/* <HeroUniverse /> */}
       {/* <HeroVideo /> */}
+      <TrustStrip />
 
-      {/* Dashboard Showcase — 4 modules revealed one by one on scroll */}
-      <DashboardShowcase />
-
-      {/* Mission statement */}
+      {/* 2. One Platform to Run, Control & Scale & Mission */}
+      <SolutionStatement />
       <MissionStatement />
 
-      <TrustStrip />
-      <ProblemSection />
-      <SolutionStatement />
-
-      <JourneySection />
-      <IPORoadmap />
+      {/* 3. Explore CRM & ERP Features */}
       <FeaturesOverview limit={6} />
+
+      {/* 4. IPO Journey & Roadmap */}
+      <IPORoadmap />
+      <JourneySection />
+
+      {/* 5. Problem, Not a CRM (WhySangoe), and Showcase */}
+      <ProblemSection />
+      <WhySangoe />
+      <DashboardShowcase />
+
+      {/* Remaining Sections */}
       <AdvancedSolutions />
       {/* OLD IndustriesSection — preserved: <IndustriesSection /> */}
       <AISection />
       <AssessmentSection />
       <Testimonials />
-      <WhySangoe />
 
       {/* Trust & certifications */}
       <TrustBadges />
