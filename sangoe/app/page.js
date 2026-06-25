@@ -2,7 +2,6 @@
 // import HeroUniverse from '@/components/home/HeroUniverse'; // ← PRESERVED — universe orbits hero
 // import HeroVideo from '@/components/home/HeroVideo'; // ← PRESERVED — video hero
 import HeroPremium from '@/components/home/HeroPremium'; // ← ACTIVE — premium SaaS hero
-import DashboardShowcase from '@/components/home/DashboardShowcase'; // NEW — sequential dashboard reveals
 import MissionStatement from '@/components/home/MissionStatement';
 import TrustStrip from '@/components/home/TrustStrip';
 import TrustBadges from '@/components/home/TrustBadges';
@@ -47,10 +46,9 @@ export default function HomePage() {
       <IPORoadmap />
       <JourneySection />
 
-      {/* 5. Problem, Not a CRM (WhySangoe), and Showcase */}
+      {/* 5. Problem, Not a CRM (WhySangoe) */}
       <ProblemSection />
       <WhySangoe />
-      <DashboardShowcase />
 
       {/* Remaining Sections */}
       <AdvancedSolutions />
