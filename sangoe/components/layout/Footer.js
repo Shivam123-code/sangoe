@@ -46,18 +46,18 @@ const COLUMNS = [
     links: [
       { label: 'About Sangoe',    href: '/about' },
       { label: 'Leadership Team', href: '/about#leadership' },
-      { label: 'Careers',         disabled: true },
+      { label: 'Careers',         href: '/careers' },
       { label: 'Contact Us',      href: '/contact' },
-      { label: 'Media & Press',   disabled: true },
+      { label: 'Media & Press',   href: '/media-press' },
     ],
   },
   {
     title: 'Platform',
     links: [
       { label: 'FounderOS™',           href: '/platform' },
-      { label: 'AI Business Co-Pilot',  disabled: true },
-      { label: 'Integrations',          disabled: true },
-      { label: 'Mobile App',            disabled: true },
+      { label: 'AI Business Co-Pilot',  href: '/ai-copilot' },
+      { label: 'Integrations',          href: '/integrations' },
+      { label: 'Mobile App',            href: '/mobile-app' },
       { label: 'Security',              href: '/trust-centre#security' },
     ],
   },
@@ -85,11 +85,11 @@ const COLUMNS = [
   {
     title: 'Resources',
     links: [
-      { label: 'Blog',         disabled: true },
+      { label: 'Blog',         href: '/blog' },
       { label: 'Academy',      href: '/academy' },
       { label: 'Templates',    href: '/resources' },
-      { label: 'Case Studies', disabled: true },
-      { label: 'Webinars',     disabled: true },
+      { label: 'Case Studies', href: '/case-studies' },
+      { label: 'Webinars',     href: '/webinars' },
     ],
   },
   {
@@ -109,7 +109,7 @@ const TRUST_LINKS = [
   { label: 'Privacy Policy',         href: '/legal/privacy' },
   { label: 'Terms of Service',       href: '/legal/terms' },
   { label: 'Cookie Policy',          href: '/legal/cookies' },
-  { label: 'Service Status',         disabled: true },
+  { label: 'Service Status',         href: '/status' },
   { label: 'Responsible Disclosure', href: '/trust-centre#disclosure' },
 ];
 
